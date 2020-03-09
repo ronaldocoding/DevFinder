@@ -1,0 +1,96 @@
+/* Style the form */
+*{
+	font-family: 'Poppins', sans-serif;
+}
+
+.bg{
+	background-color: #46a3bb;
+	background-size: cover;	
+	padding: 50px 10px;
+}
+
+.icon-form{
+	height: 150px;
+	
+}
+
+.modal-content{
+	padding: 10px 50px;
+	
+}
+
+label{
+	float: left;
+}
+
+/* Style the input fields */
+input, textarea{
+  padding: 10px;
+  width: 100%;
+  font-size: 17px;
+  border: 1px solid #aaaaaa;
+}
+
+/* Mark input boxes that gets an error on validation: */
+input.invalid {
+  background-color: #ffdddd;
+}
+
+/* Hide all steps by default: */
+.tab {
+  display: none;
+    padding: 10px;
+}
+
+button {
+  background-color: #46a3bb;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+#prevBtn {
+  background-color: #bbbbbb;
+}
+
+/* Make circles that indicate the steps of the form: */
+.step {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #46a3bb;
+  border: none;
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.5;
+}
+
+/* Mark the active step: */
+.step.active {
+  opacity: 1;
+}
+
+/* Mark the steps that are finished and valid: */
+.step.finish {
+  background-color: #46a3bb;
+}
+
+.area{
+	display: none;
+	width: 100%;
+}
+
+tr{
+    display: none;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+    background-color: #46a3bb;
+    color: #ffffff;
+}

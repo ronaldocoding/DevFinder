@@ -1,0 +1,85 @@
+*{
+    font-family: "Poppins", sans-serif;
+}
+
+.carousel{
+    left: 0;
+	top: 80px;
+    width: 100%;
+}
+
+.carousel-item{
+    height: 600px;
+    background-color:  #46a3bb;
+    padding: 120px;
+    font-size: 25px;
+	color: #fff;
+}
+
+img{
+    max-width: 400px;
+    padding: 20px;
+}
+
+.d-flex{
+    text-align: center;
+	padding
+}
+
+footer{
+	position: relative;
+	top:50px;
+}
+
+button{
+    background-color:#ffffff;
+  color:  #46a3bb;
+  border: none;
+  padding: 10px 20px;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+button:hover{
+    opacity: 0.5;
+}
+
+a:link{
+    text-decoration: none;
+}
+
+.navbar li{
+    float: right;
+    display: inline;
+    list-style: none;
+    padding: 5px;
+    margin: 5px;
+
+}
+.navbar li:hover{
+    background-color: #46a3bb;
+    border-radius: 5px;
+    color: #fff;
+}
+
+.modal-body img{
+    width: 150px;
+}
+
+.modal-content{
+    padding: 0 50px;
+}
+
+.modal-content .btn {
+  background-color: #46a3bb;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 17px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+button:hover {
+  opacity: 0.8;
+}
