@@ -29,9 +29,8 @@
 					</div>
 					<div class="tab">
 						<label>DADOS DE ENDEREÇO</label>
-       						<div class="form-group"><select placeholder="Selecione país" class="form-control">
-            						<option>Pais</option>
-        					</select></div>
+                        
+						<div class="form-group"><input type="text" class="form-control" placeholder="CEP" oninput="this.className = ''"></div> 
          					<div class="form-group"><select placeholder="Selecione estado" class="form-control">
            						 <option>Estado</option>
         					</select></div>
@@ -40,8 +39,7 @@
         					</select></div>
 						<div class="form-group"><input type="text" class="form-control" placeholder="Rua" oninput="this.className = ''"></div>
 						<div class="form-group"><input type="text" class="form-control" placeholder="Bairro" oninput="this.className = ''"></div>
-						<div class="form-group"><input type="text" class="form-control" placeholder="Numero" oninput="this.className = ''"></div>
-						<div class="form-group"><input type="text" class="form-control" placeholder="CEP" oninput="this.className = ''"></div> 				
+						<div class="form-group"><input type="text" class="form-control" placeholder="Numero" oninput="this.className = ''"></div>				
 					</div>
 
 					<div class="tab">
@@ -62,7 +60,13 @@
             						<option>Selecione o tipo de vaga da empresa</option>
 							<option>Vagas remotas</option>
 							<option>Vagas físicas</option>
+							<option>Vagas remotas ou físicas</option>
         					</select></div>
+                        <div class="form-group"><textarea name="message" class="form-control" rows="1" cols="30" placeholder="Apresentação">Apresentação</textarea></div> 
+                        <label>Foto de perfil(.jpeg ou .png)</label>
+                        <div class="form-group">
+                                <input type="file" class="form-control">
+                        </div>
 					</div>
 					<div style="overflow:auto;">
   						<div>

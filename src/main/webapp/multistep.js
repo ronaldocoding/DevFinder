@@ -12,7 +12,7 @@ function showTab(n) {
     document.getElementById("prevBtn").style.display = "inline";
   }
   if (n == (x.length - 1)) {
-    document.getElementById("nextBtn").innerHTML = "<a href=\"perfil.html\">Cadastrar</a>";
+    document.getElementById("nextBtn").innerHTML = "<a href=\"inicio.html\">Cadastrar</a>";
     
   } else {
     document.getElementById("nextBtn").innerHTML = "Proximo";
