@@ -180,6 +180,11 @@ top_navbar-side .top_menu-side ul li a:hover{
     outline: none;
 }
 
+.description{
+    text-align: center;
+    padding: 50px;
+    height: 200px;
+}
 
 
 
