@@ -25,8 +25,7 @@ public class Empresa extends Usuario{
 
 	public Empresa(String email, String foto, String senha, Endereco endereco, String site, String telefone,
 			String apresentacao, String nomeFantasia, String razaoSocial, String cnpj, int anoFundacao,
-			String ramoMercado, int totalDesenvolvedores, boolean vagasRemotas, boolean vagasFisicas,
-			ArrayList<Desafio> desafios, ArrayList<EmpresaNotificacao> notificacoes) {
+			String ramoMercado, int totalDesenvolvedores, boolean vagasRemotas, boolean vagasFisicas) {
 		super(email, foto, senha, endereco, site, telefone, apresentacao);
 		this.nomeFantasia = nomeFantasia;
 		this.razaoSocial = razaoSocial;
@@ -36,8 +35,6 @@ public class Empresa extends Usuario{
 		this.totalDesenvolvedores = totalDesenvolvedores;
 		this.vagasRemotas = vagasRemotas;
 		this.vagasFisicas = vagasFisicas;
-		this.desafios = desafios;
-		this.notificacoes = notificacoes;
 	}
 
 	public String getNomeFantasia() {
