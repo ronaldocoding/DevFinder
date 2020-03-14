@@ -4,7 +4,7 @@ function addFooter(){
             "<div class=\"container pt-5 border-bottom\">"+
     "<div class=\"row\">"+
       "<div class=\"col-md-3 col-sm-12 mb-3 text-center\">"+
-          "<img class=\"img-fluid\" src=\"imgs/iconazul.png\"></img>"+
+          "<img class=\"img-fluid\" src=\"imgs/logo.png\"></img>"+
       "</div>"+
         "<div class=\"col-md-9 col-sm-12\">"+
         "<div class=\"col-md-3 col-sm-6 col-6 p-0 float-left mb-3\">"+
