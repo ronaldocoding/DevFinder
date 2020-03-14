@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * @author Ronaldo Costa
  *
  */
-public class Empresa extends Usuario{
+public class Empresa extends Usuario {
 
 	private String nomeFantasia;
 	private String razaoSocial;
@@ -18,7 +18,7 @@ public class Empresa extends Usuario{
 	private boolean vagasFisicas;
 	private ArrayList<Desafio> desafios;
 	private ArrayList<EmpresaNotificacao> notificacoes;
-	
+
 	public Empresa() {
 		super();
 	}

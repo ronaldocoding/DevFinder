@@ -5,7 +5,7 @@ package model;
  *
  */
 public abstract class Usuario {
-	
+
 	protected String email;
 	protected String foto;
 	protected String senha;
@@ -13,8 +13,9 @@ public abstract class Usuario {
 	protected String site;
 	protected String telefone;
 	protected String apresentacao;
-	
-	public Usuario() {}
+
+	public Usuario() {
+	}
 
 	public Usuario(String email, String foto, String senha, Endereco endereco, String site, String telefone,
 			String apresentacao) {
