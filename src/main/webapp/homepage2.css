@@ -1,0 +1,154 @@
+
+*{
+	  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+
+/*NAVBAR & SIDEBAR*/
+
+
+.top_navbar-side{
+  width: 100%;
+  height: 60px;
+  display: flex;
+  position: fixed;
+  z-index: 5;
+  top: 0px;
+}
+
+.top_navbar-side .top_menu-side{
+  width: 100%;
+  z-index: 5;
+  height: 100%;
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+}
+
+.top_navbar-side .top_menu-side ul{
+  display: flex;
+}
+
+ .top_navbar-side .top_menu-side ul li a{
+  display: block;
+  margin: 0 5px;
+  text-align: center;
+  border-radius: 10px;
+  color: #46a3bb;
+	padding: 10px;
+	font-size: 15px;
+	text-decoration: none;
+}
+
+#btn-cadastrar{
+  border: 1px solid #46a3bb;
+}
+
+  .top_navbar-side .top_menu-side ul li a:hover{
+  background: #46a3bb;
+  color: #fff;
+}
+
+  .top_navbar-side .top_menu-side ul li a:hover i{
+  color: #fff;
+}
+
+/*Botão de pesquisar*/
+
+.buscar-caja:hover > .buscar-txt {
+	position: relative;
+	left: 45px;
+	width: 180px;
+	padding: 0px 6px;
+	border-radius: 40px;
+	border: 1px solid #46a3bb;
+}
+
+.buscar-caja:hover .buscar-btn{
+	border: none!important;
+	background: white;
+	margin-left: 0px;
+}
+
+.buscar-btn {
+	color: black;
+	float: right;
+	height: 100% !important;
+	border: 0px white!important;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: 0.4s;
+	color: white;
+	cursor: pointer;
+}
+
+.buscar-txt {
+	border: none;
+	height: 35px;
+	background: none;
+	outline: none;
+	float: left;
+	padding: 0;
+	transition: 0.4s;
+	width: 0px;
+	line-height: 35px;
+}
+
+/***********************/
+
+/*Do botão de notificação*/
+
+.dropdown-menu{
+  width: 100px;
+  max-height: 100px;
+  margin-right:15px !important;
+}
+
+.dropdown-menu h5, .dropdown-menu p{
+  padding: 10px;
+  border-bottom: 1px solid rgba(0,0,0,.2);
+}
+
+.notification p{
+  margin: 0px 5px;
+  padding-top: 5px;
+}
+
+.dropdown-togggle{
+	border: 1px solid blue;
+}
+@media (max-width: 640px) {
+    .dropdown-menu{
+      top: 50px;
+      left: -16px;  
+      width: 290px;
+    } 
+    .nav{
+      display: block;
+    }
+    .nav .nav-item,.nav .nav-item a{
+      padding-left: 0px;
+    }
+    .message{
+      font-size: 13px;
+    }
+}
+
+/*** CONTAINERS****/
+
+.c-header{
+	background-color: blue;
+	padding: 100px;
+	display: block;
+	color: white;
+	margin-bottom: -50px;
+}
