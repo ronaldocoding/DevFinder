@@ -1,36 +1,25 @@
-body {
+footer {
   font-family: Rubik,Arial,sans-serif;
     font-weight: 400;
     font-size: 1rem;
     overflow-x: hidden;
     color: #607289;
+	
+  background: #fff;
 }
 
-h5 {
+footer h5{
     font-size: 0.9rem;
     line-height: 1.375;
   font-family: Rubik,Arial,sans-serif;
     font-weight: 500;
 }
 
-a {
-  color: #818494;
-  font-weight: 500;
-  text-decoration: none;
-  background-color: transparent;
+footer img{
+	max-height: 80px;
+	margin: 20px;
 }
 
-a:hover {
-  color: #007bff;
-  text-decoration: none;
-}
-
-footer {
-  background: #fff;
-}
-
-nav{
-    position: fixed;
-    top:0;
-    left: 0;
+h3{
+	padding: 50px;
 }

@@ -1,6 +1,6 @@
 
 *{
-	  font-family: "Poppins", sans-serif;
+ font-family: "Poppins", sans-serif;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -19,6 +19,7 @@
   position: fixed;
   z-index: 5;
   top: 0px;
+      box-shadow: 0 4px 8px 0 rgba(101, 112, 113, 0.5);
 }
 
 .top_navbar-side .top_menu-side{
@@ -35,28 +36,23 @@
 
 .top_navbar-side .top_menu-side ul{
   display: flex;
+    margin-top: 15px;
 }
 
- .top_navbar-side .top_menu-side ul li a{
+.top_navbar-side .top_menu-side ul li a{
   display: block;
-  margin: 0 5px;
+  margin: 0 10px;
   text-align: center;
   border-radius: 10px;
   color: #46a3bb;
-	padding: 10px;
+	padding: 7px;
 	font-size: 15px;
 	text-decoration: none;
 }
 
-#btn-cadastrar{
-  border: 1px solid #46a3bb;
+top_navbar-side .top_menu-side ul li a:hover{
+    color: black;
 }
-
-  .top_navbar-side .top_menu-side ul li a:hover{
-  background: #46a3bb;
-  color: #fff;
-}
-
   .top_navbar-side .top_menu-side ul li a:hover i{
   color: #fff;
 }
@@ -123,9 +119,6 @@
   padding-top: 5px;
 }
 
-.dropdown-togggle{
-	border: 1px solid blue;
-}
 @media (max-width: 640px) {
     .dropdown-menu{
       top: 50px;
@@ -146,9 +139,42 @@
 /*** CONTAINERS****/
 
 .c-header{
-	background-color: blue;
+	background: linear-gradient(218deg, rgba(84,222,218,1) 11%, rgba(73,194,208,1) 43%, rgba(31,136,180,1) 100%);
 	padding: 100px;
 	display: block;
 	color: white;
-	margin-bottom: -50px;
+	margin-bottom: -100px;
 }
+
+.modal-btn {
+    font-size: 16px;
+    color: #fff !important;
+    cursor: pointer;
+    background-size: 300% 100%;
+	padding: 10px;
+	border-radius: 10px;
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+	background-image: linear-gradient(to right, #49c2d0, #49c2d0, #1f88b4);
+    box-shadow: 0 4px 8px 0 rgba(101, 112, 113, 0.5);
+}
+
+.modal-btn:hover {
+    background-position: 100% 0;
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+	text-decoration: none;
+	color: white;
+}
+
+.modal-btn:focus {
+    outline: none;
+}
+
+
+
+
