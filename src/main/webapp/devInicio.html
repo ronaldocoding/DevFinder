@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Desenvolvedor</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+	<meta charset="UTF-8">
+	<title>Desenvolvedor</title>
+	<link rel="stylesheet" href="style.css">
+
+	<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
@@ -16,6 +17,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
 </head> 
 <body>
 
@@ -30,13 +32,13 @@
       <div class="logo"><img src="imgs/logo.png" style="height: 40px"></div>
       <ul>
         <li>
-          <div class="buscar-caja">
-          <input type="text" name="" class="buscar-txt" placeholder="Buscar..."/>
-          <a class="buscar-btn">
-            <i class="fas fa-search"></i>
-          </a>
-        </div>
-      </li>
+        	<div class="buscar-caja">
+   				<input type="text" name="" class="buscar-txt" placeholder="Buscar..."/>
+   				<a class="buscar-btn">
+    				<i class="fas fa-search"></i>
+   				</a>
+  			</div>
+  		</li>
       <li>
         <div class="dropdown show">
           <a class="dropdown-togggle" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -45,6 +47,7 @@
 
         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
           <h5>Notificações</h5>
+          
         </div>
       </div>
       </li>      
@@ -59,33 +62,33 @@
   
   <div class="sidebar">
       <ul id="menu-list">
-        <li><a href="inicio.html" >
+        <li><a href="#"  class="active">
           <span class="icon"><i class="fa fa-home" aria-hidden="true"></i></span>
           <span class="title">Início</span></a></li>
-        <li><a href="#" class="active">
+        <li><a href="devDesafiosInscritos.html">
           <span class="icon"><i class="fa fa-code"></i></span>
           <span class="title">Desafios Inscritos</span>
           </a></li>
-        <li><a href="perfil.html">
+        <li><a href="devConfiguracoes.html">
           <span class="icon"><i class="fa fa-cog" aria-hidden="true"></i></span>
           <span class="title">Configurações</span>
           </a></li>
         <li><a href="homepage.html">
-          <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
+            <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
           <span class="title">Sair</span>
           </a></li>
         <li><a href="#">
           </a></li>
     </ul>
   </div>
-<div class="main_container" id="main_container">
   
-  <h2 style="margin-left: 10px">Desafios inscritos</h2>
+<div class="main_container" id="main_container">
+
+  <h2 >Desafios para você</h2>
   <div class="filter">
     <div class="col-sm-9 area_post">
 
     </div>
-	
     <aside class="col-sm-3">
       <div class="card">
         <article class="card-group-item">
@@ -149,47 +152,14 @@
       </div> <!-- card.// -->
     </aside>
   </div>
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Submeter solução</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="form-group">
-            <label >Link da solução</label>
-            <input type="text" class="form-control" placeholder="Link">
-          </div>
-          <div class="form-group">
-            <label>Documentação</label>
-            <input type="file" class="form-control">
-          </div>
-          <div class="form-group" style="width: 100%">
-            <label >Descrição</label>
-            <div></div>
-            <textarea placeholder="Descreva um pouco sobre sua solução" style=""></textarea>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-        <button type="button" class="btn btn-primary">Enviar</button>
-      </div>
-    </div>
-  </div>
 </div>
-</div>
-  
-	</div>
-<script type="text/javascript" src="feed.js"></script>
+	
 <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 
-  <script type="text/javascript">
-    var add_post = function(autor, titulo, area, habilidades, salario, remoto, texto, data){
+<script type="text/javascript" src="feed.js">
+</script>
+<script>
+  var add_post = function(autor, titulo, area, habilidades, salario, remoto, texto, data){
       titulo =  '<h4>'+titulo+'</h4>'
       texto = '<p>'+texto+'</p>'
       area = '<span> <i class="fab fa-dev"></i>' + area + '</span>'
@@ -199,16 +169,16 @@
         list_habilidades += '<span class="tag-list background-gray">'+habilidades[i]+'</span>'
               
       }
-      var btn = '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Submeter</button>'
+      var btn = '<button type="button" class="btn btn-primary">Participar</button>'
       text = '<div class="post"> <div class="row"> <div class="col-sm-12"> <div class="col-sm-3"> <img src="http://placehold.it/260x180" alt=""> </div> <div class="col-sm-9"> ' + titulo + texto + '<div class="cell-list-content-icon">'+area+remoto+'</div> <div class="cell-list-content-tag">'+ list_habilidades+
         '</div> </div> </div> </div> <div class="row"> <div class="col-sm-12 line"> <div class="col-sm-4">'+data+ '</div> <div class="col-sm-7 offset-sm-1">'+btn+ '</div></div></div></div>'
       $('.area_post').append(text)
   };
 
-  add_post('a', 'Online Judgde', 'Full-stack', ['HTML5', 'CSS3', 'Javascript', "PHP"], 'e', 'Vaga remota', 'Faça uma juiz online para desafios de programação', 'Desafio até 18/03/2020');
-  add_post('a', 'Sistema Gerenciador de Lava-Jato', 'Full-stack', ['HTML5', 'CSS3', 'Javascript', 'PHP'], 'e', 'Vaga física', 'Faça um sistema gerenciador de um lava jato', 'Desafio até 30/04/2020');
-  add_post('a', 'App de Física', 'Mobile', ['React Native', 'Javascript', 'Java', 'Kotlin'], 'e', 'Vaga física', 'Faça um app que ensine Física básica', 'Desafio até: 20/05/2020');
-  </script>
-
+  add_post('a', 'Homepage Estilosa', 'Front-end', ['HTML5', 'CSS3', 'Javascript', "Bootstrap 4"], 'e', 'Vaga remota', 'Faça uma homepage estilosa para um Pet Shop', 'Desafio até 10/03/2020');
+  add_post('a', 'Reconhecedor de emoções', 'Deep Learning', ['Python', 'Ternsor Flow', 'R', 'IDE Spy'], 'e', 'Vaga física', 'Faça um programa que seja capaz de reconhecer emoções', 'Desafio até 20/04/2020');
+  add_post('a', 'App de Matemática', 'Mobile', ['React Native', 'Javascript', 'Java', 'Kotlin'], 'e', 'Vaga física', 'Faça um app que ensine Matemática do Ensino Fundamental', 'Desafio até: 15/05/2020');
+  add_post('a', 'Sistema de Gestão Acadêmica', 'Full-stack', ['PHP', 'HTML5', 'CSS3', 'Javascript'], 'e', 'Vaga remota', 'Faça um sistema de gestão acadêmica na visão do professor e aluno', 'Desafio até 20/06/2020');
+</script>
 </body>
 </html>
