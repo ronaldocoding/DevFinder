@@ -1,7 +1,7 @@
 addFooter();
 function addFooter(){
     document.getElementById("footer").innerHTML+=" <link rel=\"stylesheet\" type=\"text/css\" href=\"footer.css\">"+
-            "<div class=\"container pt-5 border-bottom\">"+
+            "<div class=\"container-fluid\">"+
     "<div class=\"row\">"+
       "<div class=\"col-md-3 col-sm-12 mb-3 text-center\">"+
           "<img class=\"img-fluid\" src=\"imgs/logo.png\"></img>"+
