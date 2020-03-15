@@ -57,10 +57,6 @@ public class Empresa extends Usuario {
 		return cnpj;
 	}
 
-	public void setCnpj(String cnpj) {
-		this.cnpj = cnpj;
-	}
-
 	public int getAnoFundacao() {
 		return anoFundacao;
 	}
@@ -103,10 +99,6 @@ public class Empresa extends Usuario {
 
 	public ArrayList<Desafio> getDesafios() {
 		return desafios;
-	}
-
-	public void setDesafios(ArrayList<Desafio> desafios) {
-		this.desafios = desafios;
 	}
 
 	public ArrayList<EmpresaNotificacao> getNotificacoes() {

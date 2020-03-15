@@ -18,6 +18,7 @@ public class Desenvolvedor extends Usuario{
 	private ArrayList<DesenvolvedorHabilidade> habilidades;
 	private String curriculo;
 	private ArrayList<Solucao> solucoes;
+	private ArrayList<DesenvolvedorNotificacao> notificacoes;
 	
 	public Desenvolvedor() {}
 
@@ -44,10 +45,6 @@ public class Desenvolvedor extends Usuario{
 
 	public String getCpf() {
 		return cpf;
-	}
-
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
 	}
 
 	public String getDataNascimento() {
@@ -110,7 +107,11 @@ public class Desenvolvedor extends Usuario{
 		return solucoes;
 	}
 
-	public void setSolucoes(ArrayList<Solucao> solucoes) {
-		this.solucoes = solucoes;
+	public ArrayList<DesenvolvedorNotificacao> getNotificacoes() {
+		return notificacoes;
+	}
+
+	public void setNotificacoes(ArrayList<DesenvolvedorNotificacao> notificacoes) {
+		this.notificacoes = notificacoes;
 	}
 }

@@ -53,10 +53,6 @@ public class Desafio {
 		return areaDesenvolvimento;
 	}
 
-	public void setAreaDesenvolvimento(String areaDesenvolvimento) {
-		this.areaDesenvolvimento = areaDesenvolvimento;
-	}
-
 	public String getDescricao() {
 		return descricao;
 	}
