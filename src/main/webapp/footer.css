@@ -6,13 +6,12 @@ border-top-right-radius: 50px;
     padding-bottom:0;
     color: white;
 }
-footer img{
-    max-height: 100px;
-    min-height: 60px;
-    display: block;
-}
 
 .list-unstyled li a{
      color: white;
     text-decoration: none;
+}
+
+.noturno{
+    width: 100%;
 }

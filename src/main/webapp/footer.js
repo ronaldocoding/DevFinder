@@ -5,7 +5,7 @@ function addFooter(){
         '<footer class="container py-5 px-5">'+
           '<div class="row">'+
             '<div class="col-12 col-md text-center">'+
-                    '<img class="img-fluid" src="imgs/logoNoturna.png">'+
+                    '<img class="img-fluid noturno" src="imgs/logoNoturna.png">'+
             '</div>'+
             '<div class="col-6 col-md">'+
               '<h5>Desenvolvedores</h5>'+
