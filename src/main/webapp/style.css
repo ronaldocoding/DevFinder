@@ -30,39 +30,41 @@ body{
 }
 
 .wrapper-side .top_navbar-side .hamburger-side{
-  width: 70px;
-  height: 100%;
-  padding: 15px 17px;
-  border-top-left-radius: 20px;
+  width: 50px;
+  height: 50px;
+  padding: 10px 10px;
+    margin: 5px;
+    background: #46a3bb;
+    border-radius: 50%;
   cursor: pointer;
 }
 
-.wrapper-side .top_navbar-side .hamburger-side div{
-  width: 35px;
+.wrapper-side .top_navbar-side .hamburger-side .all div{
+  width: 30px;
   height: 4px;
-  background: #46a3bb;
+  background: #fff;
   margin: 5px 0;
   border-radius: 5px;
 }
 
+
 .wrapper-side .top_navbar-side .top_menu-side{
-  width: calc(100% - 70px);
+  width: calc(100% - 10px);
   z-index: 5;
   height: 100%;
   background: #fff;
-  border-top-right-radius: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 20px;
+  padding: 0 10px;
   box-shadow: 0 1px 1px rgba(0,0,0,0.1);
 }
 
-.wrapper-side .top_navbar-side .top_menu-side .logo{
-  color: #46a3bb;
-  font-size: 20px;
-  font-weight: 700;
-  letter-spacing: 3px;
+.wrapper-side .top_navbar-side .top_menu-side .logo img{
+    width: 35px;
+    height: 40px;
+    object-fit: cover;
+    object-position: left;
 }
 
 .wrapper-side .top_navbar-side .top_menu-side ul{
@@ -97,7 +99,6 @@ body{
   background: linear-gradient(218deg, rgba(84,222,218,1) 11%, rgba(73,194,208,1) 43%, rgba(31,136,180,1) 100%);;
   width: 225px;
   height: calc(100% - 60px);
-  border-bottom-left-radius: 20px;
   transition: all 0.3s ease;
 }
 
@@ -106,20 +107,8 @@ body{
   padding: 20px;
   color: #fff;
   position: relative;
-  margin-bottom: 1px;
   color: #b8eefc;
   white-space: nowrap;
-}
-
-.wrapper-side .sidebar ul li a:before{
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 3px;
-  height: 100%;
-  background: #b8eefc;
-  display: none;
 }
 
 .wrapper-side .sidebar ul li a span.icon{
@@ -133,10 +122,10 @@ body{
 
 .wrapper-side .sidebar ul li a:hover,
 .wrapper-side .sidebar ul li a.active{
-  background: ##49c2d0;
-  color: #fff;
-   
-box-shadow:         inset 0px 0px 17px 3px rgba(0, 0, 0, 0.28);
+    background: linear-gradient(to right, rgba(84,222,218,1), rgba(73,194,208,1), rgba(31,136,180,1));
+    color: #fff;
+    padding-left: 30px;
+    
 }
 
 .wrapper-side .sidebar ul li a:hover:before,
