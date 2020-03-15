@@ -232,3 +232,64 @@ top_navbar-side .top_menu-side ul li a:hover{
 .user ul h5{
     overflow: hidden;
 }
+
+
+.post{
+  padding: 10px 15px;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+}
+
+.line{
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.post img{
+  width: 100%;
+  min-width: 80px;
+  margin-right: 20px;
+  margin-bottom: 5px;
+}
+
+.post h4{
+  margin: 0 0 5px 0;
+  padding: 0;
+}
+
+.creator{
+  float: right;
+  font-size: 16px;
+}
+
+.post button{
+  margin-left: 15px;
+  float: right;
+}
+
+.post:last-child{
+  border-bottom: 0;
+} 
+
+.cell-list-content-icon i{
+
+  margin-right: 5px;
+}
+.cell-list-content-icon span{
+  margin-right: 10px; 
+}
+
+.cell-list-content-tag{
+  margin-top: 10px; 
+}
+
+.tag-list {
+  background-color: #f4f4f4;
+  font-size: 14px;
+  padding: 6px 14px;
+  border-radius: 1em;
+  text-decoration: none;
+  margin-right: 6px;
+  margin-bottom: 5px;
+  display: inline-block;
+}

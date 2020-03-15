@@ -173,6 +173,7 @@
                                 </div>
                                 <div class="col-sm-12">
                                     <h4>Desafios</h4>
+                                    <div class="area_post"></div>
                                 </div>
                             </div>	
                         </div>
@@ -183,5 +184,27 @@
 	   </div>
         <footer id="footer"></footer>
         <script src="footer.js"></script>
+        <script>
+          var add_post = function(autor, titulo, area, habilidades, salario, remoto, texto, data){
+              titulo =  '<h4>'+titulo+'</h4>'
+              texto = '<p>'+texto+'</p>'
+              area = '<span> <i class="fab fa-dev"></i>' + area + '</span>'
+              remoto = '<span> <i class="fa fa-home" style="margin-right:10px;"></i>' + remoto +'</span>'
+              var list_habilidades='';
+              for (var i = 0; i < habilidades.length; i++) {
+                list_habilidades += '<span class="tag-list background-gray">'+habilidades[i]+'</span>'
+
+              }
+              var btn = '<button type="button" class="btn btn-primary">Participar</button>'
+              text = '<div class="post"> <div class="row"> <div class="col-sm-12"> <div class="col-sm-3"> <img src="http://placehold.it/100x100" alt=""> </div> <div class="col-sm-9"> ' + titulo + texto + '<div class="cell-list-content-icon">'+area+remoto+'</div> <div class="cell-list-content-tag">'+ list_habilidades+
+                '</div> </div> </div> </div> <div class="row"> <div class="col-sm-12 line"> <div class="col-sm-4">'+data+ '</div> <div class="col-sm-7 offset-sm-1">'+btn+ '</div></div></div></div>'
+              $('.area_post').append(text)
+          };
+
+          add_post('a', 'Homepage Estilosa', 'Front-end', ['HTML5', 'CSS3', 'Javascript', "Bootstrap 4"], 'e', 'Vaga remota', 'Faça uma homepage estilosa para um Pet Shop', 'Desafio até 10/03/2020');
+          add_post('a', 'Reconhecedor de emoções', 'Deep Learning', ['Python', 'Ternsor Flow', 'R', 'IDE Spy'], 'e', 'Vaga física', 'Faça um programa que seja capaz de reconhecer emoções', 'Desafio até 20/04/2020');
+          add_post('a', 'App de Matemática', 'Mobile', ['React Native', 'Javascript', 'Java', 'Kotlin'], 'e', 'Vaga física', 'Faça um app que ensine Matemática do Ensino Fundamental', 'Desafio até: 15/05/2020');
+          add_post('a', 'Sistema de Gestão Acadêmica', 'Full-stack', ['PHP', 'HTML5', 'CSS3', 'Javascript'], 'e', 'Vaga remota', 'Faça um sistema de gestão acadêmica na visão do professor e aluno', 'Desafio até 20/06/2020');
+        </script>
     </body>
 </html>
