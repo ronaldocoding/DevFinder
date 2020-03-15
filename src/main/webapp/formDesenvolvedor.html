@@ -2,11 +2,12 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="styleForm.css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
-	
+	<script src="http://jqueryvalidation.org/files/dist/jquery.validate.js"></script>
+	<script type="text/javascript" src="validacoes.js"></script>
 </head>
 <body>
 
@@ -19,71 +20,166 @@
 					<h3>Cadastro</h3>
 				</div>
 
-				<form class="col-12" id="regForm" action="">
-					
+				<form class="col-12" id="regForm" action="" onsubmit="teste();">
+					<!--
 					<div class="tab">
-						<div class="form-group"><input type="text" class="form-control" placeholder="Nome completo" oninput="this.className = ''"></div>
-						<div class="form-group"><input type="text" class="form-control" placeholder="CPF" oninput="this.className = ''"></div>
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="Nome completo" oninput="this.className = ''" name="nome">
+							<small>Esse campo é obrigatório</small>
+							<small>Insira um nome válido</small>
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="CPF" oninput="this.className = ''
+							" id="cpf" name="CPF">
+							<small>Esse campo é obrigatório</small>
+							<small>Insira um CPF válido</small>
+
+							<div style="clear: both;"></div>
+						</div>
 						<label>Data de nascimento:</label>
-						<div class="form-group"><input type="date" class="form-control" oninput="this.className = ''"></div>
-								
+						<div class="form-group">
+							<input min="1930-1-1" type="date" class="form-control" oninput="this.className = ''">
+							<small>Esse campo é obrigatório</small>
+							<small>Insira uma data válida</small>
+						</div>
+						<div style="clear: both;"></div>	
 					</div>
 					<div class="tab">
 						<label>DADOS DE ENDEREÇO</label>
-						<div class="form-group"><input type="text" class="form-control" placeholder="CEP" oninput="this.className = ''"></div> 				
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="CEP" oninput="this.className = ''" id="CEP" value="">
+							<small>Esse campo é obrigatório</small>
+							<small>Insira um CEP válido</small>
+						</div> 				
                         
-         					<div class="form-group"><select placeholder="Selecione estado" class="form-control">
-           						 <option>Estado</option>
-        					</select></div>
-         					<div class="form-group"><select placeholder="Selecione Cidade" class="form-control">
-            						<option>Cidade</option>
-        					</select></div>
-						<div class="form-group"><input type="text" class="form-control" placeholder="Rua" oninput="this.className = ''"></div>
-						<div class="form-group"><input type="text" class="form-control" placeholder="Bairro" oninput="this.className = ''"></div>
-						<div class="form-group"><input type="text" class="form-control" placeholder="Numero" oninput="this.className = ''"></div>
-					</div>
-
-					<div class="tab">
-						<div class="form-group"><input type="text" class="form-control" placeholder="E-mail" oninput="this.className = ''"></div>
-						<div class="form-group"><input type="text" class="form-control" placeholder="Telefone para contato" oninput="this.className = ''"></div>
-						<div class="form-group"><input type="text" class="form-control" placeholder="Site pessoal" oninput="this.className = ''"></div> 					
-						<label>Defina sua senha</label>
-						<div class="form-group"><input type="password" class="form-control" placeholder="Insira sua senha" oninput="this.className = ''"></div>
-						<div class="form-group"><input type="password" class="form-control" placeholder="Confirme sua senha" oninput="this.className = ''"></div> 					
-
+     					<div class="form-group" >
+     						<input type="text" id="estado" class="form-control" placeholder="Estado" oninput="this.className = ''" value="" disabled>
+     					</div>
+         				
+    					<div class="form-group">
+    						<input type="text" class="form-control" placeholder="Cidade" oninput="this.className = ''" id="cidade" disabled>
+    					</div>
+						
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="Rua" oninput="this.className = ''" id="rua" disabled>
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="Bairro" oninput="this.className = ''" id="bairro" disabled>
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="Numero" oninput="this.className = ''" id="numero">
+							<small>Esse campo é obrigatório</small>
+							<small>Preencha um número válido</small>
+							<div style="clear: both;"></div>
+						</div>
 					</div>
 					
 					<div class="tab">
-						<label>Informações do desenvolvedor:</label>
 						<div class="form-group">
-							<select class="form-control">
-                                <option>Selecione a sua área de atuação</option>
-                                <option>Front-end</option>
-                                <option>Back-end</option>
-                                <option>Full Stack</option>
-                                <option>Mobile</option>
-                                <option>Data Science</option>
-                            </select>	
+							<input type="text" class="form-control" placeholder="E-mail" oninput="this.className = ''" name="email">
+							<small>Esse campo é obrigatório</small>
+							<small>Insira um email válido</small>
 						</div>
-                        <div class="form-group">
-							<select class="form-control" id="habilidades-select"><option>Selecione as Habilidades</option></select>    
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="Telefone para contato" oninput="this.className = ''" name="tel">
+							<small>Esse campo é obrigatório</small>
+							<small>Insira um número de telefone válido</small>
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control" name="url" placeholder="Site pessoal" oninput="this.className = ''" required="false">
+
+							<small>Esse campo é obrigatório</small>
+							<small>Insira uma site válido</small>
+						</div> 		
+						<div style="clear: both;"></div>			
+						<label>Defina sua senha</label>
+						<div class="form-group">
+							<span class="passwordStrong">Senha forte</span>
+							<input type="password" class="form-control" placeholder="Insira sua senha" oninput="this.className = ''" id="senha">
+
+							<small>Esse campo é obrigatório</small>
+							<small>Insira uma senha válida</small>
+						</div>
+						
+						<div class="form-group">
+							<input type="password" class="form-control" placeholder="Confirme sua senha" oninput="this.className = ''" name="senhaConfirm">
+
+							<small class="feedback">Esse campo é obrigatório</small>
+							<small class="feedback">As senhas precisam ser iguais.</small>
+						</div> 					
+						<div style="clear: both;"></div>
+					</div>
+					-->
+					<div class="tab">
+						<div>
+							Informações do desenvolvedor:
+						</div>
+						<div class="form-group check">
+							<div class="sub-title">Área de atuação</div>
+							<div style="clear: both;"></div>
+							<label class = "checkbox-inline">
+	         						<input type = "checkbox" name= "area" id = "inlineCheckbox1" value = "Full-stack">Full-stack
+		         		         </label>
+	         		         <label class = "checkbox-inline">
+	         		         		<input type = "checkbox" name= "area" id = "inlineCheckbox2" value = "Back-end">Back-end
+	         		         </label>
+	         		         <label class = "checkbox-inline">
+	         		         		<input type = "checkbox" name= "area" id = "inlineCheckbox2" value = "Front-end">Front-end
+	         		         </label>
+	         		         <label class = "checkbox-inline">
+	         		         		<input type = "checkbox" name= "area" id = "inlineCheckbox2" value = "Mobile">Mobile
+	         		         </label>
+	         		         <label class = "checkbox-inline">
+	         		         		<input type = "checkbox" name= "area" id = "inlineCheckbox2" value = "Machine Learning">Machine Learning
+	         		         </label>
+	         		         <small>Escolha pelo menos uma área de atuação</small>
+						</div>
+                        <div class="form-group select-esp">
+							<select class="form-control" id="habilidades-select"><option>Selecione as Habilidades</option></select>  
+							<small style="width: 100%">Escolha pelo menos uma habilidade</small>
+
+
 						</div>	
                         <table><tbody id="habilidades-tabela"></tbody></table>
-						<div class="form-group"><input type="number" class="form-control" placeholder="Tempo de experiência" min ="1" oninput="this.className = ''"></div> 
+						<div class="form-group">
+							<input type="number" class="form-control" placeholder="Tempo de experiência" min ="1" oninput="this.className = ''">
+							<small class="feedback">Esse campo é obrigatório</small>
+							<small class="feedback"></small>
+
+							<div style="clear: both;"></div>
+						</div> 
 						
-		
+					
 					</div>
+					
                     <div class="tab">
-                        <div class="form-group"><input class="form-control" type="file" id="curriculo" oninput="this.className = ''">
-								<label for="curriculo">Insira um arquivo pdf do seu curriculo</label></div> 
+                        <div class="form-group file">
+                        	<input class="form-control" type="file" id="curriculo" oninput="this.className = ''" required="false">
+								<label for="curriculo">Insira um arquivo pdf do seu curriculo</label>
+						</div> 
        						
-        					<div class="form-group"><input class="form-control" type="text" placeholder="LinkEdin" oninput="this.className = ''"></div> 
-        					<div class="form-group"><input class="form-control" type="text" placeholder="GitHub" oninput="this.className = ''"></div> 
-        					<div class="form-group"><input class="form-control" type="text" placeholder="Lattes" oninput="this.className = ''"></div> 
-        					<div class="form-group"><textarea name="message" class="form-control" rows="1" cols="30" placeholder="Apresentação">Apresentação</textarea></div> 
+    					<div class="form-group">
+    						<input class="form-control" name = "url" required = "false" type="text" placeholder="LinkEdin" oninput="this.className = ''">
+							<small></small>
+							<small>Insira uma url válida</small>
+    					</div> 
+    					<div class="form-group">
+    						<input class="form-control" name="url" type="text" placeholder="GitHub" oninput="this.className = ''">
+							<small>Este campo é obrigatório</small>
+							<small>Insira uma url válida</small>
+    					</div> 
+    					<div class="form-group">
+							<input class="form-control" name="url" type="text" placeholder="Lattes" oninput="this.className = ''" required = "false">
+							<small></small>
+							<small>Insira uma url válida</small>
+						</div> 
+    					<div class="form-group apr">
+    						<textarea name="message" class="form-control" rows="1" cols="30" placeholder="	Apresentação">Apresentação
+    						</textarea>
+    					</div> 
                         <label>Foto de perfil(.jpeg ou .png)</label>
                         <div class="form-group">
-                                <input type="file" class="form-control">
+                                <input type="file" class="form-control" required="false">
                         </div>
                     </div>
 					<div style="overflow:auto;">

@@ -2,11 +2,12 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="styleForm.css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
-	
+	<script src="http://jqueryvalidation.org/files/dist/jquery.validate.js"></script>
+	<script type="text/javascript" src="validacoes.js"></script>
 </head>
 <body>
 
@@ -22,49 +23,125 @@
 				<form class="col-12" id="regForm" action="">
 					
 					<div class="tab">
-						<div class="form-group"><input type="text" class="form-control" placeholder="Razão social" oninput="this.className = ''"></div>
-						<div class="form-group"><input type="text" class="form-control" placeholder="Nome Fantasia" oninput="this.className = ''"></div>
-						<div class="form-group"><input type="text" class="form-control" placeholder="CNPJ" oninput="this.className = ''"></div>
-						<div class="form-group"><input type="number" class="form-control" placeholder="Ano de fundação" oninput="this.className = ''"></div> 				
-					</div>
-					<div class="tab">
-						<label>DADOS DE ENDEREÇO</label>
-                        
-						<div class="form-group"><input type="text" class="form-control" placeholder="CEP" oninput="this.className = ''"></div> 
-         					<div class="form-group"><select placeholder="Selecione estado" class="form-control">
-           						 <option>Estado</option>
-        					</select></div>
-         					<div class="form-group"><select placeholder="Selecione Cidade" class="form-control">
-            						<option>Cidade</option>
-        					</select></div>
-						<div class="form-group"><input type="text" class="form-control" placeholder="Rua" oninput="this.className = ''"></div>
-						<div class="form-group"><input type="text" class="form-control" placeholder="Bairro" oninput="this.className = ''"></div>
-						<div class="form-group"><input type="text" class="form-control" placeholder="Numero" oninput="this.className = ''"></div>				
-					</div>
-
-					<div class="tab">
-						<div class="form-group"><input type="text" class="form-control" placeholder="E-mail" oninput="this.className = ''"></div>
-						<div class="form-group"><input type="text" class="form-control" placeholder="Telefone para contato" oninput="this.className = ''"></div>
-						<div class="form-group"><input type="text" class="form-control" placeholder="Site da Empresa" oninput="this.className = ''"></div> 					
-						<label>Defina sua senha</label>
-						<div class="form-group"><input type="password" class="form-control" placeholder="Insira sua senha" oninput="this.className = ''"></div>
-						<div class="form-group"><input type="password" class="form-control" placeholder="Confirme sua senha" oninput="this.className = ''"></div> 					
-
+						<div class="form-group">
+							<input type="text" class="form-control" name="nome" placeholder="Razão social" oninput="this.className = ''">
+							<small>Esse campo é obrigatório</small>
+							<small>Insira uma razão social válida</small>
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control" name="nome" placeholder="Nome Fantasia" oninput="this.className = ''">
+							<small>Esse campo é obrigatório</small>
+							<small>Insira um nome válido</small>
+						</div>
+						<div class="form-group">
+							<input type="text" id="CNPJ" class="form-control" placeholder="CNPJ" oninput="this.className = ''">
+							<small>Esse campo é obrigatório</small>
+							<small>Insira um CNPJ válido</small>
+						</div>
+						<div class="form-group">
+							<input type="number" class="form-control" placeholder="Ano de fundação" oninput="this.className = ''" min="578-1-1">
+							<small>Esse campo é obrigatório</small>
+							<small></small>
+							<div style="clear: both;"></div>
+						</div> 				
 					</div>
 					
 					<div class="tab">
-						<label>Informações da empresa</label>
-						<div class="form-group"><input type="text" class="form-control" placeholder="Ramo" oninput="this.className = ''"></div> 			
-						<div class="form-group"><input type="number" class="form-control" placeholder="Número de funcionários" min ="1" oninput="this.className = ''"></div> 		
-						<div class="form-group"><select placeholder="Selecione o tipo de vaga da empresa" class="form-control">
-            						<option>Selecione o tipo de vaga da empresa</option>
-							<option>Vagas remotas</option>
-							<option>Vagas físicas</option>
-							<option>Vagas remotas ou físicas</option>
-        					</select></div>
-                        <div class="form-group"><textarea name="message" class="form-control" rows="1" cols="30" placeholder="Apresentação">Apresentação</textarea></div> 
-                        <label>Foto de perfil(.jpeg ou .png)</label>
+						<label>DADOS DE ENDEREÇO</label>
                         <div class="form-group">
+							<input type="text" class="form-control" placeholder="CEP" oninput="this.className = ''" id="CEP" value="">
+							<small>Esse campo é obrigatório</small>
+							<small>Insira um CEP válido</small>
+						</div> 				
+                        
+     					<div class="form-group" >
+     						<input type="text" id="estado" class="form-control" placeholder="Estado" oninput="this.className = ''" value="" disabled>
+     					</div>
+         				
+    					<div class="form-group">
+    						<input type="text" class="form-control" placeholder="Cidade" oninput="this.className = ''" id="cidade" disabled>
+    					</div>
+						
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="Rua" oninput="this.className = ''" id="rua" disabled>
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="Bairro" oninput="this.className = ''" id="bairro" disabled>
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="Numero" oninput="this.className = ''" id="numero">
+							<small>Esse campo é obrigatório</small>
+							<small>Preencha um número válido</small>
+							<div style="clear: both;"></div>
+						</div>				
+					</div>
+					
+					<div class="tab">
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="E-mail" oninput="this.className = ''" name="email">
+							<small>Esse campo é obrigatório</small>
+							<small>Insira um email válido</small>
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="Telefone para contato" oninput="this.className = ''" name="tel">
+							<small>Esse campo é obrigatório</small>
+							<small>Insira um número de telefone válido</small>
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control" name="url" placeholder="Site da empresa" oninput="this.className = ''">
+
+							<small>Esse campo é obrigatório</small>
+							<small>Insira uma url válido</small>
+						</div> 		
+						<div style="clear: both;"></div>			
+						<label>Defina sua senha</label>
+						<div class="form-group">
+							<span class="passwordStrong">Senha forte</span>
+							<input type="password" class="form-control" placeholder="Insira sua senha" oninput="this.className = ''" id="senha">
+
+							<small>Esse campo é obrigatório</small>
+							<small>Insira uma senha válida</small>
+						</div>
+						<div class="form-group">
+							<input type="password" class="form-control" placeholder="Confirme sua senha" oninput="this.className = ''" name="senhaConfirm">
+
+							<small class="feedback">Esse campo é obrigatório</small>
+							<small class="feedback">As senhas precisam ser iguais.</small>
+						</div> 					
+						<div style="clear: both;"></div>
+					</div>
+					<div class="tab">
+						<label>Informações da empresa</label>
+						<div class="form-group select">
+							<select placeholder="Selecione o tipo de vaga da empresa" class="form-control">
+	            				<option value="0">Selecione o ramo da empresa</option>
+								<option value="1">Vendas</option>
+								<option value="2">TI e software</option>
+								<option value="3">Outros</option>
+        					</select>
+        					<small>Esse campo é obrigatório</small>
+        					<small></small>
+        				</div> 			
+						<div class="form-group number">
+							<input type="number" class="form-control" placeholder="Número de funcionários" min ="1" oninput="this.className = ''" >
+							<small>Esse campo é obrigatório</small>
+        					<small></small>
+						</div> 		
+						<div class="form-group select">
+							<select placeholder="Selecione o tipo de vaga da empresa" class="form-control">
+	        					<option>Selecione o tipo de vaga da empresa</option>
+								<option>Vagas remotas</option>
+								<option>Vagas físicas</option>
+								<option>Vagas remotas ou físicas</option>
+        					</select>
+        					<small>Esse campo é obrigatório</small>
+        					<small></small>
+        				</div>
+                        <div class="form-group textarea">
+                        	<textarea name="message" class="form-control" rows="1" cols="30" placeholder="Apresentação">Apresentação</textarea>
+                        </div> 
+                        <label>Foto de perfil(.jpeg ou .png)</label>
+                        <div class="form-group file">
                                 <input type="file" class="form-control">
                         </div>
 					</div>
@@ -85,14 +162,13 @@
 	
 				</form>
 				
-				<script src="formularios.js"></script>
 			</div>
 		</div>
 	</div>
 	</div>
     <footer id="footer"></footer>
-	<script src="footer.js"></script> 
-    <script src="multistep.js"></script>    
+	<script src="footer.js"></script>    
+	<script src="formularios.js"></script>
 </body>
 </html>
 

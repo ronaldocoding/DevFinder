@@ -19,8 +19,38 @@
 	
 }
 
-label{
-	float: left;
+small{
+  text-align: left;
+  display: none;
+  float: left;
+  margin-bottom: 5px;
+  margin-top: 3px;
+  color: #dc3545;
+}
+
+
+.sub-title{
+  float: left;
+  margin-top: 10px;
+}
+
+small.invalid{
+  display: block;
+}
+
+.checkbox-inline{
+  margin: 5px;
+}
+
+.passwordStrong{
+  display: none;
+  float: left;
+  font-size: 13px;
+}
+
+.checkbox-inline input{
+  margin-right: 3px;
+  width: 15px;
 }
 
 /* Style the input fields */
@@ -32,8 +62,8 @@ input, textarea{
 }
 
 /* Mark input boxes that gets an error on validation: */
-input.invalid {
-  background-color: #ffdddd;
+input.invalid, select.invalid {
+  border: 1px solid #dc3545;
 }
 
 /* Hide all steps by default: */
