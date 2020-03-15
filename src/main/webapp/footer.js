@@ -2,34 +2,33 @@ addFooter();
 function addFooter(){
     document.getElementById("footer").innerHTML+=
         '<link rel="stylesheet" type="text/css" href="footer.css">'+
-            '<div class="container">'+
-                '<div class="row">'+
-                    '<div class="col-md-3 mb-3 text-center">'+
-                        '<img class="img-fluid" src="imgs/logo.png"></img>'+
-                    '</div>'+
-                    '<div class="col-md-9">'+
-                        '<div class="col-md-3 col-sm-6 col-6 p-0 mb-3">'+
-                            '<h5 class="mb-4 font-weight-bold text-uppercase">Equipe</h5>'+
-                            '<ul class="list-group">'+
-                                '<li class="list-group-item bg-transparent border-0 p-0 mb-2">Erica Medeiros</li>'+
-                                '<li class="list-group-item bg-transparent border-0 p-0 mb-2">Marlon Faria</li>'+
-                                '<li class="list-group-item bg-transparent border-0 p-0 mb-2">Monike Freitas</li>'+
-                                '<li class="list-group-item bg-transparent border-0 p-0 mb-2">Ronaldo Costa</li>'+         
-                            '</ul>'+
-                        '</div>'+
-                        '<div class="col-md-3 col-sm-6 col-6 p-0 mb-3">'+
-                        '<h5 class="mb-4 font-weight-bold text-uppercase">Endereço</h5>'+
-                        '<ul class="list-group">'+
-                        '<li class="list-group-item bg-transparent border-0 p-0 mb-2">Av. Sete de Setembro, 1975, IFAM, Manaus, AM - Brasil</li>'+
-                        '</ul>'+
-                    '</div>'+
-                    '<div class="col-md-3 col-sm-6 col-6 mb-3 p-0 ">'+
-                        '<h5 class="mb-4 font-weight-bold text-uppercase">Contato</h5>'+
-                        '<ul class="list-group">'+
-                            '<li class="list-group-item bg-transparent border-0 p-0 mb-2">devfinder@gmail.com</li>'+
-                        '</ul>'+
-                    '</div>'+
-                '</div>'+
-            '</div>';
+        '<footer class="container py-5 px-5">'+
+          '<div class="row">'+
+            '<div class="col-12 col-md text-center">'+
+                    '<img class="img-fluid" src="imgs/logoNoturna.png">'+
+            '</div>'+
+            '<div class="col-6 col-md">'+
+              '<h5>Desenvolvedores</h5>'+
+              '<ul class="list-unstyled text-small">'+
+                '<li><a href="#">Erica Medeiros</a></li>'+
+                '<li><a href="#">Marlon Faria</a></li>'+
+                '<li><a href="#">Monike Freitas</a></li>'+
+                '<li><a href="#">Ronaldo Costa</a></li>'+
+              '</ul>'+
+            '</div>'+
+            '<div class="col-6 col-md">'+
+              '<h5>Endereço</h5>'+
+              '<ul class="list-unstyled text-small">'+
+                '<li><a href="#">Av. Sete de Setembro, 1975, IFAM, Manaus, AM - Brasil</a></li>'+
+              '</ul>'+
+            '</div>'+
+            '<div class="col-6 col-md">'+
+              '<h5>Contato</h5>'+
+              '<ul class="list-unstyled text-small">'+
+                '<li><a href="#">devfinder@gmail.com</a></li>'+
+              '</ul>'+
+            '</div>'+
+            '</div>'+
+        '</footer>';
 }
 

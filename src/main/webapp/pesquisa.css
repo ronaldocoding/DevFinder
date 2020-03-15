@@ -146,7 +146,7 @@ top_navbar-side .top_menu-side ul li a:hover{
 
 .bg{
 	background: linear-gradient(218deg, rgba(84,222,218,1) 11%, rgba(73,194,208,1) 43%, rgba(31,136,180,1) 100%);
-	padding: 100px;
+	padding-top: 100px;
 	color: white;
 }
 
@@ -292,4 +292,8 @@ top_navbar-side .top_menu-side ul li a:hover{
   margin-right: 6px;
   margin-bottom: 5px;
   display: inline-block;
+}
+
+.collapse{
+    background-color: #ebebeb;
 }

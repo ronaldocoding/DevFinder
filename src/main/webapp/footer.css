@@ -1,25 +1,18 @@
-footer {
-  font-family: Rubik,Arial,sans-serif;
-    font-weight: 400;
-    font-size: 1rem;
-    overflow-x: hidden;
-    color: #607289;
-	
-  background: #fff;
+footer{
+    background-color: #3f3d56;
+    border-top-left-radius: 50px;
+border-top-right-radius: 50px;
+    padding: 50px;
+    padding-bottom:0;
+    color: white;
 }
-
-footer h5{
-    font-size: 0.9rem;
-    line-height: 1.375;
-  font-family: Rubik,Arial,sans-serif;
-    font-weight: 500;
-}
-
 footer img{
-	max-height: 80px;
-	margin: 20px;
+    max-height: 100px;
+    min-height: 60px;
+    display: block;
 }
 
-footer h3{
-	padding: 50px;
+.list-unstyled li a{
+     color: white;
+    text-decoration: none;
 }

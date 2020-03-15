@@ -48,7 +48,8 @@
         </div>
         <nav class="top_navbar-side">
 				<div class="top_menu-side">
-				  <div class="logo"><img src="imgs/logo.png" style="height: 40px"></div>
+				  <div class="logo">
+                      <a href="homepage.html"><img src="imgs/logo.png" style="height: 40px"></a></div>
 				  <ul>
 					<li>
 					  <div class="buscar-caja">
@@ -124,6 +125,7 @@
                                     </ul>
                                 </div>
                                 <div class="col-sm-12 user">
+                                    
                                     <h4>Desenvolvedores</h4>
                                     <ul>
                                         <li>
@@ -172,7 +174,29 @@
 
                                 </div>
                                 <div class="col-sm-12">
+                                    
                                     <h4>Desafios</h4>
+                                    <div class="row">
+                                        <div class="col-sm-4" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"><h5> Filtros(Clique aqui)</h5></div>
+                                    </div>
+                                    <div class="row collapse" id="collapseExample">
+                                        <div class="col-sm-3">
+                                            <h4> Filtro 1</h4>
+                                            <ul>
+                                                <li>checkbox</li>
+                                                <li>checkbox</li>
+                                                <li>checkbox</li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <h4> Filtro 2</h4>
+                                            <ul>
+                                                <li>checkbox</li>
+                                                <li>checkbox</li>
+                                                <li>checkbox</li>
+                                            </ul>
+                                        </div>
+                                    </div>
                                     <div class="area_post"></div>
                                 </div>
                             </div>	
@@ -181,8 +205,9 @@
                     </div>
                 </div>
             </div>
-	   </div>
+	   
         <footer id="footer"></footer>
+            </div>
         <script src="footer.js"></script>
         <script>
           var add_post = function(autor, titulo, area, habilidades, salario, remoto, texto, data){
