@@ -1,4 +1,4 @@
-package model;
+package br.com.devfinder.model;
 
 /**
  * @author Ronaldo Costa
