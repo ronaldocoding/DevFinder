@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+
+*{
+    font-family: "Poppins", sans-serif !important;
+}
+
+body{
+    margin: 0 !important;
+    padding: 0 !important;
+}
+button{
+    border: none;
+    cursor: pointer; 
+    font-size: 16px;
+}
+
+.btn-azul{
+    margin: 0 10px;
+    text-align: center;
+    border-radius: 10px;
+    color: #49c2d0;
+	padding: 7px;
+	text-decoration: none;
+    background: none;
+    font-weight: 600;
+}
+
+.btn-azul:hover{
+    color: #1f88b4;
+}
+.btn-degrade {
+    color: #fff !important;
+    background-size: 300% 100%;
+	padding: 10px;
+	border-radius: 10px;
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+    box-shadow: 0 4px 5px 0 rgba(101, 112, 113, 0.4);
+}
+
+.btn-degrade:hover {
+    background-position: 100% 0;
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+.azul{
+    background-image: linear-gradient(to right, #49c2d0, #49c2d0, #1f88b4);
+}
+
+.bg-degrade{
+    background: linear-gradient(218deg, rgba(84,222,218,1) 11%, rgba(73,194,208,1) 43%, rgba(31,136,180,1) 100%);
+    color: #fff;
+}
+
+.modal-content{
+    color: #000;   
+}

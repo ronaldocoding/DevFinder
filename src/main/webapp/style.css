@@ -32,7 +32,6 @@ body{
 .wrapper-side .top_navbar-side .hamburger-side{
   width: 70px;
   height: 100%;
-  background: #46a3bb;
   padding: 15px 17px;
   border-top-left-radius: 20px;
   cursor: pointer;
@@ -41,7 +40,7 @@ body{
 .wrapper-side .top_navbar-side .hamburger-side div{
   width: 35px;
   height: 4px;
-  background: #b8eefc;
+  background: #46a3bb;
   margin: 5px 0;
   border-radius: 5px;
 }
@@ -95,7 +94,7 @@ body{
   position: fixed;
   top: 60px;
   left: 0px;
-  background: #46a3bb;
+  background: linear-gradient(218deg, rgba(84,222,218,1) 11%, rgba(73,194,208,1) 43%, rgba(31,136,180,1) 100%);;
   width: 225px;
   height: calc(100% - 60px);
   border-bottom-left-radius: 20px;
@@ -134,8 +133,10 @@ body{
 
 .wrapper-side .sidebar ul li a:hover,
 .wrapper-side .sidebar ul li a.active{
-  background: #46a3bb;
+  background: ##49c2d0;
   color: #fff;
+   
+box-shadow:         inset 0px 0px 17px 3px rgba(0, 0, 0, 0.28);
 }
 
 .wrapper-side .sidebar ul li a:hover:before,
