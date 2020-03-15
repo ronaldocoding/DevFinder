@@ -5,7 +5,7 @@ package model;
  *
  */
 public class Solucao {
-	
+
 	private String emailDesenvolvedor;
 	private String emailEmpresa;
 	private String idDesafio;
@@ -13,8 +13,9 @@ public class Solucao {
 	private String linkGithub;
 	private String documentacao;
 	private String descricao;
-	
-	public Solucao() {}
+
+	public Solucao() {
+	}
 
 	public Solucao(String emailDesenvolvedor, String emailEmpresa, String idDesafio, String nome, String linkGithub,
 			String documentacao, String descricao) {

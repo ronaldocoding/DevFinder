@@ -5,7 +5,7 @@ package model;
  *
  */
 public class Endereco {
-	
+
 	private String estado;
 	private String cidade;
 	private String bairro;

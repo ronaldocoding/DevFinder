@@ -23,7 +23,6 @@ public class Desafio {
 
 	public Desafio(String emailEmpresa, int id, String nome, String areaDesenvolvimento, String descricao,
 			String dataFim, String horarioFim) {
-		super();
 		this.emailEmpresa = emailEmpresa;
 		this.id = id;
 		this.nome = nome;

@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * @author Ronaldo Costa
  *
  */
-public class Desenvolvedor extends Usuario{
+public class Desenvolvedor extends Usuario {
 
 	private String nome;
 	private String cpf;
@@ -19,8 +19,10 @@ public class Desenvolvedor extends Usuario{
 	private String curriculo;
 	private ArrayList<Solucao> solucoes;
 	private ArrayList<DesenvolvedorNotificacao> notificacoes;
-	
-	public Desenvolvedor() {}
+
+	public Desenvolvedor() {
+		super();
+	}
 
 	public Desenvolvedor(String email, String foto, String senha, Endereco endereco, String site, String telefone,
 			String apresentacao, String nome, String cpf, String dataNascimento, String tempoExperiencia,

@@ -15,7 +15,6 @@ public class DesenvolvedorNotificacao {
 	}
 
 	public DesenvolvedorNotificacao(String emailDesenvolvedor, String data, String horario, String mensagem) {
-		super();
 		this.emailDesenvolvedor = emailDesenvolvedor;
 		this.data = data;
 		this.horario = horario;

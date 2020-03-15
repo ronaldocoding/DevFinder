@@ -14,7 +14,6 @@ public class DesafioHabilidade {
 	}
 
 	public DesafioHabilidade(String emailEmpresa, int idDesafio, String habilidade) {
-		super();
 		this.emailEmpresa = emailEmpresa;
 		this.idDesafio = idDesafio;
 		this.habilidade = habilidade;
