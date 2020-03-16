@@ -40,9 +40,9 @@ container{
   box-shadow: 0 1px 1px rgba(0,0,0,0.1);
 }
 
-.top_navbar-side .top_menu-side ul{
+.top_menu-side ul{
   display: flex;
-    margin-top: 15px;
+    margin-top: 15px!important;
 }
 
 .top_navbar-side .top_menu-side ul li a{
@@ -51,7 +51,7 @@ container{
   text-align: center;
   border-radius: 10px;
   color: #49c2d0;
-	padding: 7px;
+	padding: 10px;
 	font-size: 15px;
 	text-decoration: none;
 }
@@ -185,6 +185,3 @@ top_navbar-side .top_menu-side ul li a:hover{
     padding: 50px;
     height: 200px;
 }
-
-
-

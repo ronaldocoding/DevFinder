@@ -1,5 +1,5 @@
+/*******************DO SITE TODO**************************/
 @import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
-
 *{
     font-family: "Poppins", sans-serif !important;
   padding: 0;
@@ -7,7 +7,6 @@
   text-decoration: none;
   box-sizing: border-box;
 }
-
 body{
     margin: 0 !important;
     padding: 0 !important;
@@ -18,18 +17,16 @@ button{
     font-size: 16px;
     padding: 7px;
 }
-
 .btn-azul{
     margin: 0 10px;
     text-align: center;
-    border-radius: 10px;
+    border-radius: 15px;
     color: #49c2d0;
-	
 	text-decoration: none;
     background: none;
     font-weight: 600;
+    font-size: 15px;
 }
-
 .btn-azul:hover{
     color: #1f88b4;
 }
@@ -37,14 +34,12 @@ button{
     color: #fff !important;
     background-size: 300% 100%;
 	padding: 10px;
-	border-radius: 10px;
     moz-transition: all .4s ease-in-out;
     -o-transition: all .4s ease-in-out;
     -webkit-transition: all .4s ease-in-out;
     transition: all .4s ease-in-out;
     box-shadow: 0 4px 5px 0 rgba(101, 112, 113, 0.4);
 }
-
 .btn-degrade:hover {
     background-position: 100% 0;
     moz-transition: all .4s ease-in-out;
@@ -52,20 +47,24 @@ button{
     -webkit-transition: all .4s ease-in-out;
     transition: all .4s ease-in-out;
 }
-
 .azul{
     background-image: linear-gradient(to right, #49c2d0, #49c2d0, #1f88b4);
 }
-
 .bg-degrade{
     background: linear-gradient(218deg, rgba(84,222,218,1) 11%, rgba(73,194,208,1) 43%, rgba(31,136,180,1) 100%);
     color: #fff;
 }
-
 .modal-content{
     color: #000;   
 }
+container{
+    display: block;
+}
+/****************************NAVBAR********************************/
+/***topnav****/
 
+/*************************SIDEBAR*******************************/
+/*NAVBAR & SIDEBAR*/
 
 .top_navbar-side{
   width: 100%;
@@ -73,9 +72,116 @@ button{
   display: flex;
   position: fixed;
   z-index: 5;
-  top: 0;
-    left:0;
+  top: 0px;
+     left: 0;
+      box-shadow: 0 4px 8px 0 rgba(101, 112, 113, 0.5);
+}
+
+.top_navbar-side .top_menu-side{
+  width: 100%;
+  z-index: 5;
+  height: 100%;
    
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+}
+
+.top_navbar-side .top_menu-side ul{
+  display: flex;
+    margin-top: 15px;
+}
+
+.top_navbar-side .top_menu-side ul li a{
+  display: block;
+  margin: 20px 10px;
+  text-align: center;
+  border-radius: 30px;
+  color: #49c2d0;
+	padding: 15px;
+	text-decoration: none;
+    height: 50px;
+}
+
+
+/*Botão de pesquisar*/
+
+.buscar-caja:hover > .buscar-txt{
+	position: relative;
+	left: 45px;
+	width: 120px;
+	padding: 0px 6px;
+	border-radius: 40px;
+	border: 2px solid #49c2d0;
+}
+
+.buscar-caja:hover .buscar-btn{
+	border: none!important;
+	margin-left: 0px!important;
+}
+
+.buscar-btn {
+	float: right;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: 0.4s;
+	color: white;
+	cursor: pointer;
+}
+
+.buscar-txt {
+    position: relative;
+	right: -20px;
+	border: none;
+    height: 50px;
+	background: none;
+	outline: none;
+	padding: 15px;
+    margin-top: 20px;
+	transition: 0.4s;
+	width: 0px;
+	line-height: 35px;
+}
+
+/***********************/
+
+/*Do botão de notificação*/
+
+.dropdown-menu{
+  width: 100px;
+  max-height: 100px;
+  margin-right:15px !important;
+}
+
+.dropdown-menu h5, .dropdown-menu p{
+  padding: 10px;
+  border-bottom: 1px solid rgba(0,0,0,.2);
+}
+
+.notification p{
+  margin: 0px 5px;
+  padding-top: 5px;
+}
+
+@media (max-width: 640px) {
+    .dropdown-menu{
+      top: 50px;
+      left: -16px;  
+      width: 290px;
+    } 
+    .nav{
+      display: block;
+    }
+    .nav .nav-item,.nav .nav-item a{
+      padding-left: 0px;
+    }
+    .message{
+      font-size: 13px;
+    }
 }
 
  .top_navbar-side .hamburger-side{
@@ -121,119 +227,67 @@ button{
     object-position: left;
 }
 
- .top_navbar-side .top_menu-side ul{
-  display: flex;
-      margin: 5px;
-}
-
-.top_navbar-side .top_menu-side ul li a{
-    display: block;
-    margin:10px;
-    width: 50px;    
+.redondo{
+     width: 50px;    
     height: 50px;
-    padding: 15px !important;
+    border-radius: 50%;
+    display: block;
+    padding: 10px!important;
     line-height: 35px;
     text-align: center;
-    border-radius: 50%;
     font-size: 20px;
 }
-
  .top_navbar-side .top_menu-side ul li a:hover i{
   color: #fff;
 }
 
 
-@media (max-width: 640px) {
-    .dropdown-menu{
-      top: 50px;
-      left: -16px;  
-      width: 290px;
-    } 
-    .nav{
-      display: block;
-    }
-    .nav .nav-item,.nav .nav-item a{
-      padding-left: 0px;
-    }
-    .message{
-      font-size: 13px;
-    }
+/*** CONTAINERS****/
+
+.c-header{
+	background: linear-gradient(218deg, rgba(84,222,218,1) 11%, rgba(73,194,208,1) 43%, rgba(31,136,180,1) 100%);
+	padding: 100px;
+	color: white;
+	margin-bottom: -100px;
+}
+
+.modal-btn {
+    font-size: 16px;
+    color: #fff !important;
+    cursor: pointer;
+    background-size: 300% 100%;
+	padding: 10px;
+	border-radius: 10px;
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+	background-image: linear-gradient(to right, #49c2d0, #49c2d0, #1f88b4);
+    box-shadow: 0 4px 8px 0 rgba(101, 112, 113, 0.5);
+}
+
+.modal-btn:hover {
+    background-position: 100% 0;
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+	text-decoration: none;
+	color: white;
+}
+
+.modal-btn:focus {
+    outline: none;
+}
+
+.description{
+    text-align: center;
+    padding: 50px;
+    height: 200px;
 }
 
 
 
-.buscar-caja:hover > .buscar-txt {
-	width: 180px;
-	padding: 5px 6px;
-	border-radius: 40px;
-	border: 2px solid #46a3bb;
-}
-
-.buscar-caja:hover .buscar-btn{
-    
-	border: none!important;
-	background: white;
-	margin-left: 0px;
-}
-
-.buscar-btn {
-	float: right;
-	border-radius: 50%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	transition: 0.4s;
-	padding: 7px;
-	cursor: pointer;
-}
-
-
-.buscar-txt {
-    position: absolute;
-	right: 160px;
-	border: none;
-    height: 50px;
-	background: none;
-	outline: none;
-	padding: 15px;
-    margin-top: 10px;
-	transition: 0.4s;
-	width: 0px;
-	line-height: 35px;
-}
-
-/***********************/
-
-/*Do botão de notificação*/
-
-.dropdown-menu{
-  overflow: scroll;
-  width: 290px;
-  max-height: 400px;
-  margin-right:15px !important;
-}
-
-.dropdown-menu h5, .dropdown-menu p{
-  padding: 10px;
-  border-bottom: 1px solid rgba(0,0,0,.2);
-}
-
-.notification p{
-  margin: 0px 5px;
-  padding-top: 5px;
-}
-
-.notification .icon i{
-  width: 32px;
-  height: 32px;
-  background-color: red;
-  margin-left: 10px;
-}
-
-.notification {
-  display: flex;
-  margin: 10px;
-}
 
 /*******************************
 * MODAL AS LEFT/RIGHT SIDEBAR

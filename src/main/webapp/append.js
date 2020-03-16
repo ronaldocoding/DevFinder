@@ -24,10 +24,10 @@ var $topnav=$('<link rel="stylesheet" type="text/css" href="template.css">'+
 '<span class="navbar-toggler-icon"></span></button>'+
 '<ul><li><div class="buscar-caja"><input type="text" name="" class="buscar-txt" placeholder="Buscar..."/>'+
 '<a class="buscar-btn  btn-azul"><i class="fas fa-search"></i></a></div></li>'+
-'<li><div class="dropdown show"><a class="dropdown-togggle btn-degrade azul" id="dropdownMenuLink"data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+
+'<li><div class="dropdown show"><a class="dropdown-togggle btn-degrade azul redondo" id="dropdownMenuLink"data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+
 '<i class="fa fa-bell"></i></a>'+
 '<div class="dropdown-menu" aria-labelledby="dropdownMenuLink"><h5>Notificações</h5></div></div></li>'+    
-        '<li><a href="#" class="btn-degrade azul"><i class="fas fa-user"></i></a></li>'+
+        '<li><a href="#" class="btn-degrade azul redondo"><i class="fas fa-user"></i></a></li>'+
       '</ul></div></div></div>');
 var $sidebar_dev=$('');
 var $sidebar_emp=$('');
