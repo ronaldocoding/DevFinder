@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>Desenvolvedor</title>
-  <link rel="stylesheet" href="style.css">
   <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
@@ -20,64 +19,8 @@
 <body>
 
 <div class="wrapper-side">
-  <div class="top_navbar-side">
-    <div class="hamburger-side">
-       <div class="one"></div>
-       <div class="two"></div>
-       <div class="three"></div>
-    </div>
-    <div class="top_menu-side">
-      <div class="logo"><img src="imgs/logo.png" style="height: 40px"></div>
-      <ul>
-        <li>
-          <div class="buscar-caja">
-          <input type="text" name="" class="buscar-txt" placeholder="Buscar..."/>
-          <a class="buscar-btn">
-            <i class="fas fa-search"></i>
-          </a>
-        </div>
-      </li>
-      <li>
-        <div class="dropdown show">
-          <a class="dropdown-togggle" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fa fa-bell"></i>
-          </a>
-
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-          <h5>Notificações</h5>
-        </div>
-      </div>
-      </li>      
-        <li>
-          <a href="#">
-            <i class="fas fa-user"></i>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </div>
+  <div class="topnav"></div>
   
-  <div class="sidebar">
-      <ul id="menu-list">
-        <li><a href="devInicio.html" >
-          <span class="icon"><i class="fa fa-home" aria-hidden="true"></i></span>
-          <span class="title">Início</span></a></li>
-        <li><a href="#" class="active">
-          <span class="icon"><i class="fa fa-code"></i></span>
-          <span class="title">Desafios Inscritos</span>
-          </a></li>
-        <li><a href="devConfiguracoes.html">
-          <span class="icon"><i class="fa fa-cog" aria-hidden="true"></i></span>
-          <span class="title">Configurações</span>
-          </a></li>
-        <li><a href="homepage.html">
-          <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
-          <span class="title">Sair</span>
-          </a></li>
-        <li><a href="#">
-          </a></li>
-    </ul>
-  </div>
 <div class="main_container" id="main_container">
   
   <h2 style="margin-left: 10px">Desafios inscritos</h2>
@@ -209,6 +152,7 @@
   add_post('a', 'Sistema Gerenciador de Lava-Jato', 'Full-stack', ['HTML5', 'CSS3', 'Javascript', 'PHP'], 'e', 'Vaga física', 'Faça um sistema gerenciador de um lava jato', 'Desafio até 30/04/2020');
   add_post('a', 'App de Física', 'Mobile', ['React Native', 'Javascript', 'Java', 'Kotlin'], 'e', 'Vaga física', 'Faça um app que ensine Física básica', 'Desafio até: 20/05/2020');
   </script>
-
+<footer class="footer"></footer>
+    <script src="navbar.js"></script>
 </body>
 </html>
