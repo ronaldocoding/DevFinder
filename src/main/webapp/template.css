@@ -2,6 +2,10 @@
 
 *{
     font-family: "Poppins", sans-serif !important;
+  padding: 0;
+  list-style: none; 
+  text-decoration: none;
+  box-sizing: border-box;
 }
 
 body{
@@ -12,6 +16,7 @@ button{
     border: none;
     cursor: pointer; 
     font-size: 16px;
+    padding: 7px;
 }
 
 .btn-azul{
@@ -19,7 +24,7 @@ button{
     text-align: center;
     border-radius: 10px;
     color: #49c2d0;
-	padding: 7px;
+	
 	text-decoration: none;
     background: none;
     font-weight: 600;
@@ -60,3 +65,221 @@ button{
 .modal-content{
     color: #000;   
 }
+
+
+.top_navbar-side{
+  width: 100%;
+  height: 60px;
+  display: flex;
+  position: fixed;
+  z-index: 5;
+  top: 0;
+    left:0;
+   
+}
+
+ .top_navbar-side .hamburger-side{
+    width: 50px;
+    height: 50px;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+ .top_navbar-side .hamburger-side div{
+  width: 30px;
+  height: 4px;
+  background: #fff;
+  margin: 5px 0;
+  border-radius: 5px;
+}
+
+.left-side{
+    width: 200px;
+}
+ .top_navbar-side .top_menu-side{
+  width: 100%;
+  z-index: 5;
+  height: 100%;
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+}
+
+ .top_navbar-side .top_menu-side .logo{
+    height: 40px;
+     padding: 0 15px;
+     margin-top: 5px;
+}
+
+.small{
+    width: 65px;
+    object-fit: cover;
+    object-position: left;
+}
+
+ .top_navbar-side .top_menu-side ul{
+  display: flex;
+      margin: 5px;
+}
+
+.top_navbar-side .top_menu-side ul li a{
+    display: block;
+    margin:10px;
+    width: 50px;    
+    height: 50px;
+    padding: 15px !important;
+    line-height: 35px;
+    text-align: center;
+    border-radius: 50%;
+    font-size: 20px;
+}
+
+ .top_navbar-side .top_menu-side ul li a:hover i{
+  color: #fff;
+}
+
+
+@media (max-width: 640px) {
+    .dropdown-menu{
+      top: 50px;
+      left: -16px;  
+      width: 290px;
+    } 
+    .nav{
+      display: block;
+    }
+    .nav .nav-item,.nav .nav-item a{
+      padding-left: 0px;
+    }
+    .message{
+      font-size: 13px;
+    }
+}
+
+
+
+.buscar-caja:hover > .buscar-txt {
+	width: 180px;
+	padding: 5px 6px;
+	border-radius: 40px;
+	border: 2px solid #46a3bb;
+}
+
+.buscar-caja:hover .buscar-btn{
+    
+	border: none!important;
+	background: white;
+	margin-left: 0px;
+}
+
+.buscar-btn {
+	float: right;
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: 0.4s;
+	padding: 7px;
+	cursor: pointer;
+}
+
+
+.buscar-txt {
+    position: absolute;
+	right: 160px;
+	border: none;
+    height: 50px;
+	background: none;
+	outline: none;
+	padding: 15px;
+    margin-top: 10px;
+	transition: 0.4s;
+	width: 0px;
+	line-height: 35px;
+}
+
+/***********************/
+
+/*Do botão de notificação*/
+
+.dropdown-menu{
+  overflow: scroll;
+  width: 290px;
+  max-height: 400px;
+  margin-right:15px !important;
+}
+
+.dropdown-menu h5, .dropdown-menu p{
+  padding: 10px;
+  border-bottom: 1px solid rgba(0,0,0,.2);
+}
+
+.notification p{
+  margin: 0px 5px;
+  padding-top: 5px;
+}
+
+.notification .icon i{
+  width: 32px;
+  height: 32px;
+  background-color: red;
+  margin-left: 10px;
+}
+
+.notification {
+  display: flex;
+  margin: 10px;
+}
+
+/*******************************
+* MODAL AS LEFT/RIGHT SIDEBAR
+* Add "left" or "right" in modal parent div, after class="modal".
+* Get free snippets on bootpen.com
+*******************************/
+	.modal.left .modal-dialog {
+		position: fixed;
+		margin: auto;
+		width: 250px;
+		height: 100%;
+		-webkit-transform: translate3d(0%, 0, 0);
+		    -ms-transform: translate3d(0%, 0, 0);
+		     -o-transform: translate3d(0%, 0, 0);
+		        transform: translate3d(0%, 0, 0);
+	}
+
+	.modal.left .modal-content{
+		height: 100%;
+		overflow-y: auto;
+	}
+	
+	.modal.left .modal-body {
+		padding: 15px 15px 80px;
+	}
+
+/*Left*/
+	.modal.left.fade .modal-dialog{
+		left: -320px;
+		-webkit-transition: opacity 0.3s linear, left 0.3s ease-out;
+		   -moz-transition: opacity 0.3s linear, left 0.3s ease-out;
+		     -o-transition: opacity 0.3s linear, left 0.3s ease-out;
+		        transition: opacity 0.3s linear, left 0.3s ease-out;
+	}
+	
+	.modal.left.fade.in .modal-dialog{
+		left: 0;
+	}
+
+/* ----- MODAL STYLE ----- */
+	.modal-content {
+		border-radius: 0;
+		border: none;
+	}
+
+	.modal-header {
+		border: none;
+        background: #fff;
+	}
