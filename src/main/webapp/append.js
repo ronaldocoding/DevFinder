@@ -1,5 +1,4 @@
-var $footer = $('<link rel="stylesheet" type="text/css" href="footer.css">'+
-'<footer class="container py-5 px-5"><div class="row">'+
+var $footer = $('<footer class="container py-5 px-5"><div class="row">'+
 '<div class="col-12 col-md text-center"><img class="img-fluid noturno" src="imgs/logoNoturna.png"></div>'+
 '<div class="col-6 col-md"><h5>Desenvolvedores</h5>'+
 '<ul class="list-unstyled text-small">'+ 
@@ -11,6 +10,7 @@ var $footer = $('<link rel="stylesheet" type="text/css" href="footer.css">'+
 '<li><a href="#">Av. Sete de Setembro, 1975, IFAM, Manaus, AM - Brasil</a></li></ul></div>'+
 '<div class="col-6 col-md"><h5>Contato</h5><ul class="list-unstyled text-small">'+
 '<li><a href="#">devfinder@gmail.com</a></li></ul></div></div></footer>');
+
 var $topnav=$('<link rel="stylesheet" type="text/css" href="template.css">'+
 '<script> var logo= function(){if($( window ).width()<=610){$(".logo").addClass("small");}else{$(".logo").removeClass("small");}};'+
     '$(window).on("resize", logo);'+
@@ -29,8 +29,9 @@ var $topnav=$('<link rel="stylesheet" type="text/css" href="template.css">'+
 '<div class="dropdown-menu" aria-labelledby="dropdownMenuLink"><h5>Notificações</h5></div></div></li>'+    
         '<li><a href="#" class="btn-degrade azul"><i class="fas fa-user"></i></a></li>'+
       '</ul></div></div></div>');
-var $sidebar_dev=$("");
-var $sidebar_emp=$("");
+var $sidebar_dev=$('');
+var $sidebar_emp=$('');
+var $defaultnav=$('');
 
 $( ".footer" ).append($footer);
 $( ".topnav" ).append($topnav);
