@@ -31,7 +31,18 @@ var $topnav=$('<link rel="stylesheet" type="text/css" href="template.css">'+
       '</ul></div></div></div>');
 var $sidebar_dev=$('');
 var $sidebar_emp=$('');
-var $defaultnav=$('');
+var $defaultnav=$('<script> var logo= function(){if($( window ).width()<=690){$(".logo").addClass("small");}else{$(".logo").removeClass("small");}};$(window).on("resize", logo);$(window).on("load", logo);</script>'+
+                 '<nav class="top_navbar-side">'+
+				'<div class="top_menu-side">'+
+                    '<div><a href="homepage.html"><img src="imgs/logo.png" class="logo"></a></div><ul><li>'+
+					  '<div class="buscar-caja"><input type="text" name="" class="buscar-txt" placeholder="Buscar..."/>'+
+					  '<a class="buscar-btn"><i class="fas fa-search"></i></a></div></li>'+
+				  '<li><a href="#linkLogin" data-toggle="modal" data-target="#modalExemplo" class="btn-azul">Entrar</a></li><li>'+
+                    '<div class="dropdown show"><a class="dropdown-togggle btn-degrade azul" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cadastrar</a>'+
+
+					'<div class="dropdown-menu p-2 text-center" aria-labelledby="dropdownMenuLink"><h4>Empresa</h4><h4>Desenvolvedor</h4></div></div>'+
+					'</li></ul></div></nav>');
 
 $( ".footer" ).append($footer);
 $( ".topnav" ).append($topnav);
+$(".defaultnav").append($defaultnav);
