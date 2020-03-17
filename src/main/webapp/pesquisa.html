@@ -1,6 +1,6 @@
 <html>
     <head>
-		<link rel="stylesheet" type="text/css" href="pesquisa.css">
+        <link rel="stylesheet" type="text/css" href="css/template.css">
         <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
@@ -13,88 +13,88 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-		
-	<link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+
+        <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
     </head>
     <body>
-        
+
         <div class="modal fade" id="modalExemplo" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog text-center">
-                
+
                 <div class="modal-content modal-login border-0 shadow m-5 p-5">
-                    
-                       
-                      <div class="col-sm-12 user-img">
-                          <button type="button" class="close float-right" data-dismiss="modal" aria-label="Close">
+
+
+                    <div class="col-sm-12 user-img">
+                        <button type="button" class="close float-right" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                         <img src="imgs/iconLogin.png" style="height: 100px"class="icon-form">
                         <h3>Login</h3>
-                           
-                    
-                      </div>
 
-                      <form class="col-sm-12" id="regForm" action="">
+
+                    </div>
+
+                    <form class="col-sm-12" id="regForm" action="">
 
                         <div class="tab">
-                          <div class="form-group"><input type="text" class="form-control" placeholder="E-mail" oninput="this.className = ''"></div>
-                          <div class="form-group"><input type="password" class="form-control" placeholder="Senha" oninput="this.className = ''"></div>
+                            <div class="form-group"><input type="text" class="form-control" placeholder="E-mail" oninput="this.className = ''"></div>
+                            <div class="form-group"><input type="password" class="form-control" placeholder="Senha" oninput="this.className = ''"></div>
                             <div><a href="#">Esqueceu a senha?<br><br></a></div>
                             <a href="devInicio.html" class="modal-btn">Fazer login</a>
                         </div>
-                      </form>
-                    </div>
-                  </div>    
+                    </form>
+                </div>
+            </div>    
         </div>
         <nav class="top_navbar-side">
-				<div class="top_menu-side">
-				  <div class="logo">
-                      <a href="homepage.html"><img src="imgs/logo.png" style="height: 40px"></a></div>
-				  <ul>
-					<li>
-					  <div class="buscar-caja">
-					  <input type="text" name="" class="buscar-txt" placeholder="Buscar..."/>
-					  <a class="buscar-btn">
-						<i class="fas fa-search"></i>
-					  </a>
-					</div>
-				  </li>
-				  <li>
-					<a href="#linkLogin" data-toggle="modal" data-target="#modalExemplo" >
-						Entrar
-					  </a>
-				  </li>      
-					<li>
+            <div class="top_menu-side">
+                <div class="logo">
+                    <a href="homepage.html"><img src="imgs/logo.png" style="height: 40px"></a></div>
+                <ul>
+                    <li>
+                        <div class="buscar-caja">
+                            <input type="text" name="" class="buscar-txt" placeholder="Buscar..."/>
+                            <a class="buscar-btn">
+                                <i class="fas fa-search"></i>
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#linkLogin" data-toggle="modal" data-target="#modalExemplo" >
+                            Entrar
+                        </a>
+                    </li>      
+                    <li>
 
-						<div class="dropdown show">
-					  <a class="dropdown-togggle modal-btn" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						Cadastrar
-					  </a>
+                        <div class="dropdown show">
+                            <a class="dropdown-togggle modal-btn" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Cadastrar
+                            </a>
 
-					<div class="dropdown-menu p-2 text-center" aria-labelledby="dropdownMenuLink">
-						<h4>Empresa</h4>
-						<h4>Desenvolvedor</h4>
-					</div>
-				  </div>
-					</li>
-				  </ul>
-				</div>
-            </nav>
+                            <div class="dropdown-menu p-2 text-center" aria-labelledby="dropdownMenuLink">
+                                <h4>Empresa</h4>
+                                <h4>Desenvolvedor</h4>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
         <div class="bg">
             <div class="container-fluid justify-center">
                 <div class="row text-center">
                     <div class="col-lg-12" style="padding: 5px" id="linkLogin">
-						<h4>Resultados para "string da pesquisa"</h4>
+                        <h4>Resultados para "string da pesquisa"</h4>
                     </div>
                 </div>
             </div>
-        
-    
+
+
             <div class="modal-dialog">
                 <div class="col-sm-8-main-section">
                     <div class="modal-content border-0 shadow p-5">
                         <div class="container-fluid">
-                             <div class="row">
+                            <div class="row">
                                 <div class="col-sm-12 user">
                                     <h4>Empresas</h4>
                                     <ul>
@@ -125,56 +125,56 @@
                                     </ul>
                                 </div>
                                 <div class="col-sm-12 user">
-                                    
+
                                     <h4>Desenvolvedores</h4>
                                     <ul>
                                         <li>
                                             <svg width="50" height="50">
-                                                    <circle cx="25" cy="25" r="25" fill="blue" />
-                                                </svg>
-                                             <h5>Monike</h5>
+                                                <circle cx="25" cy="25" r="25" fill="blue" />
+                                            </svg>
+                                            <h5>Monike</h5>
                                         </li>
                                         <li>
                                             <svg width="50" height="50">
-                                                    <circle cx="25" cy="25" r="25" fill="blue" />
-                                                </svg>
-                                                <h5>Dev. 2</h5>
+                                                <circle cx="25" cy="25" r="25" fill="blue" />
+                                            </svg>
+                                            <h5>Dev. 2</h5>
                                         </li>
                                         <li>
                                             <svg width="50" height="50">
-                                                    <circle cx="25" cy="25" r="25" fill="blue" />
-                                                </svg>
-                                                <h5>Dev. 3</h5>
+                                                <circle cx="25" cy="25" r="25" fill="blue" />
+                                            </svg>
+                                            <h5>Dev. 3</h5>
                                         </li>
                                         <li>
                                             <svg width="50" height="50">
-                                                    <circle cx="25" cy="25" r="25" fill="blue" />
-                                                </svg>
-                                                <h5>Dev. 3</h5>
+                                                <circle cx="25" cy="25" r="25" fill="blue" />
+                                            </svg>
+                                            <h5>Dev. 3</h5>
                                         </li>
                                         <li>
                                             <svg width="50" height="50">
-                                                    <circle cx="25" cy="25" r="25" fill="blue" />
-                                                </svg>
-                                                <h5>Dev. 3</h5>
+                                                <circle cx="25" cy="25" r="25" fill="blue" />
+                                            </svg>
+                                            <h5>Dev. 3</h5>
                                         </li>
                                         <li>
                                             <svg width="50" height="50">
-                                                    <circle cx="25" cy="25" r="25" fill="blue" />
-                                                </svg>
-                                                <h5>Dev. 3</h5>
+                                                <circle cx="25" cy="25" r="25" fill="blue" />
+                                            </svg>
+                                            <h5>Dev. 3</h5>
                                         </li>
                                         <li>
                                             <svg width="50" height="50">
-                                                    <circle cx="25" cy="25" r="25" fill="blue" />
-                                                </svg>
-                                                <h5>Dev. 3</h5>
+                                                <circle cx="25" cy="25" r="25" fill="blue" />
+                                            </svg>
+                                            <h5>Dev. 3</h5>
                                         </li>
                                     </ul>
 
                                 </div>
                                 <div class="col-sm-12">
-                                    
+
                                     <h4>Desafios</h4>
                                     <div class="row">
                                         <div class="col-sm-4" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"><h5> Filtros(Clique aqui)</h5></div>
@@ -201,35 +201,36 @@
                                 </div>
                             </div>	
                         </div>
-                       	
+
                     </div>
                 </div>
             </div>
-	   
-        <footer id="footer"></footer>
-            </div>
-        <script src="footer.js"></script>
+
+            <footer class="footer"></footer>
+            <div class="sidebardev"></div>
+        </div>
+        <script src="js/append.js"></script>
         <script>
-          var add_post = function(autor, titulo, area, habilidades, salario, remoto, texto, data){
-              titulo =  '<h4>'+titulo+'</h4>'
-              texto = '<p>'+texto+'</p>'
-              area = '<span> <i class="fab fa-dev"></i>' + area + '</span>'
-              remoto = '<span> <i class="fa fa-home" style="margin-right:10px;"></i>' + remoto +'</span>'
-              var list_habilidades='';
-              for (var i = 0; i < habilidades.length; i++) {
-                list_habilidades += '<span class="tag-list background-gray">'+habilidades[i]+'</span>'
+            var add_post = function(autor, titulo, area, habilidades, salario, remoto, texto, data){
+                titulo =  '<h4>'+titulo+'</h4>'
+                texto = '<p>'+texto+'</p>'
+                area = '<span> <i class="fab fa-dev"></i>' + area + '</span>'
+                remoto = '<span> <i class="fa fa-home" style="margin-right:10px;"></i>' + remoto +'</span>'
+                var list_habilidades='';
+                for (var i = 0; i < habilidades.length; i++) {
+                    list_habilidades += '<span class="tag-list background-gray">'+habilidades[i]+'</span>'
 
-              }
-              var btn = '<button type="button" class="btn btn-primary">Participar</button>'
-              text = '<div class="post"> <div class="row"> <div class="col-sm-12"> <div class="col-sm-3"> <img src="http://placehold.it/100x100" alt=""> </div> <div class="col-sm-9"> ' + titulo + texto + '<div class="cell-list-content-icon">'+area+remoto+'</div> <div class="cell-list-content-tag">'+ list_habilidades+
-                '</div> </div> </div> </div> <div class="row"> <div class="col-sm-12 line"> <div class="col-sm-4">'+data+ '</div> <div class="col-sm-7 offset-sm-1">'+btn+ '</div></div></div></div>'
-              $('.area_post').append(text)
-          };
+                }
+                var btn = '<button type="button" class="btn btn-primary">Participar</button>'
+                text = '<div class="post"> <div class="row"> <div class="col-sm-12"> <div class="col-sm-3"> <img src="http://placehold.it/100x100" alt=""> </div> <div class="col-sm-9"> ' + titulo + texto + '<div class="cell-list-content-icon">'+area+remoto+'</div> <div class="cell-list-content-tag">'+ list_habilidades+
+                    '</div> </div> </div> </div> <div class="row"> <div class="col-sm-12 line"> <div class="col-sm-4">'+data+ '</div> <div class="col-sm-7 offset-sm-1">'+btn+ '</div></div></div></div>'
+                $('.area_post').append(text)
+            };
 
-          add_post('a', 'Homepage Estilosa', 'Front-end', ['HTML5', 'CSS3', 'Javascript', "Bootstrap 4"], 'e', 'Vaga remota', 'Faça uma homepage estilosa para um Pet Shop', 'Desafio até 10/03/2020');
-          add_post('a', 'Reconhecedor de emoções', 'Deep Learning', ['Python', 'Ternsor Flow', 'R', 'IDE Spy'], 'e', 'Vaga física', 'Faça um programa que seja capaz de reconhecer emoções', 'Desafio até 20/04/2020');
-          add_post('a', 'App de Matemática', 'Mobile', ['React Native', 'Javascript', 'Java', 'Kotlin'], 'e', 'Vaga física', 'Faça um app que ensine Matemática do Ensino Fundamental', 'Desafio até: 15/05/2020');
-          add_post('a', 'Sistema de Gestão Acadêmica', 'Full-stack', ['PHP', 'HTML5', 'CSS3', 'Javascript'], 'e', 'Vaga remota', 'Faça um sistema de gestão acadêmica na visão do professor e aluno', 'Desafio até 20/06/2020');
+            add_post('a', 'Homepage Estilosa', 'Front-end', ['HTML5', 'CSS3', 'Javascript', "Bootstrap 4"], 'e', 'Vaga remota', 'Faça uma homepage estilosa para um Pet Shop', 'Desafio até 10/03/2020');
+            add_post('a', 'Reconhecedor de emoções', 'Deep Learning', ['Python', 'Ternsor Flow', 'R', 'IDE Spy'], 'e', 'Vaga física', 'Faça um programa que seja capaz de reconhecer emoções', 'Desafio até 20/04/2020');
+            add_post('a', 'App de Matemática', 'Mobile', ['React Native', 'Javascript', 'Java', 'Kotlin'], 'e', 'Vaga física', 'Faça um app que ensine Matemática do Ensino Fundamental', 'Desafio até: 15/05/2020');
+            add_post('a', 'Sistema de Gestão Acadêmica', 'Full-stack', ['PHP', 'HTML5', 'CSS3', 'Javascript'], 'e', 'Vaga remota', 'Faça um sistema de gestão acadêmica na visão do professor e aluno', 'Desafio até 20/06/2020');
         </script>
     </body>
 </html>
