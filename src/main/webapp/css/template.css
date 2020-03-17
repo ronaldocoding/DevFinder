@@ -291,7 +291,7 @@ container{
 *******************************/
 .modal.left .modal-dialog {
     position: fixed;
-    margin: auto;
+    margin: 0;
     width: 290px;
     height: 100%;
     -webkit-transform: translate3d(0%, 0, 0);
@@ -302,20 +302,20 @@ container{
 
 .modal.left .modal-content{
     height: 100%;
-    overflow-y: auto;
 }
 
 .modal.left .modal-body {
     padding: 15px 15px 80px;
+    
 }
 
 /*Left*/
 .modal.left.fade .modal-dialog{
     left: -320px;
-    -webkit-transition: opacity 0.3s linear, left 0.3s ease-out;
-    -moz-transition: opacity 0.3s linear, left 0.3s ease-out;
-    -o-transition: opacity 0.3s linear, left 0.3s ease-out;
-    transition: opacity 0.3s linear, left 0.3s ease-out;
+    -webkit-transition: opacity 0.1s linear, left 0.1s ease-out;
+    -moz-transition: opacity 0.1s linear, left 0.1s ease-out;
+    -o-transition: opacity 0.1s linear, left 0.1s ease-out;
+    transition: opacity 0.1s linear, left 0.1s ease-out;
 }
 
 .modal.left.fade.in .modal-dialog{
@@ -330,7 +330,6 @@ container{
 
 #sidebar .modal-header{
     border: none;
-    background: #fff;
 }
 
 /********************************************FOOTER*****************************************/
@@ -347,7 +346,6 @@ footer{
     color: white;
     text-decoration: none;
 }
-
 .noturno{
     width: 100%;
 }
@@ -356,7 +354,6 @@ footer{
 
 *{
     font-family: "Poppins", sans-serif;
-
     list-style: none;
     text-decoration: none;
     box-sizing: border-box;

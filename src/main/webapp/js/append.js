@@ -30,7 +30,7 @@ var $topnav=$('<link rel="stylesheet" type="text/css" href="template.css">'+
               '<li><a href="#" class="btn-degrade azul redondo"><i class="fas fa-user"></i></a></li>'+
               '</ul></div></div></div>');
 var $sidebar_dev=$('<div class="modal left fade" id="sidebar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">'+
-                   '<div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><h4 class="modal-title" id="myModalLabel">Left Sidebar</h4><button type="button"'+ 'class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div class="modal-body"><ul id="menu-list">'+
+                   '<div class="modal-dialog" role="document"><div class="modal-content bg-degrade"><div class="modal-header"><h4 class="modal-title" id="myModalLabel">Left Sidebar</h4><button type="button"'+ 'class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div class="modal-body"><ul id="menu-list">'+
                    '<li><a href="devInicio.html"><span class="icon"><i class="fa fa-home" aria-hidden="true"></i></span><span class="title">Início</span></a></li>'+
                    '<li><a href="devDesafiosInscritos.html"><span class="icon"><i class="fa fa-code"></i></span><span class="title">Desafios Inscritos</span></a></li><li><a href="#" class="active">'+
                    '<span class="icon"><i class="fa fa-cog" aria-hidden="true"></i></span>'+
