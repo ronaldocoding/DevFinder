@@ -1,18 +1,28 @@
 package br.com.devfinder.model;
 
 import java.util.Calendar;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  * @author Ronaldo Costa
  *
  */
+@Entity
 public class Desafio {
 
+	@Id
 	private String emailEmpresa;
+	@Id
+	@GeneratedValue
 	private int id;
 	private String nome;
 	private String areaDesenvolvimento;
 	private String descricao;
+	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar dataHoraFim;
 
 	public Desafio() {

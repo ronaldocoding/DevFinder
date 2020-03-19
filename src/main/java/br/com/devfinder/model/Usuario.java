@@ -1,16 +1,28 @@
 package br.com.devfinder.model;
 
+import javax.persistence.Column;
+import javax.persistence.Embedded;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+
 /**
  * @author Ronaldo Costa
  *
  */
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Usuario {
 
+	@Id
 	protected String email;
+	@Column(nullable=true)
 	protected String foto;
 	protected String senha;
+	@Embedded
 	protected Endereco endereco;
+	@Column(nullable=true)
 	protected String site;
+	@Column(nullable=true)
 	protected String telefone;
 	protected String apresentacao;
 

@@ -2,18 +2,24 @@ package br.com.devfinder.model;
 
 import java.util.Calendar;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+
 /**
  * @author Ronaldo Costa
  *
  */
+@Entity
 public class Desenvolvedor extends Usuario {
 
 	private String nome;
 	private String cpf;
 	private Calendar dataNascimento;
 	private String tempoExperiencia;
+	@Column(nullable=true)
 	private String linkedIn;
 	private String gitHub;
+	@Column(nullable=true)
 	private String curriculo;
 
 	public Desenvolvedor() {

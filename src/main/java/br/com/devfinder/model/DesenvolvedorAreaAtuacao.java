@@ -1,12 +1,18 @@
 package br.com.devfinder.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /**
  * @author Ronaldo Costa
  *
  */
+@Entity
 public class DesenvolvedorAreaAtuacao {
 
+	@Id
 	private String emailDesenvolvedor;
+	@Id
 	private String areaAtuacao;
 
 	public DesenvolvedorAreaAtuacao() {

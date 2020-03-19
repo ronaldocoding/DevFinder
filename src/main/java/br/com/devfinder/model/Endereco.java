@@ -1,9 +1,13 @@
 package br.com.devfinder.model;
 
+import javax.persistence.Embeddable;
+
 /**
  * @author Ronaldo Costa
  *
  */
+
+@Embeddable
 public class Endereco {
 
 	private String estado;

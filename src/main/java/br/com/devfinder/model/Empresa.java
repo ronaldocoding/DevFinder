@@ -1,9 +1,12 @@
 package br.com.devfinder.model;
 
+import javax.persistence.Entity;
+
 /**
  * @author Ronaldo Costa
  *
  */
+@Entity
 public class Empresa extends Usuario {
 
 	private String nomeFantasia;
