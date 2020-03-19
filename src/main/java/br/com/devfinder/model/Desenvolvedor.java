@@ -1,6 +1,5 @@
 package br.com.devfinder.model;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 
 /**
@@ -15,11 +14,7 @@ public class Desenvolvedor extends Usuario {
 	private String tempoExperiencia;
 	private String linkedIn;
 	private String gitHub;
-	private ArrayList<DesenvolvedorAreaAtuacao> areasAtuacao;
-	private ArrayList<DesenvolvedorHabilidade> habilidades;
 	private String curriculo;
-	private ArrayList<Solucao> solucoes;
-	private ArrayList<DesenvolvedorNotificacao> notificacoes;
 
 	public Desenvolvedor() {
 		super();
@@ -82,39 +77,11 @@ public class Desenvolvedor extends Usuario {
 		this.gitHub = gitHub;
 	}
 
-	public ArrayList<DesenvolvedorAreaAtuacao> getAreasAtuacao() {
-		return areasAtuacao;
-	}
-
-	public void setAreasAtuacao(ArrayList<DesenvolvedorAreaAtuacao> areasAtuacao) {
-		this.areasAtuacao = areasAtuacao;
-	}
-
-	public ArrayList<DesenvolvedorHabilidade> getHabilidades() {
-		return habilidades;
-	}
-
-	public void setHabilidades(ArrayList<DesenvolvedorHabilidade> habilidades) {
-		this.habilidades = habilidades;
-	}
-
 	public String getCurriculo() {
 		return curriculo;
 	}
 
 	public void setCurriculo(String curriculo) {
 		this.curriculo = curriculo;
-	}
-
-	public ArrayList<Solucao> getSolucoes() {
-		return solucoes;
-	}
-
-	public ArrayList<DesenvolvedorNotificacao> getNotificacoes() {
-		return notificacoes;
-	}
-
-	public void setNotificacoes(ArrayList<DesenvolvedorNotificacao> notificacoes) {
-		this.notificacoes = notificacoes;
 	}
 }

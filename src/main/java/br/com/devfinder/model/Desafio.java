@@ -1,6 +1,5 @@
 package br.com.devfinder.model;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 
 /**
@@ -15,8 +14,6 @@ public class Desafio {
 	private String areaDesenvolvimento;
 	private String descricao;
 	private Calendar dataHoraFim;
-	private ArrayList<Solucao> solucoes;
-	private ArrayList<DesafioHabilidade> habilidades;
 
 	public Desafio() {
 	}
@@ -65,17 +62,5 @@ public class Desafio {
 
 	public void setDataHoraFim(Calendar dataHoraFim) {
 		this.dataHoraFim = dataHoraFim;
-	}
-
-	public ArrayList<Solucao> getSolucoes() {
-		return solucoes;
-	}
-
-	public ArrayList<DesafioHabilidade> getHabilidades() {
-		return habilidades;
-	}
-
-	public void setHabilidades(ArrayList<DesafioHabilidade> habilidades) {
-		this.habilidades = habilidades;
 	}
 }

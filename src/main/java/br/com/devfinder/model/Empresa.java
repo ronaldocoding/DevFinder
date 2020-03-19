@@ -1,7 +1,5 @@
 package br.com.devfinder.model;
 
-import java.util.ArrayList;
-
 /**
  * @author Ronaldo Costa
  *
@@ -16,8 +14,6 @@ public class Empresa extends Usuario {
 	private int totalDesenvolvedores;
 	private boolean vagasRemotas;
 	private boolean vagasFisicas;
-	private ArrayList<Desafio> desafios;
-	private ArrayList<EmpresaNotificacao> notificacoes;
 
 	public Empresa() {
 		super();
@@ -95,17 +91,5 @@ public class Empresa extends Usuario {
 
 	public void setVagasFisicas(boolean vagasFisicas) {
 		this.vagasFisicas = vagasFisicas;
-	}
-
-	public ArrayList<Desafio> getDesafios() {
-		return desafios;
-	}
-
-	public ArrayList<EmpresaNotificacao> getNotificacoes() {
-		return notificacoes;
-	}
-
-	public void setNotificacoes(ArrayList<EmpresaNotificacao> notificacoes) {
-		this.notificacoes = notificacoes;
 	}
 }
