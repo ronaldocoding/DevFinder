@@ -1,6 +1,7 @@
 package br.com.devfinder.model;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 /**
  * @author Ronaldo Costa
@@ -13,8 +14,7 @@ public class Desafio {
 	private String nome;
 	private String areaDesenvolvimento;
 	private String descricao;
-	private String dataFim;
-	private String horarioFim;
+	private Calendar dataHoraFim;
 	private ArrayList<Solucao> solucoes;
 	private ArrayList<DesafioHabilidade> habilidades;
 
@@ -22,14 +22,13 @@ public class Desafio {
 	}
 
 	public Desafio(String emailEmpresa, int id, String nome, String areaDesenvolvimento, String descricao,
-			String dataFim, String horarioFim) {
+			Calendar dataHoraFim) {
 		this.emailEmpresa = emailEmpresa;
 		this.id = id;
 		this.nome = nome;
 		this.areaDesenvolvimento = areaDesenvolvimento;
 		this.descricao = descricao;
-		this.dataFim = dataFim;
-		this.horarioFim = horarioFim;
+		this.dataHoraFim = dataHoraFim;
 	}
 
 	public String getEmailEmpresa() {
@@ -60,20 +59,12 @@ public class Desafio {
 		this.descricao = descricao;
 	}
 
-	public String getDataFim() {
-		return dataFim;
+	public Calendar getDataHoraFim() {
+		return dataHoraFim;
 	}
 
-	public void setDataFim(String dataFim) {
-		this.dataFim = dataFim;
-	}
-
-	public String getHorarioFim() {
-		return horarioFim;
-	}
-
-	public void setHorarioFim(String horarioFim) {
-		this.horarioFim = horarioFim;
+	public void setDataHoraFim(Calendar dataHoraFim) {
+		this.dataHoraFim = dataHoraFim;
 	}
 
 	public ArrayList<Solucao> getSolucoes() {

@@ -1,6 +1,7 @@
 package br.com.devfinder.model;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 /**
  * @author Ronaldo Costa
@@ -10,7 +11,7 @@ public class Desenvolvedor extends Usuario {
 
 	private String nome;
 	private String cpf;
-	private String dataNascimento;
+	private Calendar dataNascimento;
 	private String tempoExperiencia;
 	private String linkedIn;
 	private String gitHub;
@@ -25,7 +26,7 @@ public class Desenvolvedor extends Usuario {
 	}
 
 	public Desenvolvedor(String email, String foto, String senha, Endereco endereco, String site, String telefone,
-			String apresentacao, String nome, String cpf, String dataNascimento, String tempoExperiencia,
+			String apresentacao, String nome, String cpf, Calendar dataNascimento, String tempoExperiencia,
 			String linkedIn, String gitHub, String curriculo) {
 		super(email, foto, senha, endereco, site, telefone, apresentacao);
 		this.nome = nome;
@@ -49,11 +50,11 @@ public class Desenvolvedor extends Usuario {
 		return cpf;
 	}
 
-	public String getDataNascimento() {
+	public Calendar getDataNascimento() {
 		return dataNascimento;
 	}
 
-	public void setDataNascimento(String dataNascimento) {
+	public void setDataNascimento(Calendar dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
 

@@ -1,5 +1,7 @@
 package br.com.devfinder.model;
 
+import java.util.Calendar;
+
 /**
  * @author Ronaldo Costa
  *
@@ -7,17 +9,15 @@ package br.com.devfinder.model;
 public class DesenvolvedorNotificacao {
 
 	private String emailDesenvolvedor;
-	private String data;
-	private String horario;
+	private Calendar dataHora;
 	private String mensagem;
 
 	public DesenvolvedorNotificacao() {
 	}
 
-	public DesenvolvedorNotificacao(String emailDesenvolvedor, String data, String horario, String mensagem) {
+	public DesenvolvedorNotificacao(String emailDesenvolvedor, Calendar dataHora, String mensagem) {
 		this.emailDesenvolvedor = emailDesenvolvedor;
-		this.data = data;
-		this.horario = horario;
+		this.dataHora = dataHora;
 		this.mensagem = mensagem;
 	}
 
@@ -25,12 +25,8 @@ public class DesenvolvedorNotificacao {
 		return emailDesenvolvedor;
 	}
 
-	public String getData() {
-		return data;
-	}
-
-	public String getHorario() {
-		return horario;
+	public Calendar getDataHora() {
+		return dataHora;
 	}
 
 	public String getMensagem() {
