@@ -1,5 +1,5 @@
 var $footer = $('<footer class="container py-5 px-5"><div class="row">'+
-                '<div class="col-12 col-md text-center"><img class="img-fluid noturno" src="imgs/logoNoturna.png"></div>'+
+                '<div class="col-12 col-md text-center"><img class="img-fluid noturno" src="../static/imgs/logoNoturna.png"></div>'+
                 '<div class="col-6 col-md"><h5>Desenvolvedores</h5>'+
                 '<ul class="list-unstyled text-small">'+ 
                 '<li><a href="#">Erica Medeiros</a></li>'+
@@ -11,14 +11,13 @@ var $footer = $('<footer class="container py-5 px-5"><div class="row">'+
                 '<div class="col-6 col-md"><h5>Contato</h5><ul class="list-unstyled text-small">'+
                 '<li><a href="#">devfinder@gmail.com</a></li></ul></div></div></footer>');
 
-var $topnav=$('<link rel="stylesheet" type="text/css" href="template.css">'+
-              '<script> var logo= function(){if($( window ).width()<=610){$(".logo").addClass("small");}else{$(".logo").removeClass("small");}};'+
+var $topnav=$('<script> var logo= function(){if($( window ).width()<=610){$(".logo").addClass("small");}else{$(".logo").removeClass("small");}};'+
               '$(window).on("resize", logo);'+
               '$(window).on("load", logo);</script>'+
               '<div class="container demo"><div class="top_navbar-side"><div class="top_menu-side">'+
               '<ul><li><div class="hamburger-side btn-degrade azul" data-toggle="modal" data-target="#sidebar">'+
               '<div class="one"></div><div class="two"></div><div class="three"></div></div></li><li>'+
-              '<img src="imgs/logo.png"  class="logo"></li></ul>'+
+              '<img src="../static/imgs/logo.png"  class="logo"></li></ul>'+
               '<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"'+ 
               'aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">'+
               '<span class="navbar-toggler-icon"></span></button>'+
@@ -30,7 +29,11 @@ var $topnav=$('<link rel="stylesheet" type="text/css" href="template.css">'+
               '<li><a href="#" class="btn-degrade azul redondo"><i class="fas fa-user"></i></a></li>'+
               '</ul></div></div></div>');
 var $sidebar_dev=$('<div class="modal left fade" id="sidebar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">'+
-                   '<div class="modal-dialog" role="document"><div class="modal-content bg-degrade"><div class="modal-header"><h4 class="modal-title" id="myModalLabel">Left Sidebar</h4><button type="button"'+ 'class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div class="modal-body"><ul id="menu-list">'+
+                   '<div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-body">'+
+                   '<ul id="menu-nav"><li><div class="hamburger-side btn-degrade azul" data-toggle="modal" data-target="#sidebar">'+
+              '<div class="one"></div><div class="two"></div><div class="three"></div></div></li><li>'+
+              '<img src="../static/imgs/logo.png"  class="logo"></li></ul>'+
+                   '<ul id="menu-list">'+
                    '<li><a href="devInicio.html"><span class="icon"><i class="fa fa-home" aria-hidden="true"></i></span><span class="title">Início</span></a></li>'+
                    '<li><a href="devDesafiosInscritos.html"><span class="icon"><i class="fa fa-code"></i></span><span class="title">Desafios Inscritos</span></a></li><li><a href="#" class="active">'+
                    '<span class="icon"><i class="fa fa-cog" aria-hidden="true"></i></span>'+
@@ -44,7 +47,7 @@ var $sidebar_emp=$('');
 var $defaultnav=$('<script> var logo= function(){if($( window ).width()<=690){$(".logo").addClass("small");}else{$(".logo").removeClass("small");}};$(window).on("resize", logo);$(window).on("load", logo);</script>'+
                   '<nav class="top_navbar-side">'+
                   '<div class="top_menu-side">'+
-                  '<div><a href="homepage.html"><img src="imgs/logo.png" class="logo"></a></div><ul><li>'+
+                  '<div><a href="homepage.html"><img src="../static/imgs/logo.png" class="logo"></a></div><ul><li>'+
                   '<div class="buscar-caja"><input type="text" name="" class="buscar-txt" placeholder="Buscar..."/>'+
                   '<a class="buscar-btn"><i class="fas fa-search"></i></a></div></li>'+
                   '<li><a href="#linkLogin" data-toggle="modal" data-target="#modalExemplo" class="btn-azul">Entrar</a></li><li>'+

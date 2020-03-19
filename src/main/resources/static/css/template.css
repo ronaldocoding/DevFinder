@@ -1,11 +1,14 @@
 /*******************DO SITE TODO**************************/
 @import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
-*{
+*,
+*:after,
+*::before {
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
     font-family: "Poppins", sans-serif !important;
     padding: 0;
     list-style: none; 
     text-decoration: none;
-    box-sizing: border-box;
 }
 body{
     margin: 0 !important;
@@ -184,7 +187,7 @@ container{
     }
 }
 
-.top_navbar-side .hamburger-side{
+.hamburger-side{
     width: 50px;
     height: 50px;
     padding: 10px;
@@ -192,7 +195,7 @@ container{
     cursor: pointer;
 }
 
-.top_navbar-side .hamburger-side div{
+.hamburger-side div{
     width: 30px;
     height: 4px;
     background: #fff;
@@ -215,7 +218,7 @@ container{
     box-shadow: 0 1px 1px rgba(0,0,0,0.1);
 }
 
-.top_navbar-side .top_menu-side .logo{
+.logo{
     height: 40px;
     padding: 0 15px;
     margin-top: 5px;
@@ -292,7 +295,9 @@ container{
 .modal.left .modal-dialog {
     position: fixed;
     margin: 0;
-    width: 290px;
+    top: 0;
+    left: 0;
+    width: 270px;
     height: 100%;
     -webkit-transform: translate3d(0%, 0, 0);
     -ms-transform: translate3d(0%, 0, 0);
@@ -305,33 +310,55 @@ container{
 }
 
 .modal.left .modal-body {
-    padding: 15px 15px 80px;
-    
+    margin-left: -55px;
+    margin-top: -17px; 
+}
+.modal.left::after{
+    display:none;
 }
 
 /*Left*/
 .modal.left.fade .modal-dialog{
     left: -320px;
-    -webkit-transition: opacity 0.1s linear, left 0.1s ease-out;
-    -moz-transition: opacity 0.1s linear, left 0.1s ease-out;
-    -o-transition: opacity 0.1s linear, left 0.1s ease-out;
-    transition: opacity 0.1s linear, left 0.1s ease-out;
+    bottom: 0;
+    -webkit-transition: opacity 0.1s linear;
+    -moz-transition: opacity 0.1s linear;
+    -o-transition: opacity 0.1s linear;
+    transition: opacity 0.1s linear;
 }
 
 .modal.left.fade.in .modal-dialog{
     left: 0;
 }
 
+#menu-nav{
+    width: 100%;
+    display: flex;
+}
+#menu-list li a{
+    text-align: center;
+    font-stretch: expanded;
+    text-transform: uppercase;
+    color: #000;
+    list-style: none;
+    text-decoration: none;
+    font-size: 15px;
+}
+#menu-list li a i{
+    padding: 30px !important;
+}
+
+#menu-list li{
+    padding: 20px 15px;
+}
+#menu-list{
+    width: 100%;
+}
 /* ----- MODAL STYLE ----- */
 #sidebar .modal-content{
     border-radius: 0;
     border: none;
 }
-
-#sidebar .modal-header{
-    border: none;
-}
-
 /********************************************FOOTER*****************************************/
 footer{
     background-color: #3f3d56;
