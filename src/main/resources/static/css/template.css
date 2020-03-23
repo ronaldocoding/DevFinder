@@ -152,8 +152,15 @@ container{
     line-height: 35px;
 }
 
-/***********************/
-
+/*********PERFIS**************/
+.perfil-top{
+    color: #000;
+    margin-top: 75px !important;
+ background: white;
+    margin: 10px;
+    border-radius: 20px;
+     box-shadow: 0 4px 8px 0 rgba(101, 112, 113, 0.5);
+}
 /*Do botão de notificação*/
 
 .dropdown-menu{
