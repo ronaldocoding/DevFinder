@@ -1,6 +1,6 @@
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="css/template.css">
+        <link rel="stylesheet" type="text/css" href="../static/css/template.css">
         <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
@@ -47,54 +47,16 @@
             </div>    
         </div>
         <nav class="top_navbar-side">
-            <div class="top_menu-side">
-                <div class="logo">
-                    <a href="homepage.html"><img src="imgs/logo.png" style="height: 40px"></a></div>
-                <ul>
-                    <li>
-                        <div class="buscar-caja">
-                            <input type="text" name="" class="buscar-txt" placeholder="Buscar..."/>
-                            <a class="buscar-btn">
-                                <i class="fas fa-search"></i>
-                            </a>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="#linkLogin" data-toggle="modal" data-target="#modalExemplo" >
-                            Entrar
-                        </a>
-                    </li>      
-                    <li>
-
-                        <div class="dropdown show">
-                            <a class="dropdown-togggle modal-btn" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Cadastrar
-                            </a>
-
-                            <div class="dropdown-menu p-2 text-center" aria-labelledby="dropdownMenuLink">
-                                <h4>Empresa</h4>
-                                <h4>Desenvolvedor</h4>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
+            <div class="defaultnav"></div>
         </nav>
-        <div class="bg">
-            <div class="container-fluid justify-center">
-                <div class="row text-center">
-                    <div class="col-lg-12" style="padding: 5px" id="linkLogin">
-                        <h4>Resultados para "string da pesquisa"</h4>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="modal-dialog">
-                <div class="col-sm-8-main-section">
-                    <div class="modal-content border-0 shadow p-5">
-                        <div class="container-fluid">
-                            <div class="row">
+        <div class="bg-degrade azul">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 perfil-top p-4">
+                       <div class="col-lg-12  text-center" style="padding: 5px" id="linkLogin">
+                                    <h3>Resultados para "string da pesquisa"</h3>
+                                </div>
+                        
                                 <div class="col-sm-12 user">
                                     <h4>Empresas</h4>
                                     <ul>
@@ -199,17 +161,14 @@
                                     </div>
                                     <div class="area_post"></div>
                                 </div>
-                            </div>	
-                        </div>
-
                     </div>
                 </div>
             </div>
-
+            
             <footer class="footer"></footer>
             <div class="sidebardev"></div>
         </div>
-        <script src="js/append.js"></script>
+        <script src="../static/js/append.js"></script>
         <script>
             var add_post = function(autor, titulo, area, habilidades, salario, remoto, texto, data){
                 titulo =  '<h4>'+titulo+'</h4>'
