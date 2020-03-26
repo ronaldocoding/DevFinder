@@ -3,6 +3,7 @@ package br.com.devfinder.model;
 import java.util.Calendar;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -15,11 +16,15 @@ public class DesenvolvedorNotificacao {
 
 	@Id
 	private String emailDesenvolvedor;
-	@Id
 	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar dataHora;
 	@Id
+	private int id;
+	@Id
+	private String titulo;
 	private String mensagem;
+	@ManyToOne
+	private Desenvolvedor desenvolvedor;
 
 	public DesenvolvedorNotificacao() {
 	}
@@ -38,7 +43,19 @@ public class DesenvolvedorNotificacao {
 		return dataHora;
 	}
 
+	public int getId() {
+		return id;
+	}
+
+	public String getTitulo() {
+		return titulo;
+	}
+	
 	public String getMensagem() {
 		return mensagem;
+	}
+
+	public Desenvolvedor getDesenvovledor() {
+		return desenvolvedor;
 	}
 }

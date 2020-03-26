@@ -1,7 +1,10 @@
 package br.com.devfinder.model;
 
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+import br.com.devfinder.model.ids.DesenvolvedorHabilidadeId;
 
 /**
  * @author Ronaldo Costa
@@ -10,24 +13,24 @@ import javax.persistence.Id;
 @Entity
 public class DesenvolvedorHabilidade {
 
-	@Id
-	private String emailDesenvolvedor;
-	@Id
-	private String habilidade;
+	@EmbeddedId
+	private DesenvolvedorHabilidadeId id;
+	@ManyToOne
+	private Desenvolvedor desenvolvedor;
 
 	public DesenvolvedorHabilidade() {
 	}
 
 	public DesenvolvedorHabilidade(String emailDesenvolvedor, String habilidade) {
-		this.emailDesenvolvedor = emailDesenvolvedor;
-		this.habilidade = habilidade;
+		id.setEmailDesenvolvedor(emailDesenvolvedor);
+		id.setHabilidade(habilidade);
 	}
 
 	public String getEmailDesenvolvedor() {
-		return emailDesenvolvedor;
+		return id.getEmailDesenvolvedor();
 	}
 
 	public String getHabilidade() {
-		return habilidade;
+		return id.getHabilidade();
 	}
 }

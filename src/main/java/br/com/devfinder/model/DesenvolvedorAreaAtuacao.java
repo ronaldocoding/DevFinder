@@ -1,7 +1,10 @@
 package br.com.devfinder.model;
 
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+import br.com.devfinder.model.ids.DesenvolvedorAreaAtuacaoId;
 
 /**
  * @author Ronaldo Costa
@@ -10,24 +13,28 @@ import javax.persistence.Id;
 @Entity
 public class DesenvolvedorAreaAtuacao {
 
-	@Id
-	private String emailDesenvolvedor;
-	@Id
-	private String areaAtuacao;
-
+	@EmbeddedId
+	private DesenvolvedorAreaAtuacaoId id;
+	@ManyToOne
+	private Desenvolvedor desenvolvedor;
+	
 	public DesenvolvedorAreaAtuacao() {
 	}
 
 	public DesenvolvedorAreaAtuacao(String emailDesenvolvedor, String areaAtuacao) {
-		this.emailDesenvolvedor = emailDesenvolvedor;
-		this.areaAtuacao = areaAtuacao;
+		id.setEmailDesenvolvedor(emailDesenvolvedor);
+		id.setAreaAtuacao(areaAtuacao);
 	}
 
 	public String getEmailDesenvolvedor() {
-		return emailDesenvolvedor;
+		return id.getEmailDesenvolvedor();
 	}
-
+	
 	public String getAreaAtuacao() {
-		return areaAtuacao;
+		return id.getAreaAtuacao();
+	}
+	
+	public Desenvolvedor getDesenvolvedor() {
+		return desenvolvedor;
 	}
 }

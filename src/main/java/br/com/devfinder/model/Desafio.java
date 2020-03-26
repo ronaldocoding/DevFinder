@@ -4,6 +4,7 @@ import java.util.Calendar;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -19,6 +20,8 @@ public class Desafio {
 	@Id
 	@GeneratedValue
 	private int id;
+	@ManyToOne
+	private Empresa empresa;
 	private String nome;
 	private String areaDesenvolvimento;
 	private String descricao;
@@ -44,6 +47,10 @@ public class Desafio {
 
 	public int getId() {
 		return id;
+	}
+
+	public Empresa getEmpresa() {
+		return empresa;
 	}
 
 	public String getNome() {

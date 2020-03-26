@@ -1,7 +1,10 @@
 package br.com.devfinder.model;
 
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+import br.com.devfinder.model.ids.SolucaoId;
 
 /**
  * @author Ronaldo Costa
@@ -10,12 +13,12 @@ import javax.persistence.Id;
 @Entity
 public class Solucao {
 
-	@Id
-	private String emailDesenvolvedor;
-	@Id
-	private String emailEmpresa;
-	@Id
-	private String idDesafio;
+	@EmbeddedId
+	private SolucaoId id;
+	@ManyToOne
+	private Desenvolvedor desenvolvedor;
+	@ManyToOne
+	private Desafio desafio;
 	private String nome;
 	private String linkGithub;
 	private String documentacao;
@@ -24,11 +27,11 @@ public class Solucao {
 	public Solucao() {
 	}
 
-	public Solucao(String emailDesenvolvedor, String emailEmpresa, String idDesafio, String nome, String linkGithub,
+	public Solucao(String emailDesenvolvedor, String emailEmpresa, int idDesafio, String nome, String linkGithub,
 			String documentacao, String descricao) {
-		this.emailDesenvolvedor = emailDesenvolvedor;
-		this.emailEmpresa = emailEmpresa;
-		this.idDesafio = idDesafio;
+		id.setEmailDesenvolvedor(emailDesenvolvedor);
+		id.setEmailEmpresa(emailEmpresa);
+		id.setIdDesafio(idDesafio);
 		this.nome = nome;
 		this.linkGithub = linkGithub;
 		this.documentacao = documentacao;
@@ -36,15 +39,15 @@ public class Solucao {
 	}
 
 	public String getEmailDesenvolvedor() {
-		return emailDesenvolvedor;
+		return id.getEmailDesenvolvedor();
 	}
 
 	public String getEmailEmpresa() {
-		return emailEmpresa;
+		return id.getEmailEmpresa();
 	}
 
-	public String getIdDesafio() {
-		return idDesafio;
+	public int getIdDesafio() {
+		return id.getIdDesafio();
 	}
 
 	public String getNome() {
@@ -61,5 +64,13 @@ public class Solucao {
 
 	public String getDescricao() {
 		return descricao;
+	}
+	
+	public Desenvolvedor getDesenvolvedor() {
+		return desenvolvedor;
+	}
+	
+	public Desafio getDesafio() {
+		return desafio;
 	}
 }
