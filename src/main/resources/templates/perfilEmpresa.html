@@ -26,7 +26,7 @@
                                 <svg width="100" height="100">
                                     <circle cx="50" cy="50" r="50" fill="blue" />
                                 </svg>
-                                <h3>Nome social</h3>
+                                <h3 style="overflow-wrap: break-word">Nome social</h3>
                            </div>
                            <div class="col-sm-9" style="font-size: 16px">
                                 
@@ -62,7 +62,7 @@
 
                 }
                 var btn = '<button type="button" class="btn btn-primary">Participar</button>'
-                text = '<div class="post"> <div class="row"> <div class="col-lg-12"> <div class="col-sm-3"> <img src="http://placehold.it/260x180" alt=""> </div> <div class="col-sm-9"> ' + titulo + texto + '<div class="cell-list-content-icon">'+area+remoto+'</div> <div class="cell-list-content-tag">'+ list_habilidades+
+                text = '<div class="post"> <div class="row"> <div class="col-sm-12"> <div class="col-sm-3"> <img src="http://placehold.it/260x180" alt=""> </div> <div class="col-sm-9"> ' + titulo + texto + '<div class="cell-list-content-icon">'+area+remoto+'</div> <div class="cell-list-content-tag">'+ list_habilidades+
                     '</div> </div> </div> </div> <div class="row"> <div class="col-sm-12 line"> <div class="col-sm-4">'+data+ '</div> <div class="col-sm-7 offset-sm-1">'+btn+ '</div></div></div></div>'
                 $('.area_post').append(text)
             };
