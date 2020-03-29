@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Desenvolvedor</title>
+        <link rel="stylesheet" type="text/css" href="../static/css/template.css">
+        <script type="text/javascript" src="static/js/feed.js"></script>
+        <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+        <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </head> 
+    <body>
+
+        <div class="wrapper-side">
+            <div class="top_navbar-side">
+                <div class="topnav"></div>
+            </div>
+        </div>
+
+        <div class="main_container" id="main_container">
+            <div class="container">
+                <h2>Configurações</h2>
+
+                <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#home">Dados pessoais</a></li>
+                    <li><a data-toggle="tab" href="#menu1">Endereço</a></li>
+                    <li><a data-toggle="tab" href="#menu2">Contato</a></li>
+                    <li><a data-toggle="tab" href="#menu3">Habilidades</a></li>
+
+                </ul>
+                <img src="http://placehold.it/220x220" class="img-fluid" alt="">
+                <div class="tab-content">
+                    <div id="home" class="tab-pane fade in active">
+
+                        <form>   
+                            <div class="form-group">
+                                <label >Nome Completo</label>
+                                <input type="text" class="form-control" value="Marlon de Faria Leite">
+                            </div>
+
+                            <div class="form-group">
+                                <label >CPF</label>
+                                <input type="text" class="form-control" value="12345678909" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label >Data de aniversário</label>
+                                <input type="date" class="form-control" value="15-09-2003" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label >E-mail</label>
+                                <input type="email" class="form-control" value="marlonfleite50@gmail.com">
+                            </div>
+                            <div class="form-group" style="display: inline-block;">
+                                <label>Senha</label>
+                                <input type="password" class="form-control" value="Senha" value="eae mano">
+                            </div>
+
+                            <div class="form-group" style="display: inline-block;">
+                                <label>Confirmar senha</label>
+                                <input type="password" class="form-control" value="Senha" value="eae mano">
+                            </div>
+                            <div></div>
+                            <button type="button" class="btn btn-success">Salvar</button>
+                            <button type="button" class="btn btn-secondary">Resetar</button>
+                        </form>
+                    </div>
+
+                    <div id="menu1" class="tab-pane fade">
+                        <form>
+
+                            <div class="form-group">
+                                <label>CEP</label>
+                                <input type="text" class="form-control" value="eae mano" style="">
+                            </div>
+
+                            <div class="form-group">
+                                <div style="display: inline-block; margin-left: 15px;">
+                                    <label >Estado</label>
+                                    <div></div>
+                                    <select>
+                                        <option>Amazonas</option>
+                                    </select>
+                                </div>
+                                <div style="display: inline-block; margin-left: 15px;">
+                                    <label >Cidade</label>
+                                    <div></div>
+                                    <select>
+                                        <option>Manaus</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group" style="display: inline-block;">
+                                <label >Rua</label>
+                                <input type="text" class="form-control" value="Rua Hermínio Barbosa ">
+                            </div>
+                            <div class="form-group" style="display: inline-block;">
+                                <label>Numero</label>
+                                <input type="text" class="form-control" value="476"; style = "width: 100px;">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Bairro</label>
+                                <input type="text" class="form-control"value="Morro da Liberdade">
+                            </div>
+                            <div></div>
+                            <button type="button" class="btn btn-success">Salvar</button>
+                            <button type="button" class="btn btn-secondary">Resetar</button>
+                        </form>
+                    </div>
+                    <div id="menu2" class="tab-pane fade">
+                        <form>
+                            <div class="form-group">
+                                <label >Telefone</label>
+                                <input type="text" class="form-control" value="(92) 99209-8221">
+                            </div>
+                            <div class="form-group">
+                                <label >Site pessoal</label>
+                                <input type="text" class="form-control" value="https://www.google.com/">
+                            </div>
+                            <div class="form-group">
+                                <label >Linkedin</label>
+                                <input type="text" class="form-control" value="https://www.linkedin.com/">
+                            </div>
+                            <div class="form-group">
+                                <label >Github</label>
+                                <input type="text" class="form-control" value="https://www.github.com/">
+                            </div>
+                            <div class="form-group">
+                                <label >Lattes</label>
+                                <input type="text" class="form-control" value="https://www.lattes.com/">
+                            </div>
+                            <button type="button" class="btn btn-success">Salvar</button>
+                            <button type="button" class="btn btn-secondary">Resetar</button>
+                        </form>
+                    </div>
+                    <div id="menu3" class="tab-pane fade">
+                        <form>
+                            <div class="form-group">
+                                <label >Apresentação</label>
+                                <div></div>
+                                <textarea>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer in mauris volutpat, lacinia metus at, venenatis ante. Pellentesque pulvinar tincidunt nibh, ac iaculis quam sodales ac. Mauris finibus vel augue quis dapibus. Nunc id ligula id est efficitur mattis vitae nec libero. In lacinia augue ut massa tincidunt porta. Aenean ornare mollis felis, id rhoncus nulla maximus eget. In accumsan tortor scelerisque augue ornare venenatis. Praesent a pulvinar lacus.</textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Área</label>
+                                <input type="text" class="form-control" value="Full-stack">
+                            </div>
+                            <div class="form-group" style="display: inline-block;">
+                                <label>Linguagens</label>
+                                <input type="text" class="form-control" value="Java, HTML, CSS e PHP">
+                            </div>
+
+                            <div></div>
+                            <button type="button" class="btn btn-success">Salvar</button>
+                            <button type="button" class="btn btn-secondary">Resetar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="sidebardev"></div>
+        <footer class="footer"></footer>
+        <script src="../static/js/append.js"></script>
+        <script type="text/javascript" src="static/js/feed.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+    </body>
+</html>
