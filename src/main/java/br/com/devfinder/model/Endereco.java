@@ -1,5 +1,8 @@
 package br.com.devfinder.model;
 
+import java.io.Serializable;
+
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 /**
@@ -8,13 +11,26 @@ import javax.persistence.Embeddable;
  */
 
 @Embeddable
-public class Endereco {
+public class Endereco implements Serializable {
 
+	private static final long serialVersionUID = 1L;
+	
+	@Column(name = "ESTADO", nullable = false)
 	private String estado;
+	
+	@Column(name = "CIDADE", nullable = false)
 	private String cidade;
+	
+	@Column(name = "BAIRRO", nullable = true)
 	private String bairro;
+	
+	@Column(name = "RUA", nullable = false)
 	private String rua;
+	
+	@Column(name = "NUMERO", nullable = false)
 	private String numero;
+	
+	@Column(name = "CEP", nullable = false)
 	private String cep;
 
 	public Endereco() {

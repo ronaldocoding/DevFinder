@@ -35,14 +35,15 @@ public class DesafioController {
 		return service.saveDesafios(desafios);
 	}
 
-	@GetMapping("/desafios")
-	public List<Desafio> findAllDesafios() {
-		return service.getDesafios();
+	@GetMapping("/desafiosByEmpresa/{emailEmpresa}")
+	public List<Desafio> findAllDesafiosByEmpresa(@PathVariable String emailEmpresa) {
+		return service.getDesafios(emailEmpresa);
 	}
 
-	@GetMapping("/desafioById/{id}")
-	public Desafio findEmpresaById(@PathVariable DesafioId id) {
-		return service.getDesafioById(id);
+	@GetMapping("/desafioById/{emailEmpresa}/{id}")
+	public Desafio findDesafioById(@PathVariable String emailEmpresa, @PathVariable int id) {
+		DesafioId desafioId = new DesafioId(emailEmpresa, id);
+		return service.getDesafioById(desafioId);
 	}
 
 	@GetMapping("/desafio/{nome}")
@@ -50,13 +51,14 @@ public class DesafioController {
 		return service.getDesafioByNome(nome);
 	}
 
-	@PutMapping("/update")
+	@PutMapping("/updateDesafio")
 	public Desafio updateDesafio(@RequestBody Desafio desafio) {
 		return service.updateDesafio(desafio);
 	}
 
-	@DeleteMapping("/delete/{id}")
-	public String deleteEmpresa(@PathVariable DesafioId id) {
-		return service.deleteDesafio(id);
+	@DeleteMapping("/deleteDesafio/{emailEmpresa}/{id}")
+	public String deleteEmpresa(@PathVariable String emailEmpresa, int id) {
+		DesafioId desafioId = new DesafioId(emailEmpresa, id);
+		return service.deleteDesafio(desafioId);
 	}
 }

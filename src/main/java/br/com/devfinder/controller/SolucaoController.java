@@ -14,7 +14,6 @@ import br.com.devfinder.model.Solucao;
 import br.com.devfinder.model.ids.SolucaoId;
 import br.com.devfinder.service.SolucaoService;
 
-
 /**
  * @author Ronaldo Costa
  *
@@ -35,18 +34,27 @@ public class SolucaoController {
 		return service.saveSolucoes(solucoes);
 	}
 
-	@GetMapping("/solucoes")
-	public List<Solucao> findAllHabilidades() {
-		return service.getSolucoes();
+	@GetMapping("/solucoes/{emailEmpresa}/{idDesafio}")
+	public List<Solucao> findAllHabilidadesByDesafio(@PathVariable String emailEmpresa, @PathVariable int idDesafio) {
+		return service.getSolucoesByDesafio(emailEmpresa, idDesafio);
 	}
 
-	@GetMapping("/solucaoById/{id}")
-	public Solucao findSolucaoById(@PathVariable SolucaoId id) {
-		return service.getSolucaoById(id);
+	@GetMapping("/solucoes/{emailDesenvolvedor}")
+	public List<Solucao> findAllHabilidadesByDesenvolvedor(@PathVariable String emailDesenvolvedor) {
+		return service.getSolucoesByDesenvolvedor(emailDesenvolvedor);
 	}
 
-	@DeleteMapping("/delete/{id}")
-	public String deleteSolucao(@PathVariable SolucaoId id) {
-		return service.deleteSolucao(id);
+	@GetMapping("/solucaoById/{emailEmpresa}/{emailDesenvolvedor}/{idDesafio}")
+	public Solucao findSolucaoById(@PathVariable String emailEmpresa, @PathVariable String emailDesenvolvedor,
+			@PathVariable int idDesafio) {
+		SolucaoId solucaoId = new SolucaoId(emailDesenvolvedor, emailEmpresa, idDesafio);
+		return service.getSolucaoById(solucaoId);
+	}
+
+	@DeleteMapping("/deleteSolucao/{id}")
+	public String deleteSolucao(@PathVariable String emailEmpresa, @PathVariable String emailDesenvolvedor,
+			@PathVariable int idDesafio) {
+		SolucaoId solucaoId = new SolucaoId(emailDesenvolvedor, emailEmpresa, idDesafio);
+		return service.deleteSolucao(solucaoId);
 	}
 }

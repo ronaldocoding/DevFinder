@@ -34,23 +34,30 @@ public class DesenvolvedorNotificacaoController {
 		return service.saveNotificacoes(notificacoes);
 	}
 
-	@GetMapping("/desenvolvedorNotificacoes")
-	public List<DesenvolvedorNotificacao> findAllNotificacoes() {
-		return service.getNotificacoes();
+	@GetMapping("/desenvolvedorNotificacoes/{emailDesenvolvedor}")
+	public List<DesenvolvedorNotificacao> findAllNotificacoes(@PathVariable String emailDesenvolvedor) {
+		return service.getNotificacoes(emailDesenvolvedor);
 	}
 
-	@GetMapping("/desenvolvedorNotificacaoById/{id}")
-	public DesenvolvedorNotificacao findNotificacaoById(@PathVariable DesenvolvedorNotificacaoId id) {
-		return service.getNotificacaoById(id);
+	@GetMapping("/desenvolvedorNotificacaoById/{emailDesenvolvedor}/{id}/{titulo}")
+	public DesenvolvedorNotificacao findNotificacaoById(@PathVariable String emailDesenvolvedor, @PathVariable int id,
+			@PathVariable String titulo) {
+		DesenvolvedorNotificacaoId desenvolvedorNotificacaoId = new DesenvolvedorNotificacaoId(emailDesenvolvedor, id,
+				titulo);
+		return service.getNotificacaoById(desenvolvedorNotificacaoId);
 	}
 
-	@GetMapping("/desenvolvedorNotificacao/{titulo}")
-	public DesenvolvedorNotificacao findNotificacaoByTitulo(@PathVariable String titulo) {
-		return service.getNotificacaoByTitulo(titulo);
+	@GetMapping("/desenvolvedorNotificacao/{emailDesenvolvedor}/{titulo}")
+	public DesenvolvedorNotificacao findNotificacaoByTitulo(@PathVariable String emailDesenvolvedor,
+			@PathVariable String titulo) {
+		return service.getNotificacaoByTitulo(emailDesenvolvedor, titulo);
 	}
 
-	@DeleteMapping("/delete/{id}")
-	public String deleteNotificacao(@PathVariable DesenvolvedorNotificacaoId id) {
-		return service.deleteNotificacao(id);
+	@DeleteMapping("/deleteDesenvolvedorNotificacao/{emailDesenvolvedor}/{id}/{titulo}")
+	public String deleteNotificacao(@PathVariable String emailDesenvolvedor, @PathVariable int id,
+			@PathVariable String titulo) {
+		DesenvolvedorNotificacaoId desenvolvedorNotificacaoId = new DesenvolvedorNotificacaoId(emailDesenvolvedor, id,
+				titulo);
+		return service.deleteNotificacao(desenvolvedorNotificacaoId);
 	}
 }

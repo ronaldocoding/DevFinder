@@ -15,35 +15,35 @@ import br.com.devfinder.repository.DesenvolvedorAreaAtuacaoRepository;
  */
 @Service
 public class DesenvolvedorAreaAtuacaoService {
-	
+
 	@Autowired
 	private DesenvolvedorAreaAtuacaoRepository repository;
 
 	/**
 	 * Métodos POST
-	 * */
+	 */
 	public DesenvolvedorAreaAtuacao saveArea(DesenvolvedorAreaAtuacao area) {
 		return repository.save(area);
 	}
-	
+
 	public List<DesenvolvedorAreaAtuacao> saveAreas(List<DesenvolvedorAreaAtuacao> areas) {
 		return repository.saveAll(areas);
 	}
-	
+
 	/**
 	 * Métodos GET
-	 * */
-	public List<DesenvolvedorAreaAtuacao> getAreas() {
-		return repository.findAll();
+	 */
+	public List<DesenvolvedorAreaAtuacao> getAreas(String emailDesenvolvedor) {
+		return repository.findAllByDesenvolvedor(emailDesenvolvedor);
 	}
-	
+
 	public DesenvolvedorAreaAtuacao getAreaById(DesenvolvedorAreaAtuacaoId id) {
 		return repository.findById(id).orElse(null);
 	}
-	
+
 	/**
 	 * Método DELETE
-	 * */
+	 */
 	public String deleteArea(DesenvolvedorAreaAtuacaoId id) {
 		repository.deleteById(id);
 		return "desenvolvedorAreaAtuacao deletada: " + id;

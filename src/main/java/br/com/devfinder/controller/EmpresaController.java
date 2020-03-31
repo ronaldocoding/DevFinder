@@ -49,12 +49,12 @@ public class EmpresaController {
 		return service.getEmpresaByNomeFantasia(nomeFantasia);
 	}
 
-	@PutMapping("/update")
+	@PutMapping("/updateEmpresa")
 	public Empresa updateEmpresa(@RequestBody Empresa empresa) {
 		return service.updateEmpresa(empresa);
 	}
 
-	@DeleteMapping("/delete/{email}")
+	@DeleteMapping("/deleteEmpresa/{email}")
 	public String deleteEmpresa(@PathVariable String email) {
 		return service.deleteEmpresa(email);
 	}

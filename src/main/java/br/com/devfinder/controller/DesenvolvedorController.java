@@ -49,12 +49,12 @@ public class DesenvolvedorController {
 		return service.getDesenvolvedorByNome(nome);
 	}
 
-	@PutMapping("/update")
+	@PutMapping("/updateDesenvolvedor")
 	public Desenvolvedor updateDesenvolvedor(@RequestBody Desenvolvedor desenvolvedor) {
 		return service.updateDesenvolvedor(desenvolvedor);
 	}
 
-	@DeleteMapping("/delete/{email}")
+	@DeleteMapping("/deleteDesenvolvedor/{email}")
 	public String deleteDesenvolvedor(@PathVariable String email) {
 		return service.deleteDesenvolvedor(email);
 	}

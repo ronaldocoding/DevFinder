@@ -1,8 +1,16 @@
 package br.com.devfinder.model;
 
+import java.io.Serializable;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 import br.com.devfinder.model.ids.SolucaoId;
 
@@ -11,24 +19,47 @@ import br.com.devfinder.model.ids.SolucaoId;
  *
  */
 @Entity
-public class Solucao {
+@Table(name = "SOLUCAO")
+public class Solucao implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@EmbeddedId
 	private SolucaoId id;
-	@ManyToOne
-	private Desenvolvedor desenvolvedor;
-	@ManyToOne
-	private Desafio desafio;
+
+	@Column(name = "NOME", nullable = false)
 	private String nome;
+
+	@Column(name = "LINK_GITHUB", nullable = false)
 	private String linkGithub;
+
+	@Column(name = "DOCUMENTACAO", nullable = false)
 	private String documentacao;
+
+	@Column(name = "DESCRICAO", nullable = false)
 	private String descricao;
+
+	@Column(name = "DATA_ENVIO", length = 11, nullable = false)
+	private String dataEnvio;
+
+	@Column(name = "HORARIO_ENVIO", length = 5, nullable = false)
+	private String horarioEnvio;
+
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "EMAIL_DESENVOLVEDOR", referencedColumnName = "EMAIL", nullable = false, insertable = false, updatable = false)
+	private Desenvolvedor desenvolvedor;
+
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumns(value = {
+			@JoinColumn(name = "EMAIL_EMPRESA_DESAFIO", referencedColumnName = "EMAIL_EMPRESA", nullable = false, insertable = false, updatable = false),
+			@JoinColumn(name = "ID_DESAFIO", referencedColumnName = "ID", nullable = false, insertable = false, updatable = false) })
+	private Desafio desafio;
 
 	public Solucao() {
 	}
 
 	public Solucao(String emailDesenvolvedor, String emailEmpresa, int idDesafio, String nome, String linkGithub,
-			String documentacao, String descricao) {
+			String documentacao, String descricao, String dataEnvio, String horarioEnvio) {
 		id.setEmailDesenvolvedor(emailDesenvolvedor);
 		id.setEmailEmpresa(emailEmpresa);
 		id.setIdDesafio(idDesafio);
@@ -36,41 +67,79 @@ public class Solucao {
 		this.linkGithub = linkGithub;
 		this.documentacao = documentacao;
 		this.descricao = descricao;
+		this.dataEnvio = dataEnvio;
+		this.horarioEnvio = horarioEnvio;
 	}
 
-	public String getEmailDesenvolvedor() {
-		return id.getEmailDesenvolvedor();
+	public SolucaoId getId() {
+		return id;
 	}
 
-	public String getEmailEmpresa() {
-		return id.getEmailEmpresa();
-	}
-
-	public int getIdDesafio() {
-		return id.getIdDesafio();
+	public void setId(SolucaoId id) {
+		this.id = id;
 	}
 
 	public String getNome() {
 		return nome;
 	}
 
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
 	public String getLinkGithub() {
 		return linkGithub;
+	}
+
+	public void setLinkGithub(String linkGithub) {
+		this.linkGithub = linkGithub;
 	}
 
 	public String getDocumentacao() {
 		return documentacao;
 	}
 
+	public void setDocumentacao(String documentacao) {
+		this.documentacao = documentacao;
+	}
+
 	public String getDescricao() {
 		return descricao;
 	}
-	
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public String getDataEnvio() {
+		return dataEnvio;
+	}
+
+	public void setDataEnvio(String dataEnvio) {
+		this.dataEnvio = dataEnvio;
+	}
+
+	public String getHorarioEnvio() {
+		return horarioEnvio;
+	}
+
+	public void setHorarioEnvio(String horarioEnvio) {
+		this.horarioEnvio = horarioEnvio;
+	}
+
 	public Desenvolvedor getDesenvolvedor() {
 		return desenvolvedor;
 	}
-	
+
+	public void setDesenvolvedor(Desenvolvedor desenvolvedor) {
+		this.desenvolvedor = desenvolvedor;
+	}
+
 	public Desafio getDesafio() {
 		return desafio;
+	}
+
+	public void setDesafio(Desafio desafio) {
+		this.desafio = desafio;
 	}
 }

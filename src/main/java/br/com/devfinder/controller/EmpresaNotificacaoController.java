@@ -23,35 +23,36 @@ public class EmpresaNotificacaoController {
 
 	@Autowired
 	private EmpresaNotificacaoService service;
-	
+
 	@PostMapping("/addEmpresaNotificacao")
 	public EmpresaNotificacao addNotificao(@RequestBody EmpresaNotificacao notificacao) {
 		return service.saveNotificacao(notificacao);
 	}
-	
+
 	@PostMapping("/addEmpresaNotificacoes")
 	public List<EmpresaNotificacao> addNotificacoes(@RequestBody List<EmpresaNotificacao> notificacoes) {
 		return service.saveNotificacoes(notificacoes);
 	}
-	
-	@GetMapping("/empresaNotificacoes")
-	public List<EmpresaNotificacao> findAllNotificacoes() {
-		return service.getNotificacoes();
+
+	@GetMapping("/empresaNotificacoes/{emailEmpresa}")
+	public List<EmpresaNotificacao> findAllNotificacoes(@PathVariable String emailEmpresa) {
+		return service.getNotificacoes(emailEmpresa);
 	}
-	
-	@GetMapping("/empresaNotificacaoById/{id}")
-	public EmpresaNotificacao findNotificacaoById(@PathVariable EmpresaNotificacaoId id) {
-		return service.getNotificacaoById(id);
+
+	@GetMapping("/empresaNotificacaoById/{emailEmpresa}/{id}/{titulo}")
+	public EmpresaNotificacao findNotificacaoById(@PathVariable String emailEmpresa, @PathVariable int id,
+			@PathVariable String titulo) {
+		EmpresaNotificacaoId empresaNotificacaoId = new EmpresaNotificacaoId(emailEmpresa, id, titulo);
+		return service.getNotificacaoById(empresaNotificacaoId);
 	}
-	
-	@GetMapping("/empresaNotificacao/{titulo}")
-	public EmpresaNotificacao findNotificacaoByTitulo(@PathVariable String titulo) {
-		return service.getNotificacaoByTitulo(titulo);
+
+	@GetMapping("/empresaNotificacao/{emailEmpresa}/{titulo}")
+	public EmpresaNotificacao findNotificacaoByTitulo(@PathVariable String emailEmpresa, @PathVariable String titulo) {
+		return service.getNotificacaoByTitulo(emailEmpresa, titulo);
 	}
-	
-	@DeleteMapping("/delete/{id}")
+
+	@DeleteMapping("/deleteEmpresaNotificacao/{id}")
 	public String deleteNotificacao(@PathVariable EmpresaNotificacaoId id) {
 		return service.deleteNotificacao(id);
 	}
-	
 }

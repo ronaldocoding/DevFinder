@@ -9,7 +9,6 @@ import br.com.devfinder.model.Solucao;
 import br.com.devfinder.model.ids.SolucaoId;
 import br.com.devfinder.repository.SolucaoRepository;
 
-
 /**
  * @author Ronaldo Costa
  *
@@ -34,8 +33,12 @@ public class SolucaoService {
 	/**
 	 * Métodos GET
 	 */
-	public List<Solucao> getSolucoes() {
-		return repository.findAll();
+	public List<Solucao> getSolucoesByDesafio(String emailEmpresa, int idDesafio) {
+		return repository.findAllByDesafio(emailEmpresa, idDesafio);
+	}
+	
+	public List<Solucao> getSolucoesByDesenvolvedor(String emailDesenvolvedor) {
+		return repository.findAllByDesenvolvedor(emailDesenvolvedor);
 	}
 
 	public Solucao getSolucaoById(SolucaoId id) {

@@ -34,17 +34,19 @@ public class DesafioHabilidadeController {
 		return service.saveHabilidades(habilidades);
 	}
 
-	@GetMapping("/desafioHabilidades")
-	public List<DesafioHabilidade> findAllHabilidades() {
-		return service.getHabilidades();
+	@GetMapping("/desafioHabilidades/{emailEmpresa}/{idDesafio}")
+	public List<DesafioHabilidade> findAllHabilidades(@PathVariable String emailEmpresa, @PathVariable int idDesafio) {
+		return service.getHabilidades(emailEmpresa, idDesafio);
 	}
 
-	@GetMapping("/desafioHabilidadeById/{id}")
-	public DesafioHabilidade findHabilidadeById(@PathVariable DesafioHabilidadeId id) {
-		return service.getHabilidadeById(id);
+	@GetMapping("/desafioHabilidadeById/{emailEmpresa}/{idDesafio}/{habilidade}")
+	public DesafioHabilidade findHabilidadeById(@PathVariable String emailEmpresa, @PathVariable int idDesafio,
+			@PathVariable String habilidade) {
+		DesafioHabilidadeId desafioHabilidadeId = new DesafioHabilidadeId(emailEmpresa, idDesafio, habilidade);
+		return service.getHabilidadeById(desafioHabilidadeId);
 	}
 
-	@DeleteMapping("/delete/{id}")
+	@DeleteMapping("/deleteDesafioHabilidade/{id}")
 	public String deleteHabilidade(@PathVariable DesafioHabilidadeId id) {
 		return service.deleteHabilidade(id);
 	}

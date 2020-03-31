@@ -9,7 +9,6 @@ import br.com.devfinder.model.DesafioHabilidade;
 import br.com.devfinder.model.ids.DesafioHabilidadeId;
 import br.com.devfinder.repository.DesafioHabilidadeRepository;
 
-
 /**
  * @author Ronaldo Costa
  *
@@ -19,32 +18,32 @@ public class DesafioHabilidadeService {
 
 	@Autowired
 	private DesafioHabilidadeRepository repository;
-	
+
 	/**
 	 * Métodos POST
-	 * */
+	 */
 	public DesafioHabilidade saveHabilidade(DesafioHabilidade habilidade) {
 		return repository.save(habilidade);
 	}
-	
+
 	public List<DesafioHabilidade> saveHabilidades(List<DesafioHabilidade> habilidades) {
 		return repository.saveAll(habilidades);
 	}
-	
+
 	/**
 	 * Métodos GET
-	 * */
-	public List<DesafioHabilidade> getHabilidades() {
-		return repository.findAll();
+	 */
+	public List<DesafioHabilidade> getHabilidades(String emailEmpresa, int idDesafio) {
+		return repository.findAllByDesafio(emailEmpresa, idDesafio);
 	}
-	
+
 	public DesafioHabilidade getHabilidadeById(DesafioHabilidadeId id) {
 		return repository.findById(id).orElse(null);
 	}
-	
+
 	/**
 	 * Método DELETE
-	 * */
+	 */
 	public String deleteHabilidade(DesafioHabilidadeId id) {
 		repository.deleteById(id);
 		return "desafioHabilidade deletada: " + id;

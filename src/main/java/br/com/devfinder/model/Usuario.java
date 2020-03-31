@@ -1,7 +1,10 @@
 package br.com.devfinder.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Embedded;
+import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -10,20 +13,32 @@ import javax.persistence.InheritanceType;
  * @author Ronaldo Costa
  *
  */
+@Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public abstract class Usuario {
+public abstract class Usuario implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
+	@Column(name = "EMAIL")
 	protected String email;
-	@Column(nullable=true)
+
+	@Column(name = "FOTO", nullable = true)
 	protected String foto;
+
+	@Column(name = "SENHA", nullable = false)
 	protected String senha;
+
 	@Embedded
 	protected Endereco endereco;
-	@Column(nullable=true)
+
+	@Column(name = "SITE", nullable = true)
 	protected String site;
-	@Column(nullable=true)
+
+	@Column(name = "TELEFONE", nullable = false)
 	protected String telefone;
+
+	@Column(name = "APRESENTACAO", nullable = false)
 	protected String apresentacao;
 
 	public Usuario() {

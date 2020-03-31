@@ -8,7 +8,7 @@ import br.com.devfinder.model.Desenvolvedor;
  * @author Ronaldo Costa
  *
  */
-public interface DesenvolvedorRepository extends JpaRepository<Desenvolvedor, String>{
+public interface DesenvolvedorRepository extends JpaRepository<Desenvolvedor, String> {
 
 	Desenvolvedor findByNome(String nome);
 }

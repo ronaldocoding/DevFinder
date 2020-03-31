@@ -34,18 +34,20 @@ public class DesenvolvedorHabilidadeController {
 		return service.saveHabilidades(habilidades);
 	}
 
-	@GetMapping("/desenvolvedorHabilidades")
-	public List<DesenvolvedorHabilidade> findAllHabilidades() {
-		return service.getHabilidades();
+	@GetMapping("/desenvolvedorHabilidades/{emailDesenvolvedor}")
+	public List<DesenvolvedorHabilidade> findAllHabilidades(@PathVariable String emailDesenvolvedor) {
+		return service.getHabilidades(emailDesenvolvedor);
 	}
 
-	@GetMapping("/desenvolvedorHabilidadeById/{id}")
-	public DesenvolvedorHabilidade findHabilidadeById(@PathVariable DesenvolvedorHabilidadeId id) {
-		return service.getHabilidadeById(id);
+	@GetMapping("/desenvolvedorHabilidadeById/{emailDesenvolvedor}/{habilidade}")
+	public DesenvolvedorHabilidade findHabilidadeById(@PathVariable String emailDesenvolvedor, @PathVariable String habilidade) {
+		DesenvolvedorHabilidadeId desenvolvedorHabilidadeId = new DesenvolvedorHabilidadeId(emailDesenvolvedor, habilidade);
+		return service.getHabilidadeById(desenvolvedorHabilidadeId);
 	}
 
-	@DeleteMapping("/delete/{id}")
-	public String deleteHabilidade(@PathVariable DesenvolvedorHabilidadeId id) {
-		return service.deleteHabilidade(id);
+	@DeleteMapping("/deleteDesenvolvedorHabilidade/{emailDesenvolvedor}/{habilidade}")
+	public String deleteHabilidade(@PathVariable String emailDesenvolvedor, @PathVariable String habilidade) {
+		DesenvolvedorHabilidadeId desenvolvedorHabilidadeId = new DesenvolvedorHabilidadeId(emailDesenvolvedor, habilidade);
+		return service.deleteHabilidade(desenvolvedorHabilidadeId);
 	}
 }

@@ -34,18 +34,23 @@ public class DesenvolvedorAreaAtuacaoController {
 		return service.saveAreas(areas);
 	}
 
-	@GetMapping("/desenvolvedorAreasAtuacao")
-	public List<DesenvolvedorAreaAtuacao> findAllAreas() {
-		return service.getAreas();
+	@GetMapping("/desenvolvedorAreasAtuacao/{emailDesenvolvedor}")
+	public List<DesenvolvedorAreaAtuacao> findAllAreas(@PathVariable String emailDesenvolvedor) {
+		return service.getAreas(emailDesenvolvedor);
 	}
 
-	@GetMapping("/desenvolvedorAreaAtuacaoById/{id}")
-	public DesenvolvedorAreaAtuacao findAreaById(@PathVariable DesenvolvedorAreaAtuacaoId id) {
-		return service.getAreaById(id);
+	@GetMapping("/desenvolvedorAreaAtuacaoById/{emailDesenvolvedor}/{areaAtuacao}")
+	public DesenvolvedorAreaAtuacao findAreaById(@PathVariable String emailDesenvolvedor,
+			@PathVariable String areaAtuacao) {
+		DesenvolvedorAreaAtuacaoId desenvolvedorAreaAtuacaoId = new DesenvolvedorAreaAtuacaoId(emailDesenvolvedor,
+				areaAtuacao);
+		return service.getAreaById(desenvolvedorAreaAtuacaoId);
 	}
 
-	@DeleteMapping("/delete/{id}")
-	public String deleteArea(@PathVariable DesenvolvedorAreaAtuacaoId id) {
-		return service.deleteArea(id);
+	@DeleteMapping("/deleteDesenvolvedorAreaAtuacao/{emailDesenvolvedor}/{areaAtuacao}")
+	public String deleteArea(@PathVariable String emailDesenvolvedor, @PathVariable String areaAtuacao) {
+		DesenvolvedorAreaAtuacaoId desenvolvedorAreaAtuacaoId = new DesenvolvedorAreaAtuacaoId(emailDesenvolvedor,
+				areaAtuacao);
+		return service.deleteArea(desenvolvedorAreaAtuacaoId);
 	}
 }

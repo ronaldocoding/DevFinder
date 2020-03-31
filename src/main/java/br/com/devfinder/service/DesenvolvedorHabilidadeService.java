@@ -21,29 +21,29 @@ public class DesenvolvedorHabilidadeService {
 
 	/**
 	 * Métodos POST
-	 * */
+	 */
 	public DesenvolvedorHabilidade saveHabilidade(DesenvolvedorHabilidade habilidade) {
 		return repository.save(habilidade);
 	}
-	
+
 	public List<DesenvolvedorHabilidade> saveHabilidades(List<DesenvolvedorHabilidade> habilidades) {
 		return repository.saveAll(habilidades);
 	}
-	
+
 	/**
 	 * Métodos GET
-	 * */
-	public List<DesenvolvedorHabilidade> getHabilidades() {
-		return repository.findAll();
+	 */
+	public List<DesenvolvedorHabilidade> getHabilidades(String emailDesenvolvedor) {
+		return repository.findAllByDesenvolvedor(emailDesenvolvedor);
 	}
-	
+
 	public DesenvolvedorHabilidade getHabilidadeById(DesenvolvedorHabilidadeId id) {
 		return repository.findById(id).orElse(null);
 	}
-	
+
 	/**
 	 * Método DELETE
-	 * */
+	 */
 	public String deleteHabilidade(DesenvolvedorHabilidadeId id) {
 		repository.deleteById(id);
 		return "desenvolvedorHabilidade deletada: " + id;

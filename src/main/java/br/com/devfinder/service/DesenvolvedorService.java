@@ -2,6 +2,7 @@ package br.com.devfinder.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.devfinder.model.Desenvolvedor;
@@ -14,45 +15,46 @@ import br.com.devfinder.repository.DesenvolvedorRepository;
 @Service
 public class DesenvolvedorService {
 
+	@Autowired
 	private DesenvolvedorRepository repository;
-	
+
 	/**
 	 * Métodos POST
-	 * */
+	 */
 	public Desenvolvedor saveDesenvolvedor(Desenvolvedor desenvolvedor) {
 		return repository.save(desenvolvedor);
 	}
-	
+
 	public List<Desenvolvedor> saveDesenvolvedores(List<Desenvolvedor> desenvolvedores) {
 		return repository.saveAll(desenvolvedores);
 	}
-	
+
 	/**
 	 * Métodos GET
-	 * */
+	 */
 	public List<Desenvolvedor> getDesenvolvedores() {
 		return repository.findAll();
 	}
-	
+
 	public Desenvolvedor getDesenvolvedorById(String email) {
 		return repository.findById(email).orElse(null);
 	}
-	
+
 	public Desenvolvedor getDesenvolvedorByNome(String nome) {
 		return repository.findByNome(nome);
 	}
-	
+
 	/**
 	 * Método DELETE
-	 * */
+	 */
 	public String deleteDesenvolvedor(String email) {
 		repository.deleteById(email);
 		return "desenvolvedor deletado: " + email;
 	}
-	
+
 	/**
 	 * Método PUT
-	 * */
+	 */
 	public Desenvolvedor updateDesenvolvedor(Desenvolvedor desenvolvedor) {
 		Desenvolvedor existingDesenvolvedor = repository.findById(desenvolvedor.getEmail()).orElse(null);
 		existingDesenvolvedor.setFoto(desenvolvedor.getFoto());

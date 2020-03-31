@@ -18,36 +18,36 @@ public class DesenvolvedorNotificacaoService {
 
 	@Autowired
 	private DesenvolvedorNotificacaoRepository repository;
-	
+
 	/**
 	 * Métodos POST
-	 * */
+	 */
 	public DesenvolvedorNotificacao saveNotificacao(DesenvolvedorNotificacao notificacao) {
 		return repository.save(notificacao);
 	}
-	
+
 	public List<DesenvolvedorNotificacao> saveNotificacoes(List<DesenvolvedorNotificacao> notificacoes) {
 		return repository.saveAll(notificacoes);
 	}
-	
+
 	/**
 	 * Métodos GET
-	 * */
-	public List<DesenvolvedorNotificacao> getNotificacoes() {
-		return repository.findAll();
+	 */
+	public List<DesenvolvedorNotificacao> getNotificacoes(String emailDesenvolvedor) {
+		return repository.findAllByDesenvolvedor(emailDesenvolvedor);
 	}
-	
+
 	public DesenvolvedorNotificacao getNotificacaoById(DesenvolvedorNotificacaoId id) {
 		return repository.findById(id).orElse(null);
 	}
-	
-	public DesenvolvedorNotificacao getNotificacaoByTitulo(String titulo) {
-		return repository.findByTitulo(titulo);
+
+	public DesenvolvedorNotificacao getNotificacaoByTitulo(String emailEmpresa, String titulo) {
+		return repository.findByTitulo(emailEmpresa, titulo);
 	}
-	
+
 	/**
 	 * Método DELETE
-	 * */
+	 */
 	public String deleteNotificacao(DesenvolvedorNotificacaoId id) {
 		repository.deleteById(id);
 		return "desenvolvedorNotificacao deletada: " + id;
