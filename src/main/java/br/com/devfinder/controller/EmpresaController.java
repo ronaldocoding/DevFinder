@@ -44,7 +44,7 @@ public class EmpresaController {
 		return service.getEmpresaById(email);
 	}
 
-	@GetMapping("/empresa/{nomeFantasia}")
+	@GetMapping("/empresaByNomeFantasia/{nomeFantasia}")
 	public Empresa findEmpresatByNomeFantasia(@PathVariable String nomeFantasia) {
 		return service.getEmpresaByNomeFantasia(nomeFantasia);
 	}

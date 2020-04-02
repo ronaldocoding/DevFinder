@@ -46,7 +46,7 @@ public class EmpresaNotificacaoController {
 		return service.getNotificacaoById(empresaNotificacaoId);
 	}
 
-	@GetMapping("/empresaNotificacao/{emailEmpresa}/{titulo}")
+	@GetMapping("/empresaNotificacaoByTitulo/{emailEmpresa}/{titulo}")
 	public EmpresaNotificacao findNotificacaoByTitulo(@PathVariable String emailEmpresa, @PathVariable String titulo) {
 		return service.getNotificacaoByTitulo(emailEmpresa, titulo);
 	}

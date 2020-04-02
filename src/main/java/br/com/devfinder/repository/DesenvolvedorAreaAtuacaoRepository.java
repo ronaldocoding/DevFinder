@@ -15,6 +15,6 @@ import br.com.devfinder.model.ids.DesenvolvedorAreaAtuacaoId;
 public interface DesenvolvedorAreaAtuacaoRepository
 		extends JpaRepository<DesenvolvedorAreaAtuacao, DesenvolvedorAreaAtuacaoId> {
 
-	@Query(value = "SELECT * FROM DESENVOLVEDOR_AREA_ATUACAO daa WHERE daa.EMAIL_DESENVOLVEDOR = ?1", nativeQuery = true)
+	@Query(value = "SELECT * FROM DESENVOLVEDOR_AREA_ATUACAO WHERE EMAIL_DESENVOLVEDOR = ?1", nativeQuery = true)
 	List<DesenvolvedorAreaAtuacao> findAllByDesenvolvedor(String emailDesenvolvedor);
 }

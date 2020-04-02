@@ -26,7 +26,7 @@ public class DesafioHabilidade implements Serializable {
 	@EmbeddedId
 	private DesafioHabilidadeId id;
 
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumns({
 			@JoinColumn(name = "EMAIL_EMPRESA_DESAFIO", referencedColumnName = "EMAIL_EMPRESA", nullable = false, insertable = false, updatable = false),
 			@JoinColumn(name = "ID_DESAFIO", referencedColumnName = "ID", nullable = false, insertable = false, updatable = false) })

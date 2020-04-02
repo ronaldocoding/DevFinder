@@ -15,9 +15,9 @@ import br.com.devfinder.model.ids.DesenvolvedorNotificacaoId;
 public interface DesenvolvedorNotificacaoRepository
 		extends JpaRepository<DesenvolvedorNotificacao, DesenvolvedorNotificacaoId> {
 
-	@Query(value = "SELECT FROM DESENVOLVEDOR_NOTIFICACAO dn WHERE dn.EMAIL_DESENVOLVEDOR = ?1 AND dn.TITULO = ?2", nativeQuery = true)
+	@Query(value = "SELECT * FROM DESENVOLVEDOR_NOTIFICACAO WHERE EMAIL_DESENVOLVEDOR = ?1 AND TITULO = ?2", nativeQuery = true)
 	DesenvolvedorNotificacao findByTitulo(String emailDesenvolvedor, String titulo);
 
-	@Query(value = "SELECT * FROM DESENVOLVEDOR_NOTIFICACAO dn WHERE dn.EMAIL_DESENVOLVEDOR = ?1", nativeQuery = true)
+	@Query(value = "SELECT * FROM DESENVOLVEDOR_NOTIFICACAO WHERE EMAIL_DESENVOLVEDOR = ?1", nativeQuery = true)
 	List<DesenvolvedorNotificacao> findAllByDesenvolvedor(String emailDesenvolvedor);
 }

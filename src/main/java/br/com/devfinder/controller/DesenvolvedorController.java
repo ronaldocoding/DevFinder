@@ -44,7 +44,7 @@ public class DesenvolvedorController {
 		return service.getDesenvolvedorById(email);
 	}
 
-	@GetMapping("/desenvolvedor/{nome}")
+	@GetMapping("/desenvolvedorByNome/{nome}")
 	public Desenvolvedor findDesenvolvedorByNome(@PathVariable String nome) {
 		return service.getDesenvolvedorByNome(nome);
 	}

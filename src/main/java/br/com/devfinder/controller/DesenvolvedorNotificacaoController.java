@@ -47,7 +47,7 @@ public class DesenvolvedorNotificacaoController {
 		return service.getNotificacaoById(desenvolvedorNotificacaoId);
 	}
 
-	@GetMapping("/desenvolvedorNotificacao/{emailDesenvolvedor}/{titulo}")
+	@GetMapping("/desenvolvedorNotificacaoByTitulo/{emailDesenvolvedor}/{titulo}")
 	public DesenvolvedorNotificacao findNotificacaoByTitulo(@PathVariable String emailDesenvolvedor,
 			@PathVariable String titulo) {
 		return service.getNotificacaoByTitulo(emailDesenvolvedor, titulo);

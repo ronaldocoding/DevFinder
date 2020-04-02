@@ -20,7 +20,7 @@ public abstract class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name = "EMAIL")
+	@Column(name = "EMAIL", length = 55)
 	protected String email;
 
 	@Column(name = "FOTO", nullable = true)
@@ -35,7 +35,7 @@ public abstract class Usuario implements Serializable {
 	@Column(name = "SITE", nullable = true)
 	protected String site;
 
-	@Column(name = "TELEFONE", nullable = false)
+	@Column(name = "TELEFONE", length = 12, nullable = false)
 	protected String telefone;
 
 	@Column(name = "APRESENTACAO", nullable = false)

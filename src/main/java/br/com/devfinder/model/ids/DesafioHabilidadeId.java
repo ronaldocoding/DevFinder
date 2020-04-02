@@ -14,13 +14,13 @@ public class DesafioHabilidadeId implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	@Column(name = "EMAIL_EMPRESA_DESAFIO", nullable = false)
+	@Column(name = "EMAIL_EMPRESA_DESAFIO", length = 55, nullable = false)
 	private String emailEmpresa;
 	
 	@Column(name = "ID_DESAFIO", nullable = false)
 	private int idDesafio;
 	
-	@Column(name = "HABILIDADE", nullable = false)
+	@Column(name = "HABILIDADE", length = 55, nullable = false)
 	private String habilidade;
 
 	public DesafioHabilidadeId() {

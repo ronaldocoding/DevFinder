@@ -1,7 +1,6 @@
 package br.com.devfinder.model;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -12,7 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import br.com.devfinder.model.ids.DesafioId;
@@ -29,7 +27,7 @@ public class Desafio implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name = "EMAIL_EMPRESA")
+	@Column(name = "EMAIL_EMPRESA", length = 55)
 	private String emailEmpresa;
 
 	@Id
@@ -37,11 +35,11 @@ public class Desafio implements Serializable {
 	@Column(name = "ID")
 	private int id;
 
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "EMAIL_EMPRESA", referencedColumnName = "EMAIL", nullable = false, insertable = false, updatable = false)
 	private Empresa empresa;
 
-	@Column(name = "NOME", nullable = false)
+	@Column(name = "NOME", length = 55, nullable = false)
 	private String nome;
 
 	@Column(name = "AREA_DESENVOLVIMENTO", length = 55, nullable = false)
@@ -55,12 +53,6 @@ public class Desafio implements Serializable {
 
 	@Column(name = "HORARIO_FIM", length = 5, nullable = false)
 	private String horarioFim;
-
-	@OneToMany(mappedBy = "desafio", cascade = CascadeType.ALL)
-	private List<DesafioHabilidade> habilidades;
-
-	@OneToMany(mappedBy = "desafio", cascade = CascadeType.ALL)
-	private List<Solucao> solucoes;
 
 	public Desafio() {
 	}
@@ -138,21 +130,5 @@ public class Desafio implements Serializable {
 
 	public void setHorarioFim(String horarioFim) {
 		this.horarioFim = horarioFim;
-	}
-
-	public List<DesafioHabilidade> getHabilidades() {
-		return habilidades;
-	}
-
-	public void setHabilidades(List<DesafioHabilidade> habilidades) {
-		this.habilidades = habilidades;
-	}
-
-	public List<Solucao> getSolucoes() {
-		return solucoes;
-	}
-
-	public void setSolucoes(List<Solucao> solucoes) {
-		this.solucoes = solucoes;
 	}
 }

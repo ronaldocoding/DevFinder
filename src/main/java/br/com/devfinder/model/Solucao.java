@@ -27,7 +27,7 @@ public class Solucao implements Serializable {
 	@EmbeddedId
 	private SolucaoId id;
 
-	@Column(name = "NOME", nullable = false)
+	@Column(name = "NOME", length = 55, nullable = false)
 	private String nome;
 
 	@Column(name = "LINK_GITHUB", nullable = false)
@@ -45,11 +45,11 @@ public class Solucao implements Serializable {
 	@Column(name = "HORARIO_ENVIO", length = 5, nullable = false)
 	private String horarioEnvio;
 
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "EMAIL_DESENVOLVEDOR", referencedColumnName = "EMAIL", nullable = false, insertable = false, updatable = false)
 	private Desenvolvedor desenvolvedor;
 
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumns(value = {
 			@JoinColumn(name = "EMAIL_EMPRESA_DESAFIO", referencedColumnName = "EMAIL_EMPRESA", nullable = false, insertable = false, updatable = false),
 			@JoinColumn(name = "ID_DESAFIO", referencedColumnName = "ID", nullable = false, insertable = false, updatable = false) })

@@ -14,9 +14,9 @@ import br.com.devfinder.model.ids.SolucaoId;
  */
 public interface SolucaoRepository extends JpaRepository<Solucao, SolucaoId> {
 	
-	@Query(value = "SELECT * FROM SOLUCAO s WHERE s.EMAIL_EMPRESA_DESAFIO = ?1 AND s.ID_DESAFIO = ?2", nativeQuery = true)
+	@Query(value = "SELECT * FROM SOLUCAO WHERE EMAIL_EMPRESA_DESAFIO = ?1 AND ID_DESAFIO = ?2", nativeQuery = true)
 	List<Solucao> findAllByDesafio(String emailEmpresa, int idDesafio);
 	
-	@Query(value = "SELECT * FROM SOLUCAO s WHERE s.EMAIL_DESENVOLVEDOR = ?1", nativeQuery = true)
+	@Query(value = "SELECT * FROM SOLUCAO WHERE EMAIL_DESENVOLVEDOR = ?1", nativeQuery = true)
 	List<Solucao> findAllByDesenvolvedor(String emailDesenvolvedor);
 }

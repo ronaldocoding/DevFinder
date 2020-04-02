@@ -27,7 +27,7 @@ public class EmpresaNotificacao implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name = "EMAIL_EMPRESA")
+	@Column(name = "EMAIL_EMPRESA", length = 55)
 	private String emailEmpresa;
 
 	@Id
@@ -36,7 +36,7 @@ public class EmpresaNotificacao implements Serializable {
 	private int id;
 
 	@Id
-	@Column(name = "TITULO")
+	@Column(name = "TITULO", length = 125)
 	private String titulo;
 
 	@Column(name = "DATA_ENVIO", length = 11, nullable = false)
@@ -48,7 +48,7 @@ public class EmpresaNotificacao implements Serializable {
 	@Column(name = "MENSAGEM", nullable = false)
 	private String mensagem;
 
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "EMAIL_EMPRESA", referencedColumnName = "EMAIL", nullable = false, insertable = false, updatable = false)
 	private Empresa empresa;
 

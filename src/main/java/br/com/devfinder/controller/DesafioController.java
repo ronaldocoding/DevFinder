@@ -46,7 +46,7 @@ public class DesafioController {
 		return service.getDesafioById(desafioId);
 	}
 
-	@GetMapping("/desafio/{nome}")
+	@GetMapping("/desafioByNome/{nome}")
 	public Desafio findDesafioByNome(@PathVariable String nome) {
 		return service.getDesafioByNome(nome);
 	}

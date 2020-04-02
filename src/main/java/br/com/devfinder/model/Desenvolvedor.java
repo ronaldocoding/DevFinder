@@ -1,12 +1,9 @@
 package br.com.devfinder.model;
 
 import java.io.Serializable;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -19,7 +16,7 @@ public class Desenvolvedor extends Usuario implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Column(name = "NOME", nullable = false)
+	@Column(name = "NOME", length = 55, nullable = false)
 	private String nome;
 
 	@Column(name = "CPF", length = 11, nullable = false)
@@ -40,18 +37,6 @@ public class Desenvolvedor extends Usuario implements Serializable {
 	@Column(name = "CURRICULO", nullable = true)
 	private String curriculo;
 
-	@OneToMany(mappedBy = "desenvolvedor", cascade = CascadeType.ALL)
-	private List<DesenvolvedorAreaAtuacao> areasAtuacao;
-
-	@OneToMany(mappedBy = "desenvolvedor", cascade = CascadeType.ALL)
-	private List<DesenvolvedorHabilidade> habilidade;
-
-	@OneToMany(mappedBy = "desenvolvedor", cascade = CascadeType.ALL)
-	private List<DesenvolvedorNotificacao> notificacoes;
-
-	@OneToMany(mappedBy = "desenvolvedor", cascade = CascadeType.ALL)
-	private List<Solucao> solucoes;
-
 	public Desenvolvedor() {
 		super();
 	}
@@ -68,7 +53,7 @@ public class Desenvolvedor extends Usuario implements Serializable {
 		this.gitHub = gitHub;
 		this.curriculo = curriculo;
 	}
-	
+
 	public String getNome() {
 		return nome;
 	}
@@ -123,37 +108,5 @@ public class Desenvolvedor extends Usuario implements Serializable {
 
 	public void setCurriculo(String curriculo) {
 		this.curriculo = curriculo;
-	}
-
-	public List<DesenvolvedorAreaAtuacao> getAreasAtuacao() {
-		return areasAtuacao;
-	}
-
-	public void setAreasAtuacao(List<DesenvolvedorAreaAtuacao> areasAtuacao) {
-		this.areasAtuacao = areasAtuacao;
-	}
-
-	public List<DesenvolvedorHabilidade> getHabilidade() {
-		return habilidade;
-	}
-
-	public void setHabilidade(List<DesenvolvedorHabilidade> habilidade) {
-		this.habilidade = habilidade;
-	}
-
-	public List<DesenvolvedorNotificacao> getNotificacoes() {
-		return notificacoes;
-	}
-
-	public void setNotificacoes(List<DesenvolvedorNotificacao> notificacoes) {
-		this.notificacoes = notificacoes;
-	}
-
-	public List<Solucao> getSolucoes() {
-		return solucoes;
-	}
-
-	public void setSolucoes(List<Solucao> solucoes) {
-		this.solucoes = solucoes;
 	}
 }

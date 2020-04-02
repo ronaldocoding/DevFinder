@@ -44,7 +44,7 @@ public class DesenvolvedorNotificacao {
 	@Column(name = "MENSAGEM", nullable = false)
 	private String mensagem;
 
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "EMAIL_DESENVOLVEDOR", referencedColumnName = "EMAIL", nullable = false, insertable = false, updatable = false)
 	private Desenvolvedor desenvolvedor;
 

@@ -14,10 +14,10 @@ public class DesenvolvedorHabilidadeId implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	@Column(name = "EMAIL_DESENVOLVEDOR", nullable = false)
+	@Column(name = "EMAIL_DESENVOLVEDOR", length = 55, nullable = false)
 	private String emailDesenvolvedor;
 	
-	@Column(name = "HABILIDADE", nullable = false)
+	@Column(name = "HABILIDADE", length = 55, nullable = false)
 	private String habilidade;
 
 	public DesenvolvedorHabilidadeId() {

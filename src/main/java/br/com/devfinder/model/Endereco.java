@@ -15,22 +15,22 @@ public class Endereco implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	@Column(name = "ESTADO", nullable = false)
+	@Column(name = "ESTADO", length = 55, nullable = false)
 	private String estado;
 	
-	@Column(name = "CIDADE", nullable = false)
+	@Column(name = "CIDADE", length = 55, nullable = false)
 	private String cidade;
 	
-	@Column(name = "BAIRRO", nullable = true)
+	@Column(name = "BAIRRO", length = 55, nullable = true)
 	private String bairro;
 	
-	@Column(name = "RUA", nullable = false)
+	@Column(name = "RUA", length = 55, nullable = false)
 	private String rua;
 	
-	@Column(name = "NUMERO", nullable = false)
+	@Column(name = "NUMERO", length = 55, nullable = false)
 	private String numero;
 	
-	@Column(name = "CEP", nullable = false)
+	@Column(name = "CEP", length = 9, nullable = false)
 	private String cep;
 
 	public Endereco() {

@@ -14,13 +14,13 @@ public class SolucaoId implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	@Column(name = "EMAIL_DESENVOLVEDOR", nullable = false)
+	@Column(name = "EMAIL_DESENVOLVEDOR", length = 55,  nullable = false)
 	private String emailDesenvolvedor;
 	
-	@Column(name = "EMAIL_EMPRESA_DESAFIO", nullable = false)
+	@Column(name = "EMAIL_EMPRESA_DESAFIO", length = 55, nullable = false)
 	private String emailEmpresa;
 	
-	@Column(name = "ID_DESAFIO" , nullable = false)
+	@Column(name = "ID_DESAFIO", nullable = false)
 	private int idDesafio;
 
 	public SolucaoId() {
