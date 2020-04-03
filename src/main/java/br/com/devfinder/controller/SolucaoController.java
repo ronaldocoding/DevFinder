@@ -34,12 +34,12 @@ public class SolucaoController {
 		return service.saveSolucoes(solucoes);
 	}
 
-	@GetMapping("/solucoes/{emailEmpresa}/{idDesafio}")
+	@GetMapping("/solucoesByDesafio/{emailEmpresa}/{idDesafio}")
 	public List<Solucao> findAllHabilidadesByDesafio(@PathVariable String emailEmpresa, @PathVariable int idDesafio) {
 		return service.getSolucoesByDesafio(emailEmpresa, idDesafio);
 	}
 
-	@GetMapping("/solucoes/{emailDesenvolvedor}")
+	@GetMapping("/solucoesByDesenvolvedor/{emailDesenvolvedor}")
 	public List<Solucao> findAllHabilidadesByDesenvolvedor(@PathVariable String emailDesenvolvedor) {
 		return service.getSolucoesByDesenvolvedor(emailDesenvolvedor);
 	}
