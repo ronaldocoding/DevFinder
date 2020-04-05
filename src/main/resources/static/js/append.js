@@ -41,8 +41,8 @@ var $sidebar_dev=$('<div class="modal left fade" id="sidebar" tabindex="-1" role
                    '</a></li><li><a href="homepage.html">'+
                    '<span class="icon"><i class="fas fa-sign-out-alt"></i></span>'+
                    '<span class="title">Sair</span>'+
-                   '</a></li><li><a href="#">'+
-                   '</a></li></ul></div></div></div></div>');
+                   '</a>'+
+                   '</ul></div></div></div></div>');
 var $sidebar_emp=$('');
 var $defaultnav=$('<script> var logo= function(){if($( window ).width()<=690){$(".logo").addClass("small");}else{$(".logo").removeClass("small");}};$(window).on("resize", logo);$(window).on("load", logo);</script>'+
                   '<nav class="top_navbar-side">'+

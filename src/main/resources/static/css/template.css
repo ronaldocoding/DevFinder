@@ -53,6 +53,11 @@ button{
 .azul{
     background-image: linear-gradient(to right, #24c6dc, #514a9d); 
 }
+
+.vermelho{
+      background-image: linear-gradient(to left, #190A05, #F00000);
+}
+
 .bg-degrade{  
     background: linear-gradient(218deg, rgba(84,222,218,1) 11%, rgba(73,194,208,1) 43%, rgba(31,136,180,1) 100%) !important;
     color: #fff;
@@ -302,11 +307,12 @@ container{
 * Get free snippets on bootpen.com
 *******************************/
 .modal.left .modal-dialog {
+    
     position: fixed;
     margin: 0;
     top: 0;
     left: 0;
-    width: 270px;
+    width: 310px;
     height: 100%;
     -webkit-transform: translate3d(0%, 0, 0);
     -ms-transform: translate3d(0%, 0, 0);
@@ -315,12 +321,14 @@ container{
 }
 
 .modal.left .modal-content{
+    background-color: #e3e3e3;
     height: 100%;
 }
 
 .modal.left .modal-body {
-    margin-left: -55px;
-    margin-top: -17px; 
+    width: 330px;
+    margin-left: -65px;
+    margin-top: -27px;
 }
 .modal.left::after{
     display:none;
@@ -341,20 +349,69 @@ container{
 }
 
 #menu-nav{
-    width: 100%;
+    width: 103.4%;
     display: flex;
+    margin-bottom: 0;
+    padding: 10px;
+    padding-bottom: 3px;
+   background-color:#fff;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
 }
 #menu-list li a{
-    text-align: center;
-    font-stretch: expanded;
     text-transform: uppercase;
-    color: #000;
+    text-decoration: none;
     list-style: none;
     text-decoration: none;
     font-size: 15px;
+     color: inherit;
 }
-#menu-list li a i{
-    padding: 30px !important;
+
+#menu-list li {
+    margin-right: -10px;
+    color: #2e2d30 !important;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  position: relative;
+  -webkit-transition-property: color;
+  transition-property: color;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+}
+#menu-list li:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to left, #24c6dc, #514a9d); 
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transform-origin: 0 50%;
+  transform-origin: 0 50%;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+#menu-list li:hover, #menu-list li:focus, #menu-list li:active{
+  color: #fff !important;
+}
+#menu-list li:hover:before, #menu-list li:focus:before, #menu-list li:active:before {
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+  -webkit-transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+  transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+}
+
+
+.icon{
+     margin-right: 35px;
 }
 
 #menu-list li{
@@ -630,4 +687,15 @@ tr{
     border-radius: 5px;
     background-color: #46a3bb;
     color: #ffffff;
+}
+
+/****CONFIGURAÇÕES*******************/
+
+.img-config, .img-config img{
+    border-radius: 50%;
+}
+
+.img-config{
+    background: none;
+    border: none;
 }

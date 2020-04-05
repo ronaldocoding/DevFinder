@@ -97,7 +97,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Submeter solução</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Alterar desafio</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -129,6 +129,27 @@
 </div>
   
 	</div>
+    
+    <div class="modal fade" id="exclusaoDesafio" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header border-0">
+                <h5 class="modal-title" id="exampleModalLongTitle">Exclusão de desafio</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                Tem certeza que deseja excluir esse desafio? Essa ação não poderá ser desfeita.
+              </div>
+              <div class="modal-footer border-0">
+                <button type="button" class="btn-azul" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="modal-btn vermelho" data-dismiss="modal">Excluir</button>
+              </div>
+            </div>
+          </div>
+        </div>
+    
 <script type="text/javascript" src="feed.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 
@@ -143,9 +164,10 @@
         list_habilidades += '<span class="tag-list background-gray">'+habilidades[i]+'</span>'
               
       }
-      var btn = '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Submeter</button>'
+      var btn1 = '<button type="button" class="btn-azul" data-toggle="modal" data-target="#exclusaoDesafio">Excluir</button>'
+      var btn2 = '<button type="button" class="modal-btn azul" data-toggle="modal" data-target="#exampleModal">Alterar</button>'
       text = '<div class="post"> <div class="row"> <div class="col-sm-12"> <div class="col-sm-3"> <img src="http://placehold.it/260x180" alt=""> </div> <div class="col-sm-9"> ' + titulo + texto + '<div class="cell-list-content-icon">'+area+remoto+'</div> <div class="cell-list-content-tag">'+ list_habilidades+
-        '</div> </div> </div> </div> <div class="row"> <div class="col-sm-12 line"> <div class="col-sm-4">'+data+ '</div> <div class="col-sm-7 offset-sm-1">'+btn+ '</div></div></div></div>'
+        '</div> </div> </div> </div> <div class="row"> <div class="col-sm-12 line"> <div class="col-sm-4">'+data+ '</div> <div class="col-sm-7 offset-sm-1">'+btn2+btn1+ '</div></div></div></div>'
       $('.area_post').append(text)
   };
 
