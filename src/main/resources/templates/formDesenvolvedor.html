@@ -1,13 +1,13 @@
 ﻿<!doctype html>
 <head>
-    <link rel="stylesheet" type="text/css" href="css/template.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/template.css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
 	<script src="http://jqueryvalidation.org/files/dist/jquery.validate.js"></script>
-	<script type="text/javascript" src="js/validacoes.js"></script>
+	<script type="text/javascript" src="../static/js/validacoes.js"></script>
 </head>
 <body>
     <div class="defaultnav"></div>
@@ -184,8 +184,8 @@
                     </div>
 					<div style="overflow:auto;">
   						<div>
-    							<button type="button" id="prevBtn" onclick="nextPrev(-1)">Anterior</button>
-    							<button type="button" id="nextBtn" onclick="nextPrev(1)">Proximo</button>
+    							<button type="button" id="prevBtn" onclick="nextPrev(-1)" class="btn-azul">Anterior</button>
+    							<button type="button" id="nextBtn" class="modal-btn azul" onclick="nextPrev(1)">Proximo</button>
   						</div>
 					</div>
 
@@ -207,7 +207,7 @@
         
     <footer class="footer"></footer>
 	</div>
-	<script src="js/append.js"></script> 
-    <script src="js/formularios.js"></script>    
+	<script src="../static/js/append.js"></script> 
+    <script src="../static/js/formularios.js"></script>    
 </body>
 </html>
