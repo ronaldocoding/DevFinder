@@ -1,5 +1,5 @@
 var $footer = $('<footer class="container py-5 px-5"><div class="row">'+
-                '<div class="col-12 col-md text-center"><img class="img-fluid noturno" src="../static/imgs/logoNoturna.png"></div>'+
+                '<div class="col-12 col-md text-center"><img class="img-fluid noturno" th:src="@{/imgs/logoNoturna.png}"></div>'+
                 '<div class="col-6 col-md"><h5>Desenvolvedores</h5>'+
                 '<ul class="list-unstyled text-small">'+ 
                 '<li><a href="https://github.com/Erigoddess">Erica Medeiros</a></li>'+
@@ -15,7 +15,7 @@ var $topnav=$('<script> var logo= function(){if($( window ).width()<=710){$(".lo
               '<div class="container demo"><div class="top_navbar-side"><div class="top_menu-side">'+
               '<ul><li><div class="hamburger-side btn-degrade azul" data-toggle="modal" data-target="#sidebar">'+
               '<div class="one"></div><div class="two"></div><div class="three"></div></div></li><li>'+
-              '<img src="../static/imgs/logo.png"  class="logo"></li></ul>'+
+              '<img th:src="@{/imgs/logo.png}"  class="logo"></li></ul>'+
               '<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"'+ 
               'aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">'+
               '<span class="navbar-toggler-icon"></span></button>'+
@@ -30,7 +30,7 @@ var $sidebar_dev=$('<div class="modal left fade" id="sidebar" tabindex="-1" role
                    '<div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-body">'+
                    '<ul id="menu-nav"><li><div class="hamburger-side btn-degrade azul" data-toggle="modal" data-target="#sidebar">'+
               '<div class="one"></div><div class="two"></div><div class="three"></div></div></li><li>'+
-              '<img src="../static/imgs/logo.png"  class="logo"></li></ul>'+
+              '<img th:src="@{/imgs/logo.png}"  class="logo"></li></ul>'+
                    '<ul id="menu-list">'+
                    '<li><a href="devInicio.html"><span class="icon"><i class="fa fa-home" aria-hidden="true"></i></span><span class="title">Início</span></a></li>'+
                    '<li><a href="devDesafiosInscritos.html"><span class="icon"><i class="fa fa-code"></i></span><span class="title">Desafios Inscritos</span></a></li><li><a href="devConfiguracoes.html">'+
@@ -45,7 +45,7 @@ var $sidebar_emp=$('<div class="modal left fade" id="sidebar" tabindex="-1" role
                    '<div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-body">'+
                    '<ul id="menu-nav"><li><div class="hamburger-side btn-degrade azul" data-toggle="modal" data-target="#sidebar">'+
               '<div class="one"></div><div class="two"></div><div class="three"></div></div></li><li>'+
-              '<img src="../static/imgs/logo.png"  class="logo"></li></ul>'+
+              '<img th:src="@{/imgs/logo.png}""  class="logo"></li></ul>'+
                    '<ul id="menu-list">'+
                    '<li><a href="empInicio.html"><span class="icon"><i class="fa fa-home" aria-hidden="true"></i></span><span class="title">Início</span></a></li>'+
                    '<li><a href="empMeusDesafios.html"><span class="icon"><i class="fa fa-code"></i></span><span class="title">Meus desafios</span></a></li><li><a href="empConfiguracoes.html">'+
