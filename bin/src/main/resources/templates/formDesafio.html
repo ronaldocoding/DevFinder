@@ -1,14 +1,12 @@
 ﻿<!doctype html>
-<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
 <head>
-    <link rel="stylesheet" type="text/css" th:href="@{css/template.css}">
+    <link rel="stylesheet" type="text/css" href="css/template.css">
     
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
-	<meta charset="utf-8">
 </head>
 <body>
     <div class="defaultnav"></div>
@@ -21,56 +19,41 @@
 					<h3>Publicar um desafio</h3>
 				</div>
 
-				<form class="col-12" id="regForm" action="#" th:action="@{/addDesafio}" th:object="${desafio}" method="post">
+				<form class="col-12" id="regForm" action="">
 					
 					<div class="tab">
+						<div class="form-group"><input type="text" class="form-control" placeholder="Nome do desafio" oninput="this.className = ''"></div>
 						<div class="form-group">
-							<input type="text" id="nameDesafio" th:field="*{nome}" class="form-control" placeholder="Nome do desafio">
-							<small>Esse campo é obrigatório</small>
-							<small>Insira um nome válido</small>
-							<div style="clear:both";></div>
-						</div>
-						<div class="form-group desc">
 							<label>Descrição:</label>
-							<textarea th:field="*{descricao}"class="form-control" oninput="this.className = ''"></textarea>
-							<small>Esse campo é obrigatório</small>
+							<textarea class="form-control" oninput="this.className = ''"></textarea>
 						</div>
 					</div>
 					<div class="tab">
 						<label> Término do desafio:</label>
-						<div class="form-group date" >
-							<input type="date" th:field="*{dataFim}">
-							<small>Essa campo é obrigatório</small>
+						<div class="form-group">
+							<input type="date">
 						 </div>
- 						<div class="form-group date">
+ 						<div class="form-group">
 							
-							<input type="time" placeholder="Data" th:field="*{horarioFim}">
-							<small>Esse campo é obrigatório</small>
-							<div style="clear:both;"></div>
+							<input type="time" placeholder="Data">
 						</div>
 					</div>
-					
 					<div class="tab">			
-						<div class="form-group select">
-							<select class="form-control" th:field="*{areaDesenvolvimento}">
-                                <option th:value="vazio">Selecione as áreas de desenvolvimento</option>
-                                <option th:value="'Front-end'">Front-end</option>
-                                <option th:value="'Back-end'">Back-end</option>
-                                <option th:value="'Full Stack'">Full Stack</option>
-                                <option th:value="'Mobile'">Mobile</option>
-                                <option th:value="'Data Science'">Data Science</option>
+						<div class="form-group">
+							<select class="form-control">
+                                <option>Selecione as áreas de desenvolvimento</option>
+                                <option>Front-end</option>
+                                <option>Back-end</option>
+                                <option>Full Stack</option>
+                                <option>Mobile</option>
+                                <option>Data Science</option>
                             </select>	
-                            <small>Esse campo é obrigatório</small>
 						</div>
- 						<div class="form-group select-esp">
+ 						<div class="form-group">
 							<select class="form-control" id="habilidades-select"><option>Selecione as Habilidades</option></select>
-                            <input style="display:none"; name="habilidade" id="habilidades" type="text" placeholder="">
-							<small>Esse campo é obrigatório</small>
+                            
 						</div>	
-						
-							
                         <table><tbody id="habilidades-tabela"></tbody></table>
-                        
 					</div>
                     
 					<div style="overflow:auto;">
@@ -88,7 +71,7 @@
 					</div>
 				</form>
 				
-                <script th:src="@{js/habilidades.js}"></script>  
+                <script src="js/habilidades.js"></script>  
 			</div>
 		</div>
 	</div>
@@ -96,8 +79,7 @@
     <footer class="footer"></footer>
 	</div>
     
-    <script th:src="@{js/formularios.js}"></script> 
-    <script th:src="@{js/append.js}"></script>    
-    <script th:src="@{js/validacoes.js}"></script>  
+    <script src="js/formularios.js"></script> 
+    <script src="js/append.js"></script>    
 </body>
 </html>

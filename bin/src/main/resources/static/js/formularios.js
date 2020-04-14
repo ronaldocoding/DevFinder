@@ -93,17 +93,6 @@ function validateForm() {
 
       }
     }
-    if(y[i].className == 'form-group desc'){
-    	var input = y[i].getElementsByTagName('textarea')[0];
-        if(input.value == ''){
-          small[0].style.display = "block";
-          valid=false;
-        }
-        else{
-          small[0].style.display = "none";
-        }
-      }
-
 
     if(y[i].className == 'form-group select'){
       var select = y[i].getElementsByTagName('select');
@@ -128,18 +117,6 @@ function validateForm() {
       else
         small[0].style.display = "none";
     }
-    
-    if(y[i].className == 'form-group date'){
-        var input = y[i].getElementsByTagName('input');
-        console.log('mds: '+input[0].value)
-        if(input[0].value == ''){
-          valid = false
-          input[0].className += " invalid"
-          small[0].style.display = "block";
-        }
-        else
-          small[0].style.display = "none";
-      }
     if(y[i].className == 'form-group'){
       var input = y[i].getElementsByTagName("input")[0];
       console.log(input);

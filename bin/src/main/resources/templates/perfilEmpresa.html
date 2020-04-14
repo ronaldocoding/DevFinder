@@ -1,0 +1,76 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="../static/css/template.css"/>
+         <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+        <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div class="topnav"></div>
+        <div class="bg-degrade">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 perfil-top p-4">
+                       <div class="row">
+                            <div class="col-sm-3 text-center">
+                                <svg width="100" height="100">
+                                    <circle cx="50" cy="50" r="50" fill="blue" />
+                                </svg>
+                                <h3 style="overflow-wrap: break-word">Nome social</h3>
+                           </div>
+                           <div class="col-sm-9" style="font-size: 16px">
+                                
+                               <p><span>Endereço: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</span></p>
+                               <p><span>Telefone: (aa) aaaa-aaaa</span></p>
+                               <p>Email: aaaaaaaaaaaaaa@gmail.com</p>
+                               <p><span>Ramo: sddfdfdsfsdfs</span></p>
+                               <p><span>232142 Desenvolvedores   ||  Vagas Remotas e Físicas</span></p>
+                        </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 border-top">
+                                <h2 class="text-center">Desafios</h2>
+                                <div class="area_post"></div>
+                            </div>      
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="footer"></footer>
+        </div> 
+        <div class="sidebardev"></div>
+        <script src="../static/js/append.js"></script>
+        <script>
+            var add_post = function(autor, titulo, area, habilidades, salario, remoto, texto, data){
+                titulo =  '<h4>'+titulo+'</h4>'
+                texto = '<p>'+texto+'</p>'
+                area = '<span> <i class="fab fa-dev"></i>' + area + '</span>'
+                remoto = '<span> <i class="fa fa-home" style="margin-right:10px;"></i>' + remoto +'</span>'
+                var list_habilidades='';
+                for (var i = 0; i < habilidades.length; i++) {
+                    list_habilidades += '<span class="tag-list background-gray">'+habilidades[i]+'</span>'
+
+                }
+                var btn = '<button type="button" class="btn btn-primary">Participar</button>'
+                text = '<div class="post"> <div class="row"> <div class="col-sm-12"> <div class="col-sm-3"> <img src="http://placehold.it/260x180" alt=""> </div> <div class="col-sm-9"> ' + titulo + texto + '<div class="cell-list-content-icon">'+area+remoto+'</div> <div class="cell-list-content-tag">'+ list_habilidades+
+                    '</div> </div> </div> </div> <div class="row"> <div class="col-sm-12 line"> <div class="col-sm-4">'+data+ '</div> <div class="col-sm-7 offset-sm-1">'+btn+ '</div></div></div></div>'
+                $('.area_post').append(text)
+            };
+
+            add_post('a', 'Homepage Estilosa', 'Front-end', ['HTML5', 'CSS3', 'Javascript', "Bootstrap 4"], 'e', 'Vaga remota', 'Faça uma homepage estilosa para um Pet Shop', 'Desafio até 10/03/2020');
+            add_post('a', 'Reconhecedor de emoções', 'Deep Learning', ['Python', 'Ternsor Flow', 'R', 'IDE Spy'], 'e', 'Vaga física', 'Faça um programa que seja capaz de reconhecer emoções', 'Desafio até 20/04/2020');
+            add_post('a', 'App de Matemática', 'Mobile', ['React Native', 'Javascript', 'Java', 'Kotlin'], 'e', 'Vaga física', 'Faça um app que ensine Matemática do Ensino Fundamental', 'Desafio até: 15/05/2020');
+            add_post('a', 'Sistema de Gestão Acadêmica', 'Full-stack', ['PHP', 'HTML5', 'CSS3', 'Javascript'], 'e', 'Vaga remota', 'Faça um sistema de gestão acadêmica na visão do professor e aluno', 'Desafio até 20/06/2020');
+        </script>
+    </body>
+</html>

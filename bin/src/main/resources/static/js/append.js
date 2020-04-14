@@ -3,7 +3,7 @@ var $footer = $('<footer class="container py-5 px-5"><div class="row">'+
                 '<div class="col-6 col-md"><h5>Desenvolvedores</h5>'+
                 '<ul class="list-unstyled text-small">'+ 
                 '<li><a href="https://github.com/Erigoddess">Erica Medeiros</a></li>'+
-                '<li><a href="https://github.com/MarlonFL15">Marlon de Faria</a></li>'+
+                '<li><a href="https://github.com/MarlonFL15">Marlon Faria</a></li>'+
                 '<li><a href="https://github.com/mnik3007">Monike Freitas</a></li>'+
                 '<li><a href="https://github.com/Ronaldo64">Ronaldo Costa</a></li></ul></div>'+
                 '<div class="col-6 col-md"><h5>Endereço</h5><ul class="list-unstyled text-small">'+

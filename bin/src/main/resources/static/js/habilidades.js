@@ -9,7 +9,7 @@ function cria(){
 
     hab.forEach(function(item, index){
         document.getElementById(idSelect).innerHTML += "<option>" +item+"</option>";
-        document.getElementById(idTabela).innerHTML += "<tr value=\""+item+"\""+ "id = \"op"+index+"\"><td>"+item+"</td><td>"+botaoX+"</td></tr>";
+        document.getElementById(idTabela).innerHTML += "<tr id = \"op"+index+"\"><td>"+item+"</td><td>"+botaoX+"</td></tr>";
     });  
 }
 
@@ -20,24 +20,15 @@ function adEventos(){
     for(i=0;i<hab.length;i++){
         console.log(tab[i]);
         tab[i].onclick=function(){
-        	var h = $('#habilidades').val()
             this.style.display="none";
-        	h = h.replace(this.getAttribute("value")+' ','')
-        	$('#habilidades').val(h)
         };
     }
 }
 function adiciona(index){
     if(index >= -1){
         var tab = document.getElementById(idTabela).getElementsByTagName("tr");
-        var h = $('#habilidades').val()
-        if(tab[index].style.display!="inline-block"){
-          tab[index].style.display="inline-block";
-          console.log(tab[index].getAttribute("value"))
-          h = h+tab[index].getAttribute("value")+' ';
-          $('#habilidades').val(h)
-          escolhido += 1;
-        }
+        tab[index].style.display="inline-block";
+        escolhido += 1;
     }
 }
 function deleta(index){
@@ -52,8 +43,7 @@ $('#habilidades-select').change(function(){
     adiciona($('#habilidades-select').prop('selectedIndex')-1)
 });
 
-/*$('#habilidades-tabela').click(function(){
+$('#habilidades-tabela').click(function(){
     console.log('uau');
     deleta($('#habilidades-select').prop('selectedIndex'))
 });
-*/

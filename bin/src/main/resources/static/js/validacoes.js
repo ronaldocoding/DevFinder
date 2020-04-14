@@ -1,11 +1,9 @@
 var ret;
 function validate(el){
-  
+  console.log(el.id)
+  console.log(el.name);
   if(el.name == 'nome')
-	  if(el.id="nameDesafio")
-		 return testeFrase(el.value)
-	  else
-        return testeString(el.value);
+    return testeString(el.value);
   
   if(el.id == 'cpf')
     return testeCPF(el.value);
@@ -18,9 +16,6 @@ function validate(el){
 
   if(el.id == 'CNPJ'){
     return testeCNPJ(el.value);
-  }
-  if(el.name == 'desafioName'){
-	  return testeFrase(el.value);
   }
 
   if(el.name == 'tel')
@@ -54,17 +49,6 @@ function testeString(string){
   var exp = /[A-Z][a-z]* [A-Z][a-z]*/;
   match = exp.test(string)
   return match;
-}
-
-function testeFrase(string){
-	console.log('entrou')
-	char = '!@#$%¨&*(),.<>;:}{][ªº'
-	for(var i = 0; i < char.length; i++){
-		if(string.indexOf(char[i]) != -1)
-			return false
-	}
-	return true;
-	
 }
 
 function testeCEP(string){

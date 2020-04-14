@@ -24,7 +24,7 @@ public class DesafioHabilidade implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@EmbeddedId
-	private DesafioHabilidadeId id;
+	private DesafioHabilidadeId id = new DesafioHabilidadeId();
 
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumns({
