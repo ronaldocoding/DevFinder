@@ -41,21 +41,7 @@ var $sidebar_dev=$('<div class="modal left fade" id="sidebar" tabindex="-1" role
                    '<span class="title">Sair</span>'+
                    '</a>'+
                    '</ul></div></div></div></div>');
-var $sidebar_emp=$('<div class="modal left fade" id="sidebar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">'+
-                   '<div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-body">'+
-                   '<ul id="menu-nav"><li><div class="hamburger-side btn-degrade azul" data-toggle="modal" data-target="#sidebar">'+
-              '<div class="one"></div><div class="two"></div><div class="three"></div></div></li><li>'+
-              '<img th:src="@{/imgs/logo.png}""  class="logo"></li></ul>'+
-                   '<ul id="menu-list">'+
-                   '<li><a href="empInicio.html"><span class="icon"><i class="fa fa-home" aria-hidden="true"></i></span><span class="title">Início</span></a></li>'+
-                   '<li><a href="empMeusDesafios.html"><span class="icon"><i class="fa fa-code"></i></span><span class="title">Meus desafios</span></a></li><li><a href="empConfiguracoes.html">'+
-                   '<span class="icon"><i class="fa fa-cog" aria-hidden="true"></i></span>'+
-                   '<span class="title">Configurações</span>'+
-                   '</a></li><li><a href="homepage.html">'+
-                   '<span class="icon"><i class="fas fa-sign-out-alt"></i></span>'+
-                   '<span class="title">Sair</span>'+
-                   '</a>'+
-                   '</ul></div></div></div></div>');
+
 var $defaultnav=$('<script> var logo= function(){if($( window ).width()<=690){$(".logsdo").addClass("small");$(".buscar").hide();}else{$(".logo").removeClass("small");$(".buscar").show();}};$(window).on("resize", logo);$(window).on("load", logo);</script>'+
                   '<nav class="top_navbar-side">'+
                   '<div class="top_menu-side">'+

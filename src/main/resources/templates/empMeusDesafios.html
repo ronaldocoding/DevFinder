@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Meus Desafios</title>
-    <link rel="stylesheet" type="text/css" href="../static/css/template.css">
+    <link rel="stylesheet" type="text/css" th:href="@{css/template.css}">
   <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
@@ -27,9 +27,44 @@
   <h2 style="margin-left: 10px">Meus Desafios</h2>
   <div class="row filter m-5">
     <div class="col-sm-9 area_post">
-
+		<tr th:each="desafio: ${desafios}">
+			<div class="post">
+				<div class="row">
+					<div class="col-sm-12"> 
+						<div class="col-sm-3"> 
+							<img src="http://placehold.it/260x180" alt=""> 
+						</div> 
+						<div class="col-sm-9">
+							<h4 th:text="${desafio.nome}"></h4> 
+							<p th:text="${desafio.descricao}"></p>
+							<div class="cell-list-content-icon">
+								<span> <i class="fab fa-dev"></i> <span th:text="${desafio.areaDesenvolvimento}"></span></span>
+							</div>
+							<div class="cell-list-content-tag">
+								habilidades
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					 <div class="col-sm-12 line"> 
+					 	<div class="col-sm-4">
+					 		<span>Termina em </span> 
+					 		<span th:text="${desafio.dataFim}"></span>
+					 		<span>as </span>
+					 		<span th:text="${desafio.horarioFim}"></span>
+					 	</div>
+					 	<div class="col-sm-7 offset-sm-1">
+			
+				 			<button type="button" class="btn-azul" data-toggle="modal" data-target="#exclusaoDesafio">Excluir</button>
+				 			<button type="button" class="modal-btn azul" data-toggle="modal" data-target="#exampleModal">Alterar</button>
+					 		
+					 	</div>
+					 </div>
+				</div>
+			</div>
+   		</tr>
     </div>
-	
     <aside class="col-sm-3">
       <div class="card">
         <article class="card-group-item">
@@ -92,6 +127,8 @@
         </article>
       </div> <!-- card.// -->
     </aside>
+</div>	
+    
   </div>
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -128,7 +165,6 @@
 </div>
 </div>
   
-	</div>
     
     <div class="modal fade" id="exclusaoDesafio" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered" role="document">
@@ -153,30 +189,65 @@
 <script type="text/javascript" src="feed.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 
-  <script type="text/javascript">
-    var add_post = function(autor, titulo, area, habilidades, salario, remoto, texto, data){
-      titulo =  '<h4>'+titulo+'</h4>'
-      texto = '<p>'+texto+'</p>'
-      area = '<span> <i class="fab fa-dev"></i>' + area + '</span>'
-      remoto = '<span> <i class="fa fa-home" style="margin-right:10px;"></i>' + remoto +'</span>'
-      var list_habilidades='';
-      for (var i = 0; i < habilidades.length; i++) {
-        list_habilidades += '<span class="tag-list background-gray">'+habilidades[i]+'</span>'
-              
-      }
-      var btn1 = '<button type="button" class="btn-azul" data-toggle="modal" data-target="#exclusaoDesafio">Excluir</button>'
-      var btn2 = '<button type="button" class="modal-btn azul" data-toggle="modal" data-target="#exampleModal">Alterar</button>'
-      text = '<div class="post"> <div class="row"> <div class="col-sm-12"> <div class="col-sm-3"> <img src="http://placehold.it/260x180" alt=""> </div> <div class="col-sm-9"> ' + titulo + texto + '<div class="cell-list-content-icon">'+area+remoto+'</div> <div class="cell-list-content-tag">'+ list_habilidades+
-        '</div> </div> </div> </div> <div class="row"> <div class="col-sm-12 line"> <div class="col-sm-4">'+data+ '</div> <div class="col-sm-7 offset-sm-1">'+btn2+btn1+ '</div></div></div></div>'
-      $('.area_post').append(text)
-  };
-
-  add_post('a', 'Online Judgde', 'Full-stack', ['HTML5', 'CSS3', 'Javascript', "PHP"], 'e', 'Vaga remota', 'Faça uma juiz online para desafios de programação', 'Desafio até 18/03/2020');
-  add_post('a', 'Sistema Gerenciador de Lava-Jato', 'Full-stack', ['HTML5', 'CSS3', 'Javascript', 'PHP'], 'e', 'Vaga física', 'Faça um sistema gerenciador de um lava jato', 'Desafio até 30/04/2020');
-  add_post('a', 'App de Física', 'Mobile', ['React Native', 'Javascript', 'Java', 'Kotlin'], 'e', 'Vaga física', 'Faça um app que ensine Física básica', 'Desafio até: 20/05/2020');
-  </script>
-<footer class="footer"></footer>
-    <div class="sidebaremp"></div>
-    <script src="../static/js/append.js"></script>
+	<footer class="footer"></footer>
+	<div class="sidebaremp">
+    			<div class="modal left fade" id="sidebar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                	<div class="modal-dialog" role="document">
+                		<div class="modal-content"><div class="modal-body">
+                    		<ul id="menu-nav">
+                    			<li>
+                    				<div class="hamburger-side btn-degrade azul" data-toggle="modal" data-target="#sidebar">
+               							<div class="one"></div>
+               							<div class="two"></div>
+               							<div class="three"></div>
+               						</div>
+               					</li>
+               					<li>
+               						<img th:src="@{/imgs/logo.png}"  class="logo">
+               					</li>
+               				</ul>
+               				<form method="post" th:action="@{/teste}">
+                   			<ul id="menu-list">
+                   				<li>
+                   					<button name="inicio">
+	                   						<span class="icon">
+	                   							<i class="fa fa-home" aria-hidden="true"></i>
+	                   						</span>
+	                   						<span class="title">Início</span>
+	                   					
+                   					</button>
+                   				</li>
+                   				<li>
+                   					<button name="meusDesafios">
+                   						<span class="icon">
+                   							<i class="fa fa-code"></i>
+                   						</span>
+                   						<span class="title">Meus desafios</span>
+                   					</button>
+                   				</li>
+                   				<li>
+                   					<button name="config">
+                   						<span class="icon">
+                   							<i class="fa fa-cog" aria-hidden="true"></i>
+                   						</span>
+                   						<span class="title">Configurações</span>
+                   					</button>
+                   				</li>
+                   				<li>
+	                   				<button name="sair">
+	                   					<span class="icon">
+	                   						<i class="fas fa-sign-out-alt"></i>
+	                   					</span>
+	                   					<span class="title">Sair</span>
+	                   				</button>
+                   				</li>
+                   			</ul>
+                   			</form>
+                   		</div>
+                   	</div>
+                </div>
+        	</div>
+        </div>
+    <script th:src="@{js/append.js}"></script>  
 </body>
 </html>

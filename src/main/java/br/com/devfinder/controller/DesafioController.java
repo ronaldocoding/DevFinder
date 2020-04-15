@@ -37,7 +37,7 @@ public class DesafioController {
 	public String home(Model model) {
 		model.addAttribute("desafio", new Desafio());
 		model.addAttribute("habilidade", new String());
-		return "formDesafio";
+		return "empInicio";
 	}
 	
 	@GetMapping("/addDesafio")
@@ -46,11 +46,11 @@ public class DesafioController {
     }
 	
 	@PostMapping("/addDesafio")
-	public String formDesafioD(@ModelAttribute Desafio desafio, @RequestParam("habilidade") String hab) {
+	public String formDesafio(@ModelAttribute Desafio desafio, @RequestParam("habilidade") String hab) {
         desafio.setEmailEmpresa("aaa@gmail.com");
         service.saveDesafio(desafio);
         
-        /*String habilidades[] = hab.split(" ");
+        String habilidades[] = hab.split(" ");
         
         DesafioHabilidade desafiohabilidade = new DesafioHabilidade();
         desafiohabilidade.setEmailEmpresa(desafio.getEmailEmpresa());
@@ -58,20 +58,42 @@ public class DesafioController {
         
         for(int i = 0; i < habilidades.length; i++) {
         	desafiohabilidade.setHabilidade(habilidades[i]);
-        //	serviceH.saveHabilidade(desafiohabilidade); tá dando erro
+        	
+        	serviceH.saveHabilidade(desafiohabilidade); 
         }
-        */
+        
 		return "empMeusDesafios";
     }
-
+	
+	@PostMapping("/teste")
+	public String teste(
+			@RequestParam(required=false, value="meusDesafios") String meusDesafios,
+			@RequestParam(required=false, value="inicio") String inicio,
+			@RequestParam(required=false, value="config") String config,
+			@RequestParam(required=false, value="sair") String sair,
+			Model model
+			) {
+		if(meusDesafios != null) {
+			model.addAttribute("desafios", service.getDesafios("aaa@gmail.com"));
+			return "empMeusDesafios";
+		}
+		if(inicio != null)
+			return "empInicio";
+		if(config != null)
+			return "devConfiguracoes";
+		else
+			return "homepage";
+	}
+	
 	@PostMapping("/addDesafios")
 	public List<Desafio> addDesafios(@RequestBody List<Desafio> desafios) {
 		return service.saveDesafios(desafios);
 	}
 
 	@GetMapping("/desafiosByEmpresa/{emailEmpresa}")
-	public List<Desafio> findAllDesafiosByEmpresa(@PathVariable String emailEmpresa) {
-		return service.getDesafios(emailEmpresa);
+	public String findAllDesafiosByEmpresa(@PathVariable String emailEmpresa, Model model) {
+		model.addAttribute("desafios", service.getDesafios(emailEmpresa));
+		return "empMeusDesafios";
 	}
 
 	@GetMapping("/desafioById/{emailEmpresa}/{id}")

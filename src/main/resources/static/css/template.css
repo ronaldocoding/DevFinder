@@ -532,7 +532,7 @@ footer{
 
 
 .post{
-    padding: 10px 15px;
+    padding: 10px 0px;
     margin-bottom: 15px;
     padding-bottom: 15px;
 }
@@ -545,7 +545,7 @@ footer{
 .post img{
     width: 100%;
     min-width: 80px;
-    margin-right: 20px;
+    margin-right: 10px;
     margin-bottom: 5px;
 }
 
@@ -560,7 +560,7 @@ footer{
 }
 
 .post button{
-    margin-left: 15px;
+    margin-left: 10px;
     float: right;
 }
 

@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>Início</title>
-        <link rel="stylesheet" type="text/css" href="../static/css/template.css">
+        <link rel="stylesheet" type="text/css" th:href="@{css/template.css}">
         <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
@@ -119,7 +119,65 @@
         </script>
         
         <footer class="footer"></footer>  
-    <div class="sidebaremp"></div>
-        <script src="../static/js/append.js"></script>
+    		<div class="sidebaremp">
+    			<div class="modal left fade" id="sidebar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                	<div class="modal-dialog" role="document">
+                		<div class="modal-content"><div class="modal-body">
+                    		<ul id="menu-nav">
+                    			<li>
+                    				<div class="hamburger-side btn-degrade azul" data-toggle="modal" data-target="#sidebar">
+               							<div class="one"></div>
+               							<div class="two"></div>
+               							<div class="three"></div>
+               						</div>
+               					</li>
+               					<li>
+               						<img th:src="@{/imgs/logo.png}"  class="logo">
+               					</li>
+               				</ul>
+               				<form method="post" th:action="@{/teste}">
+                   			<ul id="menu-list">
+                   				<li>
+                   					<button name="inicio">
+	                   						<span class="icon">
+	                   							<i class="fa fa-home" aria-hidden="true"></i>
+	                   						</span>
+	                   						<span class="title">Início</span>
+	                   					
+                   					</button>
+                   				</li>
+                   				<li>
+                   					<button name="meusDesafios">
+                   						<span class="icon">
+                   							<i class="fa fa-code"></i>
+                   						</span>
+                   						<span class="title">Meus desafios</span>
+                   					</button>
+                   				</li>
+                   				<li>
+                   					<button name="config">
+                   						<span class="icon">
+                   							<i class="fa fa-cog" aria-hidden="true"></i>
+                   						</span>
+                   						<span class="title">Configurações</span>
+                   					</button>
+                   				</li>
+                   				<li>
+	                   				<button name="sair">
+	                   					<span class="icon">
+	                   						<i class="fas fa-sign-out-alt"></i>
+	                   					</span>
+	                   					<span class="title">Sair</span>
+	                   				</button>
+                   				</li>
+                   			</ul>
+                   			</form>
+                   		</div>
+                   	</div>
+                </div>
+        	</div>
+        </div>
+    	<script th:src="@{js/append.js}"></script>  
+    
     </body>
 </html>
