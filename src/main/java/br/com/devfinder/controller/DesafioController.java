@@ -18,9 +18,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.devfinder.model.Desafio;
 import br.com.devfinder.model.DesafioHabilidade;
+import br.com.devfinder.model.Empresa;
 import br.com.devfinder.model.ids.DesafioId;
 import br.com.devfinder.service.DesafioHabilidadeService;
 import br.com.devfinder.service.DesafioService;
+import br.com.devfinder.service.EmpresaService;
 
 /**
  * @author Ronaldo Costa
@@ -30,16 +32,11 @@ import br.com.devfinder.service.DesafioService;
 public class DesafioController {
 
 	@Autowired
-	private DesafioService service;
-	private DesafioHabilidadeService serviceH;
+	private DesafioService service;	
 
-	@GetMapping("/")
-	public String home(Model model) {
-		model.addAttribute("desafio", new Desafio());
-		model.addAttribute("habilidade", new String());
-		return "empInicio";
-	}
-	
+	@Autowired
+	private EmpresaService serviceEmpresa;
+
 	@GetMapping("/addDesafio")
 	public String formDesafio(Model model) {
         return "formDesafio";
@@ -59,31 +56,11 @@ public class DesafioController {
         for(int i = 0; i < habilidades.length; i++) {
         	desafiohabilidade.setHabilidade(habilidades[i]);
         	
-        	serviceH.saveHabilidade(desafiohabilidade); 
+        	//.saveHabilidade(desafiohabilidade); 
         }
         
 		return "empMeusDesafios";
     }
-	
-	@PostMapping("/teste")
-	public String teste(
-			@RequestParam(required=false, value="meusDesafios") String meusDesafios,
-			@RequestParam(required=false, value="inicio") String inicio,
-			@RequestParam(required=false, value="config") String config,
-			@RequestParam(required=false, value="sair") String sair,
-			Model model
-			) {
-		if(meusDesafios != null) {
-			model.addAttribute("desafios", service.getDesafios("aaa@gmail.com"));
-			return "empMeusDesafios";
-		}
-		if(inicio != null)
-			return "empInicio";
-		if(config != null)
-			return "devConfiguracoes";
-		else
-			return "homepage";
-	}
 	
 	@PostMapping("/addDesafios")
 	public List<Desafio> addDesafios(@RequestBody List<Desafio> desafios) {
@@ -93,6 +70,7 @@ public class DesafioController {
 	@GetMapping("/desafiosByEmpresa/{emailEmpresa}")
 	public String findAllDesafiosByEmpresa(@PathVariable String emailEmpresa, Model model) {
 		model.addAttribute("desafios", service.getDesafios(emailEmpresa));
+		model.addAttribute("empresa", serviceEmpresa.getEmpresaById(emailEmpresa));
 		return "empMeusDesafios";
 	}
 
@@ -111,10 +89,12 @@ public class DesafioController {
 	public Desafio updateDesafio(@RequestBody Desafio desafio) {
 		return service.updateDesafio(desafio);
 	}
-
-	@DeleteMapping("/deleteDesafio/{emailEmpresa}/{id}")
-	public String deleteEmpresa(@PathVariable String emailEmpresa, int id) {
+	@GetMapping("/deleteDesafio/{emailEmpresa}/{id}")
+	public String deleteEmpresa(@PathVariable String emailEmpresa, @PathVariable int id, Model model) {
 		DesafioId desafioId = new DesafioId(emailEmpresa, id);
-		return service.deleteDesafio(desafioId);
+		service.deleteDesafio(desafioId);
+		model.addAttribute("desafios", service.getDesafios(emailEmpresa));
+		model.addAttribute("empresa", serviceEmpresa.getEmpresaById(emailEmpresa));
+		return "empMeusDesafios";
 	}
 }
