@@ -36,9 +36,13 @@ public class DesafioController {
 
 	@Autowired
 	private EmpresaService serviceEmpresa;
+	
+	@Autowired
+	private DesafioHabilidadeService servideDH;
 
 	@GetMapping("/addDesafio")
 	public String formDesafio(Model model) {
+		model.addAttribute("desafio", new Desafio());
         return "formDesafio";
     }
 	
@@ -55,7 +59,7 @@ public class DesafioController {
         
         for(int i = 0; i < habilidades.length; i++) {
         	desafiohabilidade.setHabilidade(habilidades[i]);
-        	
+        	servideDH.saveHabilidade(desafiohabilidade);
         	//.saveHabilidade(desafiohabilidade); 
         }
         

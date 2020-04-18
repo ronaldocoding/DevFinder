@@ -2,19 +2,24 @@ package br.com.devfinder.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.devfinder.model.Desafio;
 import br.com.devfinder.model.Empresa;
+import br.com.devfinder.model.Endereco;
 import br.com.devfinder.service.EmpresaService;
 
 /**
@@ -29,9 +34,6 @@ public class EmpresaController {
 
 	@GetMapping("/")
 	public String home(Model model) {
-		//model.addAttribute("empresa", service.getEmpresaById("aaa@gmail.com"));
-		//.addAttribute("desafio", new Desafio());
-		//model.addAttribute("habilidade", new String());
 		return "homepage";
 	}
 	
@@ -41,9 +43,25 @@ public class EmpresaController {
 		return "empInicio";
 	}
 	
+	@GetMapping("/formEmpresa")
+	public String addForm(Model model) {
+		model.addAttribute("empresa", new Empresa());
+		model.addAttribute("endereco", new Endereco());
+		
+		return "formEmpresa";
+	}
+	
 	@PostMapping("/addEmpresa")
-	public Empresa addEmpresa(@RequestBody Empresa empresa) {
-		return service.saveEmpresa(empresa);
+	public String addEmpresa(@ModelAttribute Empresa empresa, 
+			@ModelAttribute Endereco endereco,
+			Model model) {
+		
+		empresa.setEndereco(endereco);
+		service.saveEmpresa(empresa);
+		return "empInicio";
+		//
+		//service.saveEmpresa(empresa);
+		//return "foi";
 	}
 
 	@PostMapping("/addEmpresas")

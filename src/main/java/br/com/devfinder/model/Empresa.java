@@ -22,9 +22,9 @@ public class Empresa extends Usuario implements Serializable {
 	@Column(name = "RAZAO_SOCIAL", length = 55, nullable = false)
 	private String razaoSocial;
 
-	@Column(name = "CNPJ", length = 14, nullable = false)
+	@Column(name = "CNPJ", length = 18, nullable = false)
 	private String cnpj;
-
+	
 	@Column(name = "ANO_FUNDACAO", nullable = false)
 	private int anoFundacao;
 
@@ -34,19 +34,35 @@ public class Empresa extends Usuario implements Serializable {
 	@Column(name = "TOTAL_DESENVOLVEDORES", nullable = false)
 	private int totalDesenvolvedores;
 
+	/*
 	@Column(name = "VAGAS_REMOTAS", nullable = false)
 	private boolean vagasRemotas;
 
 	@Column(name = "VAGAS_FISICAS", nullable = false)
 	private boolean vagasFisicas;
+	*/
+	@Column(name = "TIPO_VAGA", length = 55, nullable = false)
+	private String tipoVaga;
+
+	public String getTipoVaga() {
+		return tipoVaga;
+	}
+
+	public void setTipoVaga(String tipoVaga) {
+		this.tipoVaga = tipoVaga;
+	}
+
+	public void setAnoFundacao(int anoFundacao) {
+		this.anoFundacao = anoFundacao;
+	}
 
 	public Empresa() {
 		super();
 	}
 
 	public Empresa(String email, String foto, String senha, Endereco endereco, String site, String telefone,
-			String apresentacao, String nomeFantasia, String razaoSocial, String cnpj, int anoFundacao,
-			String ramoMercado, int totalDesenvolvedores, boolean vagasRemotas, boolean vagasFisicas) {
+			String apresentacao, String nomeFantasia, String razaoSocial, String cnpj, Integer anoFundacao,
+			String ramoMercado, int totalDesenvolvedores,String tipoVagas) {
 		super(email, foto, senha, endereco, site, telefone, apresentacao);
 		this.nomeFantasia = nomeFantasia;
 		this.razaoSocial = razaoSocial;
@@ -54,9 +70,10 @@ public class Empresa extends Usuario implements Serializable {
 		this.anoFundacao = anoFundacao;
 		this.ramoMercado = ramoMercado;
 		this.totalDesenvolvedores = totalDesenvolvedores;
-		this.vagasRemotas = vagasRemotas;
-		this.vagasFisicas = vagasFisicas;
-	}
+		
+		this.tipoVaga = tipoVaga;
+		
+		}
 
 	public String getNomeFantasia() {
 		return nomeFantasia;
@@ -86,7 +103,7 @@ public class Empresa extends Usuario implements Serializable {
 		return anoFundacao;
 	}
 
-	public void setAnoFundacao(int anoFundacao) {
+	public void setAnoFundacao(Integer anoFundacao) {
 		this.anoFundacao = anoFundacao;
 	}
 
@@ -106,19 +123,4 @@ public class Empresa extends Usuario implements Serializable {
 		this.totalDesenvolvedores = totalDesenvolvedores;
 	}
 
-	public boolean isVagasRemotas() {
-		return vagasRemotas;
-	}
-
-	public void setVagasRemotas(boolean vagasRemotas) {
-		this.vagasRemotas = vagasRemotas;
-	}
-
-	public boolean isVagasFisicas() {
-		return vagasFisicas;
-	}
-
-	public void setVagasFisicas(boolean vagasFisicas) {
-		this.vagasFisicas = vagasFisicas;
-	}
 }

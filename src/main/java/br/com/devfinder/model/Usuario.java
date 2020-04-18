@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -20,9 +21,9 @@ public abstract class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name = "EMAIL", length = 55)
+	@Column(name = "EMAIL", unique=true,columnDefinition="VARCHAR(64)")
 	protected String email;
-
+	
 	@Column(name = "FOTO", nullable = true)
 	protected String foto;
 

@@ -1,6 +1,8 @@
 ﻿<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
 <head>
-    <link rel="stylesheet" type="text/css" href="../static/css/template.css">
+	<link rel="stylesheet" type="text/css" th:href="@{css/template.css}">
+    <meta charset="utf-8">
     
     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -9,7 +11,6 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
 	<script src="http://jqueryvalidation.org/files/dist/jquery.validate.js"></script>
-	<script type="text/javascript" src="../static/js/validacoes.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
         <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
 </head>
@@ -24,75 +25,76 @@
 					<h3>Cadastro</h3>
 				</div>
 
-				<form class="col-12" id="regForm" action="">
-					
+				<form class="col-12" id="regForm" action="#" th:action="@{/addEmpresa}" th:object="${empresa}" method="post">
+					 
 					<div class="tab">
 						<div class="form-group">
-							<input type="text" class="form-control" name="nome" placeholder="Razão social" oninput="this.className = ''">
+							<input type="text" class="form-control" th:field="*{razaoSocial}" name="nome" placeholder="Razão social" oninput="this.className = ''">
 							<small>Esse campo é obrigatório</small>
 							<small>Insira uma razão social válida</small>
 						</div>
 						<div class="form-group">
-							<input type="text" class="form-control" name="nome" placeholder="Nome Fantasia" oninput="this.className = ''">
+							<input type="text" class="form-control" th:field="*{nomeFantasia}" name="nome" placeholder="Nome Fantasia" oninput="this.className = ''">
 							<small>Esse campo é obrigatório</small>
 							<small>Insira um nome válido</small>
 						</div>
 						<div class="form-group">
-							<input type="text" id="CNPJ" class="form-control" placeholder="CNPJ" oninput="this.className = ''">
+							<input type="text" id="CNPJ" class="form-control" th:field="*{cnpj}" placeholder="CNPJ" oninput="this.className = ''">
 							<small>Esse campo é obrigatório</small>
 							<small>Insira um CNPJ válido</small>
 						</div>
 						<div class="form-group">
-							<input type="number" class="form-control" placeholder="Ano de fundação" oninput="this.className = ''" min="578-1-1">
+							<input type="number" class="form-control" th:field="*{anoFundacao}" placeholder="Ano de fundação" oninput="this.className = ''" min="578-1-1">
 							<small>Esse campo é obrigatório</small>
 							<small></small>
 							<div style="clear: both;"></div>
 						</div> 				
 					</div>
-					
+			
 					<div class="tab">
-						<label>DADOS DE ENDEREÇO</label>
-                        <div class="form-group">
-							<input type="text" class="form-control" placeholder="CEP" oninput="this.className = ''" id="CEP" value="">
-							<small>Esse campo é obrigatório</small>
-							<small>Insira um CEP válido</small>
-						</div> 				
-                        
-     					<div class="form-group" >
-     						<input type="text" id="estado" class="form-control" placeholder="Estado" oninput="this.className = ''" value="" disabled>
-     					</div>
-         				
-    					<div class="form-group">
-    						<input type="text" class="form-control" placeholder="Cidade" oninput="this.className = ''" id="cidade" disabled>
-    					</div>
-						
-						<div class="form-group">
-							<input type="text" class="form-control" placeholder="Rua" oninput="this.className = ''" id="rua" disabled>
-						</div>
-						<div class="form-group">
-							<input type="text" class="form-control" placeholder="Bairro" oninput="this.className = ''" id="bairro" disabled>
-						</div>
-						<div class="form-group">
-							<input type="text" class="form-control" placeholder="Numero" oninput="this.className = ''" id="numero">
-							<small>Esse campo é obrigatório</small>
-							<small>Preencha um número válido</small>
-							<div style="clear: both;"></div>
-						</div>				
+							<label>DADOS DE ENDEREÇO</label>
+	                        <div class="form-group">
+								<input type="text" th:field="${endereco.cep}"class="form-control" placeholder="CEP" oninput="this.className = ''" id="CEP" >
+								<small>Esse campo é obrigatório</small>
+								<small>Insira um CEP válido</small>
+							</div> 				
+	                        
+	     					<div class="form-group" >
+	     						<input type="text" th:field="${endereco.estado}" class="form-control" placeholder="Estado" oninput="this.className = ''" value="" readonly>
+	     					</div>
+	         				
+	    					<div class="form-group">
+	    						<input type="text" th:field="${endereco.cidade}"class="form-control" placeholder="Cidade" oninput="this.className = ''" id="cidade" readonly>
+	    					</div>
+							
+							<div class="form-group">
+								<input type="text" th:field="${endereco.rua}" class="form-control" placeholder="Rua" oninput="this.className = ''" id="rua" readonly>
+							</div>
+							<div class="form-group">
+								<input type="text" th:field="${endereco.bairro}" class="form-control" placeholder="Bairro"  id="bairro" readonly>
+							</div>
+							<div class="form-group">
+								<input type="text" th:field="${endereco.numero}" class="form-control" placeholder="Numero" oninput="this.className = ''" id="numero">
+								<small>Esse campo é obrigatório</small>
+								<small>Preencha um número válido</small>
+								<div style="clear: both;"></div>
+							</div>	
+							
 					</div>
 					
 					<div class="tab">
 						<div class="form-group">
-							<input type="text" class="form-control" placeholder="E-mail" oninput="this.className = ''" name="email">
+							<input type="text" th:field="*{email}" class="form-control" placeholder="E-mail" oninput="this.className = ''" name="email">
 							<small>Esse campo é obrigatório</small>
 							<small>Insira um email válido</small>
 						</div>
 						<div class="form-group">
-							<input type="text" class="form-control" placeholder="Telefone para contato" oninput="this.className = ''" name="tel">
+							<input type="text" th:field="*{telefone}" class="form-control" placeholder="Telefone para contato" oninput="this.className = ''" name="tel">
 							<small>Esse campo é obrigatório</small>
 							<small>Insira um número de telefone válido</small>
 						</div>
 						<div class="form-group">
-							<input type="text" class="form-control" name="url" placeholder="Site da empresa" oninput="this.className = ''">
+							<input type="text" th:field="*{site}" class="form-control" name="url" placeholder="Site da empresa" oninput="this.className = ''">
 
 							<small>Esse campo é obrigatório</small>
 							<small>Insira uma url válido</small>
@@ -101,7 +103,7 @@
 						<label>Defina sua senha</label>
 						<div class="form-group">
 							<span class="passwordStrong">Senha forte</span>
-							<input type="password" class="form-control" placeholder="Insira sua senha" oninput="this.className = ''" id="senha">
+							<input type="password" th:field="*{senha}" class="form-control" placeholder="Insira sua senha" oninput="this.className = ''" id="senha">
 
 							<small>Esse campo é obrigatório</small>
 							<small>Insira uma senha válida</small>
@@ -114,41 +116,43 @@
 						</div> 					
 						<div style="clear: both;"></div>
 					</div>
+					
 					<div class="tab">
 						<label>Informações da empresa</label>
 						<div class="form-group select">
-							<select placeholder="Selecione o tipo de vaga da empresa" class="form-control">
-	            				<option value="0">Selecione o ramo da empresa</option>
-								<option value="1">Vendas</option>
-								<option value="2">TI e software</option>
-								<option value="3">Outros</option>
+							<select th:field="*{ramoMercado}" placeholder="Selecione o tipo de vaga da empresa" class="form-control">
+	            				<option th:value="0">Selecione o ramo da empresa</option>
+								<option th:value="Vendas">Vendas</option>
+								<option th:value="'TI e software'">TI e software</option>
+								<option th:value="Outros">Outros</option>
         					</select>
         					<small>Esse campo é obrigatório</small>
         					<small></small>
         				</div> 			
 						<div class="form-group number">
-							<input type="number" class="form-control" placeholder="Número de funcionários" min ="1" oninput="this.className = ''" >
+							<input id="totalDev"type="number" th:field="*{totalDesenvolvedores}" class="form-control" placeholder="Número de funcionários" min ="1" oninput="this.className = ''" >
 							<small>Esse campo é obrigatório</small>
         					<small></small>
 						</div> 		
 						<div class="form-group select">
-							<select placeholder="Selecione o tipo de vaga da empresa" class="form-control">
-	        					<option>Selecione o tipo de vaga da empresa</option>
-								<option>Vagas remotas</option>
-								<option>Vagas físicas</option>
-								<option>Vagas remotas ou físicas</option>
+							<select th:field="*{tipoVaga}" placeholder="Selecione o tipo de vaga da empresa" class="form-control">
+	        					<option th:value="vazio">Selecione o tipo de vaga da empresa</option>
+								<option th:value="'Vagas remotas'">Vagas remotas</option>
+								<option th:value="'Vagas físicas'">Vagas físicas</option>
+								<option th:value="'Vagas remotas ou físicas'">Vagas remotas ou físicas</option>
         					</select>
         					<small>Esse campo é obrigatório</small>
         					<small></small>
         				</div>
                         <div class="form-group textarea">
-                        	<textarea name="message" class="form-control" rows="1" cols="30" placeholder="Apresentação">Apresentação</textarea>
+                        	<textarea th:field="*{apresentacao}" name="message" class="form-control" rows="1" cols="30" placeholder="Apresentação"></textarea>
                         </div> 
                         <label>Foto de perfil(.jpeg ou .png)</label>
                         <div class="form-group file">
                                 <input type="file" class="form-control">
                         </div>
 					</div>
+					
 					<div style="overflow:auto;">
   						<div>
     							<button type="button" id="prevBtn" onclick="nextPrev(-1)" class="btn-azul">Anterior</button>
@@ -166,14 +170,19 @@
 	
 				</form>
 				
+                <script th:src="@{js/habilidades.js}"></script> 
 			</div>
 		</div>
 	</div>
            <footer class="footer"></footer> 
 	</div>
- 
-    <script src="../static/js/append.js"></script>
-	<script src="../static/js/formularios.js"></script>
+ 	<script>
+ 		document.getElementById('anoFundacao').value=''
+ 		document.getElementById('totalDev').value=''
+ 	</script>
+    <script th:src="@{js/formularios.js}"></script> 
+    <script th:src="@{js/append.js}"></script>    
+    <script th:src="@{js/validacoes.js}"></script> 
 </body>
 </html>
 

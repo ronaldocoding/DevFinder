@@ -1,6 +1,6 @@
 var ret;
 function validate(el){
-  
+  console.log(el.name)
   if(el.name == 'nome')
 	  if(el.id="nameDesafio")
 		 return testeFrase(el.value)
@@ -27,7 +27,7 @@ function validate(el){
     return testeTelefone(el.value);
   if(el.name == 'senhaConfirm')
     return el.value == $('#senha').val();
-  if(el.name == 'CEP')
+  if(el.name == 'cep')
       return testeCEP();
   return true
 }
@@ -134,7 +134,7 @@ function getEndereco() {
       $('#cidade').val(unescape(resultadoCEP["cidade"]));
       $('#estado').val(unescape(resultadoCEP["uf"]));
       $('#numero').focus();
-
+      
       $("#rua").val(unescape(resultadoCEP["tipo_logradouro"])+" "+unescape(resultadoCEP["logradouro"]));
       ret = true;
       return true;
