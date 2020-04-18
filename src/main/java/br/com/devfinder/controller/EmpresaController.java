@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.devfinder.model.Desafio;
 import br.com.devfinder.model.Empresa;
 import br.com.devfinder.model.Endereco;
+import br.com.devfinder.service.DesafioService;
 import br.com.devfinder.service.EmpresaService;
 
 /**
@@ -32,6 +33,8 @@ public class EmpresaController {
 	@Autowired
 	private EmpresaService service;
 
+	@Autowired
+	private DesafioService serviceD;
 	@GetMapping("/")
 	public String home(Model model) {
 		return "homepage";
@@ -75,8 +78,10 @@ public class EmpresaController {
 	}
 
 	@GetMapping("/empresaById/{email}")
-	public Empresa findEmpresaById(@PathVariable String email) {
-		return service.getEmpresaById(email);
+	public String findEmpresaById(@PathVariable String email, Model model) {
+		model.addAttribute("empresa", service.getEmpresaById(email));
+		model.addAttribute("desafios", serviceD.getDesafios(email));
+		return "perfilEmpresa";
 	}
 
 	@GetMapping("/empresaByNomeFantasia/{nomeFantasia}")
