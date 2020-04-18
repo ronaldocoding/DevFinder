@@ -16,6 +16,11 @@ import br.com.devfinder.model.ids.DesafioHabilidadeId;
 @Service
 public interface DesafioHabilidadeRepository extends JpaRepository<DesafioHabilidade, DesafioHabilidadeId> {
 
+	
 	@Query(value = "SELECT * FROM DESAFIO_HABILIDADE WHERE EMAIL_EMPRESA_DESAFIO = ?1 AND ID_DESAFIO = ?2", nativeQuery = true)
 	List<DesafioHabilidade> findAllByDesafio(String emailEmpresa, int idDesafio);
+	
+	@Query(value = "SELECT * FROM DESAFIO_HABILIDADE WHERE EMAIL_EMPRESA_DESAFIO = ?1", nativeQuery = true)
+	List<DesafioHabilidade> findAllByEmailEmpresa(String emailEmpresa);
+	
 }

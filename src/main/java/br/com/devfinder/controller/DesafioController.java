@@ -38,7 +38,7 @@ public class DesafioController {
 	private EmpresaService serviceEmpresa;
 	
 	@Autowired
-	private DesafioHabilidadeService servideDH;
+	private DesafioHabilidadeService serviceDH;
 
 	@GetMapping("/addDesafio")
 	public String formDesafio(Model model) {
@@ -48,9 +48,9 @@ public class DesafioController {
 	
 	@PostMapping("/addDesafio")
 	public String formDesafio(@ModelAttribute Desafio desafio, @RequestParam("habilidade") String hab) {
-        desafio.setEmailEmpresa("aaa@gmail.com");
+        desafio.setEmailEmpresa("marlonfleite50@gmail.com");
         service.saveDesafio(desafio);
-        
+        desafio = service.getDesafioByNome(desafio.getNome());
         String habilidades[] = hab.split(" ");
         
         DesafioHabilidade desafiohabilidade = new DesafioHabilidade();
@@ -59,7 +59,8 @@ public class DesafioController {
         
         for(int i = 0; i < habilidades.length; i++) {
         	desafiohabilidade.setHabilidade(habilidades[i]);
-        	servideDH.saveHabilidade(desafiohabilidade);
+        	//return desafiohabilidade.getEmailEmpresa()+desafiohabilidade.getHabilidade()+desafiohabilidade.getIdDesafio();
+        	serviceDH.saveHabilidade(desafiohabilidade);
         	//.saveHabilidade(desafiohabilidade); 
         }
         
@@ -75,6 +76,7 @@ public class DesafioController {
 	public String findAllDesafiosByEmpresa(@PathVariable String emailEmpresa, Model model) {
 		model.addAttribute("desafios", service.getDesafios(emailEmpresa));
 		model.addAttribute("empresa", serviceEmpresa.getEmpresaById(emailEmpresa));
+		model.addAttribute("service", serviceDH);
 		return "empMeusDesafios";
 	}
 

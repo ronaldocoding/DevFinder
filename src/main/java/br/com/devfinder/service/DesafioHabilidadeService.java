@@ -2,6 +2,7 @@ package br.com.devfinder.service;
 
 import java.util.List;
 
+import org.apache.catalina.startup.ClassLoaderFactory.Repository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -41,6 +42,9 @@ public class DesafioHabilidadeService {
 		return repository.findById(id).orElse(null);
 	}
 
+	public List<DesafioHabilidade> getHabilidades(String emailEmpresa){
+		return repository.findAllByEmailEmpresa(emailEmpresa);
+	}
 	/**
 	 * Método DELETE
 	 */

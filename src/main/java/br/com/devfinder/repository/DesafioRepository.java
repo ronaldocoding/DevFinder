@@ -18,8 +18,9 @@ public interface DesafioRepository extends JpaRepository<Desafio, DesafioId> {
 
 	Desafio findByNome(String nome);
 
+
 	@Query(value = "SELECT * FROM DESAFIO WHERE EMAIL_EMPRESA = ?1", nativeQuery = true)
 	List<Desafio> findAllByEmpresa(String emailEmpresa);
-	
+
 	
 }
