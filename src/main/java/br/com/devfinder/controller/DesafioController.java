@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.devfinder.model.Desafio;
 import br.com.devfinder.model.DesafioHabilidade;
 import br.com.devfinder.model.Empresa;
+import br.com.devfinder.model.ids.DesafioHabilidadeId;
 import br.com.devfinder.model.ids.DesafioId;
 import br.com.devfinder.service.DesafioHabilidadeService;
 import br.com.devfinder.service.DesafioService;
@@ -98,6 +99,12 @@ public class DesafioController {
 	@GetMapping("/deleteDesafio/{emailEmpresa}/{id}")
 	public String deleteEmpresa(@PathVariable String emailEmpresa, @PathVariable int id, Model model) {
 		DesafioId desafioId = new DesafioId(emailEmpresa, id);
+		for(DesafioHabilidade d: serviceDH.getHabilidades(emailEmpresa)){
+			if(id == d.getIdDesafio()) {
+				serviceDH.deleteHabilidade(new DesafioHabilidadeId(emailEmpresa, id, d.getHabilidade()));
+		
+			}
+		}
 		service.deleteDesafio(desafioId);
 		model.addAttribute("desafios", service.getDesafios(emailEmpresa));
 		model.addAttribute("empresa", serviceEmpresa.getEmpresaById(emailEmpresa));

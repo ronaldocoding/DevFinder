@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.devfinder.model.Desafio;
 import br.com.devfinder.model.Empresa;
 import br.com.devfinder.model.Endereco;
+import br.com.devfinder.model.ids.DesafioId;
 import br.com.devfinder.service.DesafioHabilidadeService;
 import br.com.devfinder.service.DesafioService;
 import br.com.devfinder.service.EmpresaService;
@@ -100,8 +101,9 @@ public class EmpresaController {
 		return service.updateEmpresa(empresa);
 	}
 
-	@DeleteMapping("/deleteEmpresa/{email}")
+	@GetMapping("/deleteEmpresa/{email}")
 	public String deleteEmpresa(@PathVariable String email) {
 		return service.deleteEmpresa(email);
+		
 	}
 }

@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.devfinder.model.Desafio;
+import br.com.devfinder.model.DesafioHabilidade;
+import br.com.devfinder.model.ids.DesafioHabilidadeId;
 import br.com.devfinder.model.ids.DesafioId;
 import br.com.devfinder.repository.DesafioRepository;
 
@@ -18,6 +20,10 @@ public class DesafioService {
 
 	@Autowired
 	private DesafioRepository repository;
+	
+	@Autowired
+	private DesafioHabilidadeService service;
+	
 
 	/**
 	 * Métodos POST
@@ -50,6 +56,11 @@ public class DesafioService {
 	 * Método DELETE
 	 */
 	public String deleteDesafio(DesafioId id) {
+		for(DesafioHabilidade d: service.getHabilidades(id.getEmailEmpresa(), id.getId())) {
+			
+			service.deleteHabilidade(
+			new DesafioHabilidadeId(d.getEmailEmpresa(), d.getIdDesafio(), d.getHabilidade()));
+		}
 		repository.deleteById(id);
 		return "desafio deletado: " + id;
 	}
