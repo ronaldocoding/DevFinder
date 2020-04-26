@@ -56,7 +56,7 @@
 
         <!--nav e seção degradê-->
         <header>
-            <div class="defaultnav"></div>
+            <div th:insert="fragment.html :: deftopnav"></div>
 
             <div class="container-fluid bg-degrade c-header justify-center">
                 <div class="row text-center">
@@ -127,7 +127,7 @@
             </div>
         </div>
 
-        <footer class="footer"></footer>
         <script th:src="@{/js/append.js}"></script>  
+        <div th:insert="fragment.html :: footer"></div>
     </body>
 </html>

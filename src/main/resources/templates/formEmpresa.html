@@ -15,7 +15,7 @@
         <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="defaultnav"></div>
+    <div th:insert="fragment.html :: deftopnav"></div>
 	<div class="bg-degrade" style="padding-top: 100px">
 	<div class="modal-dialog text-center">
 		<div class="col-sm-8-main-section">
@@ -174,7 +174,7 @@
 			</div>
 		</div>
 	</div>
-           <footer class="footer"></footer> 
+           <div th:insert="fragment.html :: footer"></div>
 	</div>
  	<script>
  		document.getElementById('anoFundacao').value=''
