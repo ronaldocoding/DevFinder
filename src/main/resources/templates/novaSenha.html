@@ -16,7 +16,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     </head>
     <body>
-        <div class="defaultnav"></div>
+        <div th:insert="fragment.html :: deftopnav"></div>
         <div class="bg-degrade">
             <div class="container-fluid bg-degrade">
                 <div class="row align-items-center m-5">
@@ -41,7 +41,7 @@
                     
                 </div>
             </div>
-            <footer class="footer"></footer>
+            <div th:insert="fragment.html :: footer"></div>
         </div> 
         <script src="../static/js/append.js"></script>
     </body>

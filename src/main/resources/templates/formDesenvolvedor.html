@@ -10,7 +10,7 @@
 	<script type="text/javascript" src="../static/js/validacoes.js"></script>
 </head>
 <body>
-    <div class="defaultnav"></div>
+    <div th:insert="fragment.html :: deftopnav"></div>
 	<div class="bg-degrade" style="padding-top: 100px">
 	<div class="modal-dialog text-center">
 		<div class="col-sm-8-main-section">
@@ -205,7 +205,7 @@
 		</div>
 	</div>
         
-    <footer class="footer"></footer>
+    <div th:insert="fragment.html :: footer"></div>
 	</div>
 	<script src="../static/js/append.js"></script> 
     <script src="../static/js/formularios.js"></script>    
