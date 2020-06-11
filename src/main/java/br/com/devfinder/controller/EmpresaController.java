@@ -1,5 +1,7 @@
 package br.com.devfinder.controller;
+import org.springframework.http.ResponseEntity;
 
+import java.awt.PageAttributes.MediaType;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -7,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -14,7 +17,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.devfinder.model.Desafio;
@@ -42,9 +48,9 @@ public class EmpresaController {
 	private DesafioHabilidadeService serviceDH;
 	
 	
-	@GetMapping("/inicioEmpresa/{emailEmpresa}")
-	public String Inicio(Model model, @PathVariable String emailEmpresa) {
-		model.addAttribute("empresa", service.getEmpresaById(emailEmpresa));
+	@PostMapping("/inicioEmpresa")
+	public String Inicio(Model model, @RequestParam("empresa") Empresa empresa) {
+		model.addAttribute("empresa", empresa);
 		return "empInicio";
 	}
 	
@@ -86,8 +92,14 @@ public class EmpresaController {
 		model.addAttribute("service", serviceDH);
 		return "perfilEmpresa";
 	}
-
-	@GetMapping("/empresaByNomeFantasia/{nomeFantasia}")
+	
+	@RequestMapping(value = "/testeAjax", method = RequestMethod.GET)
+	@ResponseBody
+	public String teste(
+			@RequestParam("name") int email) {
+		 return "{\"success\":55}";
+	}
+    @GetMapping("/empresaByNomeFantasia/{nomeFantasia}")
 	public Empresa findEmpresatByNomeFantasia(@PathVariable String nomeFantasia) {
 		return service.getEmpresaByNomeFantasia(nomeFantasia);
 	}

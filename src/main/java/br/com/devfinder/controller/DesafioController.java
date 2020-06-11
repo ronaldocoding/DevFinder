@@ -75,13 +75,16 @@ public class DesafioController {
 	@GetMapping("/desafiosByEmpresa/{emailEmpresa}")
 	public String findAllDesafiosByEmpresa(@PathVariable String emailEmpresa, Model model) {
 		model.addAttribute("desafios", service.getDesafios(emailEmpresa));
-		model.addAttribute("empresa", serviceEmpresa.getEmpresaById(emailEmpresa));
-		model.addAttribute("service", serviceDH);
-		return "empMeusDesafios";
+		Empresa emp = (Empresa) model.getAttribute("empresa");
+		
+		return emp.getEmail();
+		//model.addAttribute("empresa", serviceEmpresa.getEmpresaById(emailEmpresa));
+		//model.addAttribute("service", serviceDH);
+		//return "empMeusDesafios";
 	}
 
 	@GetMapping("/desafioById/{emailEmpresa}/{id}")
-	public Desafio findDesafioById(@PathVariable String emailEmpresa, @PathVariable int id) {
+	public Desafio findDesafioById(Model model, @PathVariable String emailEmpresa, @PathVariable int id) {
 		DesafioId desafioId = new DesafioId(emailEmpresa, id);
 		return service.getDesafioById(desafioId);
 	}

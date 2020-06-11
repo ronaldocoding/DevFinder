@@ -4,7 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import br.com.devfinder.service.DesenvolvedorService;
 import br.com.devfinder.service.EmpresaService;
@@ -15,7 +19,6 @@ public class UsuarioController {
 	@Autowired
 	private EmpresaService serviceE;
 
-	private boolean tryLogin=true;
 	
 	@Autowired
 	private DesenvolvedorService serviceD;
@@ -28,46 +31,44 @@ public class UsuarioController {
 		return "homepage";
 	}
 	
-	@GetMapping("/login")
-	public String teste(Model model,
-			@RequestParam("email") String email,
-			@RequestParam("senha") String senha) {
-		
-		if(!tryLogin) {
-			model.addAttribute("false", true);
-			tryLogin=true;
-			return "homepage";
+	@PostMapping("/redirectLogin")
+	public String redirectPerfil(Model model,
+			@RequestParam("email") String email, @RequestParam("senha") String senha) {
+
+		if(serviceE.getEmpresaById(email) != null) {
+			model.addAttribute(serviceE.getEmpresaById(email));
+			return "empInicio";
 		}
+		else
+			return "devInicio";
+	}
+	
+	
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	@ResponseBody
+	public boolean login(@RequestParam("email") String email,
+						@RequestParam("senha") String senha) {
+		
 		if(serviceE.getEmpresaById(email) != null) {
 			if(serviceE.getEmpresaById(email).getSenha().equals(senha)) {
-				tryLogin = false;
-				return "redirect:inicioEmpresa/"+email;
+				return true;
 			}
 			else {
-				model.addAttribute("email", email);
-				model.addAttribute("flag", true);
-				tryLogin = true;
-				return "homepage";
+				return false;
 			}
 		}
 		
 		if(serviceD.getDesenvolvedorById(email) != null) {
 			if(serviceD.getDesenvolvedorById(email).getSenha().equals(senha)) {
-				tryLogin = false;
-				return "redirect:inicioDev/"+email;
+				return true;
 			}
 			else {
-				model.addAttribute("email", email);
-				model.addAttribute("flag", true);
-				tryLogin = true;
-				return "homepage";
+				return false;
 			}
 		}
-		model.addAttribute("email", email);
-		model.addAttribute("flag", true);
-		tryLogin = true;
-		return "homepage";
-
 		
+
+		 return false;
 	}
+	
 }

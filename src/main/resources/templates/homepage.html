@@ -35,7 +35,7 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                                 
-                                <form id="regForm" th:action="@{/login}"> 
+                                <form id="regForm" method="post" th:action="@{/redirectLogin}"> 
                            			<div class="form-group">
                            				<input th:value="${email}" name="email" id="email" type="text" class="form-control" placeholder="E-mail" oninput="this.className = ''">
                            				
@@ -43,22 +43,20 @@
                            	
                             		<div class="form-group">
                             			<input name="senha" id="senha" type="password" class="form-control" placeholder="Senha" oninput="this.className = ''">
-                            			<small id="smallError" th:style="${flag} ? 'display:block' : 'display:none'">Email e/ou senha incorretos </small> 
+                            			<small id="smallError" >Email e/ou senha incorretos </small> 
                             		</div>
                             		<div><a href="recuperacaoDeSenha.html" class="btn-azul">Esqueceu a senha?<br><br></a></div>
-                                
-	                                <button id="login">
-	                                	<a lass="modal-btn azul" style="width:100%;">Fazer login</a>
-	                                </button>
+                              
                                 </form>
+                                <button id="login" onClick="valida()">
+                               		Fazer login
+                                </button>
                             </div>
                               
                         </div>
                     </div>
                     
-                    
-                     
-                           
+                        
                 </div>
             </div>    
         </div>
@@ -95,6 +93,7 @@
                                     </svg></div>
                                 <h4>Se você é um empresário, cadastre-se e crie desafios para recrutar desenvolvedores de acordo com sua necessidade!</h4>
                                 <a class="modal-btn azul" th:attr="href='/formEmpresa'">CADASTRE-SE</a>
+                                  
                             </div>
                         </div>
                     </div>
@@ -143,9 +142,39 @@
 			/*<![CDATA[*/
 			
 			    var flag = [[${flag}]]; //Your Thymleaf variable
-			    console.log(flag)
+			    var valida = function(){
+		    		var email = document.getElementById('email').value
+		    		var senha = document.getElementById('senha').value		    		
+		    		console.log(email)
+		    		console.log(senha)
+		    		$.ajax({
+			    	    url: "/login",
+			    	    type: "GET",
+			            contentType: "application/json",
+			    	    data:{
+			    	    	"email":email,
+			    	    	"senha":senha
+			    	    },
+			    	    success: function(response) {
+			    	       if(response){
+			    	    	   document.getElementById('regForm').submit();
+			    	       }
+
+			    	       else{
+			    	    	   document.getElementById('smallError').style.display='block';
+			    	    	   console.log('uau')
+			    	       }
+		    	        },
+			    	    error: function(xhr) {
+		    	            //Do Something to handle error
+		    	            console.log('deu pau')
+		    	        }
+			    	})
+			    
+		    	}
 			    window.onload = function() {
-			    	
+	
+			    	      
 			        if(flag){
 			    	    $('#modalExemplo').modal('show');
 			        }
@@ -155,11 +184,6 @@
 					document.getElementById('smallError').style.display='none';
 			   });
 			
-			   $('#login').on('click', function(){
-					flag = false;
-					alert('aa')
-					document.getElementById('smallError').style.display='none'
-			   });
 			
 			/*]]>*/
 		</script>
