@@ -57,7 +57,6 @@ public class DesafioController {
         DesafioHabilidade desafiohabilidade = new DesafioHabilidade();
         desafiohabilidade.setEmailEmpresa(desafio.getEmailEmpresa());
         desafiohabilidade.setIdDesafio(desafio.getId());
-        
         for(int i = 0; i < habilidades.length; i++) {
         	desafiohabilidade.setHabilidade(habilidades[i]);
         	//return desafiohabilidade.getEmailEmpresa()+desafiohabilidade.getHabilidade()+desafiohabilidade.getIdDesafio();

@@ -41,10 +41,6 @@ public class EmpresaController {
 	@Autowired
 	private DesafioHabilidadeService serviceDH;
 	
-	@GetMapping("/")
-	public String home(Model model) {
-		return "homepage";
-	}
 	
 	@GetMapping("/inicioEmpresa/{emailEmpresa}")
 	public String Inicio(Model model, @PathVariable String emailEmpresa) {

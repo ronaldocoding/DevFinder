@@ -31,17 +31,26 @@
                             </div>
                             <div class="col-sm-6">
                                 
-                                 <button type="button" class="close float-right m-3" data-dismiss="modal" aria-label="Close">
+                                 <button id="closeModal" type="button" class="close float-right m-3" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                                 
-                                <form id="regForm" action="">
-                            <div class="form-group"><input type="text" class="form-control" placeholder="E-mail" oninput="this.className = ''"></div>
-                            <div class="form-group"><input type="password" class="form-control" placeholder="Senha" oninput="this.className = ''"></div>
-                            <div><a href="recuperacaoDeSenha.html" class="btn-azul">Esqueceu a senha?<br><br></a></div>
-                          
+                                <form id="regForm" th:action="@{/login}"> 
+                           			<div class="form-group">
+                           				<input th:value="${email}" name="email" id="email" type="text" class="form-control" placeholder="E-mail" oninput="this.className = ''">
+                           				
+                           			</div>
+                           	
+                            		<div class="form-group">
+                            			<input name="senha" id="senha" type="password" class="form-control" placeholder="Senha" oninput="this.className = ''">
+                            			<small id="smallError" th:style="${flag} ? 'display:block' : 'display:none'">Email e/ou senha incorretos </small> 
+                            		</div>
+                            		<div><a href="recuperacaoDeSenha.html" class="btn-azul">Esqueceu a senha?<br><br></a></div>
+                                
+	                                <button id="login">
+	                                	<a lass="modal-btn azul" style="width:100%;">Fazer login</a>
+	                                </button>
                                 </form>
-                               <a href="devInicio.html" class="modal-btn azul" style="width:100%;">Fazer login</a>
                             </div>
                               
                         </div>
@@ -128,6 +137,32 @@
         </div>
 
         <footer class="footer"></footer>
-        <script th:src="@{/js/append.js}"></script>  
+	    <script th:src="@{js/append.js}"></script>    
+	    
+	    <script th:inline="javascript">
+			/*<![CDATA[*/
+			
+			    var flag = [[${flag}]]; //Your Thymleaf variable
+			    console.log(flag)
+			    window.onload = function() {
+			    	
+			        if(flag){
+			    	    $('#modalExemplo').modal('show');
+			        }
+			   };
+			   
+			   $('#closeModal').on('click', function(){
+					document.getElementById('smallError').style.display='none';
+			   });
+			
+			   $('#login').on('click', function(){
+					flag = false;
+					alert('aa')
+					document.getElementById('smallError').style.display='none'
+			   });
+			
+			/*]]>*/
+		</script>
+	    
     </body>
 </html>
