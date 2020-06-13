@@ -1,33 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Meus Desafios</title>
-    <link rel="stylesheet" type="text/css" href="/css/template.css">
-  <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
-  <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-</head> 
-<body>
-
-<div class="wrapper-side">
-  <div class="topnav"></div>
-  
-<div class="main_container" id="main_container">
-  
-  <h2 style="margin-left: 10px">Meus Desafios</h2>
-  <div class="row filter m-5">
-    <div class="col-sm-9 area_post">
+<html>
+	<head></head>
+	<body>
 		<tr th:each="desafio: ${desafios}">
+		
 			<div class="post">
 				<div class="row">
 					<div class="col-sm-12"> 
@@ -66,13 +41,13 @@
 					          <div class="modal-dialog modal-dialog-centered" role="document">
 					            <div class="modal-content">
 					              <div class="modal-header border-0">
-					                <h5 class="modal-title" id="exampleModalLongTitle">Exclusão de desafio</h5>
+					                <h5 class="modal-title" id="exampleModalLongTitle">Exclus�o de desafio</h5>
 					                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					                  <span aria-hidden="true">&times;</span>
 					                </button>
 					              </div>
 					              <div class="modal-body">
-					                Tem certeza que deseja excluir esse desafio? Essa ação não poderá ser desfeita.
+					                Tem certeza que deseja excluir esse desafio? Essa a��o n�o poder� ser desfeita.
 					              </div>
 					              <div class="modal-footer border-0">
 					                <button type="button" class="btn-azul" data-dismiss="modal">Cancelar</button>
@@ -88,168 +63,6 @@
 				</div>
 			</div>
    		</tr>
-    </div>
-    <aside class="col-sm-3">
-      <div class="card">
-        <article class="card-group-item">
-          <header class="card-header">
-            <h6 class="title">Área </h6>
-          </header>
-          <div class="filter-content">
-            <div class="card-body">
-            <form>
-              <label class="form-check">
-                <input class="form-check-input" type="checkbox" value="">
-                <span class="form-check-label">
-                  Back-end
-                </span>
-              </label> <!-- form-check.// -->
-              <label class="form-check">
-                <input class="form-check-input" type="checkbox" value="">
-                <span class="form-check-label">
-                  Front-end
-                </span>
-              </label>  <!-- form-check.// -->
-              <label class="form-check">
-                <input class="form-check-input" type="checkbox" value="">
-                <span class="form-check-label">
-                  Full-stack
-                </span>
-              </label>  <!-- form-check.// -->
-            </form>
-              <label class="form-check">
-                <input class="form-check-input" type="checkbox" value="">
-                <span class="form-check-label">
-                  Data science
-                </span>
-              </label>  <!-- form-check.// -->
-            </div> <!-- card-body.// -->
-          </div>
-        </article> <!-- card-group-item.// -->
-        
-        
-        <article class="card-group-item">
-          <header class="card-header">
-            <h6 class="title">Outras informações </h6>
-          </header>
-          <div class="filter-content">
-            <div class="card-body">
-              <label class="form-check">
-                <input class="form-check-input" type="radio" name="exampleRadio" value="">
-                <span class="form-check-label">
-                  Trabalho remoto
-                </span>
-              </label>
-              <label class="form-check">
-                <input class="form-check-input" type="radio" name="exampleRadio" value="">
-                <span class="form-check-label">
-                  Apenas presencial
-                </span>
-              </label>
-            </div>
-          </div>
-        </article>
-      </div> <!-- card.// -->
-    </aside>
-</div>	
-    
-  </div>
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Alterar desafio</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="form-group">
-            <label >Link da solução</label>
-            <input type="text" class="form-control" placeholder="Link">
-          </div>
-          <div class="form-group">
-            <label>Documentação</label>
-            <input type="file" class="form-control">
-          </div>
-          <div class="form-group" style="width: 100%">
-            <label >Descrição</label>
-            <div></div>
-            <textarea placeholder="Descreva um pouco sobre sua solução" style=""></textarea>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-        <button type="button" class="btn btn-primary">Enviar</button>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
+	</body>
 
-<script th:src="@{/js/feed.js}"></script> 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
-
-	<footer class="footer"></footer>
-	<div class="sidebaremp">
-    			<div class="modal left fade" id="sidebar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                	<div class="modal-dialog" role="document">
-                		<div class="modal-content"><div class="modal-body">
-                    		<ul id="menu-nav">
-                    			<li>
-                    				<div class="hamburger-side btn-degrade azul" data-toggle="modal" data-target="#sidebar">
-               							<div class="one"></div>
-               							<div class="two"></div>
-               							<div class="three"></div>
-               						</div>
-               					</li>
-               					<li>
-               						<img th:src="@{/imgs/logo.png}"  class="logo">
-               					</li>
-               				</ul>
-                   			<ul id="menu-list">
-                   				<li>
-                   					<a th:attr="href='/inicioEmpresa/'+${empresa.email}">
-	                   						<span class="icon">
-	                   							<i class="fa fa-home" aria-hidden="true"></i>
-	                   						</span>
-	                   						<span class="title">Início</span>
-	                   					
-                   					</a>
-                   				</li>
-                   				<li>
-                   					<a th:attr="href='/desafiosByEmpresa/'+${empresa.email}">
-                   						<span class="icon">
-                   							<i class="fa fa-code"></i>
-                   						</span>
-                   						<span class="title">Meus desafios</span>
-                   					</a>
-                   				</li>
-                   				<li>
-                   					<a th:attr="href='/desafiosByEmpresa/'+${empresa.email}">
-                   						<span class="icon">
-                   							<i class="fa fa-cog" aria-hidden="true"></i>
-                   						</span>
-                   						<span class="title">Configurações</span>
-                   					</a>
-                   				</li>
-                   				<li>
-	                   				<a th:attr="href='/desafiosByEmpresa/'+${empresa.email}">
-	                   					<span class="icon">
-	                   						<i class="fas fa-sign-out-alt"></i>
-	                   					</span>
-	                   					<span class="title">Sair</span>
-	                   				</a>
-                   				</li>
-                   			</ul>
-                   		</div>
-                   	</div>
-                </div>
-        	</div>
-        </div>
-    <div th:insert="fragment.html :: footer"></div>
-    <script th:src="@{/js/append.js}"></script>  
-</body>
 </html>

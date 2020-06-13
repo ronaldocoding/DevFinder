@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -30,6 +31,24 @@ public class UsuarioController {
 		
 		return "homepage";
 	}
+	
+	@GetMapping("/redirectLogin")
+	public String redirect(Model model,
+			@ModelAttribute("email") String email, @ModelAttribute(value = "page") String page){
+		model.addAttribute("empresa",serviceE.getEmpresaById(email));
+		if(page == null)
+			model.addAttribute("page", 1);
+		else
+			model.addAttribute("page", page);
+		return "empInicio";
+	}
+	
+	
+	@GetMapping("/logout")
+	public String logout(Model model) {
+		return "redirect:/";
+	}
+	
 	
 	@PostMapping("/redirectLogin")
 	public String redirectPerfil(Model model,

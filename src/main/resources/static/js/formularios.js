@@ -13,9 +13,8 @@ function showTab(n) {
     document.getElementById("nextBtn").innerHTML = "Cadastrar";
     $("#nextBtn").on('click', function(){
       
-      console.log(n+' '+x.length)
       if(n == (x.length-1)&& validateForm())
-        window.location.href = "devInicio.html";
+    	  ('#regForm').submit()
     });
       
   } else {

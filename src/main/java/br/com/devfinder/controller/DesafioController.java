@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.devfinder.model.Desafio;
 import br.com.devfinder.model.DesafioHabilidade;
@@ -41,15 +43,20 @@ public class DesafioController {
 	@Autowired
 	private DesafioHabilidadeService serviceDH;
 
-	@GetMapping("/addDesafio")
-	public String formDesafio(Model model) {
+	@PostMapping("/addDesafioRedirect")
+	public String formDesafio(Model model,@RequestParam("email") String emailEmpresa) {
 		model.addAttribute("desafio", new Desafio());
+		model.addAttribute("email", emailEmpresa);
+		serviceEmpresa.getEmpresas();
         return "formDesafio";
     }
 	
 	@PostMapping("/addDesafio")
-	public String formDesafio(@ModelAttribute Desafio desafio, @RequestParam("habilidade") String hab) {
-        desafio.setEmailEmpresa("marlonfleite50@gmail.com");
+	public String formDesafio(RedirectAttributes redirectAttributes, 
+			@ModelAttribute Desafio desafio, @RequestParam("habilidade") String hab,
+			@RequestParam("email") String emailEmpresa) {
+		
+        desafio.setEmailEmpresa(emailEmpresa);
         service.saveDesafio(desafio);
         desafio = service.getDesafioByNome(desafio.getNome());
         String habilidades[] = hab.split(" ");
@@ -63,8 +70,10 @@ public class DesafioController {
         	serviceDH.saveHabilidade(desafiohabilidade);
         	//.saveHabilidade(desafiohabilidade); 
         }
-        
-		return "empMeusDesafios";
+      
+        redirectAttributes.addFlashAttribute("page", 2);
+        redirectAttributes.addFlashAttribute("email", emailEmpresa);
+		return "redirect:/redirectLogin";
     }
 	
 	@PostMapping("/addDesafios")
@@ -72,15 +81,13 @@ public class DesafioController {
 		return service.saveDesafios(desafios);
 	}
 
-	@GetMapping("/desafiosByEmpresa/{emailEmpresa}")
-	public String findAllDesafiosByEmpresa(@PathVariable String emailEmpresa, Model model) {
+	@RequestMapping(value = "/empMeusDesafios", method = RequestMethod.GET)
+	public String getDesafios(Model model, @RequestParam("email") String emailEmpresa) {
 		model.addAttribute("desafios", service.getDesafios(emailEmpresa));
-		Empresa emp = (Empresa) model.getAttribute("empresa");
 		
-		return emp.getEmail();
-		//model.addAttribute("empresa", serviceEmpresa.getEmpresaById(emailEmpresa));
-		//model.addAttribute("service", serviceDH);
-		//return "empMeusDesafios";
+		model.addAttribute("empresa", serviceEmpresa.getEmpresaById(emailEmpresa));
+		model.addAttribute("service", serviceDH);
+		return "empMeusDesafios";
 	}
 
 	@GetMapping("/desafioById/{emailEmpresa}/{id}")
@@ -99,7 +106,7 @@ public class DesafioController {
 		return service.updateDesafio(desafio);
 	}
 	@GetMapping("/deleteDesafio/{emailEmpresa}/{id}")
-	public String deleteEmpresa(@PathVariable String emailEmpresa, @PathVariable int id, Model model) {
+	public String deleteEmpresa(@PathVariable String emailEmpresa, @PathVariable int id, RedirectAttributes redirectAttributes) {
 		DesafioId desafioId = new DesafioId(emailEmpresa, id);
 		for(DesafioHabilidade d: serviceDH.getHabilidades(emailEmpresa)){
 			if(id == d.getIdDesafio()) {
@@ -108,8 +115,9 @@ public class DesafioController {
 			}
 		}
 		service.deleteDesafio(desafioId);
-		model.addAttribute("desafios", service.getDesafios(emailEmpresa));
-		model.addAttribute("empresa", serviceEmpresa.getEmpresaById(emailEmpresa));
-		return "empMeusDesafios";
+
+        redirectAttributes.addFlashAttribute("page", 2);
+        redirectAttributes.addFlashAttribute("email", emailEmpresa);
+		return "redirect:/redirectLogin";
 	}
 }

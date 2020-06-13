@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	$(".hamburger-side").click(function(){
-	   $(".wrapper-side").toggleClass("collapse-side");
+		console.log('n fez nd')
 	});
 
     $('.dropdown-menu').mCustomScrollbar({

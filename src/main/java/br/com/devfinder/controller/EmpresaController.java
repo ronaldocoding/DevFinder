@@ -54,6 +54,20 @@ public class EmpresaController {
 		return "empInicio";
 	}
 	
+	@RequestMapping(value = "/dashboard", method = RequestMethod.GET)
+	public String dashboard(Model model, @RequestParam("email") String email) {
+		model.addAttribute("empresa", service.getEmpresaById(email));
+		return "dashboard";
+	}
+	
+	@RequestMapping(value = "/empConfiguracoes", method = RequestMethod.GET)
+	public String config(Model model, @RequestParam("email") String email) {
+		model.addAttribute("empresa", service.getEmpresaById(email));
+		return "empConfiguracoes";
+	}
+	
+	
+	
 	@GetMapping("/formEmpresa")
 	public String addForm(Model model) {
 		model.addAttribute("empresa", new Empresa());
@@ -93,12 +107,6 @@ public class EmpresaController {
 		return "perfilEmpresa";
 	}
 	
-	@RequestMapping(value = "/testeAjax", method = RequestMethod.GET)
-	@ResponseBody
-	public String teste(
-			@RequestParam("name") int email) {
-		 return "{\"success\":55}";
-	}
     @GetMapping("/empresaByNomeFantasia/{nomeFantasia}")
 	public Empresa findEmpresatByNomeFantasia(@PathVariable String nomeFantasia) {
 		return service.getEmpresaByNomeFantasia(nomeFantasia);
