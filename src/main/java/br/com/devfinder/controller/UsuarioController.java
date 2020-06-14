@@ -35,12 +35,21 @@ public class UsuarioController {
 	@GetMapping("/redirectLogin")
 	public String redirect(Model model,
 			@ModelAttribute("email") String email, @ModelAttribute(value = "page") String page){
-		model.addAttribute("empresa",serviceE.getEmpresaById(email));
+
+
 		if(page == null)
 			model.addAttribute("page", 1);
 		else
 			model.addAttribute("page", page);
-		return "empInicio";
+		
+		if(serviceE.getEmpresaById(email) != null) {
+			model.addAttribute("empresa",serviceE.getEmpresaById(email));
+			return "empInicio";
+		}
+		else {
+			model.addAttribute("dev",serviceD.getDesenvolvedorById(email));
+			return "devInicio";
+		}
 	}
 	
 	
@@ -55,11 +64,13 @@ public class UsuarioController {
 			@RequestParam("email") String email, @RequestParam("senha") String senha) {
 
 		if(serviceE.getEmpresaById(email) != null) {
-			model.addAttribute(serviceE.getEmpresaById(email));
+			model.addAttribute("empresa", serviceE.getEmpresaById(email));
 			return "empInicio";
 		}
-		else
+		else {
+			model.addAttribute("dev", serviceD.getDesenvolvedorById(email));
 			return "devInicio";
+		}
 	}
 	
 	

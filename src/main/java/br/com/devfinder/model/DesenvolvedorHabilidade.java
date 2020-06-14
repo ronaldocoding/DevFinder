@@ -23,7 +23,7 @@ public class DesenvolvedorHabilidade implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@EmbeddedId
-	private DesenvolvedorHabilidadeId id;
+	private DesenvolvedorHabilidadeId id = new DesenvolvedorHabilidadeId();
 
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "EMAIL_DESENVOLVEDOR", referencedColumnName = "EMAIL", nullable = false, insertable = false, updatable = false)

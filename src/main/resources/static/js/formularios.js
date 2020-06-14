@@ -12,7 +12,6 @@ function showTab(n) {
   if (n == (x.length - 1)) {
     document.getElementById("nextBtn").innerHTML = "Cadastrar";
     $("#nextBtn").on('click', function(){
-      
       if(n == (x.length-1)&& validateForm())
     	  ('#regForm').submit()
     });

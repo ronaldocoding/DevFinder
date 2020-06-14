@@ -25,6 +25,7 @@ import br.com.devfinder.model.ids.DesafioHabilidadeId;
 import br.com.devfinder.model.ids.DesafioId;
 import br.com.devfinder.service.DesafioHabilidadeService;
 import br.com.devfinder.service.DesafioService;
+import br.com.devfinder.service.DesenvolvedorService;
 import br.com.devfinder.service.EmpresaService;
 
 /**
@@ -43,6 +44,9 @@ public class DesafioController {
 	@Autowired
 	private DesafioHabilidadeService serviceDH;
 
+	@Autowired
+	private DesenvolvedorService serviceDev;
+	
 	@PostMapping("/addDesafioRedirect")
 	public String formDesafio(Model model,@RequestParam("email") String emailEmpresa) {
 		model.addAttribute("desafio", new Desafio());
@@ -88,6 +92,13 @@ public class DesafioController {
 		model.addAttribute("empresa", serviceEmpresa.getEmpresaById(emailEmpresa));
 		model.addAttribute("service", serviceDH);
 		return "empMeusDesafios";
+	}
+
+	
+	@RequestMapping(value = "/devMeusDesafios", method = RequestMethod.GET)
+	public String getDesafiosDev(Model model, @RequestParam("email") String email) {
+		model.addAttribute("dev", serviceDev.getDesenvolvedorById(email));
+		return "devDesafiosInscritos";
 	}
 
 	@GetMapping("/desafioById/{emailEmpresa}/{id}")

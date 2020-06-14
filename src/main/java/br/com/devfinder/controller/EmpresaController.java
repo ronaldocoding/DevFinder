@@ -57,7 +57,7 @@ public class EmpresaController {
 	@RequestMapping(value = "/dashboard", method = RequestMethod.GET)
 	public String dashboard(Model model, @RequestParam("email") String email) {
 		model.addAttribute("empresa", service.getEmpresaById(email));
-		return "dashboard";
+		return "empDashboard";
 	}
 	
 	@RequestMapping(value = "/empConfiguracoes", method = RequestMethod.GET)
@@ -65,8 +65,6 @@ public class EmpresaController {
 		model.addAttribute("empresa", service.getEmpresaById(email));
 		return "empConfiguracoes";
 	}
-	
-	
 	
 	@GetMapping("/formEmpresa")
 	public String addForm(Model model) {
@@ -83,10 +81,10 @@ public class EmpresaController {
 		
 		empresa.setEndereco(endereco);
 		service.saveEmpresa(empresa);
+		model.addAttribute("empresa", empresa);
+		model.addAttribute("page", 1);
 		return "empInicio";
-		//
-		//service.saveEmpresa(empresa);
-		//return "foi";
+		
 	}
 
 	@PostMapping("/addEmpresas")
