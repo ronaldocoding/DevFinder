@@ -23,6 +23,8 @@ import br.com.devfinder.model.DesenvolvedorAreaAtuacao;
 import br.com.devfinder.model.DesenvolvedorHabilidade;
 import br.com.devfinder.model.Empresa;
 import br.com.devfinder.model.Endereco;
+import br.com.devfinder.service.DesafioHabilidadeService;
+import br.com.devfinder.service.DesafioService;
 import br.com.devfinder.service.DesenvolvedorAreaAtuacaoService;
 import br.com.devfinder.service.DesenvolvedorHabilidadeService;
 import br.com.devfinder.service.DesenvolvedorService;
@@ -42,6 +44,13 @@ public class DesenvolvedorController {
 	
 	@Autowired
 	private DesenvolvedorAreaAtuacaoService serviceA;
+	
+
+	@Autowired
+	private DesafioService serviceD;	
+	
+	@Autowired
+	private DesafioHabilidadeService serviceDH;
 	
 	@GetMapping("/formDev")
 	public String addFormDev(Model model) {
@@ -85,6 +94,8 @@ public class DesenvolvedorController {
 	@RequestMapping(value = "/dashboardDev", method = RequestMethod.GET)
 	public String dashboard(Model model, @RequestParam("email") String email) {
 		model.addAttribute("dev", service.getDesenvolvedorById(email));
+		model.addAttribute("desafios", serviceD.getDesafios("marlonfleite57@gmail.com"));
+		model.addAttribute("service", serviceDH);
 		return "devDashboard";
 	}
 	
@@ -105,8 +116,23 @@ public class DesenvolvedorController {
 	}
 
 	@GetMapping("/desenvolvedorById/{email}")
-	public Desenvolvedor findDesenvolvedorById(@PathVariable String email) {
-		return service.getDesenvolvedorById(email);
+	public String findEmpresaById(@PathVariable String email, Model model) {
+		model.addAttribute("dev", service.getDesenvolvedorById(email));
+		model.addAttribute("service", serviceH);
+		String area = "";
+		
+		List<DesenvolvedorAreaAtuacao> areas = serviceA.getAreas(email);
+		
+		for(int i = 0; i < areas.size(); i++) {
+			if(i != areas.size()-1) {
+				area += areas.get(i).getAreaAtuacao()+", ";
+			}
+			else
+				area += areas.get(i).getAreaAtuacao();
+			
+		}
+		model.addAttribute("area", area);
+		return "perfilDesenvolvedor";
 	}
 
 	@GetMapping("/desenvolvedorByNome/{nome}")
