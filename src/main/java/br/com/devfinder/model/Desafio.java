@@ -2,7 +2,6 @@ package br.com.devfinder.model;
 
 import java.io.Serializable;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -23,7 +22,7 @@ import br.com.devfinder.model.ids.DesafioId;
 @IdClass(DesafioId.class)
 @Table(name = "DESAFIO")
 public class Desafio implements Serializable {
-
+ 
 	private static final long serialVersionUID = 1L;
 
 	@Id
