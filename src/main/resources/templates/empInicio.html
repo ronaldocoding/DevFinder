@@ -23,20 +23,17 @@
         <div class="wrapper-side">
             <div class="topnav"></div>
         </div>
-        <div class="main_container" id="main_container">
-            
-            <div class="row filter m-5">
-                    <div class="col-sm-9 area_post" id="container">
-                    	
-                    </div>
-                    
-                </div>
-        </div>	
+	        
+		<div class="main_container" id="main_container">
+			<div class="row filter m-5">
+				<div class="col-sm-9 area_post" id="container"></div>
+			</div>
+		</div>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 		
     	<script th:src="@{/js/feed.js}"></script>  
-    	
+    	<div th:insert="fragment.html :: loggedtopnav"></div>
 
     		<div class="sidebaremp">
     			<div class="modal left fade" id="sidebar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -97,6 +94,11 @@
         	</div>
         </div>
         <script th:inline="javascript">
+	        $('#search').keyup(function(){
+				 
+	        	search()
+	        	
+	        })
     		var email = [[${empresa.email}]]; //Your Thymleaf variable
 	    	console.log(email)
     		var change = (value) =>{
@@ -117,6 +119,7 @@
 			    	    success: function(response) {
 							console.log(response)
 			    	 	   	$("#sidebar").modal("hide");
+							$('#main_container').html('<div class="row filter m-5"> <div class="col-sm-9 area_post" id="container"></div></div>')
 			    	    	$('#container').html(response)
 		    	        },
 			    	    error: function(error){
@@ -137,7 +140,6 @@
     	</script>
     	
     <div th:insert="fragment.html :: footer"></div>
-    	<script th:src="@{/js/append.js}"></script>  
     
     </body>
 </html>

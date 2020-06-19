@@ -35,7 +35,9 @@ public class DesenvolvedorService {
 	public List<Desenvolvedor> getDesenvolvedores() {
 		return repository.findAll();
 	}
-
+	public List<Desenvolvedor> getDesenvolvedores(String[] texto) {
+		return repository.findDesenvolvedor(texto);
+	}
 	public Desenvolvedor getDesenvolvedorById(String email) {
 		return repository.findById(email).orElse(null);
 	}

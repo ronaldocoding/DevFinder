@@ -1,5 +1,6 @@
 package br.com.devfinder.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +43,9 @@ public class DesafioService {
 	public List<Desafio> getDesafios(String emailEmpresa) {
 		return repository.findAllByEmpresa(emailEmpresa);
 	}
-
+	public ArrayList<Desafio> getDesafios(String[] texto) {
+		return (ArrayList<Desafio>) repository.findDesafio(texto);
+	}
 	public Desafio getDesafioById(DesafioId id) {
 		return repository.findById(id).orElse(null);
 	}

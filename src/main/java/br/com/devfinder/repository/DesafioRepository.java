@@ -12,7 +12,7 @@ import br.com.devfinder.model.ids.DesafioId;
  * @author Ronaldo Costa
  *
  */
-public interface DesafioRepository extends JpaRepository<Desafio, DesafioId> {
+public interface DesafioRepository extends JpaRepository<Desafio, DesafioId>, DesafioRepositoryCustom {
 
 	Desafio findByNome(String nome);
 

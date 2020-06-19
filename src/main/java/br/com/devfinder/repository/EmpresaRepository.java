@@ -8,7 +8,7 @@ import br.com.devfinder.model.Empresa;
  * @author Ronaldo Costa
  *
  */
-public interface EmpresaRepository extends JpaRepository<Empresa, String> {
+public interface EmpresaRepository extends JpaRepository<Empresa, String>,EmpresaRepositoryCustom {
 
 	Empresa findByNomeFantasia(String nomeFantasia);
 }

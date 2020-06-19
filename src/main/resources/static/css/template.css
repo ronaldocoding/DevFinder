@@ -495,10 +495,6 @@ footer {
 	margin: 0;
 	padding: 0;
 	height: 100px;
-	overflow: hidden;
-	overflow-x: scroll;
-	overflow-y: hidden;
-	white-space: nowrap;
 	-webkit-overflow-scrolling: touch;
 }
 

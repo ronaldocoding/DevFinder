@@ -40,7 +40,9 @@ public class EmpresaService {
 	public List<Empresa> getEmpresas() {
 		return repository.findAll();
 	}
-
+	public List<Empresa> getEmpresas(String[] texto) {
+		return repository.findEmpresa(texto);
+	}
 	public Empresa getEmpresaById(String email) {
 		return repository.findById(email).orElse(null);
 	}
