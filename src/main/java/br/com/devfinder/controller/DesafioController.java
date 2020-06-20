@@ -18,6 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.devfinder.model.Desafio;
 import br.com.devfinder.model.DesafioHabilidade;
+import br.com.devfinder.model.Desenvolvedor;
 import br.com.devfinder.model.ids.DesafioHabilidadeId;
 import br.com.devfinder.model.ids.DesafioId;
 import br.com.devfinder.service.DesafioHabilidadeService;
@@ -82,21 +83,6 @@ public class DesafioController {
 		return service.saveDesafios(desafios);
 	}
 
-	@RequestMapping(value = "/empMeusDesafios", method = RequestMethod.GET)
-	public String getDesafios(Model model, @RequestParam("email") String emailEmpresa) {
-		model.addAttribute("desafios", service.getDesafios(emailEmpresa));
-		
-		model.addAttribute("empresa", serviceEmpresa.getEmpresaById(emailEmpresa));
-		model.addAttribute("service", serviceDH);
-		return "empMeusDesafios";
-	}
-
-	
-	@RequestMapping(value = "/devMeusDesafios", method = RequestMethod.GET)
-	public String getDesafiosDev(Model model, @RequestParam("email") String email) {
-		model.addAttribute("dev", serviceDev.getDesenvolvedorById(email));
-		return "devDesafiosInscritos";
-	}
 
 	@GetMapping("/desafioById/{emailEmpresa}/{id}")
 	public Desafio findDesafioById(Model model, @PathVariable String emailEmpresa, @PathVariable int id) {

@@ -1,5 +1,45 @@
 <!doctype html>
 <html xmlns:th="http://thymeleaf.org">
+
+<head th:fragment="links">
+	<meta charset="UTF-8">
+	<title>Início</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/template.css}">
+	<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+	<link rel="stylesheet"
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+		integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+		crossorigin="anonymous">
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script defer
+		src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
+		integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
+		crossorigin="anonymous"></script>
+	<script defer
+		src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
+		integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
+		crossorigin="anonymous"></script>
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
+	<script th:src="@{/js/feed.js}"></script>
+
+</head>
+
 <body>
 	<!-- DEFAULT TOP NAV -->
 	<div th:fragment="deftopnav">
@@ -229,7 +269,8 @@
 		
 		$(window).on("resize", logo);
 		$(window).on("load", logo);
-		
+
+
 		const search = function(pesquisa){
 			console.log('eae')
 			$.ajax({
@@ -269,18 +310,23 @@
 						<span class="navbar-toggler-icon"></span>
 					</button>
 					<ul>
-						<li class="buscar"><div class="buscar-caja">
-								<input type="text" id="search" class="buscar-txt"
-									placeholder="Buscar..." /> <a class="buscar-btn  btn-azul"><i
+					
+						<li>
+						<form id="searchForm" th:action="@{/search}" method="post">
+							<div class="buscar-caja">
+								<input type="text" name="search" id="search" class="buscar-txt"
+									placeholder="Buscar..." /> <a class="buscar-btn"><i
 									class="fas fa-search"></i></a>
-							</div></li>
+
+							</div>
+						</form></li>
 						<li><div class="dropdown show">
 								<a class="dropdown-togggle btn-degrade azul redondo"
 									id="dropdownMenuLink" data-toggle="dropdown"
 									aria-haspopup="true" aria-expanded="false"> <i
 									class="fa fa-bell"></i></a>
 								<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-									<h5>Notifica��es</h5>
+									<h5>Notificações</h5>
 								</div>
 							</div></li>
 						<li><a href="#" class="btn-degrade azul redondo"><i
@@ -291,6 +337,100 @@
 		</div>
 	</div>
 	<!-- DEVELOPER SIDEBAR -->
+	<div th:fragment="sidebardev">
+		<div class="sidebaremp">
+			<div class="modal left fade" id="sidebar" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-body">
+							<ul id="menu-nav">
+								<li>
+									<div class="hamburger-side btn-degrade azul"
+										data-toggle="modal" data-target="#sidebar">
+										<div class="one"></div>
+										<div class="two"></div>
+										<div class="three"></div>
+									</div>
+								</li>
+								<li><img th:src="@{/imgs/logo.png}" class="logo"></li>
+							</ul>
+
+							<ul id="menu-list">
+
+								<li><a th:href="devDashboard"> <span class="icon">
+											<i class="fas fa-sign-out-alt"></i>
+									</span> <span class="title">Início</span>
+								</a></li>
+
+								<li><a th:href="devMeusDesafios"> <span class="icon">
+											<i class="fa fa-code"></i>
+									</span> <span class="title">Meus desafios</span>
+								</a></li>
+								<li><a th:href="devConfiguracoes"> <span class="icon">
+											<i class="fa fa-code"></i>
+									</span> <span class="title">Configurações</span>
+								</a></li>
+								<li><a th:attr="href='/logout'"> <span class="icon">
+											<i class="fas fa-sign-out-alt"></i>
+									</span> <span class="title">Sair</span>
+								</a></li>
+							</ul>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- DEVELOPER SIDEBAR -->
+	<div th:fragment="sidebaremp">
+		<div class="sidebaremp">
+			<div class="modal left fade" id="sidebar" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-body">
+							<ul id="menu-nav">
+								<li>
+									<div class="hamburger-side btn-degrade azul"
+										data-toggle="modal" data-target="#sidebar">
+										<div class="one"></div>
+										<div class="two"></div>
+										<div class="three"></div>
+									</div>
+								</li>
+								<li><img th:src="@{/imgs/logo.png}" class="logo"></li>
+							</ul>
+
+							<ul id="menu-list">
+
+								<li><a th:href="empDashboard"> <span class="icon">
+											<i class="fas fa-sign-out-alt"></i>
+									</span> <span class="title">Início</span>
+								</a></li>
+
+								<li><a th:href="empMeusDesafios"> <span class="icon">
+											<i class="fa fa-code"></i>
+									</span> <span class="title">Meus desafios</span>
+								</a></li>
+								<li><a th:href="empConfiguracoes"> <span class="icon">
+											<i class="fa fa-code"></i>
+									</span> <span class="title">Configurações</span>
+								</a></li>
+								<li><a th:attr="href='/logout'"> <span class="icon">
+											<i class="fas fa-sign-out-alt"></i>
+									</span> <span class="title">Sair</span>
+								</a></li>
+							</ul>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<!-- CORP SIDEBAR -->
 	<!-- FOOTER -->
 	<footer class="footer" th:fragment="footer">
@@ -313,7 +453,7 @@
 					</ul>
 				</div>
 				<div class="col-6 col-md">
-					<h5>Endereço</h5>
+					<h5>EndereÃ§o</h5>
 					<ul class="list-unstyled text-small">
 						<li><a href="https://goo.gl/maps/hEkmvv2gVBFypU7g6">Av.
 								Sete de Setembro, 1975, IFAM, Manaus, AM - Brasil</a></li>
@@ -328,5 +468,6 @@
 			</div>
 		</div>
 	</footer>
+
 </body>
 </html>

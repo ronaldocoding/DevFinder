@@ -1,67 +1,27 @@
-<html>
-	<head></head>
-	<body>
-		<tr th:each="desafio: ${desafios}">
-			<div class="post">
-				<div class="row">
-					<div class="col-sm-12"> 
-						<div class="col-sm-3"> 
-							<img src="http://placehold.it/260x180" alt=""> 
-						</div> 
-						<div class="col-sm-9">
-							<h4 th:text="${desafio.nome}"></h4> 
-							<p th:text="${desafio.descricao}"></p>
-							<div class="cell-list-content-icon">
-								<span> <i class="fab fa-dev"></i> <span th:text="${desafio.areaDesenvolvimento}"></span></span>
-								<span> <svg class="svg-inline--fa fa-home fa-w-18" style="margin-right: 10px;" aria-hidden="true" data-prefix="fa" data-icon="home" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M488 312.7V456c0 13.3-10.7 24-24 24H348c-6.6 0-12-5.4-12-12V356c0-6.6-5.4-12-12-12h-72c-6.6 0-12 5.4-12 12v112c0 6.6-5.4 12-12 12H112c-13.3 0-24-10.7-24-24V312.7c0-3.6 1.6-7 4.4-9.3l188-154.8c4.4-3.6 10.8-3.6 15.3 0l188 154.8c2.7 2.3 4.3 5.7 4.3 9.3zm83.6-60.9L488 182.9V44.4c0-6.6-5.4-12-12-12h-56c-6.6 0-12 5.4-12 12V117l-89.5-73.7c-17.7-14.6-43.3-14.6-61 0L4.4 251.8c-5.1 4.2-5.8 11.8-1.6 16.9l25.5 31c4.2 5.1 11.8 5.8 16.9 1.6l235.2-193.7c4.4-3.6 10.8-3.6 15.3 0l235.2 193.7c5.1 4.2 12.7 3.5 16.9-1.6l25.5-31c4.2-5.2 3.4-12.7-1.7-16.9z"></path></svg><span th:text="${empresa.tipoVaga}"></span></span>
-														
-							</div>
-							<div class="cell-list-content-tag">
-								<td th:each="habilidade:${service.getHabilidades(desafio.emailEmpresa, desafio.id)}">
-									<span class="tag-list background-gray" th:text="${habilidade.getHabilidade()}"></span>
-								</td>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					 <div class="col-sm-12 line"> 
-					 	<div class="col-sm-4">
-					 		<span>Termina em </span> 
-					 		<span th:text="${desafio.dataFim}"></span>
-					 		<span>as </span>
-					 		<span th:text="${desafio.horarioFim}"></span>
-					 	</div>
-					 	<div class="col-sm-7 offset-sm-1">
-				 			<button type="button" name="excluir" class="btn-azul" data-toggle="modal" th:attr="data-target='#exclusaoDesafio'+${desafio.id}">Excluir</button>
-				 			<button type="button" class="modal-btn azul" data-toggle="modal" data-target="#exampleModal">Alterar</button>
-				 		    
-				 		    <div class="modal fade" th:attr="id='exclusaoDesafio'+${desafio.id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-					          <div class="modal-dialog modal-dialog-centered" role="document">
-					            <div class="modal-content">
-					              <div class="modal-header border-0">
-					                <h5 class="modal-title" id="exampleModalLongTitle">Exclusão de desafio</h5>
-					                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					                  <span aria-hidden="true">&times;</span>
-					                </button>
-					              </div>
-					              <div class="modal-body">
-					                Tem certeza que deseja excluir esse desafio? Essa ação não poderá ser desfeita.
-					              </div>
-					              <div class="modal-footer border-0">
-					                <button type="button" class="btn-azul" data-dismiss="modal">Cancelar</button>
-					                <button type="button" class="modal-btn vermelho">
-					                	<a th:attr="href='/deleteDesafio/'+${desafio.emailEmpresa}+'/'+${desafio.id}" style="color:white; text-decoration:none">Excluir</a>
-					                </button>
-					              </div>
-					            </div>
-					          </div>
-					        </div>
-				 	</div>
-					 </div>
-				</div>
-			</div>
-   		</tr>
-	</body>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head th:insert="fragment.html :: links">
+<meta charset="UTF-8">
+</head>
+<body>
 
+	<div class="main_container" id="main_container">
+		<div class="row filter m-5">
+			<div class="col-sm-9 area_post" id="container">
+				meus desafios da empresa tal:
+				<div th:text="${perfil.email}"></div>
+			</div>
+		</div>
+	</div>
+
+	<div th:insert="fragment.html :: loggedtopnav"></div>
+	<div th:insert="fragment.html :: sidebaremp"></div>
+	<div th:insert="fragment.html :: footer"></div>
+	<script>
+	    $('#search').change(function(){
+	    	$('#regForm').submit()
+	    })
+	</script>
+
+</body>
 </html>

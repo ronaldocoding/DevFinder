@@ -15,7 +15,9 @@
 		                                    <circle cx="25" cy="25" r="25"
 											fill="yellow" />
 		                                </svg>
-									<h5 th:text="${emp.razaoSocial}"></h5>
+		                            <a  th:href="@{'empresaById/'+ ${emp.email}}">
+										<h5 th:text="${emp.razaoSocial}"></h5>
+									</a>
 								</li>
 							
 							</tr>
@@ -33,7 +35,9 @@
 	                                    <circle cx="25" cy="25" r="25"
 										fill="blue" />
 	                                </svg>
-								<h5 th:text="${dev.nome}"></h5>
+	                             <a  th:href="@{'desenvolvedorById/'+ ${dev.email}}">
+									<h5 th:text="${dev.nome}"></h5>
+	                             </a>
 							</li>
 						
 						</tr>

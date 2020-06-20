@@ -1,6 +1,9 @@
 package br.com.devfinder.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,7 +13,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import br.com.devfinder.model.Desenvolvedor;
+import br.com.devfinder.model.Usuario;
 import br.com.devfinder.service.DesafioHabilidadeService;
 import br.com.devfinder.service.DesafioService;
 import br.com.devfinder.service.DesenvolvedorService;
@@ -50,53 +58,66 @@ public class UsuarioController {
 	}
 	
 	@PostMapping("/search")
-	public String search(Model model, @RequestParam("search") String pesquisa) {
+	public String search(Model model, @RequestParam("search") String pesquisa, HttpSession session) {
+		
 		model.addAttribute("pesquisa", pesquisa);
-		return "pesquisa";
+		
+		if(session.getAttribute("perfil") == null)
+			return "pesquisa";
+		else {
+			Usuario user = (Usuario) session.getAttribute("perfil");
+			model.addAttribute("perfil", session.getAttribute("perfil"));
+			if(serviceE.getEmpresaById(user.getEmail()) == null){
+				return "devPesquisa";
+			}
+			else
+				return "empPesquisa";
+		}
+		
 	}
 	
 	@GetMapping("/search")
-	public String search(Model model) {
-		return "pesquisa";
-	}
-	@GetMapping("/redirectLogin")
-	public String redirect(Model model,
-			@ModelAttribute("email") String email, @ModelAttribute(value = "page") String page){
-
-
-		if(page == null)
-			model.addAttribute("page", 1);
-		else
-			model.addAttribute("page", page);
-		
-		if(serviceE.getEmpresaById(email) != null) {
-			model.addAttribute("empresa",serviceE.getEmpresaById(email));
-			return "empInicio";
-		}
+	public String search(Model model, HttpSession session) {
+		if(session.getAttribute("perfil") == null)
+			return "pesquisa";
 		else {
-			model.addAttribute("dev",serviceD.getDesenvolvedorById(email));
-			return "devInicio";
+			Usuario user = (Usuario) session.getAttribute("perfil");
+			model.addAttribute("perfil", session.getAttribute("perfil"));
+			if(serviceE.getEmpresaById(user.getEmail()) == null){
+				return "devPesquisa";
+			}
+			else
+				return "empPesquisa";
 		}
+	}
+	@GetMapping("/redirectlogin")
+	public String redirect(Model model,
+			@ModelAttribute("perfil") String email){
+		
+			return email;
+		
 	}
 	
 	
 	@GetMapping("/logout")
-	public String logout(Model model) {
+	public String logout(Model model, HttpSession session) {
+		session.setAttribute("perfil", null);
 		return "redirect:/";
 	}
 	
 	
 	@PostMapping("/redirectLogin")
 	public String redirectPerfil(Model model,
-			@RequestParam("email") String email, @RequestParam("senha") String senha) {
+			@RequestParam("email") String email, @RequestParam("senha") String senha, HttpSession session) {
 
 		if(serviceE.getEmpresaById(email) != null) {
-			model.addAttribute("empresa", serviceE.getEmpresaById(email));
-			return "empInicio";
+			session.setAttribute("perfil", serviceE.getEmpresaById(email));
+			return "redirect:/empDashboard";
+		
 		}
 		else {
-			model.addAttribute("dev", serviceD.getDesenvolvedorById(email));
-			return "devInicio";
+			session.setAttribute("perfil", serviceD.getDesenvolvedorById(email));
+			return "redirect:/devDashboard";
 		}
 	}
 	

@@ -5,6 +5,7 @@ import java.awt.PageAttributes.MediaType;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -47,24 +48,25 @@ public class EmpresaController {
 	@Autowired
 	private DesafioHabilidadeService serviceDH;
 	
-	
-	@PostMapping("/inicioEmpresa")
-	public String Inicio(Model model, @RequestParam("empresa") Empresa empresa) {
-		model.addAttribute("empresa", empresa);
-		return "empInicio";
-	}
-	
-	@RequestMapping(value = "/dashboard", method = RequestMethod.GET)
-	public String dashboard(Model model, @RequestParam("email") String email) {
-		model.addAttribute("empresa", service.getEmpresaById(email));
+	@RequestMapping(value = "/empDashboard", method = RequestMethod.GET)
+	public String dashboard(Model model, HttpSession session) {
+		model.addAttribute("perfil", session.getAttribute("perfil"));
 		return "empDashboard";
 	}
 	
 	@RequestMapping(value = "/empConfiguracoes", method = RequestMethod.GET)
-	public String config(Model model, @RequestParam("email") String email) {
-		model.addAttribute("empresa", service.getEmpresaById(email));
+	public String config(Model model, HttpSession session) {
+		model.addAttribute("perfil", session.getAttribute("perfil"));
 		return "empConfiguracoes";
 	}
+	
+	@RequestMapping(value = "/empMeusDesafios", method = RequestMethod.GET)
+	public String devMeusDesafios(Model model, HttpSession session) {
+		model.addAttribute("perfil", session.getAttribute("perfil"));
+		return "empMeusDesafios";
+	}
+	
+
 	
 	@GetMapping("/formEmpresa")
 	public String addForm(Model model) {
@@ -77,13 +79,12 @@ public class EmpresaController {
 	@PostMapping("/addEmpresa")
 	public String addEmpresa(@ModelAttribute Empresa empresa, 
 			@ModelAttribute Endereco endereco,
-			Model model) {
+			Model model, HttpSession session) {
 		
 		empresa.setEndereco(endereco);
 		service.saveEmpresa(empresa);
-		model.addAttribute("empresa", empresa);
-		model.addAttribute("page", 1);
-		return "empInicio";
+		session.setAttribute("perfil", empresa);
+		return "redirect:/empDashboard";
 		
 	}
 

@@ -3,9 +3,12 @@ package br.com.devfinder.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -16,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.devfinder.model.Desenvolvedor;
 import br.com.devfinder.model.DesenvolvedorAreaAtuacao;
@@ -26,6 +30,7 @@ import br.com.devfinder.service.DesafioService;
 import br.com.devfinder.service.DesenvolvedorAreaAtuacaoService;
 import br.com.devfinder.service.DesenvolvedorHabilidadeService;
 import br.com.devfinder.service.DesenvolvedorService;
+import net.bytebuddy.matcher.ModifierMatcher.Mode;
 
 /**
  * @author Ronaldo Costa
@@ -43,25 +48,23 @@ public class DesenvolvedorController {
 	@Autowired
 	private DesenvolvedorAreaAtuacaoService serviceA;
 	
-
 	@Autowired
 	private DesafioService serviceD;	
 	
 	@Autowired
 	private DesafioHabilidadeService serviceDH;
-	
+		
+
 	@GetMapping("/formDev")
 	public String addFormDev(Model model) {
-		
 		model.addAttribute("dev", new Desenvolvedor());
 		model.addAttribute("endereco", new Endereco());
-		
 		return "formDesenvolvedor";
 	}
 	@PostMapping("/addDev")
 	public String addDesenvolvedor(@ModelAttribute Desenvolvedor dev, 
 			@ModelAttribute Endereco endereco, @RequestParam("area") ArrayList<String> areas,
-			Model model, @RequestParam("habilidade") String hab) {
+			Model model, @RequestParam("habilidade") String hab, HttpSession session) {
 		
 		DesenvolvedorAreaAtuacao area = new DesenvolvedorAreaAtuacao(); 
 		DesenvolvedorHabilidade habilidade = new DesenvolvedorHabilidade();
@@ -83,24 +86,28 @@ public class DesenvolvedorController {
 			serviceH.saveHabilidade(habilidade);
 		}
 
-		model.addAttribute("page", 1);
-		model.addAttribute("dev",dev);
-		return "devInicio";
+		session.setAttribute("perfil", dev);
+		return "redirect:/devDashboard";
 		
 	}
 
-	@RequestMapping(value = "/dashboardDev", method = RequestMethod.GET)
-	public String dashboard(Model model, @RequestParam("email") String email) {
-		model.addAttribute("dev", service.getDesenvolvedorById(email));
-		model.addAttribute("desafios", serviceD.getDesafios("marlonfleite57@gmail.com"));
-		model.addAttribute("service", serviceDH);
+	
+	@RequestMapping(value = "/devDashboard", method = RequestMethod.GET)
+	public String dashboard(Model model, HttpSession session) {
+		model.addAttribute("perfil", session.getAttribute("perfil"));
 		return "devDashboard";
 	}
 	
 	@RequestMapping(value = "/devConfiguracoes", method = RequestMethod.GET)
-	public String config(Model model, @RequestParam("email") String email) {
-		model.addAttribute("dev", service.getDesenvolvedorById(email));
+	public String config(Model model, HttpSession session) {
+		model.addAttribute("perfil", session.getAttribute("perfil"));
 		return "devConfiguracoes";
+	}
+	
+	@RequestMapping(value = "/devMeusDesafios", method = RequestMethod.GET)
+	public String devMeusDesafios(Model model, HttpSession session) {
+		model.addAttribute("perfil", session.getAttribute("perfil"));
+		return "devDesafiosInscritos";
 	}
 	
 	@PostMapping("/addDesenvolvedores")

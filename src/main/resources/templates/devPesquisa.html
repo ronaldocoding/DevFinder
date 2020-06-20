@@ -18,10 +18,27 @@
 	<div th:insert="fragment.html :: loggedtopnav"></div>
 	<div th:insert="fragment.html :: sidebardev"></div>
 	<div th:insert="fragment.html :: footer"></div>
-	<script>
-	    $('#search').change(function(){
-	    	$('#regForm').submit()
-	    })
-	</script>
+	
+	<script th:inline="javascript">
+			/*<![CDATA[*/
+                $('#search').keyup(function(){
+                	search()
+                	
+                })
+
+		    	
+			
+   			    window.onload = function() {
+			    	 var pesquisa = [[${pesquisa}]]; //Your Thymleaf variable
+			    	 $('#search').val(pesquisa)
+			    	 
+			    	search(pesquisa);
+			
+			   };
+			
+			
+			/*]]>*/
+		</script>
+	
 </body>
 </html>

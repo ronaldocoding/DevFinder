@@ -13,7 +13,7 @@ function showTab(n) {
     document.getElementById("nextBtn").innerHTML = "Cadastrar";
     $("#nextBtn").on('click', function(){
       if(n == (x.length-1)&& validateForm())
-    	  ('#regForm').submit()
+    	  ('#regFormCad').submit()
     });
       
   } else {
@@ -27,23 +27,28 @@ $('#CEP').on('change', function() {
   getEndereco($('#CEP').val());
 });
 
-$("#senha").keyup(function() {
-  var f = testaSenha();
-  var strong = '';
-  $('.passwordStrong').css('display', 'block');
-  $('.passwordStrong').html('');
-  console.log(f);
-  if(f < 30)
-    strong = 'muito fraca'
-  else if(f < 80)
-    strong = 'fraca'
-  else if(f < 100)
-    strong = 'média'
-  else
-    strong = 'forte'
+window.onload = function(){
+	
+	$("#senha").keyup(function() {
+		  var f = testaSenha();
+		  var strong = '';
+		  $('.passwordStrong').css('display', 'block');
+		  $('.passwordStrong').html('');
+		  console.log(f);
+		  if(f < 30)
+		    strong = 'muito fraca'
+		  else if(f < 80)
+		    strong = 'fraca'
+		  else if(f < 100)
+		    strong = 'média'
+		  else
+		    strong = 'forte'
 
-  $('.passwordStrong').append('Senha '+strong);
-});
+		  $('.passwordStrong').append('Senha '+strong);
+		});
+
+	
+}
 
 function nextPrev(n) {
 
@@ -58,7 +63,7 @@ function nextPrev(n) {
   currentTab = currentTab + n;
 
   if (currentTab >= x.length) {
-    document.getElementById("regForm").submit();
+    document.getElementById("regFormCad").submit();
     return false;
   }
   showTab(currentTab);
@@ -140,9 +145,8 @@ function validateForm() {
       }
     if(y[i].className == 'form-group'){
       var input = y[i].getElementsByTagName("input")[0];
-      console.log(input);
-      if (input.value == "" && !input.disabled && !input.required) {
-        
+      
+      if (input.value == "" && !input.disabled && !input.required) { 
         input.className += " invalid";
         if(small.length > 0){
           small[0].style.display = "block";
@@ -158,6 +162,7 @@ function validateForm() {
           small[0].style.display = "none";
         }
         valid = false;
+        if(input.name!='senha')
         input.value = "";
       }
       else if(small.length > 0 && !input.disabled){

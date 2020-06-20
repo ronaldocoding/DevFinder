@@ -25,8 +25,12 @@ function validate(el){
 
   if(el.name == 'tel')
     return testeTelefone(el.value);
-  if(el.name == 'senhaConfirm')
-    return el.value == $('#senha').val();
+  if(el.name == 'senhaConfirm'){
+	 console.log('valor do senha confirm: ', el.value)
+	 console.log('valor do campo senha: ')
+	console.log(document.getElementById('senha').value)
+    return el.value == document.getElementById('senha').value;
+  }
   if(el.name == 'cep')
       return testeCEP();
   return true
