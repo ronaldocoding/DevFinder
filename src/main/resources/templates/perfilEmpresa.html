@@ -1,4 +1,49 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/template.css}">
+	<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+	<link rel="stylesheet"
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+		integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+		crossorigin="anonymous">
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script defer
+		src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
+		integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
+		crossorigin="anonymous"></script>
+	<script defer
+		src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
+		integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
+		crossorigin="anonymous"></script>
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
 <body>
+	<div th:if="${perfil}">
+		<div th:insert="fragment.html :: loggedtopnav"></div>
+		<div th:if="${serviceEmp.getEmpresaById(perfil.email)}">
+			<div th:insert="fragment.html :: sidebaremp"></div>
+		</div>
+		<div th:unless="${serviceEmp.getEmpresaById(perfil.email)}">
+			<div th:insert="fragment.html :: sidebardev"></div>
+		</div>
+	</div>
+	<div th:unless="${perfil}">
+		<div th:insert="fragment.html :: deftopnav"></div>
+	</div>
 	<div class="bg-degrade">
 		<div class="container">
 			<div class="row">
@@ -14,7 +59,7 @@
 						</div>
 						<div class="col-sm-9" style="font-size: 16px">
 							<p>
-								<span>Endereço: </span> <span
+								<span>EndereÃ§o: </span> <span
 									th:text="${empresa.endereco.estado}+'-'+${empresa.endereco.cidade}+', '+${empresa.endereco.rua}+', '+'n. '+${empresa.endereco.numero}"></span>
 
 							</p>
@@ -93,3 +138,4 @@
 			</div>
 		</div>
 </body>
+</html>

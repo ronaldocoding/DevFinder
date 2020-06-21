@@ -99,10 +99,14 @@ public class EmpresaController {
 	}
 
 	@GetMapping("/empresaById/{email}")
-	public String findEmpresaById(@PathVariable String email, Model model) {
+	public String findEmpresaById(@PathVariable String email, Model model, HttpSession session) {
 		model.addAttribute("empresa", service.getEmpresaById(email));
 		model.addAttribute("desafios", serviceD.getDesafios(email));
 		model.addAttribute("service", serviceDH);
+		
+		model.addAttribute("perfil", session.getAttribute("perfil"));
+		
+		model.addAttribute("serviceEmp", service);
 		return "perfilEmpresa";
 	}
 	

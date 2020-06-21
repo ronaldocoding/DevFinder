@@ -57,8 +57,8 @@
                 $(window).on("load", logo);   
 
                 var valida = function(){
-		    		var email = document.getElementById('email').value
-		    		var senha = document.getElementById('senha').value		    		
+		    		var email = document.getElementById('emaillogin').value
+		    		var senha = document.getElementById('senhalogin').value		    		
 		    		console.log(email)
 		    		console.log(senha)
 		    		$.ajax({
@@ -221,14 +221,14 @@
 
 								<form id="regForm" method="post" th:action="@{/redirectLogin}">
 									<div class="form-group">
-										<input th:value="${email}" name="email" id="email" type="text"
+										<input name="emaillogin" id="emaillogin" type="email"
 											class="form-control" placeholder="E-mail"
 											oninput="this.className = ''">
 
 									</div>
 
 									<div class="form-group">
-										<input name="senha" id="senha" type="password"
+										<input name="senhalogin" id="senhalogin" type="password"
 											class="form-control" placeholder="Senha"
 											oninput="this.className = ''"> <small id="smallError">Email
 											e/ou senha incorretos </small>
@@ -358,17 +358,17 @@
 
 							<ul id="menu-list">
 
-								<li><a th:href="devDashboard"> <span class="icon">
+								<li><a th:attr="href='/devDashboard'"> <span class="icon">
 											<i class="fas fa-sign-out-alt"></i>
 									</span> <span class="title">Início</span>
 								</a></li>
 
-								<li><a th:href="devMeusDesafios"> <span class="icon">
+								<li><a th:attr="href='/devMeusDesafios'"> <span class="icon">
 											<i class="fa fa-code"></i>
 									</span> <span class="title">Meus desafios</span>
 								</a></li>
-								<li><a th:href="devConfiguracoes"> <span class="icon">
-											<i class="fa fa-code"></i>
+								<li><a th:attr="href='/devConfiguracoes'"> <span class="icon">
+											<i class="fa fa-cog"></i>
 									</span> <span class="title">Configurações</span>
 								</a></li>
 								<li><a th:attr="href='/logout'"> <span class="icon">
@@ -405,17 +405,17 @@
 
 							<ul id="menu-list">
 
-								<li><a th:href="empDashboard"> <span class="icon">
+								<li><a th:attr="href='/empDashboard'"> <span class="icon">
 											<i class="fas fa-sign-out-alt"></i>
 									</span> <span class="title">Início</span>
 								</a></li>
 
-								<li><a th:href="empMeusDesafios"> <span class="icon">
+								<li><a th:attr="href='/empMeusDesafios'"> <span class="icon">
 											<i class="fa fa-code"></i>
 									</span> <span class="title">Meus desafios</span>
 								</a></li>
-								<li><a th:href="empConfiguracoes"> <span class="icon">
-											<i class="fa fa-code"></i>
+								<li><a th:attr="href='/empConfiguracoes'"> <span class="icon">
+											<i class="fa fa-cog"></i>
 									</span> <span class="title">Configurações</span>
 								</a></li>
 								<li><a th:attr="href='/logout'"> <span class="icon">

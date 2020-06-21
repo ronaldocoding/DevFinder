@@ -28,26 +28,8 @@ $('#CEP').on('change', function() {
 });
 
 window.onload = function(){
-	
-	$("#senha").keyup(function() {
-		  var f = testaSenha();
-		  var strong = '';
-		  $('.passwordStrong').css('display', 'block');
-		  $('.passwordStrong').html('');
-		  console.log(f);
-		  if(f < 30)
-		    strong = 'muito fraca'
-		  else if(f < 80)
-		    strong = 'fraca'
-		  else if(f < 100)
-		    strong = 'média'
-		  else
-		    strong = 'forte'
-
-		  $('.passwordStrong').append('Senha '+strong);
-		});
-
-	
+	console.log('entrou aqui nesta merda')
+		
 }
 
 function nextPrev(n) {
@@ -145,7 +127,8 @@ function validateForm() {
       }
     if(y[i].className == 'form-group'){
       var input = y[i].getElementsByTagName("input")[0];
-      
+      console.log('entrou aqui, nessa merda')
+      console.log(input)
       if (input.value == "" && !input.disabled && !input.required) { 
         input.className += " invalid";
         if(small.length > 0){

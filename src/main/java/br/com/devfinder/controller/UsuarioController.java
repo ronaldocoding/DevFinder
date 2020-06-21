@@ -42,9 +42,6 @@ public class UsuarioController {
 	
 	@GetMapping("/")
 	public String home(Model model) {
-		model.addAttribute("email", new String());
-		model.addAttribute("senha", new String());
-		
 		return "homepage";
 	}
 	
@@ -101,14 +98,14 @@ public class UsuarioController {
 	
 	@GetMapping("/logout")
 	public String logout(Model model, HttpSession session) {
-		session.setAttribute("perfil", null);
+		session.removeAttribute("perfil");
 		return "redirect:/";
 	}
 	
 	
 	@PostMapping("/redirectLogin")
 	public String redirectPerfil(Model model,
-			@RequestParam("email") String email, @RequestParam("senha") String senha, HttpSession session) {
+			@RequestParam("emaillogin") String email, @RequestParam("senhalogin") String senha, HttpSession session) {
 
 		if(serviceE.getEmpresaById(email) != null) {
 			session.setAttribute("perfil", serviceE.getEmpresaById(email));

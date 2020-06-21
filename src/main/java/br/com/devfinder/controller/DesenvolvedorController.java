@@ -121,7 +121,7 @@ public class DesenvolvedorController {
 	}
 
 	@GetMapping("/desenvolvedorById/{email}")
-	public String findEmpresaById(@PathVariable String email, Model model) {
+	public String findEmpresaById(@PathVariable String email, Model model,HttpSession session) {
 		model.addAttribute("dev", service.getDesenvolvedorById(email));
 		model.addAttribute("service", serviceH);
 		String area = "";
@@ -136,12 +136,15 @@ public class DesenvolvedorController {
 				area += areas.get(i).getAreaAtuacao();
 			
 		}
+		model.addAttribute("perfil", session.getAttribute("perfil"));
 		model.addAttribute("area", area);
+		model.addAttribute("serviceDev", service);
 		return "perfilDesenvolvedor";
 	}
 
 	@GetMapping("/desenvolvedorByNome/{nome}")
-	public Desenvolvedor findDesenvolvedorByNome(@PathVariable String nome) {
+	public Desenvolvedor findDesenvolvedorByNome(Model model, @PathVariable String nome) {
+	
 		return service.getDesenvolvedorByNome(nome);
 	}
 

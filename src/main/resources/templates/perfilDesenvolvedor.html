@@ -16,6 +16,18 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     </head>
     <body>
+    	<div th:if="${perfil}">
+    		<div th:insert="fragment.html :: loggedtopnav"></div>
+    		<div th:if="${serviceDev.getDesenvolvedorById(perfil.email)}">
+    			desenvolvedor
+    			<div th:insert="fragment.html :: sidebardev"></div>
+    		</div>
+    		<div th:unless="${serviceDev.getDesenvolvedorById(perfil.email)}">
+    			empresa
+    			<div th:insert="fragment.html :: sidebaremp"></div>
+    		</div>
+    	</div>
+    	<div th:unless="${perfil}"><div th:insert="fragment.html :: deftopnav"></div></div>
         <div class="topnav"></div>
         <div class="bg-degrade">
             <div class="container">
@@ -54,6 +66,5 @@
             <div th:insert="fragment.html :: footer"></div>
         </div> 
         <div class="sidebardev"></div>
-    	<script th:src="@{/js/append.js}"></script>  
            </body>
 </html>
