@@ -12,8 +12,17 @@ function showTab(n) {
   if (n == (x.length - 1)) {
     document.getElementById("nextBtn").innerHTML = "Cadastrar";
     $("#nextBtn").on('click', function(){
-      if(n == (x.length-1)&& validateForm())
+      if(n == (x.length-1)&& validateForm()){
+    	  $('#telefone').val($('#telefone').val().replace(/[^0-9]/g,''))
+    	  $('#CEP').val($('#CEP').val().replace(/[^0-9]/g,''))
+    	  
+    	  if ($("#cpf").length > 0) 
+    		  $('#cpf').val($('#cpf').val().replace(/[^0-9]/g,''))
+	  
+		  	if ($("#CNPJ").length > 0) 
+		  $('#CNPJ').val($('#CNPJ').val().replace(/[^0-9]/g,''))
     	  ('#regFormCad').submit()
+      }
     });
       
   } else {
@@ -45,7 +54,16 @@ function nextPrev(n) {
   currentTab = currentTab + n;
 
   if (currentTab >= x.length) {
-    document.getElementById("regFormCad").submit();
+	  if ($("#cpf").length > 0) 
+		  $('#cpf').val($('#cpf').val().replace(/[^0-9]/g,''))
+	  
+		if ($("#CNPJ").length > 0) 
+		  $('#CNPJ').val($('#CNPJ').val().replace(/[^0-9]/g,''))
+	 
+	  $('#telefone').val($('#telefone').val().replace(/[^0-9]/g,''))
+	  $('#CEP').val($('#CEP').val().replace(/[^0-9]/g,''))
+	  
+	  document.getElementById("regFormCad").submit();
     return false;
   }
   showTab(currentTab);
