@@ -28,6 +28,7 @@ import br.com.devfinder.model.Endereco;
 import br.com.devfinder.service.DesafioHabilidadeService;
 import br.com.devfinder.service.DesafioService;
 import br.com.devfinder.service.DesenvolvedorAreaAtuacaoService;
+import br.com.devfinder.service.DesenvolvedorDesafioService;
 import br.com.devfinder.service.DesenvolvedorHabilidadeService;
 import br.com.devfinder.service.DesenvolvedorService;
 import net.bytebuddy.matcher.ModifierMatcher.Mode;
@@ -54,6 +55,8 @@ public class DesenvolvedorController {
 	@Autowired
 	private DesafioHabilidadeService serviceDH;
 		
+	@Autowired
+	private DesenvolvedorDesafioService serviceSub;
 
 	@GetMapping("/formDev")
 	public String addFormDev(Model model) {
@@ -106,7 +109,12 @@ public class DesenvolvedorController {
 	
 	@RequestMapping(value = "/devMeusDesafios", method = RequestMethod.GET)
 	public String devMeusDesafios(Model model, HttpSession session) {
+		Desenvolvedor dev = (Desenvolvedor) session.getAttribute("perfil");
+		model.addAttribute("desafios",serviceD.getDesafiosInscritos(dev.getEmail()));
+
+		model.addAttribute("service",serviceDH);
 		model.addAttribute("perfil", session.getAttribute("perfil"));
+		
 		return "devDesafiosInscritos";
 	}
 	

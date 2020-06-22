@@ -1,6 +1,9 @@
 package br.com.devfinder.model;
 
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -25,7 +28,7 @@ public class DesenvolvedorDesafio implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@EmbeddedId
-	private DesenvolvedorDesafioId id;
+	private DesenvolvedorDesafioId id = new DesenvolvedorDesafioId();
 
 	@Column(name = "DATA_INSCRICAO")
 	private String dataInscricao;
@@ -33,11 +36,11 @@ public class DesenvolvedorDesafio implements Serializable {
 	@Column(name = "HORA_INSCRICAO")
 	private String horarioInscricao;
 
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "EMAIL_DESENVOLVEDOR", referencedColumnName = "EMAIL", nullable = false, insertable = false, updatable = false)
 	private Desenvolvedor desenvolvedor;
 
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumns(value = {
 			@JoinColumn(name = "EMAIL_EMPRESA_DESAFIO", referencedColumnName = "EMAIL_EMPRESA", nullable = false, insertable = false, updatable = false),
 			@JoinColumn(name = "ID_DESAFIO", referencedColumnName = "ID", nullable = false, insertable = false, updatable = false) })
@@ -46,13 +49,15 @@ public class DesenvolvedorDesafio implements Serializable {
 	public DesenvolvedorDesafio() {
 	}
 
-	public DesenvolvedorDesafio(String emailDesenvolvedor, String emailEmpresa, int idDesafio, String nome,
-			String dataInscricao, String horarioInscricao) {
+	public DesenvolvedorDesafio(String emailDesenvolvedor, String emailEmpresa, int idDesafio) {
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		DateFormat timeFormat = new SimpleDateFormat("HH:mm");
+	    Date date = new Date();
 		id.setEmailDesenvolvedor(emailDesenvolvedor);
 		id.setEmailEmpresa(emailEmpresa);
 		id.setIdDesafio(idDesafio);
-		this.dataInscricao = dataInscricao;
-		this.horarioInscricao = horarioInscricao;
+		this.dataInscricao = dateFormat.format(date);
+		this.horarioInscricao = timeFormat.format(date);
 	}
 
 	public DesenvolvedorDesafioId getId() {

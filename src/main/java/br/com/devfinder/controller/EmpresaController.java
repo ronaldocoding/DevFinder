@@ -62,7 +62,10 @@ public class EmpresaController {
 	
 	@RequestMapping(value = "/empMeusDesafios", method = RequestMethod.GET)
 	public String devMeusDesafios(Model model, HttpSession session) {
+		Empresa emp = (Empresa) session.getAttribute("perfil");
 		model.addAttribute("perfil", session.getAttribute("perfil"));
+		model.addAttribute("desafios", serviceD.getDesafios(emp.getEmail()));
+		model.addAttribute("service", serviceDH);
 		return "empMeusDesafios";
 	}
 	

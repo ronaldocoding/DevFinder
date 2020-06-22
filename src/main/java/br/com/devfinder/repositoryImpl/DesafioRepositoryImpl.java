@@ -15,6 +15,8 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 import br.com.devfinder.model.Desafio;
+import br.com.devfinder.model.DesenvolvedorDesafio;
+import br.com.devfinder.model.ids.DesenvolvedorDesafioId;
 import br.com.devfinder.repository.DesafioRepositoryCustom;
 
 public class DesafioRepositoryImpl implements DesafioRepositoryCustom{
@@ -44,4 +46,6 @@ public class DesafioRepositoryImpl implements DesafioRepositoryCustom{
         return entityManager.createQuery(query)
             .getResultList();       
 	}
+
+	
 }

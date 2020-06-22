@@ -104,6 +104,20 @@
 											<span>Termina em </span> <span th:text="${desafio.dataFim}"></span>
 											<span>as </span> <span th:text="${desafio.horarioFim}"></span>
 										</div>
+										
+										<div th:if="${perfil}">
+											<div th:if="${serviceDev.getDesenvolvedorById(perfil.email)}">
+												<div th:if="${serviceSub.getInscricaoById(perfil.email, desafio.emailEmpresa, desafio.id)}">
+													<button type="button" th:id="${desafio.id}" disabled
+													class="modal-btn azul">Inscrito</button>
+												</div>
+												<div th:unless="${serviceSub.getInscricaoById(perfil.email, desafio.emailEmpresa, desafio.id)}">
+													<button type="button" th:id="${desafio.id}" th:attr="onclick=|participar('${desafio.id}', '${desafio.emailEmpresa}')|"
+													class="modal-btn azul">Participar</button>
+												</div>
+											</div>
+										</div>
+										
 									</div>
 								</div>
 							</div>
@@ -117,5 +131,5 @@
 </div>
 
 <script>
-	$('#linkLogin').html('Resultados para '+$('#search').val())
+		$('#linkLogin').html('Resultados para '+$('#search').val())
 </script>

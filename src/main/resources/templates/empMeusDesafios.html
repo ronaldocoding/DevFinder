@@ -10,17 +10,89 @@
 			<div class="col-sm-9 area_post" id="container">
 				meus desafios da empresa tal:
 				<div th:text="${perfil.email}"></div>
+				<tr th:each="desafio: ${desafios}">
+					<div class="post">
+						<div class="row">
+							<div class="col-sm-12">
+								<div class="col-sm-3">
+									<img src="http://placehold.it/260x180" alt="">
+								</div>
+								<div class="col-sm-9">
+									<h4 th:text="${desafio.nome}"></h4>
+									<p th:text="${desafio.descricao}"></p>
+									<div class="cell-list-content-icon">
+										<span> <i class="fab fa-dev"></i> <span
+											th:text="${desafio.areaDesenvolvimento}"></span></span>
+
+									</div>
+									<div class="cell-list-content-tag">
+										<td
+											th:each="habilidade:${service.getHabilidades(desafio.emailEmpresa, desafio.id)}">
+											<span class="tag-list background-gray"
+											th:text="${habilidade.getHabilidade()}"></span>
+										</td>
+									</div>
+
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-12 line">
+								<div class="col-sm-4">
+									<span>Termina em </span> <span th:text="${desafio.dataFim}"></span>
+									<span>as </span> <span th:text="${desafio.horarioFim}"></span>
+								</div>
+								<div>
+									<button type="button" class="modal-btn azul"
+										data-toggle="modal" data-target="#exampleModal">Alterar</button>
+									<button type="button" class="btn-azul" data-toggle="modal"
+										data-target="#exclusaoDesafio" th:data-id="${desafio.id}">Excluir</button>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</tr>
+
 			</div>
 		</div>
 	</div>
+	
+	<!-- modal de exclusão -->
+	<div class="modal fade" id="exclusaoDesafio" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header border-0">
+                <h5 class="modal-title" id="exampleModalLongTitle">Exclusão de desafio</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                Tem certeza que deseja excluir esse desafio? Essa ação não poderá ser desfeita.
+              </div>
+              <div class="modal-footer border-0">
+                <button type="button" class="btn-azul" data-dismiss="modal"><a>Cancelar</a></button>
+                <button type="button" class="modal-btn vermelho"><a id="excluir">Excluir</a></button>
+              </div>
+            </div>
+          </div>
+        </div>
+    
 
 	<div th:insert="fragment.html :: loggedtopnav"></div>
 	<div th:insert="fragment.html :: sidebaremp"></div>
 	<div th:insert="fragment.html :: footer"></div>
 	<script>
-	    $('#search').change(function(){
-	    	$('#regForm').submit()
-	    })
+		$('#search').change(function() {
+			$('#regForm').submit()
+		})
+		$('#exclusaoDesafio').on('show.bs.modal', function (event) {
+			var button = $(event.relatedTarget) 
+			var id = button.data('id')
+			$("#excluir").attr("href","/deleteDesafio/"+id);
+			
+		})
 	</script>
 
 </body>

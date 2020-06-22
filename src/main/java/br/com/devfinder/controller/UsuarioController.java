@@ -21,6 +21,7 @@ import br.com.devfinder.model.Desenvolvedor;
 import br.com.devfinder.model.Usuario;
 import br.com.devfinder.service.DesafioHabilidadeService;
 import br.com.devfinder.service.DesafioService;
+import br.com.devfinder.service.DesenvolvedorDesafioService;
 import br.com.devfinder.service.DesenvolvedorService;
 import br.com.devfinder.service.EmpresaService;
 
@@ -38,19 +39,24 @@ public class UsuarioController {
 	
 	
 	@Autowired
-	private DesenvolvedorService serviceD;
+	private DesenvolvedorDesafioService serviceDD;
 	
+	@Autowired
+	private DesenvolvedorService serviceD;	
 	@GetMapping("/")
 	public String home(Model model) {
 		return "homepage";
 	}
 	
 	@GetMapping("/searchResult")
-	public String teste2(Model model, @RequestParam(value="texto[]") String[] texto) {
+	public String teste2(Model model, @RequestParam(value="texto[]") String[] texto, HttpSession session) {
 		model.addAttribute("desafios",serviceDe.getDesafios(texto));
 		model.addAttribute("devs", serviceD.getDesenvolvedores(texto));
 		model.addAttribute("emps", serviceE.getEmpresas(texto));
 		model.addAttribute("service", serviceDH);
+		model.addAttribute("serviceDev", serviceD);
+		model.addAttribute("serviceSub", serviceDD);
+		model.addAttribute("perfil", session.getAttribute("perfil"));
 		return "pesquisaResult.html";
 	}
 	

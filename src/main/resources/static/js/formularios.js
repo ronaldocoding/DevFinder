@@ -13,9 +13,12 @@ function showTab(n) {
     document.getElementById("nextBtn").innerHTML = "Cadastrar";
     $("#nextBtn").on('click', function(){
       if(n == (x.length-1)&& validateForm()){
-    	  $('#telefone').val($('#telefone').val().replace(/[^0-9]/g,''))
-    	  $('#CEP').val($('#CEP').val().replace(/[^0-9]/g,''))
-    	  
+    	  if ($("#telefone").length > 0) 
+    		  $('#telefone').val($('#telefone').val().replace(/[^0-9]/g,''))
+	  
+    	  if ($("#CEP").length > 0) 
+    		  $('#CEP').val($('#CEP').val().replace(/[^0-9]/g,''))
+	  
     	  if ($("#cpf").length > 0) 
     		  $('#cpf').val($('#cpf').val().replace(/[^0-9]/g,''))
 	  
@@ -60,8 +63,11 @@ function nextPrev(n) {
 		if ($("#CNPJ").length > 0) 
 		  $('#CNPJ').val($('#CNPJ').val().replace(/[^0-9]/g,''))
 	 
-	  $('#telefone').val($('#telefone').val().replace(/[^0-9]/g,''))
-	  $('#CEP').val($('#CEP').val().replace(/[^0-9]/g,''))
+		if ($("#telefone").length > 0) 
+		  $('#telefone').val($('#telefone').val().replace(/[^0-9]/g,''))
+	  
+    	if ($("#CEP").length > 0) 
+		  $('#CEP').val($('#CEP').val().replace(/[^0-9]/g,''))
 	  
 	  document.getElementById("regFormCad").submit();
     return false;

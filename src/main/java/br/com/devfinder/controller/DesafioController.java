@@ -2,6 +2,8 @@ package br.com.devfinder.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +21,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import br.com.devfinder.model.Desafio;
 import br.com.devfinder.model.DesafioHabilidade;
 import br.com.devfinder.model.Desenvolvedor;
+import br.com.devfinder.model.Empresa;
+import br.com.devfinder.model.Usuario;
 import br.com.devfinder.model.ids.DesafioHabilidadeId;
 import br.com.devfinder.model.ids.DesafioId;
 import br.com.devfinder.service.DesafioHabilidadeService;
@@ -45,11 +49,12 @@ public class DesafioController {
 	@Autowired
 	private DesenvolvedorService serviceDev;
 	
-	@PostMapping("/addDesafioRedirect")
-	public String formDesafio(Model model,@RequestParam("email") String emailEmpresa) {
+	@GetMapping("/addDesafio")
+	public String formDesafio(Model model,HttpSession session) {
 		model.addAttribute("desafio", new Desafio());
-		model.addAttribute("email", emailEmpresa);
-		serviceEmpresa.getEmpresas();
+		Empresa user = (Empresa) session.getAttribute("perfil");
+		model.addAttribute("email", user.getEmail());
+		
         return "formDesafio";
     }
 	
@@ -75,7 +80,7 @@ public class DesafioController {
       
         redirectAttributes.addFlashAttribute("page", 2);
         redirectAttributes.addFlashAttribute("email", emailEmpresa);
-		return "redirect:/redirectLogin";
+		return "redirect:/empMeusDesafios";
     }
 	
 	@PostMapping("/addDesafios")
@@ -99,8 +104,11 @@ public class DesafioController {
 	public Desafio updateDesafio(@RequestBody Desafio desafio) {
 		return service.updateDesafio(desafio);
 	}
-	@GetMapping("/deleteDesafio/{emailEmpresa}/{id}")
-	public String deleteEmpresa(@PathVariable String emailEmpresa, @PathVariable int id, RedirectAttributes redirectAttributes) {
+	@GetMapping("/deleteDesafio/{id}")
+	public String deleteEmpresa(@PathVariable int id, HttpSession session) {
+		Empresa emp=  (Empresa) session.getAttribute("perfil");
+		String emailEmpresa = emp.getEmail();
+		
 		DesafioId desafioId = new DesafioId(emailEmpresa, id);
 		for(DesafioHabilidade d: serviceDH.getHabilidades(emailEmpresa)){
 			if(id == d.getIdDesafio()) {
@@ -110,8 +118,7 @@ public class DesafioController {
 		}
 		service.deleteDesafio(desafioId);
 
-        redirectAttributes.addFlashAttribute("page", 2);
-        redirectAttributes.addFlashAttribute("email", emailEmpresa);
-		return "redirect:/redirectLogin";
+      
+		return "redirect:/empMeusDesafios";
 	}
 }
