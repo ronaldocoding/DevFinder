@@ -52,4 +52,8 @@ public class DesenvolvedorNotificacaoService {
 		repository.deleteById(id);
 		return "desenvolvedorNotificacao deletada: " + id;
 	}
+	
+	public void deleteNotificacao(String emailDesenvolvedor) {
+		repository.deleteAllByDesenvolvedor(emailDesenvolvedor);
+	}
 }

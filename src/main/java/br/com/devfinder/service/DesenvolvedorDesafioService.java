@@ -52,4 +52,8 @@ public class DesenvolvedorDesafioService {
 		repository.deleteById(id);
 		return "desafioHabilidade deletada: " + id;
 	}
+	
+	public void deleteInscricao(String emailDesenvolvedor) {
+		repository.deleteAllByDesenvolvedor(emailDesenvolvedor);
+	}
 }

@@ -48,4 +48,8 @@ public class DesenvolvedorHabilidadeService {
 		repository.deleteById(id);
 		return "desenvolvedorHabilidade deletada: " + id;
 	}
+
+	public void deleteHabilidade(String emailDesenvolvedor) {
+		repository.deleteAllByDesenvolvedor(emailDesenvolvedor);
+	}
 }

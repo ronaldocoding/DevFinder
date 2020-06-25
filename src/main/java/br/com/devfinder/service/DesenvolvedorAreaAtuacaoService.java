@@ -48,4 +48,8 @@ public class DesenvolvedorAreaAtuacaoService {
 		repository.deleteById(id);
 		return "desenvolvedorAreaAtuacao deletada: " + id;
 	}
+	
+	public void deleteArea(String emailDesenvolvedor) {
+		repository.deleteAllByDesenvolvedor(emailDesenvolvedor);
+	}
 }

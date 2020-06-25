@@ -25,7 +25,7 @@ public class DesenvolvedorAreaAtuacao implements Serializable {
 	@EmbeddedId
 	private DesenvolvedorAreaAtuacaoId id = new DesenvolvedorAreaAtuacaoId();
 
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "EMAIL_DESENVOLVEDOR", referencedColumnName = "EMAIL", nullable = false, insertable = false, updatable = false)
 	private Desenvolvedor desenvolvedor;
 

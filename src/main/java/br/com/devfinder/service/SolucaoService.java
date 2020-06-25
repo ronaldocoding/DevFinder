@@ -52,4 +52,7 @@ public class SolucaoService {
 		repository.deleteById(id);
 		return "solucao deletada: " + id;
 	}
+	public void deleteSolucao(String emailDesenvolvedor) {
+		repository.deleteAllByDesenvolvedor(emailDesenvolvedor);
+	}
 }

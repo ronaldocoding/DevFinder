@@ -7,7 +7,9 @@ import java.util.List;
  *
  */
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.transaction.annotation.Transactional;
 
 import br.com.devfinder.model.Desafio;
 import br.com.devfinder.model.DesenvolvedorDesafio;
@@ -18,4 +20,8 @@ public interface DesenvolvedorDesafioRepository extends JpaRepository<Desenvolve
 	@Query(value = "SELECT * FROM DESENVOLVEDOR_DESAFIO WHERE EMAIL_EMPRESA_DESAFIO = ?1 AND ID_DESAFIO = ?2", nativeQuery = true)
 	List<DesenvolvedorDesafio> findAllByDesafio(String emailEmpresa, int idDesafio);
 
+	@Modifying
+	@Transactional
+	@Query(value = "DELETE FROM DESENVOLVEDOR_DESAFIO WHERE EMAIL_DESENVOLVEDOR = ?1", nativeQuery = true)
+	void deleteAllByDesenvolvedor(String emailDesenvolvedor);
 }

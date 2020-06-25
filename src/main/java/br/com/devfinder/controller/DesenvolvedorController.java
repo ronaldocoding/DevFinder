@@ -24,13 +24,17 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import br.com.devfinder.model.Desenvolvedor;
 import br.com.devfinder.model.DesenvolvedorAreaAtuacao;
 import br.com.devfinder.model.DesenvolvedorHabilidade;
+import br.com.devfinder.model.DesenvolvedorNotificacao;
 import br.com.devfinder.model.Endereco;
+import br.com.devfinder.model.Solucao;
 import br.com.devfinder.service.DesafioHabilidadeService;
 import br.com.devfinder.service.DesafioService;
 import br.com.devfinder.service.DesenvolvedorAreaAtuacaoService;
 import br.com.devfinder.service.DesenvolvedorDesafioService;
 import br.com.devfinder.service.DesenvolvedorHabilidadeService;
+import br.com.devfinder.service.DesenvolvedorNotificacaoService;
 import br.com.devfinder.service.DesenvolvedorService;
+import br.com.devfinder.service.SolucaoService;
 import net.bytebuddy.matcher.ModifierMatcher.Mode;
 
 /**
@@ -57,7 +61,14 @@ public class DesenvolvedorController {
 		
 	@Autowired
 	private DesenvolvedorDesafioService serviceSub;
-
+	
+	@Autowired
+	private DesenvolvedorNotificacaoService serviceN;
+	
+	
+	@Autowired
+	private SolucaoService serviceS;
+	
 	@GetMapping("/formDev")
 	public String addFormDev(Model model) {
 		model.addAttribute("dev", new Desenvolvedor());
@@ -161,8 +172,16 @@ public class DesenvolvedorController {
 		return service.updateDesenvolvedor(desenvolvedor);
 	}
 
-	@DeleteMapping("/deleteDesenvolvedor/{email}")
-	public String deleteDesenvolvedor(@PathVariable String email) {
-		return service.deleteDesenvolvedor(email);
+	@GetMapping("/deleteDesenvolvedor")
+	public String deleteDesenvolvedor(Model model, HttpSession session) {
+		Desenvolvedor dev = (Desenvolvedor) session.getAttribute("perfil");
+		
+		serviceA.deleteArea(dev.getEmail());
+		serviceH.deleteHabilidade(dev.getEmail());
+		serviceS.deleteSolucao(dev.getEmail());
+		serviceSub.deleteInscricao(dev.getEmail());
+		serviceN.deleteNotificacao(dev.getEmail());
+		service.deleteDesenvolvedor(dev.getEmail());
+		return "redirect:/";
 	}
 }

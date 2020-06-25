@@ -38,7 +38,7 @@ public class Desafio implements Serializable {
 	@JoinColumn(name = "EMAIL_EMPRESA", referencedColumnName = "EMAIL", nullable = false, insertable = false, updatable = false)
 	private Empresa empresa;
 
-	@Column(name = "NOME", length = 55, nullable = false)
+	@Column(name = "NOME", length = 85, nullable = false)
 	private String nome;
 
 	@Column(name = "AREA_DESENVOLVIMENTO", length = 55, nullable = false)
