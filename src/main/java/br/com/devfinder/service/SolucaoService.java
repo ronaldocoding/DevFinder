@@ -55,4 +55,8 @@ public class SolucaoService {
 	public void deleteSolucao(String emailDesenvolvedor) {
 		repository.deleteAllByDesenvolvedor(emailDesenvolvedor);
 	}
+
+	public void deleteSolucaoByEmpresa(String emailEmpresa) {
+		repository.deleteAllByEmpresa(emailEmpresa);
+	}
 }

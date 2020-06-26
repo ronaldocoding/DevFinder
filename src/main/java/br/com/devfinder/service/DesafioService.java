@@ -25,7 +25,9 @@ public class DesafioService {
 	@Autowired
 	private DesafioHabilidadeService service;
 	
-
+	@Autowired
+	private DesenvolvedorDesafioService serviceDD;
+	
 	/**
 	 * Métodos POST
 	 */
@@ -64,12 +66,15 @@ public class DesafioService {
 	 */
 	public String deleteDesafio(DesafioId id) {
 		for(DesafioHabilidade d: service.getHabilidades(id.getEmailEmpresa(), id.getId())) {
-			
 			service.deleteHabilidade(
 			new DesafioHabilidadeId(d.getEmailEmpresa(), d.getIdDesafio(), d.getHabilidade()));
 		}
 		repository.deleteById(id);
 		return "desafio deletado: " + id;
+	}
+	
+	public void deleteDesafio(String emailEmpresa) {
+		repository.deleteAllByEmpresa(emailEmpresa);
 	}
 	
 	/**

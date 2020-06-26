@@ -96,56 +96,7 @@
             </div>
         </div>
 
-        <div th:insert="fragment.html :: footer"></div>
-	    
-	    
-	    <script th:inline="javascript">
-			/*<![CDATA[*/
-			
-			    var flag = [[${flag}]]; //Your Thymleaf variable
-			    var valida = function(){
-		    		var email = document.getElementById('emaillogin').value
-		    		var senha = document.getElementById('senhalogin').value		    		
-		    		console.log(email)
-		    		console.log(senha)
-		    		$.ajax({
-			    	    url: "/login",
-			    	    type: "GET",
-			            contentType: "application/json",
-			    	    data:{
-			    	    	"email":email,
-			    	    	"senha":senha
-			    	    },
-			    	    success: function(response) {
-			    	       if(response){
-			    	    	   document.getElementById('regForm').submit();
-			    	       }
+        <div th:insert="fragment.html :: footer"></div>	    
 
-			    	       else{
-			    	    	   document.getElementById('smallError').style.display='block';
-			    	    	   console.log('uau')
-			    	       }
-		    	        },
-			    	    error: function(xhr) {
-		    	            //Do Something to handle error
-		    	            console.log('deu pau')
-		    	        }
-			    	})
-			    
-		    	}
-			    window.onload = function() {		    	      
-			        if(flag){
-			    	    $('#modalExemplo').modal('show');
-			        }
-			   };
-			   
-			   $('#closeModal').on('click', function(){
-					document.getElementById('smallError').style.display='none';
-			   });
-			
-			
-			/*]]>*/
-		</script>
-	    
     </body>
 </html>

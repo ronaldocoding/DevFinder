@@ -25,12 +25,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.devfinder.model.Desafio;
+import br.com.devfinder.model.Desenvolvedor;
 import br.com.devfinder.model.Empresa;
 import br.com.devfinder.model.Endereco;
 import br.com.devfinder.model.ids.DesafioId;
 import br.com.devfinder.service.DesafioHabilidadeService;
 import br.com.devfinder.service.DesafioService;
+import br.com.devfinder.service.DesenvolvedorDesafioService;
+import br.com.devfinder.service.EmpresaNotificacaoService;
 import br.com.devfinder.service.EmpresaService;
+import br.com.devfinder.service.SolucaoService;
 
 /**
  * @author Ronaldo Costa
@@ -47,7 +51,16 @@ public class EmpresaController {
 
 	@Autowired
 	private DesafioHabilidadeService serviceDH;
+
+	@Autowired
+	private DesenvolvedorDesafioService serviceSub;
 	
+	@Autowired
+	private EmpresaNotificacaoService serviceN;
+	
+	@Autowired
+	private SolucaoService serviceS;
+		
 	@RequestMapping(value = "/empDashboard", method = RequestMethod.GET)
 	public String dashboard(Model model, HttpSession session) {
 		model.addAttribute("perfil", session.getAttribute("perfil"));
@@ -122,10 +135,20 @@ public class EmpresaController {
 	public Empresa updateEmpresa(@RequestBody Empresa empresa) {
 		return service.updateEmpresa(empresa);
 	}
-
-	@GetMapping("/deleteEmpresa/{email}")
-	public String deleteEmpresa(@PathVariable String email) {
-		return service.deleteEmpresa(email);
+	
+	@GetMapping("/deleteEmpresa")
+	public String deleteEmpresa(Model model, HttpSession session) {
+		Empresa emp = (Empresa) session.getAttribute("perfil");
 		
+		serviceN.deleteNotificacaoByEmpresa(emp.getEmail());
+		serviceDH.deleteAllByEmpresa(emp.getEmail());
+		serviceSub.deleteInscricaoByEmpresa(emp.getEmail());
+		serviceN.deleteNotificacaoByEmpresa(emp.getEmail());
+		serviceS.deleteSolucaoByEmpresa(emp.getEmail());
+		serviceD.deleteDesafio(emp.getEmail());
+		service.deleteEmpresa(emp.getEmail());
+		return "redirect:/";
 	}
+
+
 }

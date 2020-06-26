@@ -26,4 +26,9 @@ public interface SolucaoRepository extends JpaRepository<Solucao, SolucaoId> {
 	@Transactional
 	@Query(value = "DELETE FROM SOLUCAO WHERE EMAIL_DESENVOLVEDOR = ?1", nativeQuery = true)
 	void deleteAllByDesenvolvedor(String emailDesenvolvedor);
+	
+	@Modifying
+	@Transactional
+	@Query(value = "DELETE FROM SOLUCAO WHERE EMAIL_EMPRESA_DESAFIO = ?1", nativeQuery = true)
+	void deleteAllByEmpresa(String emailEmpresa);
 }

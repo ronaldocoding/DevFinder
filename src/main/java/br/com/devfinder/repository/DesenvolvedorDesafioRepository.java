@@ -24,4 +24,9 @@ public interface DesenvolvedorDesafioRepository extends JpaRepository<Desenvolve
 	@Transactional
 	@Query(value = "DELETE FROM DESENVOLVEDOR_DESAFIO WHERE EMAIL_DESENVOLVEDOR = ?1", nativeQuery = true)
 	void deleteAllByDesenvolvedor(String emailDesenvolvedor);
+	
+	@Modifying
+	@Transactional
+	@Query(value = "DELETE FROM DESENVOLVEDOR_DESAFIO WHERE EMAIL_EMPRESA_DESAFIO = ?1", nativeQuery = true)
+	void deleteAllByEmpresa(String emailEmpresa);
 }

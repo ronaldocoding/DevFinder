@@ -52,4 +52,8 @@ public class DesafioHabilidadeService {
 		repository.deleteById(id);
 		return "desafioHabilidade deletada: " + id;
 	}
+	
+	public void deleteAllByEmpresa(String emailEmpresa) {
+		repository.deleteAllByEmpresa(emailEmpresa);
+	}
 }

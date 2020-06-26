@@ -2,41 +2,41 @@
 <html xmlns:th="http://thymeleaf.org">
 
 <head th:fragment="links">
-	<meta charset="UTF-8">
-	<title>Início</title>
-	<link rel="stylesheet" type="text/css" th:href="@{/css/template.css}">
-	<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
-	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
-	<script
-		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
-	<link rel="stylesheet"
-		href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
-		integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
-		crossorigin="anonymous">
-	<link rel="stylesheet"
-		href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
-	<link rel="stylesheet"
-		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<script defer
-		src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
-		integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
-		crossorigin="anonymous"></script>
-	<script defer
-		src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
-		integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
-		crossorigin="anonymous"></script>
-	<link rel="stylesheet"
-		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<script
-		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+<meta charset="UTF-8">
+<title>Início</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/template.css}">
+<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+	integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script defer
+	src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
+	integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
+	crossorigin="anonymous"></script>
+<script defer
+	src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
+	integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
+	crossorigin="anonymous"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 
-	<script th:src="@{/js/feed.js}"></script>
+<script th:src="@{/js/feed.js}"></script>
 
 </head>
 
@@ -70,6 +70,7 @@
 			    	    	"senha":senha
 			    	    },
 			    	    success: function(response) {
+			    	    	console.log(email+' '+senha)
 			    	       if(response){
 			    	    	   document.getElementById('regForm').submit();
 			    	       }
@@ -88,11 +89,58 @@
 		    	}
 
             </script>
+		<script th:inline="javascript">
+			/*<![CDATA[*/
+			
+			    var flag = [[${flag}]]; //Your Thymleaf variable
+			    var valida = function(){
+		    		var email = document.getElementById('emaillogin').value
+		    		var senha = document.getElementById('senhalogin').value		    		
+		    		console.log(email)
+		    		console.log(senha)
+		    		$.ajax({
+			    	    url: "/login",
+			    	    type: "GET",
+			            contentType: "application/json",
+			    	    data:{
+			    	    	"email":email,
+			    	    	"senha":senha
+			    	    },
+			    	    success: function(response) {
+			    	       if(response){
+			    	    	   document.getElementById('regForm').submit();
+			    	       }
+
+			    	       else{
+			    	    	   document.getElementById('smallError').style.display='block';
+			    	    	   console.log('uau')
+			    	       }
+		    	        },
+			    	    error: function(xhr) {
+		    	            //Do Something to handle error
+		    	            console.log('deu pau')
+		    	        }
+			    	})
+			    
+		    	}
+			    window.onload = function() {		    	      
+			        if(flag){
+			    	    $('#modalExemplo').modal('show');
+			        }
+			   };
+			   
+			   $('#closeModal').on('click', function(){
+					document.getElementById('smallError').style.display='none';
+			   });
+			
+			
+			/*]]>*/
+		</script>
+
 		<nav class="top_navbar-side">
 			<div class="top_menu-side">
 				<div>
-					<a><img th:src="@{/imgs/logo.png}"
-						class="logo"></a>
+					<a><img th:src="@{/imgs/logo.png}" class="logo"></a>
 				</div>
 				<ul>
 
@@ -310,16 +358,17 @@
 						<span class="navbar-toggler-icon"></span>
 					</button>
 					<ul>
-					
-						<li>
-						<form id="searchForm" th:action="@{/search}" method="post">
-							<div class="buscar-caja">
-								<input type="text" name="search" id="search" class="buscar-txt"
-									placeholder="Buscar..." /> <a class="buscar-btn"><i
-									class="fas fa-search"></i></a>
 
-							</div>
-						</form></li>
+						<li>
+							<form id="searchForm" th:action="@{/search}" method="post">
+								<div class="buscar-caja">
+									<input type="text" name="search" id="search" class="buscar-txt"
+										placeholder="Buscar..." /> <a class="buscar-btn"><i
+										class="fas fa-search"></i></a>
+
+								</div>
+							</form>
+						</li>
 						<li><div class="dropdown show">
 								<a class="dropdown-togggle btn-degrade azul redondo"
 									id="dropdownMenuLink" data-toggle="dropdown"
@@ -358,17 +407,17 @@
 
 							<ul id="menu-list">
 
-								<li><a th:attr="href='/devDashboard'"> <span class="icon">
-											<i class="fas fa-sign-out-alt"></i>
+								<li><a th:attr="href='/devDashboard'"> <span
+										class="icon"> <i class="fas fa-sign-out-alt"></i>
 									</span> <span class="title">Início</span>
 								</a></li>
 
-								<li><a th:attr="href='/devMeusDesafios'"> <span class="icon">
-											<i class="fa fa-code"></i>
+								<li><a th:attr="href='/devMeusDesafios'"> <span
+										class="icon"> <i class="fa fa-code"></i>
 									</span> <span class="title">Meus desafios</span>
 								</a></li>
-								<li><a th:attr="href='/devConfiguracoes'"> <span class="icon">
-											<i class="fa fa-cog"></i>
+								<li><a th:attr="href='/devConfiguracoes'"> <span
+										class="icon"> <i class="fa fa-cog"></i>
 									</span> <span class="title">Configurações</span>
 								</a></li>
 								<li><a th:attr="href='/logout'"> <span class="icon">
@@ -383,7 +432,7 @@
 			</div>
 		</div>
 	</div>
-	<!-- DEVELOPER SIDEBAR -->
+	<!-- EMPRESA SIDEBAR -->
 	<div th:fragment="sidebaremp">
 		<div class="sidebaremp">
 			<div class="modal left fade" id="sidebar" tabindex="-1" role="dialog"
@@ -405,17 +454,17 @@
 
 							<ul id="menu-list">
 
-								<li><a th:attr="href='/empDashboard'"> <span class="icon">
-											<i class="fas fa-sign-out-alt"></i>
+								<li><a th:attr="href='/empDashboard'"> <span
+										class="icon"> <i class="fas fa-sign-out-alt"></i>
 									</span> <span class="title">Início</span>
 								</a></li>
 
-								<li><a th:attr="href='/empMeusDesafios'"> <span class="icon">
-											<i class="fa fa-code"></i>
+								<li><a th:attr="href='/empMeusDesafios'"> <span
+										class="icon"> <i class="fa fa-code"></i>
 									</span> <span class="title">Meus desafios</span>
 								</a></li>
-								<li><a th:attr="href='/empConfiguracoes'"> <span class="icon">
-											<i class="fa fa-cog"></i>
+								<li><a th:attr="href='/empConfiguracoes'"> <span
+										class="icon"> <i class="fa fa-cog"></i>
 									</span> <span class="title">Configurações</span>
 								</a></li>
 								<li><a th:attr="href='/logout'"> <span class="icon">

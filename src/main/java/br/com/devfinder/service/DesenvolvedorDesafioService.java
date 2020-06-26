@@ -56,4 +56,8 @@ public class DesenvolvedorDesafioService {
 	public void deleteInscricao(String emailDesenvolvedor) {
 		repository.deleteAllByDesenvolvedor(emailDesenvolvedor);
 	}
+	
+	public void deleteInscricaoByEmpresa(String emailEmpresa) {
+		repository.deleteAllByEmpresa(emailEmpresa);
+	}
 }

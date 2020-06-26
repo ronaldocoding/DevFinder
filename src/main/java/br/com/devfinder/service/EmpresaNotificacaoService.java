@@ -52,4 +52,8 @@ public class EmpresaNotificacaoService {
 		repository.deleteById(id);
 		return "empresaNotificacao deletada: " + id;
 	}
+
+	public void deleteNotificacaoByEmpresa(String emailEmpresa) {
+		repository.deleteAllByEmpresa(emailEmpresa);
+	}
 }
