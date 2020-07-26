@@ -45,7 +45,8 @@
 								</div>
 								<div>
 									<button type="button" class="modal-btn azul"
-										data-toggle="modal" data-target="#exampleModal">Submeter</button>
+										data-toggle="modal" data-target="#submeter" th:data-id="${desafio.id}" 
+										th:data-email="${desafio.emailEmpresa}">Submeter</button>
 									<button type="button" class="modal-btn vermelho"
 										data-toggle="modal" data-target="#exclusaoInscricao"
 										th:data-id="${desafio.id}" th:data-email="${desafio.emailEmpresa}">Desinscrever</button>
@@ -59,6 +60,42 @@
 			</div>
 		</div>
 	</div>
+<div class="modal fade" id="submeter" tabindex="-1" role="dialog" aria-labelledby="submeter" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="#submeter">Submeter solução</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form th:action="@{/addSolucao}" method="post" enctype="multipart/form-data">
+	        <input style="display:none" id="emailEmpresa" type="text" name="emailEmpresa">
+	        <input style="display:none" id="id" type="text" name="id">
+          <div class="form-group">
+            <label >Link da solução</label>
+            <input type="text" name="link" class="form-control" placeholder="Link">
+          </div>
+          <div class="form-group">
+            <label>Documentação</label>
+            <input type="file" name="documentacao" class="form-control">
+          </div>
+          <div class="form-group" style="width: 100%">
+            <label >Descrição</label>
+            <div></div>
+            <textarea  name="descricao" placeholder="Descreva um pouco sobre sua solução" style=""></textarea>
+          </div>
+          <div class="modal-footer">
+	        <button type="button" class="btn-azul" data-dismiss="modal">Fechar</button>
+	        <button type="submit" class="modal-btn azul">Enviar</button>
+	      </div>
+        </form>
+      </div>
+
+    </div>
+   </div>
+  </div>
 	<div class="modal fade" id="exclusaoInscricao" tabindex="-1"
 		role="dialog" aria-labelledby="exampleModalCenterTitle"
 		aria-hidden="true">
@@ -97,6 +134,16 @@
 			var id = button.data('id')
 			var email = button.data('email')
 			$("#excluir").attr("href","/deleteInscricao/"+email+'/'+id);
+			
+		})
+		$('#submeter').on('show.bs.modal', function (event) {
+		
+			var button = $(event.relatedTarget) 
+			var id = button.data('id')
+			var email = button.data('email')
+			
+			$("#emailEmpresa").attr("value",email);
+			$("#id").attr("value",id);
 			
 		})
 	</script>

@@ -125,6 +125,7 @@ public class DesenvolvedorController {
 
 		model.addAttribute("service",serviceDH);
 		model.addAttribute("perfil", session.getAttribute("perfil"));
+		model.addAttribute("solucao", new Solucao());
 		
 		return "devDesafiosInscritos";
 	}

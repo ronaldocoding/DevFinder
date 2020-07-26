@@ -1,7 +1,6 @@
 ﻿<!doctype html>
 <head>
-
-    	<link rel="stylesheet" type="text/css" th:href="@{css/template.css}">
+<link rel="stylesheet" type="text/css" th:href="@{css/template.css}">
 	<meta charset="utf-8">
 	
 	<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
@@ -302,7 +301,6 @@
 		<div th:insert="fragment.html :: footer"></div>
 	</div>
 
-	<script th:src="@{js/formularios.js}"></script>
 	<script th:inline="javascript">
 		$("#senha").keyup(function() {
 			var f = testaSenha();
@@ -329,5 +327,8 @@
 		  $('#CEP').mask('00000-000');
 		});
 	</script>
+		<script th:src="@{js/formularios.js}"></script>
+	<script th:src="@{js/append.js}"></script>
+	<script th:src="@{js/validacoes.js}"></script>
 </body>
 </html>
