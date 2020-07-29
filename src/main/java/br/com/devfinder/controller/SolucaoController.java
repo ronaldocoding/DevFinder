@@ -1,14 +1,19 @@
 package br.com.devfinder.controller;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Blob;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -50,37 +55,29 @@ public class SolucaoController {
 			@RequestParam("documentacao") MultipartFile file,
 			HttpServletRequest request, HttpSession session) {
 		Desenvolvedor user = (Desenvolvedor) session.getAttribute("perfil");
-		 byte[] bytes=null;
+		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy"); 
+		SimpleDateFormat formatoTime = new SimpleDateFormat("HH:mm"); 
+		
 		try {
-			bytes = file.getBytes();
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		   Blob blob=null;
-		try {
-			blob = new javax.sql.rowset.serial.SerialBlob(bytes);
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		try {
+			byte[] inputStream = file.getBytes();	
 			
-			service.saveSolucao(new Solucao(user.getEmail(),
-				request.getParameter("emailEmpresa"),
-				Integer.parseInt(request.getParameter("id")),
-				request.getParameter("link"),
-				blob,
-				request.getParameter("descricao"),
-				"dd/mm/aaaa1",
-				"12:00"
-			));
+			Solucao s = new Solucao(
+						user.getEmail(), 
+						request.getParameter("emailEmpresa"), 
+						Integer.parseInt(request.getParameter("id")), 
+						request.getParameter("link"), 
+						request.getParameter("descricao"),
+						formato.format(new Date()), 
+						formatoTime.format(new Date()), inputStream);
+			service.saveSolucao(s);
 			return "redirect:/devMeusDesafios";
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return "redirect:/error";
 		}
+		return file.getOriginalFilename();
+				
+		
 	}
 
 

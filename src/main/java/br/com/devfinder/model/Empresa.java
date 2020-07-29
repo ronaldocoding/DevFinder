@@ -60,7 +60,7 @@ public class Empresa extends Usuario implements Serializable {
 		super();
 	}
 
-	public Empresa(String email, String foto, String senha, Endereco endereco, String site, String telefone,
+	public Empresa(String email, byte[] foto, String senha, Endereco endereco, String site, String telefone,
 			String apresentacao, String nomeFantasia, String razaoSocial, String cnpj, Integer anoFundacao,
 			String ramoMercado, int totalDesenvolvedores,String tipoVagas) {
 		super(email, foto, senha, endereco, site, telefone, apresentacao);

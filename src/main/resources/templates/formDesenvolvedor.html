@@ -89,17 +89,17 @@
 					</div>
 
 					<form class="col-12" id="regFormCad" th:action="@{/addDev}"
-						th:object="${dev}" method="post">
+						 method="post" enctype="multipart/form-data">
 
 						<div class="tab">
 							<div class="form-group">
-								<input type="text" th:field="*{nome}" class="form-control"
+								<input type="text" th:field="*{dev.nome}" class="form-control"
 									placeholder="Nome completo" oninput="this.className = ''"
 									name="nome"> <small>Esse campo é obrigatório</small> <small>Insira
 									um nome válido</small>
 							</div>
 							<div class="form-group">
-								<input type="text" th:field="*{cpf}" class="form-control"
+								<input type="text" th:field="*{dev.cpf}" class="form-control"
 									data-mask="(00) 00000-0000" placeholder="CPF"
 									oninput="this.className = ''
 							" id="cpf" name="CPF">
@@ -110,7 +110,7 @@
 							</div>
 							<label>Data de nascimento:</label>
 							<div class="form-group">
-								<input th:field="*{dataNascimento}" th:value="1930-1-1"
+								<input th:field="*{dev.dataNascimento}" th:value="1930-1-1"
 									type="date" class="form-control" oninput="this.className = ''">
 								<small>Esse campo é obrigatório</small> <small>Insira
 									uma data válida</small>
@@ -159,20 +159,20 @@
 
 						<div class="tab">
 							<div class="form-group">
-								<input type="text" th:field="*{email}" class="form-control"
+								<input type="text" th:field="*{dev.email}" class="form-control"
 									placeholder="E-mail" oninput="this.className = ''" name="email">
 								<small>Esse campo é obrigatório</small> <small>Insira um
 									email válido</small>
 							</div>
 							<div class="form-group">
-								<input type="text" th:field="*{telefone}" class="form-control"
+								<input type="text" th:field="*{dev.telefone}" class="form-control"
 									placeholder="Telefone para contato"
 									oninput="this.className = ''" name="tel"> <small>Esse
 									campo é obrigatório</small> <small>Insira um número de telefone
 									válido</small>
 							</div>
 							<div class="form-group">
-								<input type="text" th:field="*{site}" class="form-control"
+								<input type="text" th:field="*{dev.site}" class="form-control"
 									name="url" placeholder="Site pessoal"
 									oninput="this.className = ''" required="false"> <small>Esse
 									campo é obrigatório</small> <small>Insira uma site válido</small>
@@ -181,7 +181,7 @@
 							<label>Defina sua senha</label>
 							<div class="form-group">
 								<span class="passwordStrong">Senha forte</span> <input
-									type="password" th:field="*{senha}" class="form-control"
+									type="password" th:field="*{dev.senha}" class="form-control"
 									placeholder="Insira sua senha" oninput="this.className = ''">
 
 								<small>Esse campo é obrigatório</small> <small>Insira
@@ -229,7 +229,7 @@
 								<tbody id="habilidades-tabela"></tbody>
 							</table>
 							<div class="form-group">
-								<input th:field="*{tempoExperiencia}" type="number"
+								<input th:field="*{dev.tempoExperiencia}" type="number"
 									class="form-control" placeholder="Tempo de experiência" min="1"
 									oninput="this.className = ''"> <small class="feedback">Esse
 									campo é obrigatório</small> <small class="feedback"></small>
@@ -242,19 +242,19 @@
 
 						<div class="tab">
 							<div class="form-group file">
-								<input class="form-control" type="file" id="curriculo"
+								<input class="form-control" type="file" id="curriculo" name="curriculo"
 									oninput="this.className = ''" required="false"> <label
 									for="curriculo">Insira um arquivo pdf do seu curriculo</label>
 							</div>
 
 							<div class="form-group">
-								<input th:field="*{linkedIn}" class="form-control" name="url"
+								<input th:field="*{dev.linkedIn}" class="form-control" name="url"
 									required="false" type="text" placeholder="LinkEdin"
 									oninput="this.className = ''"> <small></small> <small>Insira
 									uma url válida</small>
 							</div>
 							<div class="form-group">
-								<input th:field="*{gitHub}" class="form-control" name="url"
+								<input th:field="*{dev.gitHub}" class="form-control" name="url"
 									type="text" placeholder="GitHub" oninput="this.className = ''">
 								<small>Este campo é obrigatório</small> <small>Insira
 									uma url válida</small>
@@ -266,14 +266,14 @@
 									uma url válida</small>
 							</div>
 							<div class="form-group apr">
-								<textarea th:field="*{apresentacao}" name="message"
+								<textarea th:field="*{dev.apresentacao}" name="message"
 									class="form-control" rows="1" cols="30"
 									placeholder="	Apresentação">Apresentação
     						</textarea>
 							</div>
 							<label>Foto de perfil(.jpeg ou .png)</label>
 							<div class="form-group">
-								<input type="file" class="form-control" required="false">
+								<input type="file" name="foto" class="form-control" required="false">
 							</div>
 						</div>
 						<div style="overflow: auto;">

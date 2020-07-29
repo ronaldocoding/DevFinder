@@ -1,5 +1,6 @@
 package br.com.devfinder.model;
 
+import java.io.InputStream;
 import java.io.Serializable;
 import java.sql.Blob;
 
@@ -27,7 +28,7 @@ public class Solucao implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@EmbeddedId
-	private SolucaoId id;
+	private SolucaoId id = new SolucaoId();
 
 	@Column(name = "NOME", length = 55, nullable = false)
 	private String nome;
@@ -44,8 +45,8 @@ public class Solucao implements Serializable {
 	@Column(name = "HORARIO_ENVIO", length = 5, nullable = false)
 	private String horarioEnvio;
 
-    @Column(name = "documentacao", columnDefinition="BLOB")
-    private Blob documentacao;
+    @Column(name = "documentacao",columnDefinition = "LONGBLOB")
+    private byte[] documentacao;
     
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "EMAIL_DESENVOLVEDOR", referencedColumnName = "EMAIL", nullable = false, insertable = false, updatable = false)
@@ -61,7 +62,7 @@ public class Solucao implements Serializable {
 	}
 
 	public Solucao(String emailDesenvolvedor, String emailEmpresa, int idDesafio, String linkGithub,
-			Blob documentacao, String descricao, String dataEnvio, String horarioEnvio) {
+			 String descricao, String dataEnvio, String horarioEnvio, byte[] documentacao) {
 		id.setEmailDesenvolvedor(emailDesenvolvedor);
 		id.setEmailEmpresa(emailEmpresa);
 		id.setIdDesafio(idDesafio);
@@ -105,11 +106,11 @@ public class Solucao implements Serializable {
 		this.descricao = descricao;
 	}
 
-	public Blob getDocumentacao() {
+	public byte[] getDocumentacao() {
 		return documentacao;
 	}
 
-	public void setDocumentacao(Blob documentacao) {
+	public void setDocumentacao(byte[] documentacao) {
 		this.documentacao = documentacao;
 	}
 

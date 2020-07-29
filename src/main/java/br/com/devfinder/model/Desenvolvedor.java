@@ -34,21 +34,21 @@ public class Desenvolvedor extends Usuario implements Serializable {
 	@Column(name = "GITHUB", nullable = false)
 	private String gitHub;
 
-	@Column(name = "CURRICULO", nullable = true)
-	private String curriculo;
-
+    @Column(name = "CURRICULO",columnDefinition = "LONGBLOB",  nullable = true)
+    private byte[] curriculo;
+    
 	public Desenvolvedor() {
 		super();
 	}
 
-	public Desenvolvedor(String email, String foto, String senha, Endereco endereco, String site, String telefone,
-			String apresentacao, String nome, String cpf, String dataNascimento, Short tempoExperiencia,
-			String linkedIn, String gitHub, String curriculo) {
+	public Desenvolvedor(String email, byte[] foto, String senha, Endereco endereco, String site, String telefone,
+			String apresentacao, String nome, String cpf, String dataNascimento, int tempoExperiencia,
+			String linkedIn, String gitHub, byte[] curriculo) {
 		super(email, foto, senha, endereco, site, telefone, apresentacao);
 		this.nome = nome;
 		this.cpf = cpf;
 		this.dataNascimento = dataNascimento;
-		this.tempoExperiencia = tempoExperiencia;
+		this.tempoExperiencia = (short) tempoExperiencia;
 		this.linkedIn = linkedIn;
 		this.gitHub = gitHub;
 		this.curriculo = curriculo;
@@ -102,11 +102,11 @@ public class Desenvolvedor extends Usuario implements Serializable {
 		this.gitHub = gitHub;
 	}
 
-	public String getCurriculo() {
+	public byte[] getCurriculo() {
 		return curriculo;
 	}
 
-	public void setCurriculo(String curriculo) {
+	public void setCurriculo(byte[] curriculo) {
 		this.curriculo = curriculo;
 	}
 }

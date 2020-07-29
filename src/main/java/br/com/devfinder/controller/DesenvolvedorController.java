@@ -1,11 +1,14 @@
 package br.com.devfinder.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -19,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.devfinder.model.Desenvolvedor;
@@ -76,10 +80,57 @@ public class DesenvolvedorController {
 		return "formDesenvolvedor";
 	}
 	@PostMapping("/addDev")
-	public String addDesenvolvedor(@ModelAttribute Desenvolvedor dev, 
-			@ModelAttribute Endereco endereco, @RequestParam("area") ArrayList<String> areas,
-			Model model, @RequestParam("habilidade") String hab, HttpSession session) {
+	public String addDesenvolvedor(
+			@RequestParam("area") ArrayList<String> areas,
+			Model model, @RequestParam("habilidade") String hab, 
+			@RequestParam("foto") MultipartFile foto,
+			@RequestParam("curriculo") MultipartFile curriculo,
+			HttpSession session,
+			HttpServletRequest r) {
 		
+		Endereco endereco = new Endereco(
+				r.getParameter("estado"),
+				r.getParameter("cidade"),
+				r.getParameter("bairro"),
+				r.getParameter("numero"),
+				r.getParameter("rua"),
+				r.getParameter("cep")
+		);
+		byte[] inputStream=null;
+		byte[] curriculoByte=null;
+		
+		try {
+			inputStream = foto.getBytes();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+		
+		try {
+			curriculoByte = curriculo.getBytes();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		Desenvolvedor dev = new Desenvolvedor(
+				r.getParameter("email"),
+				inputStream,
+				r.getParameter("senha"),
+				endereco,
+				r.getParameter("site"),
+				r.getParameter("telefone"),
+				r.getParameter("apresentacao"),
+				r.getParameter("nome"),
+				r.getParameter("cpf"),
+				r.getParameter("dataNascimento"),
+				Integer.parseInt(r.getParameter("tempoExperiencia")),
+				r.getParameter("linkedIn"),
+				r.getParameter("gitHub"),
+				curriculoByte
+				);
+		
+	
 		DesenvolvedorAreaAtuacao area = new DesenvolvedorAreaAtuacao(); 
 		DesenvolvedorHabilidade habilidade = new DesenvolvedorHabilidade();
 		

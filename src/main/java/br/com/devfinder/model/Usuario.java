@@ -23,8 +23,8 @@ public abstract class Usuario implements Serializable {
 	@Column(name = "EMAIL", unique=true,columnDefinition="VARCHAR(64)")
 	protected String email;
 	
-	@Column(name = "FOTO", nullable = true)
-	protected String foto;
+    @Column(name = "FOTO",columnDefinition = "LONGBLOB",  nullable = true)
+    private byte[] foto;
 
 	@Column(name = "SENHA", nullable = false)
 	protected String senha;
@@ -44,7 +44,7 @@ public abstract class Usuario implements Serializable {
 	public Usuario() {
 	}
 
-	public Usuario(String email, String foto, String senha, Endereco endereco, String site, String telefone,
+	public Usuario(String email, byte[] foto, String senha, Endereco endereco, String site, String telefone,
 			String apresentacao) {
 		this.email = email;
 		this.foto = foto;
@@ -63,11 +63,11 @@ public abstract class Usuario implements Serializable {
 		this.email = email;
 	}
 
-	public String getFoto() {
+	public byte[] getFoto() {
 		return foto;
 	}
 
-	public void setFoto(String foto) {
+	public void setFoto(byte[] foto) {
 		this.foto = foto;
 	}
 
