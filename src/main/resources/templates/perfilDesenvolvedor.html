@@ -35,10 +35,19 @@
                     <div class="col-sm-12 perfil-top p-4">
                        <div class="row m-4 align-items-end">
                             <div class="col-sm-4 text-center">
-                                <svg width="100" height="100">
-                                    <circle cx="50" cy="50" r="50" fill="blue" />
-                                </svg>
-                                <h3 style="overflow-wrap: break-word" th:text="${dev.nome}"></h3>
+                            	<span>
+                            	    <span th:if="${dev.foto == null}">
+    									<svg width="100" height="100">
+                                    		<circle cx="50" cy="50" r="50"fill="blue" />
+                                		</svg>
+    								</span>
+    								<span th:if="${dev.foto != null}">
+										<img style="border-radius: 50%;" width="150" height="150" th:src="@{'/imageDev/'+${dev.email}}" />
+                                	
+    								</span>
+                                	<h3 style="overflow-wrap: break-word" th:text="${dev.nome}"></h3>
+                                </span>
+                                
                            </div>
                            <div class="col-sm-8" style="font-size: 16px">
                            		<span>Endereço: </span>

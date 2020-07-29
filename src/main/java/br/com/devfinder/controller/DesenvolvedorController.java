@@ -8,7 +8,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpRequest;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -88,6 +92,7 @@ public class DesenvolvedorController {
 			HttpSession session,
 			HttpServletRequest r) {
 		
+		
 		Endereco endereco = new Endereco(
 				r.getParameter("estado"),
 				r.getParameter("cidade"),
@@ -100,14 +105,16 @@ public class DesenvolvedorController {
 		byte[] curriculoByte=null;
 		
 		try {
-			inputStream = foto.getBytes();
+			if(!foto.isEmpty())
+				inputStream = foto.getBytes();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}	
 		
 		try {
-			curriculoByte = curriculo.getBytes();
+			if(!curriculo.isEmpty())
+				curriculoByte = curriculo.getBytes();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -191,6 +198,16 @@ public class DesenvolvedorController {
 		return service.getDesenvolvedores();
 	}
 
+    @RequestMapping(value = "/imageDev/{dev_id}", produces = MediaType.IMAGE_PNG_VALUE)
+    public ResponseEntity<byte[]> getImage(@PathVariable("dev_id") String email) throws IOException {
+    	Desenvolvedor dev = service.getDesenvolvedorById(email);
+    	
+        byte[] imageContent = dev.getFoto();//get image from DAO based on id
+        final HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.IMAGE_PNG);
+        return new ResponseEntity<byte[]>(imageContent, headers, HttpStatus.OK);
+    }
+    
 	@GetMapping("/desenvolvedorById/{email}")
 	public String findEmpresaById(@PathVariable String email, Model model,HttpSession session) {
 		model.addAttribute("dev", service.getDesenvolvedorById(email));

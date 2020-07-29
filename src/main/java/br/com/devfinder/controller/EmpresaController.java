@@ -1,7 +1,9 @@
 package br.com.devfinder.controller;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import java.awt.PageAttributes.MediaType;
+import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,6 +25,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.http.MediaType;
 
 import br.com.devfinder.model.Desafio;
 import br.com.devfinder.model.Desenvolvedor;
@@ -93,11 +97,45 @@ public class EmpresaController {
 	}
 	
 	@PostMapping("/addEmpresa")
-	public String addEmpresa(@ModelAttribute Empresa empresa, 
-			@ModelAttribute Endereco endereco,
-			Model model, HttpSession session) {
+	public String addEmpresa(@RequestParam("foto") MultipartFile foto,
+			HttpServletRequest r, 
+			Model model, 
+			HttpSession session) {
 		
-		empresa.setEndereco(endereco);
+		Endereco endereco = new Endereco(
+				r.getParameter("estado"),
+				r.getParameter("cidade"),
+				r.getParameter("bairro"),
+				r.getParameter("numero"),
+				r.getParameter("rua"),
+				r.getParameter("cep")
+		);
+		byte[] fotoByte=null;
+		
+		try {
+			fotoByte = foto.getBytes();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+		
+		Empresa empresa = new Empresa(
+				r.getParameter("email"),
+				fotoByte,
+				r.getParameter("senha"),
+				endereco,
+				r.getParameter("site"),
+				r.getParameter("telefone"),
+				r.getParameter("apresentacao"),
+				r.getParameter("nomeFantasia"),
+				r.getParameter("razaoSocial"),
+				r.getParameter("cnpj"),
+				Integer.parseInt(r.getParameter("anoFundacao")),
+				r.getParameter("ramoMercado"),
+				Integer.parseInt(r.getParameter("totalDesenvolvedores")),
+				r.getParameter("tipoVaga")
+			);
+				
 		service.saveEmpresa(empresa);
 		session.setAttribute("perfil", empresa);
 		return "redirect:/empDashboard";
@@ -114,6 +152,15 @@ public class EmpresaController {
 		return service.getEmpresas();
 	}
 
+	@RequestMapping(value = "/imageEmp/{emp_id}", produces = MediaType.IMAGE_PNG_VALUE)
+    public ResponseEntity<byte[]> getImage(@PathVariable("emp_id") String email) throws IOException {
+    	Empresa emp = service.getEmpresaById(email);
+    	
+        byte[] imageContent = emp.getFoto();//get image from DAO based on id
+        final HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.IMAGE_PNG);
+        return new ResponseEntity<byte[]>(imageContent, headers, HttpStatus.OK);
+    }
 	@GetMapping("/empresaById/{email}")
 	public String findEmpresaById(@PathVariable String email, Model model, HttpSession session) {
 		model.addAttribute("empresa", service.getEmpresaById(email));

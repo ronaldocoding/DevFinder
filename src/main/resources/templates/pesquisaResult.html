@@ -11,11 +11,18 @@
 						<ul>
 							<tr th:each="emp: ${emps}">
 								<li>
-									<svg width="50" height="50">
-		                                    <circle cx="25" cy="25" r="25"
-											fill="yellow" />
-		                                </svg>
-		                            <a  th:href="@{'empresaById/'+ ${emp.email}}">
+									<span>
+										<span th:if="${emp.foto == null}">
+	    									<svg width="50" height="50">
+	                                    		<circle cx="25" cy="25" r="25"fill="blue" />
+	                                		</svg>
+	    								</span>
+	    								<span th:if="${emp.foto != null}">
+											<img style="border-radius: 50%;" width="50" height="50" th:src="@{'/imageEmp/'+${emp.email}}" />
+	                                	
+	    								</span>
+    								</span>
+		                            <a th:href="@{'empresaById/'+ ${emp.email}}">
 										<h5 th:text="${emp.razaoSocial}"></h5>
 									</a>
 								</li>
@@ -31,10 +38,18 @@
 					<ul>
 						<tr th:each="dev: ${devs}">
 							<li>
-								<svg width="50" height="50">
-	                                    <circle cx="25" cy="25" r="25"
-										fill="blue" />
-	                                </svg>
+								<span>
+                            	    <span th:if="${dev.foto == null}">
+    									<svg width="50" height="50">
+                                    		<circle cx="25" cy="25" r="25"fill="blue" />
+                                		</svg>
+    								</span>
+    								<span th:if="${dev.foto != null}">
+										<img style="border-radius: 50%;" width="50" height="50" th:src="@{'/imageDev/'+${dev.email}}" />
+                                	
+    								</span>
+    							</span>
+								
 	                             <a  th:href="@{'desenvolvedorById/'+ ${dev.email}}">
 									<h5 th:text="${dev.nome}"></h5>
 	                             </a>

@@ -70,8 +70,7 @@ public class Empresa extends Usuario implements Serializable {
 		this.anoFundacao = anoFundacao;
 		this.ramoMercado = ramoMercado;
 		this.totalDesenvolvedores = totalDesenvolvedores;
-		
-		this.tipoVaga = tipoVaga;
+		this.tipoVaga = tipoVagas;
 		
 		}
 
