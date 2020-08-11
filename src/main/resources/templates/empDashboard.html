@@ -8,14 +8,14 @@
 	<div class="main_container" id="main_container">
 		<div class="row filter m-5">
 			<div class="col-sm-9 area_post" id="container">
-				dashboard da empresa tal:
+				dashboard da empresa:
 				<div th:text="${perfil.email}"></div>
-				
-				<button>
-					<a th:attr="href='/addDesafio'">
+				<button type="button" class="btn btn-primary">
+					<a style="text-decoration: none; color:#FFF" th:attr="href='/addDesafio'">
 						AddDesafio
 					</a>
 				</button>
+
 			</div>
 		</div>
 	</div>

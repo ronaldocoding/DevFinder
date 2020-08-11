@@ -8,7 +8,7 @@
 	<div class="main_container" id="main_container">
 		<div class="row filter m-5">
 			<div class="col-sm-9 area_post" id="container">
-				configurações da empresa tal:
+				configurações da empresa:
 				<div th:text="${perfil.email}"></div>
 				<button type="button" class="btn btn-primary" data-toggle="modal"
 					data-target="#exampleModalCenter">Excluir minha conta
@@ -34,7 +34,12 @@
 					conta? Essa ação não poderá ser desfeita.</div>
 				<div class="modal-footer border-0">
 					<button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
-					<button type="button" class="btn btn-danger"><a href='/deleteEmpresa'>Excluir</a></button>
+					<button type="button" class="btn btn-danger">
+						
+						<a style="text-decoration: none; color:#FFF" href='/deleteEmpresa'>
+							Excluir
+						</a>
+					</button>
 				</div>
 			</div>
 		</div>

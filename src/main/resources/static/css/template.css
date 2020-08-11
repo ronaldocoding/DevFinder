@@ -69,14 +69,19 @@ button {
 	background: linear-gradient(218deg, rgba(84, 222, 218, 1) 11%,
 		rgba(73, 194, 208, 1) 43%, rgba(31, 136, 180, 1) 100%) !important;
 	color: #fff;
+	min-height: calc(100vh - 255px);
+	
+	margin-bottom:-20px;
+	
 }
 
 .modal-content {
 	color: #000;
 }
 
-container {
+.container {
 	display: block;
+	color:'red';
 }
 /****************************NAVBAR********************************/
 /***topnav****/
@@ -713,6 +718,9 @@ tr {
 
 .main_container {
 	padding-top: 40px;
+	heigth:'100%';
+	
+	min-height: calc(100vh - 235px);
 }
 
 /****CONFIGURAÇÕES*******************/
