@@ -43,7 +43,7 @@ public class TokenEmpresa implements Serializable {
 	@Column(name = "token", length = 55, unique=true)
 	private String token;
 	
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "EMAIL_EMPRESA", referencedColumnName = "EMAIL", nullable = false, insertable = false, updatable = false)
 	private Empresa empresa;
 

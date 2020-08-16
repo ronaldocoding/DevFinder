@@ -170,15 +170,19 @@ public class TokenController {
 	@GetMapping("/redefinirSenha/{token}")
 	public String redefinirSenha(Model model, HttpSession session, @PathVariable String token) {
 		if(serviceTokenEmpresa.getTokenEmpresaByToken(token) != null) {
-			model.addAttribute("email", serviceTokenEmpresa.getTokenEmpresaByToken(token).getEmpresa().getEmail());
+			String email = serviceTokenEmpresa.getTokenEmpresaByToken(token).getEmpresa().getEmail();
+			model.addAttribute("email", email);
+			serviceTokenEmpresa.deleteToken(new TokenEmpresaId(email));
 		}
 		else if(serviceTokenDesenvolvedor.getTokenDesenvolvedorByToken(token) != null){
-			model.addAttribute("email", serviceTokenDesenvolvedor.getTokenDesenvolvedorByToken(token).getDesenvolvedor().getEmail());
+			String email = serviceTokenDesenvolvedor.getTokenDesenvolvedorByToken(token).getDesenvolvedor().getEmail();
+			model.addAttribute("email", email);
+			serviceTokenDesenvolvedor.deleteToken(new TokenDesenvolvedorId(email));
 		}
 		
 		return "novaSenha";
 	}
-	@PostMapping("/recuperarSenha")
+	@GetMapping("/SendToken")
 	public String sendEmail(Model model,HttpSession session, HttpServletRequest request) {
 		String email = request.getParameter("email");
 		return "redirect:/addToken/"+email;

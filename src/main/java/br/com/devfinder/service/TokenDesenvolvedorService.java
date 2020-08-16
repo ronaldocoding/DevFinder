@@ -52,6 +52,9 @@ public class TokenDesenvolvedorService {
 	/**
 	 * Método DELETE
 	 */
+	public void deleteToken(TokenDesenvolvedorId idToken) {
+		repository.deleteById(idToken);
+	}
 	
 	/**
 	 * Método PUT

@@ -50,6 +50,10 @@ public class TokenEmpresaService {
 	 * Método DELETE
 	 */
 	
+	public void deleteToken(TokenEmpresaId idToken) {
+		repository.deleteById(idToken);
+	}
+	
 	/**
 	 * Método PUT
 	 */
@@ -58,4 +62,6 @@ public class TokenEmpresaService {
 		existingDesafio.setAtivo(false);
 		return repository.save(existingDesafio);
 	}
+	
+	
 }
