@@ -1,5 +1,19 @@
 package br.com.devfinder.controller;
 
+import java.io.IOException;
+import java.util.Date;
+import java.util.Properties;
+
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +22,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,12 +33,15 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.devfinder.model.Desenvolvedor;
+import br.com.devfinder.model.Empresa;
+import br.com.devfinder.model.TokenEmpresa;
 import br.com.devfinder.model.Usuario;
 import br.com.devfinder.service.DesafioHabilidadeService;
 import br.com.devfinder.service.DesafioService;
 import br.com.devfinder.service.DesenvolvedorDesafioService;
 import br.com.devfinder.service.DesenvolvedorService;
 import br.com.devfinder.service.EmpresaService;
+import br.com.devfinder.service.TokenEmpresaService;
 
 @Controller
 public class UsuarioController {
@@ -43,6 +61,9 @@ public class UsuarioController {
 	
 	@Autowired
 	private DesenvolvedorService serviceD;	
+	
+	@Autowired
+	private TokenEmpresaService serviceTokenEmpresa;	
 	@GetMapping("/")
 	public String home(Model model) {
 		return "homepage";
@@ -151,5 +172,7 @@ public class UsuarioController {
 
 		 return false;
 	}
+
+	
 	
 }
