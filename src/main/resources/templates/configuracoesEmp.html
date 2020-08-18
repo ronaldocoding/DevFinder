@@ -1,10 +1,12 @@
 <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="/static/css/signedIn.css" />
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+
 </head>
 
 <body>
@@ -29,7 +31,7 @@
         <div class="sidebar-column">
             <ul class="sidebar">
                 <li class="icon">
-                    <img alt="Logo" src="/static/imgs/df-logo.svg" />
+                    <img alt="Logo" src="/static/imgs/df-logo.svg">
                 </li>
                 <li>
                     <a href="#" class="item">
@@ -60,43 +62,118 @@
         <div class="container-fluid content config">
             <div class="row mt-3">
                 <div class="col-lg-6 px-1">
-                    <div class="col-sm box white " style="height: 100%">
+                    <div class="col-sm box white perfil" style="height: 100%">
                         <form>
                             <h6>Perfil</h6>
-                            <input type="image" src="/static/imgs/df-logo.svg">
-                            <input type="text" placeholder="Nome">
-                            <input type="text" placeholder="Descrição">
-                            <input type="url" placeholder="Site pessoal">
+
+                            <div class="group editar">
+                                <label>Nome</label>
+                                <input type="text" placeholder="Nome">
+                            </div>
+                            <div class="group">
+                                <label>Descrição</label>
+                                <i class="fas fa-pencil-alt" data-toggle="tooltip" data-placement="right" title="Editar"></i>
+                                <textarea name="Text1" cols="38" rows="2" placeholder="Descrição"></textarea>
+
+                            </div>
+                            <div class="group editar">
+                                <label>Site pessoal</label>
+                                <input type="url" placeholder="Site pessoal">
+
+                            </div>
                             <h6>Informações de desenvolvedor</h6>
-                            <input type="text" placeholder="Área de atuação">
-                            <input type="number" max="100" placeholder="Tempo de experiencia">
-                            <input type="url" placeholder="Linkedin">
+                            <div class="group">
+                                <label>Área de atuação</label>
+                                <select name="cars" id="cars">
+                                    <option value="front-end">Front-end</option>
+                                    <option value="back-end">Back-end</option>
+                                    <option value="full-stack">Full Stack</option>
+                                    <option value="data-science">Data Science</option>
+                                </select>
+                            </div>
+                            <div class="group editar">
+                                <label>Tempo de exp.</label>
+                                <input type="number" max="100" placeholder="Tempo">
 
-                            <input type="url" placeholder="Github">
+                            </div>
+                            <div class="group editar">
+                                <label>Linkedin</label>
+                                <input type="url" placeholder="Linkedin">
 
-                            <input type="url" placeholder="Lattes">
-                            <input type="url" placeholder="Habilidades">
+                            </div>
+                            <div class="group">
+                                <label>Github</label>
+                                <input type="url" placeholder="Github">
+                                <i class="fas fa-pencil-alt" data-toggle="tooltip" data-placement="right" title="Editar"></i>
+                            </div>
+                            <div class="group">
+                                <label>Habilidades</label>
+
+                                <div class="multiselect">
+
+                                    <div class="dropdown show">
+                                        <input class="multisearch" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" input id="dropdownMenuLink" placeholder="Pesquisar">
+
+
+
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                            <span style="display: none">Nenhum resultado encontrado.</span>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+
+                            </div>
 
                         </form>
                     </div>
                 </div>
                 <div class="col-lg-6 px-1">
-                    <div class="col-sm box white perfil">
+                    <div class="col-sm box white">
                         <form>
                             <h6>Dados pessoais</h6>
-                            <input type="text" placeholder="CPF" disabled>
-                            <input type="tel" placeholder="Numero">
-                            <input type="text" placeholder="Data de nascimento">
-                            <input type="text" placeholder="CEP">
-                            <input type="file" placeholder="Curriculo">
+                            <div class="group">
+                                <label>CPF</label>
+                                <input type="text" placeholder="CPF" disabled>
+                                <!--                                <i class="fas fa-pencil-alt"></i>-->
+                            </div>
+                            <div class="group editar">
+                                <label>Número</label>
+                                <input type="tel" placeholder="Numero">
+                            </div>
+                            <div class="group editar">
+                                <label>Data de Nasc.</label>
+
+                                <input type="date">
+                            </div>
+                            <div class="group editar">
+                                <label>CEP</label>
+                                <input type="text" placeholder="CEP">
+
+                            </div>
+                            <div class="group">
+                                <label>Currículo</label>
+                                <input type="file" placeholder="Curriculo">
+                            </div>
                         </form>
                     </div>
                     <div class="col-sm box blue change-password">
                         <h6>Mudar senha</h6>
                         <form>
-                            <input type="password" placeholder="Digite sua senha atual">
-                            <input type="password" placeholder="Digite sua nova senha">
-                            <input type="password" placeholder="Confirme sua senha">
+                            <div class="group">
+                                <label>Digite sua senha atual</label>
+                                <input type="password">
+                            </div>
+                            <div class="group">
+                                <label>Digite sua nova senha</label>
+                                <input type="password">
+                            </div>
+                            <div class="group">
+                                <label>Confirme sua nova senha</label>
+                                <input type="password">
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -105,4 +182,43 @@
             </div>
         </div>
     </div>
+    <script src="../static/js/habilities.js"></script>
+    <script>
+        $(document).ready(function() {
+
+            $('.editar').append(
+                '<i class="fas fa-pencil-alt" data-toggle="tooltip" data-placement="right" title="Editar"></i>'
+            );
+            
+            $('[data-toggle="tooltip"]').tooltip();
+
+            $(".group input").attr("readonly", true);
+
+            $(".group textarea").attr("readonly", true);
+
+            $(".group").hover(function() {
+                $(this).children('i').css("opacity", "1");
+            }, function() {
+                $(this).children('i').css("opacity", "0");
+            });
+
+            $(".group i").click(function() {
+                $(this).parent().find('input').attr("readonly", false);
+                $(this).parent().find('textarea').attr("readonly", false);
+                $(this).parent().find('input').focus()
+                $(this).parent().find('textarea').focus()
+                $(this).css("opacity", "0");
+            })
+            $(".group input").focusout(function() {
+                $(this).attr("readonly", true)
+                $('[type="password"]').attr("readonly", false);
+            })
+            $(".group textarea").focusout(function() {
+                $(this).attr("readonly", true)
+            })
+
+            $('[type="password"]').attr("readonly", false);
+        });
+
+    </script>
 </body>
