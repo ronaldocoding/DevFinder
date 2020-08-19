@@ -35,19 +35,30 @@ function multisearch(habilities) {
     });
 }
 
+function selectHab(habId) {
+     const str = habId.substring(4)
+        $('#'+habId).addClass("disabled")
+        $("#span" + str).show()
+        $("#span" + str+" i").css("opacity", "1")
+}
+function removeHab (habId) {
+    console.log(habId)
+        const str = habId.substring(4)
+
+        $("#drop" + str).removeClass("disabled")
+        $('#'+habId).hide();
+}
+
 $(document).ready(function () {
     $(".multisearch").attr("readonly", false);
 
     $('.dropdown-item').click(function () {
-        const str = $(this).attr('id').substring(4)
-        $(this).addClass("disabled")
-        $("#span" + str).show()
+        var str = $(this).attr('id')
+        selectHab(str)
     })
-    $('.multiselect .selected i').click(function () {
-        const str = $(this).parent().attr('id').substring(4)
-
-        $("#drop" + str).removeClass("disabled")
-        $(this).parent().hide();
+    $('.multiselect .selected i').click(function(){
+        var id = $(this).parent().attr('id')
+        removeHab(id)
     })
     $('.multisearch').click(function () {
         $(this).focus();
