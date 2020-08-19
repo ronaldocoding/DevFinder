@@ -84,7 +84,6 @@ $('.filtro-estado').click(function () {
     filtro(valores.tempo, valores.estado, valores.area)
 })
 
-
 $(".none-result").hide()
 
 function filtro(tempo, estado, area) {
@@ -130,6 +129,8 @@ function filtro(tempo, estado, area) {
     console.log(none)
     if (none)
         $(".none-result").show()
+
     else
         $(".none-result").hide()
+
 }
