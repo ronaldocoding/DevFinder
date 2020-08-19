@@ -125,7 +125,7 @@ input {
     height: 100%;
     background-color: #F1F4FB;
     transition: width .3s ease-in;
-    z-index: 2;
+    z-index: 12;
 }
 
 .sidebar {
@@ -449,13 +449,13 @@ text-overflow:ellipsis "...";
     font-family: 'Nunito', sans-serif;
 }
 
-.config select { 
+select { 
     border: none;
     background-color: #F1F4FB;
     outline: none;
 }
 
-.config select option{ 
+select option{ 
     border: none;
     background-color: #FFF;
     outline: none;

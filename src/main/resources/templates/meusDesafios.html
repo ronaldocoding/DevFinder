@@ -76,8 +76,22 @@
             <div class="row meus-desafios">
                 <div class="col-xl-7 mb-2 p-2 desafios mx-auto">
                     <div class="col-sm-12 filtro">
-                        Filtrar por
+                        Estado
+                        <select class="white filtro-estado">
+                            <option>Todos</option>
+                            <option>Finalizados</option>
+                            <option>Em andamento</option>
+                        </select>
+                        Área
+                        <select class="white filtro-area">
+                            <option>Todos</option>
+                            <option>Front-end</option>
+                            <option>Back-end</option>
+                            <option>Full-stack</option>
+                            <option>Data science</option>
+                        </select>
                     </div>
+                    <span class="none-result">Nenhum resultado encontrado</span>
                 </div>
                 <div class="col-xl -2 box blue">
                     <h5>Submissões</h5>
@@ -85,41 +99,9 @@
             </div>
         </div>
     </div>
+    <script src="/static/js/filtroDesafio.js"></script>
     <script>
-        function criarDesafio(nome, empresa, area, descricao, habilidades, dataTermino, horaTermino) {
-            var habs = ''
-            habilidades.forEach((item) => {
-                habs = habs + ' <span>' + item + '</span>'
-            })
-            $(".desafios").append('<div class="box white">' +
-                '<div class="row">' +
-                '<div class="col-sm-4 col-md-3 ml-3">' +
-                '<div class="icon m-auto"></div>' +
-                '</div>' +
-                '<div class="col-sm">' +
-                '<div class="col-sm-12 title">' +
-                '<h5>' + nome + '<span>' + '<i class="fas fa-briefcase"></i> ' + empresa + '</span>' + '</h5>' +
-                '</div>' +
-                '<div class="col-sm-12 descricao">' +
-
-                '<div>' + '<span>' + area + '</span>' + descricao + '</div>' +
-                ' </div>' +
-               
-                '<div class="col-sm-12 habilidades">' +
-                habs +
-                '</div>' +
-                '</div>' +
-                '</div>' +
-                '<div class="row">' +
-                '<div class="col-6 data">' +
-                '<i class="far fa-clock"></i> ' + dataTermino + ' ' + horaTermino +
-                '</div>' +
-                '<div class="col edit"><a href="#">Visualizar</a></div>'+
-                '</div></div>')
-        }
-
-        criarDesafio('Ensinar programação', 'IFAM-CMC', 'Full Stack', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur aliquet fermentum rutrum. Nam non consectetur risus. Nam gravida ut est sed consequat. Quisque vitae felis vitae elit mollisfdesuada quis in mauris. Ut at diam vitae purus aliquet molestie. Morbi condimentum non mauris vitae mattis. Donec rhoncus ante ut maximus bibendum. Vestibulum volutpat lacinia rutrum. Integer ut diam porta, suscipit odio malesuada, facilisis dui.', ['HTML', 'CSS', 'React', 'Java', 'Javascript', 'SQL'], '22/08/2020', '12:00')
-        criarDesafio('teste', 'teste', 'Front-end', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur aliquet fermentum rutrum. Nam non consectetur risus. Nam gravida ut est sed consequat. Quisque vitae felis vitae elit mollis malesuada quis in mauris. Ut at diam vitae purus aliquet molestie. Morbi condimentum non mauris vitae mattis. Donec rhoncus ante ut maximus bibendum. Vestibulum volutpat lacinia rutrum. Integer ut diam porta, suscipit odio malesuada, facilisis dui.', ['teste', 'teste'], '28/08/2020', '12:00')
+        
         var ctxBar = document.getElementById('mais-inscritos').getContext('2d');
         var ctxDoughnut = document.getElementById('inscritos-submissoes').getContext('2d');
 
