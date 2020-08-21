@@ -50,7 +50,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="item"> <i class="fas fa-sign-out-alt"></i>
+                    <a href="homepage.html" class="item"> <i class="fas fa-sign-out-alt"></i>
                         <div>Sair</div>
                     </a>
 
@@ -59,38 +59,37 @@
         </div>
         <div class="container-fluid content">
             <div class="row">
-                <div class="col-xl-7 mb-2 p-0 desafios mx-3">
+                <div class="col-xl-8 mb-2 p-0 mx-auto">
                     <div class="col-sm-12 filtro mt-2">
-                        Tempo 
-                        <select class="white">
-                            <option>Recentes</option>
-                            <option>Mais antigos</option>
-                            <option>Em um mês</option>
-                            <option>Em uma semana</option>
-
-                        </select>
+                        
                         Estado
-                        <select class="white">
+                        <select class="white filtro-estado">
                             <option>Todos</option>
                             <option>Finalizados</option>
                             <option>Em andamento</option>
                         </select>
                         Área
-                        <select class="white">
+                        <select class="white filtro-area">
                             <option>Todos</option>
                             <option>Front-end</option>
                             <option>Back-end</option>
                             <option>Full stack</option>
                             <option>Data science</option>
                         </select>
+                        
+                        
                     </div>
+                    <span class="none-result">Nenhum resultado encontrado</span>
+                    <div class="desafios row mt-2">
+                            
+                        </div>
                 </div>
             </div>
             <footer class="footer row">
                 <div class="container-fluid py-5 mx-0">
                     <div class="row">
                         <div class="col-12 divisor"></div>
-                        <div class="col-12 col-md text-center">
+                        <div class="col-12 col-lg text-center">
                             <img class="img-fluid noturno" src="/static/imgs/df-logo.svg">
                         </div>
                         <div class="col-6 col-md">
@@ -125,6 +124,8 @@
         </div>
 
     </div>
+        <script src="/static/js/filtroDesafioDev.js"></script>
+
     <script>
         function criarDesafio(nome, empresa, area, descricao, habilidades, dataTermino, horaTermino) {
             var habs = ''
@@ -155,8 +156,6 @@
                 '</div></div></div>')
         }
 
-        criarDesafio('Ensinar programação', 'IFAM-CMC', 'Full Stack', 'Fazer um app para ensinar programação à jovens e crianças', ['HTML', 'CSS', 'React', 'Java', 'Javascript', 'SQL'], 'DD/MM/YYYY', 'HH:MM')
-        criarDesafio('teste', 'teste', 'Front-end', 'blablabla', ['teste', 'teste'], 'DD/MM/YYYY', 'HH:MM')
 
     </script>
 </body>

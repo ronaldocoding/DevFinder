@@ -117,27 +117,39 @@ input {
 
 .modal-body {
 
-    overflow-x: hidden;
-    width: 500px;
+    overflow: hidden;
+/*    width: 500px;*/
     height: 300px;
-
+    word-break: keep-all;
+    text-overflow: ellipsis;
 }
 
 .modal-body .login {
-    background-color: aqua;
+        width: 500px;
+
     height: 300px;
     transition: margin .3s ease-in-out;
     padding: 20px;
-
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
 }
 
 .modal-body .sign-up {
-    background-color: red;
     height: 300px;
     margin-top: -300px;
     margin-left: 500px;
     transition: margin .3s ease-in-out;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.login form {
+    margin: 0 auto;
 }
 
 .on .login {
@@ -153,7 +165,7 @@ input {
     font-weight: 800;
 }
 
-@media (max-width: 991.98px) {
+@media (max-width: 800px) {
     .sign {
         display: none;
     }
@@ -169,7 +181,7 @@ input {
         min-width: 100%;
     }
 
-    .modal-content { 
+    .modal-content {
         min-width: 100%;
         height: 100%;
     }
@@ -178,19 +190,19 @@ input {
         overflow: hidden;
 
         min-width: 100%;
-margin: 0;
+        margin: 0;
         padding: 0;
     }
 
     .modal-body .login {
-        background-color: aqua;
+        /*        background-color: aqua;*/
         height: 100%;
         width: 100%;
         transition: margin .3s ease-in-out;
     }
 
     .modal-body .sign-up {
-        background-color: red;
+        /*        background-color: red;*/
         height: 104%;
         width: 100%;
         margin-top: calc(-100%);
@@ -203,7 +215,7 @@ margin: 0;
     }
 
     .on .sign-up {
-        top:0;
+        top: 0;
         margin-left: 0;
     }
 

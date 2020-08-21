@@ -14,6 +14,7 @@
         <nav class="nav">
             <div class="search">
                 <input placeholder="Pesquise..." />
+                
                 <div class="item">
                     <i style='font-size:15px; justify-content: flex-end' class='fas'>&#xf002;</i>
                 </div>
@@ -60,6 +61,7 @@
             </ul>
         </div>
         <div class="container-fluid content">
+           
             <div class="row my-3 ml-1">
 
                 <div class="col-lg-6 d-flex graficos px-1 justify-content-center">
@@ -73,8 +75,14 @@
                     </div>
                 </div>
             </div>
+             <div class="row my-3 ml-1">
+                <a class="col-12 text-center" href="novoDesafio.html">
+                 
+                    <i class="fas fa-plus-circle"></i> Criar novo desafio
+                </a>
+            </div>
             <div class="row meus-desafios">
-                <div class="col-xl-7 mb-2 p-2 desafios mx-auto">
+                <div class="col-lg-8 mx-auto mb-2">
                     <div class="col-sm-12 filtro">
                         Estado
                         <select class="white filtro-estado">
@@ -92,14 +100,13 @@
                         </select>
                     </div>
                     <span class="none-result">Nenhum resultado encontrado</span>
-                </div>
-                <div class="col-xl -2 box blue">
-                    <h5>Submissões</h5>
+                    <div class="row desafios">
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <script src="/static/js/filtroDesafio.js"></script>
+    <script src="/static/js/filtroDesafioEmp.js"></script>
     <script>
         
         var ctxBar = document.getElementById('mais-inscritos').getContext('2d');

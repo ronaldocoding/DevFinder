@@ -41,7 +41,7 @@ function criarDesafio(index, nome, empresa, area, descricao, habilidades, dataTe
         habs = habs + ' <span>' + item + '</span>'
     })
     console.log(index)
-    $(".desafios").append('<div id="desafio' + index + '" class="box white"">' +
+    $(".desafios").append('<div id="desafio' + index + '" class="box white  mx-1">' +
         '<div class="row">' +
         '<div class="col-sm-4 col-md-3 ml-3">' +
         '<div class="icon m-auto"></div>' +
@@ -64,7 +64,7 @@ function criarDesafio(index, nome, empresa, area, descricao, habilidades, dataTe
         '<div class="col-6 data">' +
         '<i class="far fa-clock"></i> ' + dataTermino + ' ' + horaTermino +
         '</div>' +
-        '<div class="col edit"><a href="#">Visualizar</a></div>' +
+        '<div class="col edit"><a href="visualizarDesafio.html">Visualizar</a></div>' +
         '</div></div>')
 }
 desafios.forEach(function (item, index) {

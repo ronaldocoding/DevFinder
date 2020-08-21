@@ -39,6 +39,10 @@ input {
     outline: none;
     border: none;
 }
+
+textarea {
+    width: 100%;
+}
 /*NAVBAR*/
 .nav {
     padding: 10px;
