@@ -8,7 +8,8 @@
 
 				<div  th:if="${emps.size()}" class="col-sm-12 user">
 					<h4>Empresas</h4>
-						<ul>
+						<ul id="ulEmpresas">
+							<!-- 
 							<tr th:each="emp: ${emps}">
 								<li>
 									<span>
@@ -28,6 +29,7 @@
 								</li>
 							
 							</tr>
+							-->
 						</ul>
 				</div>
 				<div th:if="${devs.size()}" class="col-sm-12 user">
@@ -35,7 +37,8 @@
 						Desenvolvedores
 					</h4>
 					
-					<ul>
+					<ul id="ulDevs">
+						<!-- 
 						<tr th:each="dev: ${devs}">
 							<li>
 								<span>
@@ -56,6 +59,7 @@
 							</li>
 						
 						</tr>
+						 -->
 					</ul>
 					
 				</div>
@@ -87,57 +91,8 @@
 							</ul>
 						</div>
 					</div>
-					<div class="area_post">
-						<tr th:each="desafio: ${desafios}">
-							<div class="post">
-								<div class="row">
-									<div class="col-sm-12">
-										<div class="col-sm-3">
-											<img src="http://placehold.it/260x180" alt="">
-										</div>
-										<div class="col-sm-9">
-											<h4 th:text="${desafio.nome}"></h4>
-											<p th:text="${desafio.descricao}"></p>
-											<div class="cell-list-content-icon">
-												<span> <i class="fab fa-dev"></i> <span
-													th:text="${desafio.areaDesenvolvimento}"></span></span>
-
-											</div>
-											<div class="cell-list-content-tag">
-												<td
-													th:each="habilidade:${service.getHabilidades(desafio.emailEmpresa, desafio.id)}">
-													<span class="tag-list background-gray"
-													th:text="${habilidade.getHabilidade()}"></span>
-												</td>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-sm-12 line">
-										<div class="col-sm-4">
-											<span>Termina em </span> <span th:text="${desafio.dataFim}"></span>
-											<span>as </span> <span th:text="${desafio.horarioFim}"></span>
-										</div>
-										
-										<div th:if="${perfil}">
-											<div th:if="${serviceDev.getDesenvolvedorById(perfil.email)}">
-												<div th:if="${serviceSub.getInscricaoById(perfil.email, desafio.emailEmpresa, desafio.id)}">
-													<button type="button" th:id="${desafio.id}" disabled
-													class="modal-btn azul">Inscrito</button>
-												</div>
-												<div th:unless="${serviceSub.getInscricaoById(perfil.email, desafio.emailEmpresa, desafio.id)}">
-													<button type="button" th:id="${desafio.id}" th:attr="onclick=|participar('${desafio.id}', '${desafio.emailEmpresa}')|"
-													class="modal-btn azul">Participar</button>
-												</div>
-											</div>
-										</div>
-										
-									</div>
-								</div>
-							</div>
-						</tr>
-
+					<div class="desafios">
+						
 					</div>
 				</div>
 			</div>
@@ -146,7 +101,51 @@
 	
 	
 </div>
+<script th:src="@{/js/moldesComponentes.js}"></script>
+<script th:inline="javascript">
+	$('#linkLogin').html('Resultados para '+$('#search').val())
+	var emps = [[${emps}]]
+	var devs = [[${devs}]]
+	var desafios = [[${desafios}]]
+	console.log(devs)
+	
+	emps.forEach(function(item, index){
+		//console.log('ai ai')
+		criarEmpresaPesquisa(item)
+	})
 
-<script>
-		$('#linkLogin').html('Resultados para '+$('#search').val())
+	devs.forEach(function(item, index){
+		console.log('ai ai')
+		criarDesenvolvedorPesquisa(item)
+	})
+		
+		for(var i = 0; i < desafios.length; i++){
+			var emailEmpresa = desafios[i].emailEmpresa;
+			var id = desafios[i].id
+			//console.log(desafios[i])
+			$.ajax({
+    	    	url:'/desafioHabilidades/'+emailEmpresa+'/'+id,
+	    	    type: "GET",
+	    	    async: false,
+	            contentType: "application/json",
+	    	    success: function(response) {
+	    	    	var habilidades = []
+	    	    
+	    	    	for(var j = 0; j < response.length; j++){
+	    	    		habilidades.push(response[j].habilidade)
+	    	    	}
+	    	    	desafios[i].habilidades = habilidades
+	    	    	
+    	        },
+	    	    error: function(error){
+	    	    	console.log(error)
+	    	    }
+			})	
+		}
+		desafios.forEach(function (item, index) {
+			
+		    criarDesafio(item.id, item.nome, item.empresa.nomeFantasia, 
+		    			item.areaDesenvolvimento, item.descricao, item.habilidades, item.dataFim, item.horarioFim)
+		})
+
 </script>

@@ -55,6 +55,10 @@ public class DesafioService {
 	public Desafio getDesafioById(DesafioId id) {
 		return repository.findById(id).orElse(null);
 	}
+	
+	public Desafio getDesafioById(int id) {
+		return repository.findById(id);
+	}
 
 	public Desafio getDesafioByNome(String nome) {
 		return repository.findByNome(nome);

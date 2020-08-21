@@ -20,6 +20,9 @@ public interface DesenvolvedorDesafioRepository extends JpaRepository<Desenvolve
 	@Query(value = "SELECT * FROM DESENVOLVEDOR_DESAFIO WHERE EMAIL_EMPRESA_DESAFIO = ?1 AND ID_DESAFIO = ?2", nativeQuery = true)
 	List<DesenvolvedorDesafio> findAllByDesafio(String emailEmpresa, int idDesafio);
 
+	@Query(value = "SELECT * FROM DESENVOLVEDOR_DESAFIO WHERE EMAIL_DESENVOLVEDOR = ?1", nativeQuery = true)
+	List<DesenvolvedorDesafio> findAllByDesenvolvedor(String emaildev);
+	
 	@Modifying
 	@Transactional
 	@Query(value = "DELETE FROM DESENVOLVEDOR_DESAFIO WHERE EMAIL_DESENVOLVEDOR = ?1", nativeQuery = true)

@@ -225,6 +225,8 @@ public class DesenvolvedorController {
 			
 		}
 		model.addAttribute("perfil", session.getAttribute("perfil"));
+
+		model.addAttribute("desafios", serviceSub.getInscricoes(email));
 		model.addAttribute("area", area);
 		model.addAttribute("serviceDev", service);
 		return "perfilDesenvolvedor";
@@ -241,6 +243,40 @@ public class DesenvolvedorController {
 		return service.updateDesenvolvedor(desenvolvedor);
 	}
 
+	@PostMapping("/updateDadosPerfilDev")
+	public String updateDesenvolvedorPerfil(Model model, HttpSession session, HttpServletRequest r) {
+		Desenvolvedor dev = (Desenvolvedor) session.getAttribute("perfil");
+		dev.setNome(r.getParameter("nome"));
+		dev.setApresentacao(r.getParameter("apresentacao"));
+		dev.setSite(r.getParameter("site"));
+		dev.setTempoExperiencia((short) Integer.parseInt(r.getParameter("tempoExperiencia")));
+		dev.setLinkedIn(r.getParameter("linkedIn"));
+		dev.setGitHub(r.getParameter("gitHub"));
+		service.updateDesenvolvedor(dev);
+		return "redirect:/devConfiguracoes";
+	}
+	
+	@PostMapping("/updateSenhaDev")
+	public String updateDesenvolvedorSenha(Model model, HttpSession session, HttpServletRequest r) {
+		Desenvolvedor dev = (Desenvolvedor) session.getAttribute("perfil");
+		
+		dev.setSenha(r.getParameter("senha"));
+		service.updateDesenvolvedor(dev);
+		return "redirect:/devConfiguracoes";
+	}
+	
+	
+	@PostMapping("/updateDadosPessoaisDev")
+	public String updateDesenvolvedorDados(Model model, HttpSession session, HttpServletRequest r) {
+		Desenvolvedor dev = (Desenvolvedor) session.getAttribute("perfil");
+		dev.setTelefone(r.getParameter("telefone"));
+		dev.setDataNascimento(r.getParameter("dataNascimento"));
+		
+		service.updateDesenvolvedor(dev);
+		return "redirect:/devConfiguracoes";
+	}
+	
+	
 	@GetMapping("/deleteDesenvolvedor")
 	public String deleteDesenvolvedor(Model model, HttpSession session) {
 		Desenvolvedor dev = (Desenvolvedor) session.getAttribute("perfil");

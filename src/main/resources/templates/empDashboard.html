@@ -4,25 +4,21 @@
 <meta charset="UTF-8">
 </head>
 <body>
-
-	<div class="main_container" id="main_container">
-		<div class="row filter m-5">
-			<div class="col-sm-9 area_post" id="container">
-				dashboard da empresa:
-				<div th:text="${perfil.email}"></div>
-				<button type="button" class="btn btn-primary">
-					<a style="text-decoration: none; color:#FFF" th:attr="href='/addDesafio'">
-						AddDesafio
-					</a>
-				</button>
-
-			</div>
-		</div>
+	<div  class="container-fluid">
+		
+		<div th:insert="fragment.html :: loggedtopnav"></div>
+		<div th:insert="fragment.html :: sidebaremp"></div>
+		<div class="container-fluid content">
+        	<button type="button" class="btn btn-primary">
+				<a style="text-decoration: none; color:#FFF" th:attr="href='/addDesafio'">
+					AddDesafio
+				</a>
+			</button>
+        </div>
+	
 	</div>
-
-	<div th:insert="fragment.html :: loggedtopnav"></div>
-	<div th:insert="fragment.html :: sidebaremp"></div>
-	<div th:insert="fragment.html :: footer"></div>
+	
+	
 	<script>
 	    $('#search').change(function(){
 	    	$('#regForm').submit()

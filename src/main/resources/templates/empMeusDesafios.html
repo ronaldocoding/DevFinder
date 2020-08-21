@@ -5,102 +5,133 @@
 </head>
 <body>
 
-	<div class="main_container" id="main_container">
-		<div class="row filter m-5">
-			<div class="col-sm-9 area_post" id="container">
-				meus desafios da empresa tal:
-				<div th:text="${perfil.email}"></div>
-				<tr th:each="desafio: ${desafios}">
-					<div class="post">
-						<div class="row">
-							<div class="col-sm-12">
-								<div class="col-sm-3">
-									<img src="http://placehold.it/260x180" alt="">
-								</div>
-								<div class="col-sm-9">
-									<h4 th:text="${desafio.nome}"></h4>
-									<p th:text="${desafio.descricao}"></p>
-									<div class="cell-list-content-icon">
-										<span> <i class="fab fa-dev"></i> <span
-											th:text="${desafio.areaDesenvolvimento}"></span></span>
+	<div class="container-fluid">
 
-									</div>
-									<div class="cell-list-content-tag">
-										<td
-											th:each="habilidade:${service.getHabilidades(desafio.emailEmpresa, desafio.id)}">
-											<span class="tag-list background-gray"
-											th:text="${habilidade.getHabilidade()}"></span>
-										</td>
-									</div>
+		<div th:insert="fragment.html :: loggedtopnav"></div>
+		<div th:insert="fragment.html :: sidebaremp"></div>
+		<div class="container-fluid content">
+			           <div class="row my-3 ml-1">
 
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-sm-12 line">
-								<div class="col-sm-4">
-									<span>Termina em </span> <span th:text="${desafio.dataFim}"></span>
-									<span>as </span> <span th:text="${desafio.horarioFim}"></span>
-								</div>
-								<div>
-									<button type="button" class="modal-btn azul"
-										data-toggle="modal" data-target="#exampleModal">Alterar</button>
-									<button type="button" class="btn-azul" data-toggle="modal"
-										data-target="#exclusaoDesafio" th:data-id="${desafio.id}">Excluir</button>
-								</div>
-							</div>
-
-						</div>
-					</div>
-				</tr>
-
-			</div>
-		</div>
-	</div>
-	
-	<!-- modal de exclusão -->
-	<div class="modal fade" id="exclusaoDesafio" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-              <div class="modal-header border-0">
-                <h5 class="modal-title" id="exampleModalLongTitle">Exclusão de desafio</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                Tem certeza que deseja excluir esse desafio? Essa ação não poderá ser desfeita.
-              </div>
-              <div class="modal-footer border-0">
-                <button type="button" class="btn-azul" data-dismiss="modal">
-                	Cancelar
-                </button>
-                <button type="button" class="modal-btn vermelho">
-                	
-                	<a id="excluir" style="text-decoration: none; color:#FFF">
-                		Excluir
-                	</a>
-                </button>
-              </div>
+                <div class="col-lg-6 d-flex graficos px-1 justify-content-center">
+                    <div class="col-sm-12 box white">
+                        <canvas id="mais-inscritos" height="200"></canvas>
+                    </div>
+                </div>
+                <div class="col-lg-6 d-flex pl-1 graficos justify-content-center">
+                    <div class="col-sm-12 box white">
+                        <canvas id="inscritos-submissoes" height="200"></canvas>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-    
+            <div class="row meus-desafios">
+                <div class="col-xl-7 mb-2 p-2 desafios mx-auto">
+                    <div class="col-sm-12 filtro">
+                        Estado
+                        <select class="white filtro-estado">
+                            <option>Todos</option>
+                            <option>Finalizados</option>
+                            <option>Em andamento</option>
+                        </select>
+                        Área
+                        <select class="white filtro-area">
+                            <option>Todos</option>
+                            <option>Front-end</option>
+                            <option>Back-end</option>
+                            <option>Full-stack</option>
+                            <option>Data science</option>
+                        </select>
+                    </div>
+                    <span class="none-result">Nenhum resultado encontrado</span>
+                </div>
+                <div class="col-xl -2 box blue">
+                    <h5>Submissões</h5>
+                </div>
+            </div>
+ 
+		</div>
 
-	<div th:insert="fragment.html :: loggedtopnav"></div>
-	<div th:insert="fragment.html :: sidebaremp"></div>
-	<div th:insert="fragment.html :: footer"></div>
-	<script>
-		$('#search').change(function() {
-			$('#regForm').submit()
-		})
-		$('#exclusaoDesafio').on('show.bs.modal', function (event) {
-			var button = $(event.relatedTarget) 
-			var id = button.data('id')
-			$("#excluir").attr("href","/deleteDesafio/"+id);
-			
+	</div>
+
+	
+	<script th:src="@{/js/moldesComponentes.js}"></script>
+	<script th:inline="javascript">
+		var desafios = [[${desafios}]]; //Your Thymleaf variable
+		
+		
+		for(var i = 0; i < desafios.length; i++){
+			var emailEmpresa = desafios[i].emailEmpresa;
+			var id = desafios[i].id
+			//console.log(desafios[i])
+			$.ajax({
+    	    	url:'desafioHabilidades/'+emailEmpresa+'/'+id,
+	    	    type: "GET",
+	    	    async: false,
+	            contentType: "application/json",
+	    	    data:{
+	    	    	
+	    	    },
+	    	    success: function(response) {
+	    	    	
+	    	    	var habilidades = []
+	    	    
+	    	    	for(var j = 0; j < response.length; j++){
+	    	    		habilidades.push(response[j].habilidade)
+	    	    	}
+	    	    	desafios[i].habilidades = habilidades
+	    	    	
+    	        },
+	    	    error: function(error){
+	    	    	console.log(error)
+	    	    }
+			})
+		}
+		desafios.forEach(function (item, index) {
+		    criarDesafio(item.id, item.nome, item.empresa.nomeFantasia, 
+		    			item.areaDesenvolvimento, item.descricao, item.habilidades, item.dataFim, item.horarioFim)
 		})
 	</script>
+	<script>
+        
+        var ctxBar = document.getElementById('mais-inscritos').getContext('2d');
+        var ctxDoughnut = document.getElementById('inscritos-submissoes').getContext('2d');
 
+        var myChart = new Chart(ctxBar, {
+            type: 'horizontalBar',
+            data: {
+                labels: ['App de fisica', 'App de táxi', 'Rede social', 'App de floricultura', ],
+                datasets: [{
+                    label: 'Desafios',
+                    data: [19, 12, 5, 3, 3, 2],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                }]
+            },
+        });
+
+        var myDoughnutChart = new Chart(ctxDoughnut, {
+            type: 'line',
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                datasets: [{
+                    label: 'Submissões por mês',
+                    backgroundColor: 'red',
+                    borderColor: 'red',
+                    data: [
+                        2, 3, 4, 3, 2, 1, 3
+                    ],
+                    fill: false,
+                }]
+            },
+        });
+
+    </script>
+	
+	<script th:src="@{/js/filtroDesafio.js}"></script>
 </body>
 </html>

@@ -5,6 +5,81 @@
 </head>
 <body>
 
+	<div class="container-fluid">
+
+		<div th:insert="fragment.html :: loggedtopnav"></div>
+		<div th:insert="fragment.html :: sidebardev"></div>
+		<div class="container-fluid content">
+			<div class="row">
+				<div class="col-xl-7 mb-2 p-0 desafios mx-3">
+					<div class="col-sm-12 filtro mt-2">
+						Tempo <select class="white">
+							<option>Recentes</option>
+							<option>Mais antigos</option>
+							<option>Em um mês</option>
+							<option>Em uma semana</option>
+
+						</select> Estado <select class="white">
+							<option>Todos</option>
+							<option>Finalizados</option>
+							<option>Em andamento</option>
+						</select> Área <select class="white">
+							<option>Todos</option>
+							<option>Front-end</option>
+							<option>Back-end</option>
+							<option>Full stack</option>
+							<option>Data science</option>
+						</select>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<script th:src="@{/js/moldesComponentes.js}"></script>
+	
+	<script th:inline="javascript">
+		var desafios = [[${desafios}]]; //Your Thymleaf variable
+		
+		
+		for(var i = 0; i < desafios.length; i++){
+			var emailEmpresa = desafios[i].emailEmpresa;
+			var id = desafios[i].id
+			//console.log(desafios[i])
+			$.ajax({
+    	    	url:'desafioHabilidades/'+emailEmpresa+'/'+id,
+	    	    type: "GET",
+	    	    async: false,
+	            contentType: "application/json",
+	    	    data:{
+	    	    	
+	    	    },
+	    	    success: function(response) {
+	    	    	
+	    	    	var habilidades = []
+	    	    
+	    	    	for(var j = 0; j < response.length; j++){
+	    	    		habilidades.push(response[j].habilidade)
+	    	    	}
+	    	    	desafios[i].habilidades = habilidades
+	    	    	
+    	        },
+	    	    error: function(error){
+	    	    	console.log(error)
+	    	    }
+			})
+				console.log(desafios[i])		
+   		        console.log('terminou o ajax')
+		}
+		desafios.forEach(function (item, index) {
+		    criarDesafio(index, item.nome, item.empresa.nomeFantasia, 
+		    			item.areaDesenvolvimento, item.descricao, item.habilidades, item.dataFim, item.horarioFim)
+		})
+	</script>
+	
+	<script th:src="@{/js/filtroDesafio.js}"></script>
+	<!-- 
 	<div class="main_container" id="main_container">
 		<div class="row filter m-5">
 			<div class="col-sm-9 area_post" id="container">
@@ -147,6 +222,6 @@
 			
 		})
 	</script>
-
+-->
 </body>
 </html>

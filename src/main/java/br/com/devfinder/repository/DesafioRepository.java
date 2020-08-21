@@ -25,6 +25,9 @@ public interface DesafioRepository extends JpaRepository<Desafio, DesafioId>, De
 	@Query(value = "SELECT * FROM DESAFIO D, DESENVOLVEDOR_DESAFIO DD WHERE DD.EMAIL_DESENVOLVEDOR = ?1 AND DD.ID_DESAFIO=D.ID", nativeQuery = true)
 	List<Desafio>findDesafioInscritos(String email);
 	
+	@Query(value = "SELECT * FROM DESAFIO WHERE ID = ?1", nativeQuery = true)
+	Desafio findById(int id);
+	
 	@Modifying
 	@Transactional
 	@Query(value = "DELETE FROM DESAFIO WHERE EMAIL_EMPRESA = ?1", nativeQuery = true)

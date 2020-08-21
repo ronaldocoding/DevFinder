@@ -4,76 +4,106 @@
 </head>
 
 <body>
-	<div th:if="${perfil}">
+	<div class="container-fluid">
 		<div th:insert="fragment.html :: loggedtopnav"></div>
-		<div th:if="${serviceDev.getDesenvolvedorById(perfil.email)}">
-			desenvolvedor
-			<div th:insert="fragment.html :: sidebardev"></div>
+
+		<div th:if="${perfil}">
+			<div th:if="${serviceDev.getDesenvolvedorById(perfil.email)}">
+				<div th:insert="fragment.html :: sidebardev"></div>
+			</div>
+			<div th:unless="${serviceDev.getDesenvolvedorById(perfil.email)}">
+				<div th:insert="fragment.html :: sidebaremp"></div>
+			</div>
 		</div>
-		<div th:unless="${serviceDev.getDesenvolvedorById(perfil.email)}">
-			empresa
-			<div th:insert="fragment.html :: sidebaremp"></div>
+		<div th:unless="${perfil}">
+			<div th:insert="fragment.html :: deftopnav"></div>
 		</div>
-	</div>
-	<div th:unless="${perfil}">
-		<div th:insert="fragment.html :: deftopnav"></div>
-	</div>
-	
-	<div class="main_container" id="main_container">
-		<div class="bg-degrade azul">
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-12 perfil-top p-4">
-						<div class="row m-4 align-items-end">
-							<div class="col-sm-4 text-center">
-								<span> <span th:if="${dev.foto == null}"> <svg
-											width="100" height="100">
+		<div class="container-fluid content">
+			<div class="col-sm-12 perfil-top p-4">
+				<div class="row m-4 align-items-end">
+					<div class="col-sm-4 text-center">
+						<span> <span th:if="${dev.foto == null}"> <svg
+									width="100" height="100">
                                     		<circle cx="50" cy="50" r="50"
-												fill="blue" />
+										fill="blue" />
                                 		</svg>
-								</span> <span th:if="${dev.foto != null}"> <img
-										style="border-radius: 50%;" width="150" height="150"
-										th:src="@{'/imageDev/'+${dev.email}}" />
+						</span> <span th:if="${dev.foto != null}"> <img
+								style="border-radius: 50%;" width="150" height="150"
+								th:src="@{'/imageDev/'+${dev.email}}" />
 
-								</span>
-									<h3 style="overflow-wrap: break-word" th:text="${dev.nome}"></h3>
-								</span>
+						</span>
+							<h3 style="overflow-wrap: break-word" th:text="${dev.nome}"></h3>
+						</span>
 
-							</div>
-							<div class="col-sm-8" style="font-size: 16px">
-								<span>Endereço: </span> <span
-									th:text="${dev.endereco.estado}+'-'+${dev.endereco.cidade}+', '+${dev.endereco.rua}+', '+'n. '+${dev.endereco.numero}"></span>
-								<p>
-									<span>Telefone: </span> <span th:text="${dev.telefone}"></span>
-								</p>
-								<p>
-									<span>Email: </span> <span th:text="${dev.email}"></span>
-								</p>
-								<p>
-									<span>Área de atuação: </span><span th:text="${area}" />
-								</p>
-								<div class="cell-list-content-tag">
-									<td th:each="habilidade:${service.getHabilidades(dev.email)}">
-										<span class="tag-list background-gray"
-										th:text="${habilidade.getHabilidade()}"></span>
-									</td>
-								</div>
-								</p>
-							</div>
+					</div>
+					<div class="col-sm-8" style="font-size: 16px">
+						<span>Endereço: </span> <span
+							th:text="${dev.endereco.estado}+'-'+${dev.endereco.cidade}+', '+${dev.endereco.rua}+', '+'n. '+${dev.endereco.numero}"></span>
+						<p>
+							<span>Telefone: </span> <span th:text="${dev.telefone}"></span>
+						</p>
+						<p>
+							<span>Email: </span> <span th:text="${dev.email}"></span>
+						</p>
+						<p>
+							<span>Área de atuação: </span><span th:text="${area}" />
+						</p>
+						<div class="cell-list-content-tag">
+							<td th:each="habilidade:${service.getHabilidades(dev.email)}">
+								<span class="tag-list background-gray"
+								th:text="${habilidade.getHabilidade()}"></span>
+							</td>
 						</div>
-						<div class="row">
-							<div class="col-sm-12 border-top">
-								<h2 class="text-center">Desafios inscritos</h2>
-								<div class="area_post"></div>
-							</div>
-						</div>
+						</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-12 border-top">
+						<h2 class="text-center">Desafios inscritos</h2>
+						<div class="desafios"></div>
 					</div>
 				</div>
 			</div>
 		</div>
-		
 	</div>
-	
-	<div th:insert="fragment.html :: footer"></div>
+
+	<script th:src="@{/js/moldesComponentes.js}"></script>
+
+	<script th:inline="javascript">
+		var desafios = [[${desafios}]]; //Your Thymleaf variable
+		
+		console.log(desafios)
+		for(var i = 0; i < desafios.length; i++){
+			desafios[i] = desafios[i].desafio
+			var emailEmpresa = desafios[i].emailEmpresa;
+			var id = desafios[i].id
+			//console.log(desafios[i])
+			$.ajax({
+    	    	url:'/desafioHabilidades/'+emailEmpresa+'/'+id,
+	    	    type: "GET",
+	    	    async: false,
+	            contentType: "application/json",
+	    	    success: function(response) {
+	    	    	var habilidades = []
+	    	    
+	    	    	for(var j = 0; j < response.length; j++){
+	    	    		habilidades.push(response[j].habilidade)
+	    	    	}
+	    	    	desafios[i].habilidades = habilidades
+	    	    	
+    	        },
+	    	    error: function(error){
+	    	    	console.log(error)
+	    	    }
+			})	
+		}
+		desafios.forEach(function (item, index) {
+			
+		    criarDesafio(index, item.nome, item.empresa.nomeFantasia, 
+		    			item.areaDesenvolvimento, item.descricao, item.habilidades, item.dataFim, item.horarioFim)
+		})
+	</script>
+
+	<script th:src="@{/js/filtroDesafio.js}"></script>
 </body>
 </html>

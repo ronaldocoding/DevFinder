@@ -1,22 +1,21 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head th:insert="fragment.html :: links">
+<head th:insert="fragment.html :: links">"
+
 <meta charset="UTF-8">
 </head>
 <body>
 
-	<div class="main_container" id="main_container">
-		<div class="row filter m-5">
-			<div class="col-sm-9 area_post" id="container">
-				dashboard do perfil:
-				<div th:text="${perfil.email}"></div>
-			</div>
-		</div>
+	<div  class="container-fluid">
+		
+		<div th:insert="fragment.html :: loggedtopnav"></div>
+		<div th:insert="fragment.html :: sidebardev"></div>
+		<div class="container-fluid content">
+        	dashboard do perfil:
+				<div th:text="${perfil.email}"></div>    
+        </div>
+	
 	</div>
-
-	<div th:insert="fragment.html :: loggedtopnav"></div>
-	<div th:insert="fragment.html :: sidebardev"></div>
-	<div th:insert="fragment.html :: footer"></div>
 	
 	<script>
 	    $('#search').change(function(){
@@ -24,6 +23,7 @@
 	    	$('#regForm').submit()
 	    	
 	    })
+	    
 	</script>
 
 </body>

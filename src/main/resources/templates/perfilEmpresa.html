@@ -3,123 +3,104 @@
 <meta charset="utf-8">
 </head>
 <body>
-	<div th:if="${perfil}">
+	<div class="container-fluid">
 		<div th:insert="fragment.html :: loggedtopnav"></div>
-		<div th:if="${serviceEmp.getEmpresaById(perfil.email)}">
-			<div th:insert="fragment.html :: sidebaremp"></div>
+
+		<div th:if="${perfil}">
+			<div th:if="${serviceEmp.getEmpresaById(perfil.email)}">
+				<div th:insert="fragment.html :: sidebaremp"></div>
+			</div>
+			<div th:unless="${serviceEmp.getEmpresaById(perfil.email)}">
+				<div th:insert="fragment.html :: sidebardev"></div>
+			</div>
 		</div>
-		<div th:unless="${serviceEmp.getEmpresaById(perfil.email)}">
-			<div th:insert="fragment.html :: sidebardev"></div>
+		<div th:unless="${perfil}">
+			<div th:insert="fragment.html :: deftopnav"></div>
 		</div>
-	</div>
-	<div th:unless="${perfil}">
-		<div th:insert="fragment.html :: deftopnav"></div>
-	</div>
-	
-	<div class="main_container" id="main_container">
-		<div class="bg-degrade">
-			<div class="container">
+		<div class="container-fluid content">
+			<div class="col-sm-12 perfil-top p-4">
 				<div class="row">
-					<div class="col-sm-12 perfil-top p-4">
-						<div class="row">
-							<div class="col-sm-3 text-center">
-								<span> <span th:if="${empresa.foto == null}"> <svg
-											width="100" height="100">
+					<div class="col-sm-3 text-center">
+						<span> <span th:if="${empresa.foto == null}"> <svg
+									width="100" height="100">
 	                                   		<circle cx="50" cy="50" r="50"
-												fill="blue" />
+										fill="blue" />
 	                               		</svg>
-								</span> <span th:if="${empresa.foto != null}"> <img
-										style="border-radius: 50%;" width="150" height="150"
-										th:src="@{'/imageEmp/'+${empresa.email}}" />
-	
-								</span>
-								</span>
-	
-								<h3 style="overflow-wrap: break-word"
-									th:text="${empresa.razaoSocial}"></h3>
-							</div>
-							<div class="col-sm-9" style="font-size: 16px">
-								<p>
-									<span>Endereço: </span> <span
-										th:text="${empresa.endereco.estado}+'-'+${empresa.endereco.cidade}+', '+${empresa.endereco.rua}+', '+'n. '+${empresa.endereco.numero}"></span>
-	
-								</p>
-								<p>
-									<span>Telefone: </span> <span th:text="${empresa.telefone}"></span>
-								</p>
-								<p>
-									<span>Email: </span> <span th:text="${empresa.email}"></span>
-								</p>
-								<p>
-									<span>Ramo: </span> <span th:text="${empresa.ramoMercado}"></span>
-								</p>
-								<p>
-									<span th:text="${empresa.totalDesenvolvedores}"></span>
-									Desenvolvedores || <span th:text="${empresa.tipoVaga}"></span>
-								</p>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-sm-12 border-top">
-								<h2 class="text-center">Desafios</h2>
-								<div class="area_post">
-									<tr th:each="desafio: ${desafios}">
-										<div class="post">
-											<div class="row">
-												<div class="col-sm-12">
-													<div class="col-sm-3">
-														<img src="http://placehold.it/260x180" alt="">
-													</div>
-													<div class="col-sm-9">
-	
-														<h4 th:text="${desafio.nome}"></h4>
-														<p th:text="${desafio.descricao}"></p>
-														<div class="cell-list-content-icon">
-															<span> <i class="fab fa-dev"></i> <span
-																th:text="${desafio.areaDesenvolvimento}"></span></span> <span>
-																<svg class="svg-inline--fa fa-home fa-w-18"
-																	style="margin-right: 10px;" aria-hidden="true"
-																	data-prefix="fa" data-icon="home" role="img"
-																	xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
-																	data-fa-i2svg="">
-																	<path fill="currentColor"
-																		d="M488 312.7V456c0 13.3-10.7 24-24 24H348c-6.6 0-12-5.4-12-12V356c0-6.6-5.4-12-12-12h-72c-6.6 0-12 5.4-12 12v112c0 6.6-5.4 12-12 12H112c-13.3 0-24-10.7-24-24V312.7c0-3.6 1.6-7 4.4-9.3l188-154.8c4.4-3.6 10.8-3.6 15.3 0l188 154.8c2.7 2.3 4.3 5.7 4.3 9.3zm83.6-60.9L488 182.9V44.4c0-6.6-5.4-12-12-12h-56c-6.6 0-12 5.4-12 12V117l-89.5-73.7c-17.7-14.6-43.3-14.6-61 0L4.4 251.8c-5.1 4.2-5.8 11.8-1.6 16.9l25.5 31c4.2 5.1 11.8 5.8 16.9 1.6l235.2-193.7c4.4-3.6 10.8-3.6 15.3 0l235.2 193.7c5.1 4.2 12.7 3.5 16.9-1.6l25.5-31c4.2-5.2 3.4-12.7-1.7-16.9z"></path></svg><span
-																th:text="${empresa.tipoVaga}"></span>
-															</span>
-														</div>
-														<div class="cell-list-content-tag">
-															<td
-																th:each="habilidade:${service.getHabilidades(desafio.emailEmpresa, desafio.id)}">
-																<span class="tag-list background-gray"
-																th:text="${habilidade.getHabilidade()}"></span>
-															</td>
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="row">
-												<div class="col-sm-12 line">
-													<div class="col-sm-4">
-														<span>Termina em </span> <span th:text="${desafio.dataFim}"></span>
-														<span>as </span> <span th:text="${desafio.horarioFim}"></span>
-													</div>
-													<div class="col-sm-7 offset-sm-1">
-														<button type="button" class="modal-btn azul"
-															data-toggle="modal" data-target="#exampleModal"
-															th:attr="data-target='#exclusaoDesafio'+${desafio.id}">Participar</button>
-													</div>
-												</div>
-											</div>
-										</div>
-									</tr>
-								</div>
-							</div>
-						</div>
+						</span> <span th:if="${empresa.foto != null}"> <img
+								style="border-radius: 50%;" width="150" height="150"
+								th:src="@{'/imageEmp/'+${empresa.email}}" />
+
+						</span>
+						</span>
+
+						<h3 style="overflow-wrap: break-word"
+							th:text="${empresa.razaoSocial}"></h3>
+					</div>
+					<div class="col-sm-9" style="font-size: 16px">
+						<p>
+							<span>Endereço: </span> <span
+								th:text="${empresa.endereco.estado}+'-'+${empresa.endereco.cidade}+', '+${empresa.endereco.rua}+', '+'n. '+${empresa.endereco.numero}"></span>
+
+						</p>
+						<p>
+							<span>Telefone: </span> <span th:text="${empresa.telefone}"></span>
+						</p>
+						<p>
+							<span>Email: </span> <span th:text="${empresa.email}"></span>
+						</p>
+						<p>
+							<span>Ramo: </span> <span th:text="${empresa.ramoMercado}"></span>
+						</p>
+						<p>
+							<span th:text="${empresa.totalDesenvolvedores}"></span>
+							Desenvolvedores || <span th:text="${empresa.tipoVaga}"></span>
+						</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-12 border-top">
+						<h2 class="text-center">Desafios</h2>
+						<div class="desafios"></div>
 					</div>
 				</div>
 			</div>
-			
-		<div th:insert="fragment.html :: footer"></div>
+
 		</div>
+		<script th:src="@{/js/moldesComponentes.js}"></script>
+
+		<script th:inline="javascript">
+		var desafios = [[${desafios}]]; //Your Thymleaf variable
+		
+		for(var i = 0; i < desafios.length; i++){
+			var emailEmpresa = desafios[i].emailEmpresa;
+			var id = desafios[i].id
+			//console.log(desafios[i])
+			$.ajax({
+    	    	url:'/desafioHabilidades/'+emailEmpresa+'/'+id,
+	    	    type: "GET",
+	    	    async: false,
+	            contentType: "application/json",
+	    	    success: function(response) {
+	    	    	var habilidades = []
+	    	    
+	    	    	for(var j = 0; j < response.length; j++){
+	    	    		habilidades.push(response[j].habilidade)
+	    	    	}
+	    	    	desafios[i].habilidades = habilidades
+	    	    	
+    	        },
+	    	    error: function(error){
+	    	    	console.log(error)
+	    	    }
+			})	
+		}
+		desafios.forEach(function (item, index) {
+			
+		    criarDesafio(index, item.nome, item.empresa.nomeFantasia, 
+		    			item.areaDesenvolvimento, item.descricao, item.habilidades, item.dataFim, item.horarioFim)
+		})
+	</script>
+
+		<script th:src="@{/js/filtroDesafio.js}"></script>
 </body>
 </html>

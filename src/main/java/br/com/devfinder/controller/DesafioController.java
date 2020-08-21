@@ -100,6 +100,25 @@ public class DesafioController {
 		return service.getDesafioByNome(nome);
 	}
 
+	@GetMapping("/viewDesafio/{id}")
+	public String viewDesafio(@PathVariable int id, Model model, HttpSession session) {
+		Desafio d = service.getDesafioById(id);
+		if(session.getAttribute("perfil") == null)
+			return "n_logado";
+		else {
+			Usuario user = (Usuario) session.getAttribute("perfil");
+			//return user.getEmail()+ " "+d.getEmailEmpresa();
+			if(user.getEmail().equals(d.getEmailEmpresa())) {
+				model.addAttribute("desafio", service.getDesafioById(id));
+				model.addAttribute("service",serviceDH);
+				return "viewDesafio";
+			}
+			else
+				return user.getEmail() + d.getEmailEmpresa();
+		}
+		 
+	}
+	
 	@PutMapping("/updateDesafio")
 	public Desafio updateDesafio(@RequestBody Desafio desafio) {
 		return service.updateDesafio(desafio);

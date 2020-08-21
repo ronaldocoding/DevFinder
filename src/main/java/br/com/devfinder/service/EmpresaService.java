@@ -74,6 +74,11 @@ public class EmpresaService {
 		existingEmpresa.setTelefone(empresa.getTelefone());
 		existingEmpresa.setApresentacao(empresa.getApresentacao());
 		existingEmpresa.setTotalDesenvolvedores(empresa.getTotalDesenvolvedores());
+		existingEmpresa.setNomeFantasia(empresa.getNomeFantasia());
+		existingEmpresa.setRazaoSocial(empresa.getRazaoSocial());
+		existingEmpresa.setRamoMercado(empresa.getRamoMercado());
+		existingEmpresa.setTipoVaga(empresa.getTipoVaga());
+		existingEmpresa.setTotalDesenvolvedores(empresa.getTotalDesenvolvedores());
 		//existingEmpresa.setVagasRemotas(empresa.isVagasRemotas());
 		//existingEmpresa.setVagasFisicas(empresa.isVagasFisicas());
 		return repository.save(existingEmpresa);

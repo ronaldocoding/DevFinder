@@ -6,21 +6,28 @@
 
 <body>
 
-	<div class="main_container" id="main_container"></div>
-
-	<div th:insert="fragment.html :: loggedtopnav"></div>
-	<div th:insert="fragment.html :: sidebardev"></div>
-	<div th:insert="fragment.html :: footer"></div>
+		<div  class="container-fluid">
+		
+		<div th:insert="fragment.html :: loggedtopnav"></div>
+		<div th:insert="fragment.html :: sidebardev"></div>
+		<div class="container-fluid content">
+        	<div id="container"></div>    
+        </div>
+	
+	</div>
 	
 	<script th:inline="javascript">
 			/*<![CDATA[*/
    		$('#search').keyup(function(){
-           	search() 	
+           	search() 
+           	$('#result').html('Resultados para '+$('#search').val())
+    		
         })
 
    	    window.onload = function() {
     		var pesquisa = [[${pesquisa}]]; //Your Thymleaf variable
     		$('#search').val(pesquisa)
+    		
     		search(pesquisa);
     	};
     	const participar = function(id, email){
@@ -49,7 +56,6 @@
 	    	})
 
 		}
-
 
 		
 		/*]]>*/

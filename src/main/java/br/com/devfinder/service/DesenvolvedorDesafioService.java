@@ -37,6 +37,10 @@ public class DesenvolvedorDesafioService {
 	public List<DesenvolvedorDesafio> getInscricoes(String emailEmpresa, int idDesafio) {
 		return repository.findAllByDesafio(emailEmpresa, idDesafio);
 	}
+
+	public List<DesenvolvedorDesafio> getInscricoes(String emailDev) {
+		return repository.findAllByDesenvolvedor(emailDev);
+	}
 	
 	public DesenvolvedorDesafio getInscricaoById(String emaildev, String emailEmp, int idDesafio) {
 		return repository.findById(new DesenvolvedorDesafioId(emaildev, emailEmp, idDesafio)).orElse(null);

@@ -197,5 +197,36 @@ public class EmpresaController {
 		return "redirect:/";
 	}
 
-
+	@PostMapping("/updateDadosPerfilEmp")
+	public String updateDesenvolvedorEmpresa(Model model, HttpSession session, HttpServletRequest r) {
+		Empresa emp = (Empresa) session.getAttribute("perfil");
+		emp.setNomeFantasia(r.getParameter("nomeFantasia"));
+		emp.setRazaoSocial(r.getParameter("razaoSocial"));
+		emp.setApresentacao(r.getParameter("apresentacao"));
+		emp.setSite(r.getParameter("site"));
+		emp.setRamoMercado(r.getParameter("ramoMercado"));
+		emp.setTipoVaga(r.getParameter("tipoVaga"));
+		emp.setTotalDesenvolvedores(Integer.parseInt(r.getParameter("totalDesenvolvedores")));
+		service.updateEmpresa(emp);
+		return "redirect:/empConfiguracoes";
+	}
+	
+	@PostMapping("/updateSenhaEmp")
+	public String updateEmpresaSenha(Model model, HttpSession session, HttpServletRequest r) {
+		Empresa emp = (Empresa) session.getAttribute("perfil");
+		
+		emp.setSenha(r.getParameter("senha"));
+		service.updateEmpresa(emp);
+		return "redirect:/empConfiguracoes";
+	}
+	
+	
+	@PostMapping("/updateDadosPessoaisEmp")
+	public String updateEmpresaDados(Model model, HttpSession session, HttpServletRequest r) {
+		Empresa emp = (Empresa) session.getAttribute("perfil");
+		emp.setTelefone(r.getParameter("telefone"));
+		
+		service.updateEmpresa(emp);
+		return "redirect:/empConfiguracoes";
+	}
 }
