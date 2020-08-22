@@ -189,7 +189,7 @@ textarea {
     transition: padding .3s ease-in;
 }
 
-.filtro {
+.filtro, li h6{
     font-family: 'Quicksand', sans-serif;
     font-weight: 800;
     padding-bottom: 15px;
@@ -556,4 +556,42 @@ select option{
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
     background: #555;
+}
+
+
+.box ul {
+    display: flex;
+    list-style: none;
+}
+
+.box li img {
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    background-color: deeppink;
+    border-radius: 100%;
+    margin: 0 auto;
+}
+.box ul li {
+    text-align: center;
+    padding: 10px;
+    width: 120px;
+    height: 90px;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+li a, li a:hover {
+    outline: none;
+    text-decoration: none;
+    
+    color: #000;
+    
+}
+li h6{
+    padding-bottom: 0;
+    overflow:hidden;
+  text-overflow:ellipsis;
 }
