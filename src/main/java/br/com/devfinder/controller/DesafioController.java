@@ -2,6 +2,7 @@ package br.com.devfinder.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -89,6 +90,18 @@ public class DesafioController {
 	}
 
 
+	@PostMapping("/updateDesafio")
+	public String updateDesafio(Model model, HttpSession session, HttpServletRequest r) {
+		Empresa emp = (Empresa) session.getAttribute("perfil");
+		Desafio desafio = service.getDesafioById(new DesafioId(emp.getEmail(), Integer.parseInt(r.getParameter("id"))));
+		desafio.setNome(r.getParameter("nome"));
+		desafio.setDescricao(r.getParameter("descricao"));
+		desafio.setDataFim(r.getParameter("dataFim"));
+		desafio.setHorarioFim(r.getParameter("horarioFim"));
+		service.updateDesafio(desafio);
+		return "redirect:/viewDesafio/"+r.getParameter("id");
+		
+	}
 	@GetMapping("/desafioById/{emailEmpresa}/{id}")
 	public Desafio findDesafioById(Model model, @PathVariable String emailEmpresa, @PathVariable int id) {
 		DesafioId desafioId = new DesafioId(emailEmpresa, id);

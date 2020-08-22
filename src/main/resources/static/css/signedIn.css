@@ -39,6 +39,10 @@ input {
     outline: none;
     border: none;
 }
+
+textarea {
+    width: 100%;
+}
 /*NAVBAR*/
 .nav {
     padding: 10px;
@@ -160,8 +164,8 @@ input {
 .sidebar .item a {
     transition: opacity .3s ease-in;
     line-height: 1.8;
-    text-decoration: none;
     color: inherit;
+    text-decoration:none;
 }
 
 .sidebar .item i {

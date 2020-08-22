@@ -6,41 +6,42 @@
 </head>
 
 <body>
-<div  class="container-fluid">
-		
+	<div class="container-fluid">
+
 		<div th:insert="fragment.html :: loggedtopnav"></div>
 		<div th:insert="fragment.html :: sidebardev"></div>
 		<div class="container-fluid content config">
-            <div class="row mt-3">
-                <div class="col-lg-6 px-1">
-                    <div class="col-sm box white perfil" style="height: 98%">
-                        <form th:action="@{/updateDadosPerfilDev}" method="post">
-                            <h6>Perfil</h6>
+			<div class="row mt-3">
+				<div class="col-lg-6 px-1">
+					<div class="col-sm box white perfil" style="height: 98%">
+						<form th:action="@{/updateDadosPerfilDev}" method="post">
+							<h6>Perfil</h6>
 
-                            <div class="group editar">
-                                <label>Nome</label>
-                                <input type="text" placeholder="Nome" th:field="${perfil.nome}">
-                            </div>
-                            <div class="group">
-                                <label>Descrição</label>
-                                <i class="fas fa-pencil-alt" data-toggle="tooltip" data-placement="right" title="Editar"></i>
-                                <textarea th:field="${perfil.apresentacao}" name="Text1" cols="38" rows="2" placeholder="Descrição"></textarea>
+							<div class="group editar">
+								<label>Nome</label> <input type="text" placeholder="Nome"
+									th:field="${perfil.nome}">
+							</div>
+							<div class="group">
+								<label>Descrição</label> <i class="fas fa-pencil-alt"
+									data-toggle="tooltip" data-placement="right" title="Editar"></i>
+								<textarea th:field="${perfil.apresentacao}" name="Text1"
+									rows="2" placeholder="Descrição"></textarea>
 
-                            </div>
-                            <div class="group editar">
-                                <label>Email</label>
-                                <input th:field="${perfil.email}" type="email" placeholder="Email" disabled>
+							</div>
+							<div class="group editar">
+								<label>Email</label> <input th:field="${perfil.email}"
+									type="email" placeholder="Email" disabled>
 
-                            </div>
-                            <div class="group editar">
-                                <label>Site pessoal</label>
-                                <input th:field="${perfil.site}" type="url" placeholder="Site pessoal"
-                                pattern="[Hh][Tt][Tt][Pp][Ss]?:\/\/(?:(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)(?:\.(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)*(?:\.(?:[a-zA-Z\u00a1-\uffff]{2,}))(?::\d{2,5})?(?:\/[^\s]*)?">
+							</div>
+							<div class="group editar">
+								<label>Site pessoal</label> <input th:field="${perfil.site}"
+									type="url" placeholder="Site pessoal"
+									pattern="[Hh][Tt][Tt][Pp][Ss]?:\/\/(?:(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)(?:\.(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)*(?:\.(?:[a-zA-Z\u00a1-\uffff]{2,}))(?::\d{2,5})?(?:\/[^\s]*)?">
 
-                            </div>
-                            
-                            <h6>Informações de desenvolvedor</h6>
-                            <!-- 
+							</div>
+
+							<h6>Informações de desenvolvedor</h6>
+							<!-- 
                             <div class="group">
                                 <label>Área de atuação</label>
                                 <select name="cars" id="cars">
@@ -51,120 +52,150 @@
                                 </select>
                             </div>
                              -->
-                            <div class="group editar">
-                                <label>Tempo de exp.</label>
-                                <input th:field="${perfil.tempoExperiencia}" type="number" max="100" placeholder="Tempo">
+							<div class="group editar">
+								<label>Tempo de exp.</label> <input
+									th:field="${perfil.tempoExperiencia}" type="number" max="100"
+									placeholder="Tempo">
 
-                            </div>
-                            <div class="group editar">
-                                <label>Linkedin</label>
-                                <input th:field="${perfil.linkedIn}" type="url" placeholder="Linkedin">
+							</div>
+							<div class="group editar">
+								<label>Linkedin</label> <input th:field="${perfil.linkedIn}"
+									type="url" placeholder="Linkedin">
 
-                            </div>
-                            <div class="group">
-                                <label>Github</label>
-                                <input th:field="${perfil.gitHub}" type="url" placeholder="Github">
-                                <i class="fas fa-pencil-alt" data-toggle="tooltip" data-placement="right" title="Editar"></i>
-                            </div>
-                            <div class="group">
-                                <label>Habilidades</label>
+							</div>
+							<div class="group">
+								<label>Github</label> <input th:field="${perfil.gitHub}"
+									type="url" placeholder="Github"> <i
+									class="fas fa-pencil-alt" data-toggle="tooltip"
+									data-placement="right" title="Editar"></i>
+							</div>
+							<div class="group">
+								<label>Habilidades</label>
 
-                                <div class="multiselect">
+								<div class="multiselect">
 
-                                    <div class="dropdown show">
-                                        <input class="multisearch" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" input id="dropdownMenuLink" placeholder="Pesquisar">
-
-
-
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                            <span style="display: none">Nenhum resultado encontrado.</span>
-                                        </div>
-                                    </div>
-
-                                </div>
+									<div class="dropdown show">
+										<input class="multisearch" data-toggle="dropdown"
+											aria-haspopup="true" aria-expanded="false" input
+											id="dropdownMenuLink" placeholder="Pesquisar">
 
 
 
-                            </div>
-                            <div class="group">
-                                <button type="submit" class="blue">Salvar alterações</button>
-                            </div>
-                            
-                        </form>
-                    </div>
-                </div>
-                <div class="col-lg-6 px-1">
-                    <div class="col-sm box white">
-                        <form th:action="@{/updateDadosPessoaisDev}" method="post">
-                            <h6>Dados pessoais</h6>
-                            <div class="group">
-                                <label>CPF</label>
-                                <input th:field="${perfil.cpf}"  type="text" placeholder="CPF" disabled>
-                                <!--                                <i class="fas fa-pencil-alt"></i>-->
-                            </div>
-                            <div class="group editar">
-                                <label>Número</label>
-                                <input th:field="${perfil.telefone}" type="tel" placeholder="Numero">
-                            </div>
-                            <div class="group editar">
-                                <label>Data de Nasc.</label>
+										<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+											<span style="display: none">Nenhum resultado
+												encontrado.</span>
+										</div>
+									</div>
 
-                                <input th:field="${perfil.dataNascimento}" type="date">
-                            </div>
-                            <div class="group editar">
-                                <label>CEP</label>
-                                <input  th:field="${perfil.endereco.cep}" type="text" placeholder="CEP">
+								</div>
 
-                            </div>
-                            <div class="group">
-                                <label>Currículo</label>
-                                <input id="curriculo" type="file" placeholder="Curriculo">
-                            </div>
-                            <div class="group">
-                                <button type="submit" class="blue">Salvar alterações</button>
-                            </div>
-                            
-                        </form>
-                    </div>
-                    <div class="col-sm box blue change-password">
-                        <h6>Mudar senha</h6>
-                        <form id="changeSenha" th:action="@{/updateSenhaDev}" method="post">
-                            <div class="group">
-                                <label>Digite sua senha atual</label>
-                                <input id="oldSenha" type="password">
-                            </div>
-                            <div class="group">
-                                <label>Digite sua nova senha</label>
-                                <input name="senha" id="senha" type="password">
-                            </div>
-                            <div class="group">
-                                <label>Confirme sua nova senha</label>
-                                <input id="senhaconfirm" type="password">
-                            </div>
-                            <div class="group">
-                                <button type="submit">Salvar alterações</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
 
-                 <div class="col-lg-12 px-1">
-                    <div class="col-sm box white">
-                        <h6>Conta</h6>
-                        <div class="group" style="display: flex;justify-content: space-around">
-                        <label style="margin: auto 0">Excluir perfil</label>
-                        <button type="submit" style="margin:0;margin-left: 10px" class="red">Excluir</button>
-                        </div>
-                    </div>
-                </div>
-            </div>  
-        </div>
-	
+
+							</div>
+							<div class="group">
+								<button type="submit" class="blue">Salvar alterações</button>
+							</div>
+
+						</form>
+					</div>
+				</div>
+				<div class="col-lg-6 px-1">
+					<div class="col-sm box white">
+						<form th:action="@{/updateDadosPessoaisDev}" method="post">
+							<h6>Dados pessoais</h6>
+							<div class="group">
+								<label>CPF</label> <input th:field="${perfil.cpf}" type="text"
+									placeholder="CPF" disabled>
+								<!--                                <i class="fas fa-pencil-alt"></i>-->
+							</div>
+							<div class="group editar">
+								<label>Número</label> <input th:field="${perfil.telefone}"
+									type="tel" placeholder="Numero">
+							</div>
+							<div class="group editar">
+								<label>Data de Nasc.</label> <input
+									th:field="${perfil.dataNascimento}" type="date">
+							</div>
+							<div class="group editar">
+								<label>CEP</label> <input th:field="${perfil.endereco.cep}"
+									type="text" placeholder="CEP">
+
+							</div>
+							<div class="group">
+								<label>Currículo</label> <input id="curriculo" type="file"
+									placeholder="Curriculo">
+							</div>
+							<div class="group">
+								<button type="submit" class="blue">Salvar alterações</button>
+							</div>
+
+						</form>
+					</div>
+					<div class="col-sm box blue change-password">
+						<h6>Mudar senha</h6>
+						<form id="changeSenha" th:action="@{/updateSenhaDev}"
+							method="post">
+							<div class="group">
+								<label>Digite sua senha atual</label> <input id="oldSenha"
+									type="password">
+							</div>
+							<div class="group">
+								<label>Digite sua nova senha</label> <input name="senha"
+									id="senha" type="password">
+							</div>
+							<div class="group">
+								<label>Confirme sua nova senha</label> <input id="senhaconfirm"
+									type="password">
+							</div>
+							<div class="group">
+								<button type="submit">Salvar alterações</button>
+							</div>
+						</form>
+					</div>
+				</div>
+
+				<div class="col-lg-12 px-1">
+					<div class="col-sm box white">
+						<h6>Conta</h6>
+						<div class="group"
+							style="display: flex; justify-content: space-around">
+							<label style="margin: auto 0">Excluir perfil</label>
+							<button data-toggle="modal" data-target="#excluir" type="submit" style="margin: 0; margin-left: 10px"
+								class="red">Excluir</button>
+						</div>
+					</div>
+				</div>
+				<div class="modal fade" id="excluir" tabindex="-1" role="dialog"
+					aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+					<div class="modal-dialog modal-dialog-centered" role="document">
+						<div class="modal-content border-0">
+							<div class="modal-body border-0">
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+								<h5>Confirmar exclusão</h5>
+								<div>Você tem certeza que deseja excluir sua conta? Essa
+									ação não poderá ser desfeita</div>
+
+								<button type="button" class="btn btn-secondary"
+									data-dismiss="modal">Cancelar</button>
+
+								<button onclick="excluir()" type="button" class="btn btn-danger">
+									Sim, quero excluir</button>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
 	</div>
-	
-	
-	
-	<script th:src="@{/js/habilities.js}"></script>
+
+
+
+
 	<script th:inline="javascript">
 		var senha = [[${perfil.senha}]]
 		
@@ -191,22 +222,14 @@
 			}
 			
 		})
-		var curriculo = [[${perfil.curriculo}]]
-		//console.log(curriculo)
-		const file = new File([curriculo], "Curriculo.pdf")
-		console.log(file)
-		document.getElementById('curriculo').value = file
+		
 	
 	</script>
-	<script>
-	
-	    $(document).ready(function() {
-		    $('#search').change(function(){
-				 
-		    	$('#regForm').submit()
-		    	
-		    })
-		    
+	<script th:src="@{/js/habilities.js}"></script>
+	<script th:inline="javascript">
+    
+        $(document).ready(function() {
+
             $('.editar').append(
                 '<i class="fas fa-pencil-alt" data-toggle="tooltip" data-placement="right" title="Editar"></i>'
             );
@@ -218,6 +241,7 @@
             $(".group textarea").attr("readonly", true);
 
             $(".group").hover(function() {
+            	
                 $(this).children('i').css("opacity", "1");
             }, function() {
                 $(this).children('i').css("opacity", "0");
@@ -241,7 +265,11 @@
             $('[type="password"]').attr("readonly", false);
         });
 
-	</script>
+	    function excluir(){
+	    	window.location.href = "deleteDesenvolvedor";
+	    }
+	    
+    </script>
 
 </body>
 

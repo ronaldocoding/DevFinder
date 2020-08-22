@@ -10,49 +10,54 @@
 		<div th:insert="fragment.html :: loggedtopnav"></div>
 		<div th:insert="fragment.html :: sidebaremp"></div>
 		<div class="container-fluid content">
-			           <div class="row my-3 ml-1">
+			<div class="row my-3 ml-1">
 
-                <div class="col-lg-6 d-flex graficos px-1 justify-content-center">
-                    <div class="col-sm-12 box white">
-                        <canvas id="mais-inscritos" height="200"></canvas>
-                    </div>
-                </div>
-                <div class="col-lg-6 d-flex pl-1 graficos justify-content-center">
-                    <div class="col-sm-12 box white">
-                        <canvas id="inscritos-submissoes" height="200"></canvas>
-                    </div>
-                </div>
-            </div>
-            <div class="row meus-desafios">
-                <div class="col-xl-7 mb-2 p-2 desafios mx-auto">
-                    <div class="col-sm-12 filtro">
-                        Estado
+				<div class="col-lg-6 d-flex graficos px-1 justify-content-center">
+					<div class="col-sm-12 box white">
+						<canvas id="mais-inscritos" height="200"></canvas>
+					</div>
+				</div>
+				<div class="col-lg-6 d-flex pl-1 graficos justify-content-center">
+					<div class="col-sm-12 box white">
+						<canvas id="inscritos-submissoes" height="200"></canvas>
+					</div>
+				</div>
+			</div>
+			<div class="row my-3 ml-1">
+				<a class="col-12 text-center" th:attr="href='/addDesafio'" > <i
+					class="fas fa-plus-circle"></i> Criar novo desafio
+				</a>
+			</div>
+			<div class="row meus-desafios">
+				<div class="col-lg-8 mx-auto mb-2">
+					<div class="col-sm-12 filtro">
+						
+						Estado
                         <select class="white filtro-estado">
                             <option>Todos</option>
                             <option>Finalizados</option>
                             <option>Em andamento</option>
                         </select>
-                        Área
-                        <select class="white filtro-area">
+						Área
+						<select class="white filtro-area">
                             <option>Todos</option>
                             <option>Front-end</option>
                             <option>Back-end</option>
-                            <option>Full-stack</option>
-                            <option>Data science</option>
+                            <option>Full stack</option>
+                            <option>Data Science</option>
                         </select>
-                    </div>
+					</div>
                     <span class="none-result">Nenhum resultado encontrado</span>
-                </div>
-                <div class="col-xl -2 box blue">
-                    <h5>Submissões</h5>
-                </div>
-            </div>
- 
+                    <div class="row desafios">
+                    </div>
+				</div>
+			</div>
+
 		</div>
 
 	</div>
 
-	
+
 	<script th:src="@{/js/moldesComponentes.js}"></script>
 	<script th:inline="javascript">
 		var desafios = [[${desafios}]]; //Your Thymleaf variable
@@ -86,7 +91,7 @@
 			})
 		}
 		desafios.forEach(function (item, index) {
-		    criarDesafio(item.id, item.nome, item.empresa.nomeFantasia, 
+		    criarDesafioEmpresa(item.id, item.nome, item.empresa.nomeFantasia, 
 		    			item.areaDesenvolvimento, item.descricao, item.habilidades, item.dataFim, item.horarioFim)
 		})
 	</script>
@@ -131,7 +136,7 @@
         });
 
     </script>
-	
 	<script th:src="@{/js/filtroDesafio.js}"></script>
+	
 </body>
 </html>

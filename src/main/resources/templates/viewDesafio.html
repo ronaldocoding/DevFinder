@@ -9,10 +9,50 @@
 
 		<div th:insert="fragment.html :: loggedtopnav"></div>
 		<div th:insert="fragment.html :: sidebaremp"></div>
+		<div class="modal fade" id="desafioEdit" tabindex="-1" role="dialog"
+			aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content border-0">
+					<div class="modal-body border-0">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h5>Editar desafio</h5>
+						<form method="post"
+							th:action="@{/updateDesafio(id=${desafio.id})}">
+							<div class="group">
+								<label>Nome</label> <input th:field="${desafio.nome}"
+									type="text">
+							</div>
+							<div class="group">
+								<label>Descrição</label> <input th:field="${desafio.descricao}"
+									type="text">
+							</div>
+							<div class="group">
+								<label>Data de fim</label> <input th:field="${desafio.dataFim}"
+									type="date"> <input th:field="${desafio.horarioFim}"
+									type="time">
+							</div>
+
+							<button type="button" class="btn btn-secondary"
+								data-dismiss="modal">Close</button>
+							<button type="submit" class="btn btn-primary">Save
+								changes</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
 		<div class="container-fluid content">
 			<div class="row">
-				<div class="col-md-8 m-1 box white">
+				<div class="col-md-12 m-1 box white">
 					<div class="row">
+						<div class="col-12" style="text-align: end; margin-bottom: -10px">
+							<span data-toggle="modal" data-target="#desafioEdit"> <i
+								class="fas fa-pencil-alt" data-toggle="tooltip"
+								data-placement="left" title="Editar"></i></span>
+						</div>
 						<div class="col-sm-4 col-md-3 ml-3">
 							<div class="icon m-auto"></div>
 						</div>
@@ -48,12 +88,7 @@
 					</div>
 				</div>
 
-				<div class="col-md m-1 box white">
-					<ul>
-						<li>teste</li>
-						<li>teste</li>
-					</ul>
-				</div>
+
 			</div>
 			<div class="row meus-desafios">
 				<div class="col-xl-12 mb-2 p-2 desafios mx-auto">
@@ -86,6 +121,10 @@
 	</script>
 	<script th:inline="javascript">
 		var desafio = [[${desafio}]]; //Your Thymleaf variable
+		$(document).ready(function() {
+            $('[data-toggle="tooltip"]').tooltip();
+
+        })
 		$.ajax({
 			url:'/solucoesByDesafio/'+desafio.emailEmpresa+'/'+desafio.id,
     	    type: "GET",

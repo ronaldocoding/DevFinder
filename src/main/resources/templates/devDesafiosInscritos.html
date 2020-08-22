@@ -11,26 +11,28 @@
 		<div th:insert="fragment.html :: sidebardev"></div>
 		<div class="container-fluid content">
 			<div class="row">
-				<div class="col-xl-7 mb-2 p-0 desafios mx-3">
+				 <div class="col-xl-8 mb-2 p-0 mx-auto">
 					<div class="col-sm-12 filtro mt-2">
-						Tempo <select class="white">
-							<option>Recentes</option>
-							<option>Mais antigos</option>
-							<option>Em um mês</option>
-							<option>Em uma semana</option>
-
-						</select> Estado <select class="white">
-							<option>Todos</option>
-							<option>Finalizados</option>
-							<option>Em andamento</option>
-						</select> Área <select class="white">
-							<option>Todos</option>
-							<option>Front-end</option>
-							<option>Back-end</option>
-							<option>Full stack</option>
-							<option>Data science</option>
-						</select>
+						
+						Estado
+                        <select class="white filtro-estado">
+                            <option>Todos</option>
+                            <option>Finalizados</option>
+                            <option>Em andamento</option>
+                        </select>
+						Área
+						<select class="white filtro-area">
+                            <option>Todos</option>
+                            <option>Front-end</option>
+                            <option>Back-end</option>
+                            <option>Full stack</option>
+                            <option>Data Science</option>
+                        </select>
 					</div>
+					<span class="none-result">Nenhum resultado encontrado</span>
+                    <div class="desafios row mt-2">
+
+                        </div>
 				</div>
 			</div>
 		</div>
@@ -73,7 +75,7 @@
    		        console.log('terminou o ajax')
 		}
 		desafios.forEach(function (item, index) {
-		    criarDesafio(index, item.nome, item.empresa.nomeFantasia, 
+		    criarDesafioDesenvolvedor(item.id, item.nome, item.empresa.nomeFantasia, 
 		    			item.areaDesenvolvimento, item.descricao, item.habilidades, item.dataFim, item.horarioFim)
 		})
 	</script>

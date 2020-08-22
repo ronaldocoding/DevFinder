@@ -18,6 +18,7 @@ function multisearch(habilities) {
     $('.multisearch').on('input', function () {
         var str = $(this).val().toLowerCase()
         var none = true
+        
         $(".dropdown-item").each(function (index) {
 
             if ($(this).text().toLowerCase().includes(str)) {
@@ -37,16 +38,22 @@ function multisearch(habilities) {
 
 function selectHab(habId) {
      const str = habId.substring(4)
+     
+     $('#habilidades').val($('#habilidades').val()+habilities[str]+" ")
         $('#'+habId).addClass("disabled")
         $("#span" + str).show()
         $("#span" + str+" i").css("opacity", "1")
 }
 function removeHab (habId) {
-    console.log(habId)
-        const str = habId.substring(4)
-
-        $("#drop" + str).removeClass("disabled")
-        $('#'+habId).hide();
+    
+    const str = habId.substring(4)
+    var currentValue = $('#habilidades').val()
+    var currentHab = habilities[str]
+    currentValue = currentValue.replace(currentHab+" ", "");
+    
+    $("#drop" + str).removeClass("disabled")
+    $('#'+habId).hide();
+    $('#habilidades').val(currentValue)
 }
 
 $(document).ready(function () {

@@ -28,7 +28,7 @@
 							<div class="group">
 								<label>Descrição</label> <i class="fas fa-pencil-alt"
 									data-toggle="tooltip" data-placement="right" title="Editar"></i>
-								<textarea th:field="${perfil.apresentacao}" cols="38" rows="2"
+								<textarea th:field="${perfil.apresentacao}" rows="2"
 									placeholder="Descrição"></textarea>
 
 							</div>
@@ -130,7 +130,31 @@
 							style="display: flex; justify-content: space-around">
 							<label style="margin: auto 0">Excluir perfil</label>
 							<button type="submit" style="margin: 0; margin-left: 10px"
-								class="red">Excluir</button>
+								class="red" data-toggle="modal" data-target="#excluir">Excluir</button>
+						</div>
+					</div>
+				</div>
+				<div class="modal fade" id="excluir" tabindex="-1" role="dialog"
+					aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+					<div class="modal-dialog modal-dialog-centered" role="document">
+						<div class="modal-content border-0">
+							<div class="modal-body border-0">
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+								<h5>Confirmar exclusão</h5>
+								<div>Você tem certeza que deseja excluir sua conta? Essa
+									ação não poderá ser desfeita</div>
+									
+								<button type="button" class="btn btn-secondary"
+									data-dismiss="modal">Cancelar</button>
+									
+								<button onclick="excluir()" type="button" class="btn btn-danger">
+									Sim, quero excluir
+								</button>
+
+							</div>
 						</div>
 					</div>
 				</div>
@@ -172,6 +196,53 @@
 	    $('#search').change(function(){
 	    	$('#regForm').submit()
 	    })
+	    
+	    function excluir(){
+	    	window.location.href = "deleteEmpresa";
+	    }
+	    
+	</script>
+	<script th:inline="javascript">
+    
+    $(document).ready(function() {
+
+        $('.editar').append(
+            '<i class="fas fa-pencil-alt" data-toggle="tooltip" data-placement="right" title="Editar"></i>'
+        );
+        
+        $('[data-toggle="tooltip"]').tooltip();
+
+        $(".group input").attr("readonly", true);
+
+        $(".group textarea").attr("readonly", true);
+
+        $(".group").hover(function() {
+        	
+            $(this).children('i').css("opacity", "1");
+        }, function() {
+            $(this).children('i').css("opacity", "0");
+        });
+
+        $(".group i").click(function() {
+            $(this).parent().find('input').attr("readonly", false);
+            $(this).parent().find('textarea').attr("readonly", false);
+            $(this).parent().find('input').focus()
+            $(this).parent().find('textarea').focus()
+            $(this).css("opacity", "0");
+        })
+        $(".group input").focusout(function() {
+            $(this).attr("readonly", true)
+            $('[type="password"]').attr("readonly", false);
+        })
+        $(".group textarea").focusout(function() {
+            $(this).attr("readonly", true)
+        })
+
+        $('[type="password"]').attr("readonly", false);
+    });
+
+</script>
+
 	</script>
 
 </body>

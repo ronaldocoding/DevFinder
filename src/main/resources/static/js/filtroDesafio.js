@@ -8,12 +8,15 @@ var data = new Date();
 
 
 $('.filtro-area').click(function () {
+	//alert("opa")
     var option = $(this).val()
     valores.area = option
 
     filtro(valores.tempo, valores.estado, valores.area)
 })
 $('.filtro-estado').click(function () {
+	//alert("opa")
+	console.log(desafios)
     var option = $(this).val()
     valores.estado = option
 
@@ -24,22 +27,27 @@ $(".none-result").hide()
 
 function filtro(tempo, estado, area) {
     var none = true
-    desafios.forEach(function (item, index) {
-        $("#desafio" + index).show()
-        var limiteData = item.dataTermino.split('/')
-        var limiteHora = item.horaTermino.split(':')
+    
+    console.log(desafios)
+    //alert("aiai")
+    desafios.forEach(function (item) {
+    	console.log(item)
+    	var index = item.id
+        $("#desafio" + item.id).show()
+        var limiteData = item.dataFim.split('-')
+        var limiteHora = item.horarioFim.split(':')
         var passou = false
 
-        if (parseInt(limiteData[2]) < data.getFullYear()) {
+        if (parseInt(limiteData[0]) < data.getFullYear()) {
             passou = true
         } else if (parseInt(limiteData[1]) < data.getMonth() + 1) {
             passou = true
-        } else if (parseInt(limiteData[0]) < data.getDate() && parseInt(limiteData[1]) === data.getMonth() + 1) {
+        } else if (parseInt(limiteData[2]) < data.getDate() && parseInt(limiteData[1]) === data.getMonth() + 1) {
             passou = true
-        } else if (parseInt(limiteData[0]) === data.getDate() &&
+        } else if (parseInt(limiteData[2]) === data.getDate() &&
             parseInt(limiteHora[0]) < data.getHours()) {
             passou = true
-        } else if (parseInt(limiteData[0]) === data.getDate() &&
+        } else if (parseInt(limiteData[2]) === data.getDate() &&
             parseInt(limiteHora[0]) === data.getHours() &&
             parseInt(limiteHora[1]) <= data.getMinutes()) {
             passou = true
@@ -55,7 +63,7 @@ function filtro(tempo, estado, area) {
             if (passou)
                 $("#desafio" + index).hide()
         }
-        if (area !== item.area && area !== 'Todos') {
+        if (area !== item.areaDesenvolvimento && area !== 'Todos') {
             $("#desafio" + index).hide()
         }
 
