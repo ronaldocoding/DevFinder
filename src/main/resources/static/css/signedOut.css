@@ -23,14 +23,23 @@ body {
     background-color: #F1F4FB !important;
 }
 
-.container-fluid {
-    height: 100%;
+textarea {
+    width: 100%;
 }
 
-input {
+input, textarea {
     outline: none;
     border: none;
 }
+
+
+.box {
+    border-radius: 7px;
+    width: 100%;
+    padding: 20px !important;
+    margin-bottom: 10px;
+}
+
 
 /*NAVBAR*/
 .nav {
@@ -118,14 +127,14 @@ input {
 .modal-body {
 
     overflow: hidden;
-/*    width: 500px;*/
+    /*    width: 500px;*/
     height: 300px;
     word-break: keep-all;
     text-overflow: ellipsis;
 }
 
 .modal-body .login {
-        width: 500px;
+    width: 500px;
 
     height: 300px;
     transition: margin .3s ease-in-out;
@@ -163,6 +172,183 @@ input {
 .message span {
     cursor: pointer;
     font-weight: 800;
+}
+
+.config .box {
+
+    display:flex;
+    height: 500px;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: height .3s ease-in-out;
+}
+
+.config .box form {
+    display:flex;
+    height: 340px;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: height .3s ease-in-out;
+}
+
+.config h6 {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 800;
+    text-align: center;
+    font-size: 20;
+    color: #4058D7;
+}
+
+.config .blue h6 {
+    color: #FFF;
+}
+
+.config h5 {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 800;
+}
+
+.config .group {
+    max-width: 360px;
+    margin: auto;
+    font-family: 'Nunito', sans-serif;
+    margin-top: 8px;
+}
+
+.config .group > i {
+    opacity: 0;
+}
+
+.config label {
+    font-weight: 600;
+}
+
+.config input,
+.config textarea {
+    outline: none;
+    font-weight: 500;
+    background-color: #F1F4FB;
+    border-radius: 5px;
+}
+
+.config input:focus,
+.config textarea:focus {
+    background-color: #F1F4FB;
+    border-radius: 5px;
+}
+
+.config input::placeholder,
+.config textarea::placeholder {
+    color: #000;
+    opacity: 0.7;
+    font-family: 'Nunito', sans-serif;
+}
+
+select {
+    border: none;
+    background-color: #F1F4FB;
+    outline: none;
+}
+
+select option {
+    border: none;
+    background-color: #FFF;
+    outline: none;
+}
+
+.group .multiselect {
+    display: block;
+}
+
+.multiselect .multisearch {
+    height: 30px;
+    height: 25px;
+    word-break: break-all;
+    width: 100%;
+    border: none;
+    background-color: #F1F4FB;
+    border-radius: 5px;
+    outline: none;
+}
+
+
+.multiselect .selected {
+    background-color: #4058D7;
+    color: #FFF;
+    display: inline-flex;
+    padding: 5px 10px;
+    margin: 2px;
+    border-radius: 15px;
+}
+
+.multiselect i {
+    margin: auto 0;
+    margin-left: 5px;
+}
+
+.dropdown-menu {
+    width: 100%;
+    margin-top: -1px;
+    height: 120px;
+    overflow-y: scroll;
+}
+
+.dropdown-menu span {
+    text-align: center;
+    opacity: 0.75;
+    margin-top: 40px;
+    display: block;
+}
+
+.config input[type=submit], .index{
+/*    display: block;*/
+    border: none;
+    text-align: center;
+    background-color: #FFF;
+    padding: 5px 25px;
+/*    margin: 0 auto;*/
+    display: none;
+    align-self: center;
+    justify-content: center;
+    font-family: 'Quicksand', sans-serif;
+    border-radius: 10px;
+    outline: none;
+
+    transition: transform .3s ease-in-out;
+}
+
+.config button[type=submit]:hover {
+    transform: scale(1.1);
+}
+
+.section {
+    position: absolute;
+/*    height: 300px;*/
+    justify-content: center;
+    vertical-align: middle;
+    width: 100%;
+    margin-top: 50px;
+    opacity: 0;
+    transition: all .3s ease-in-out;
+    
+
+}
+
+.section.on{
+    opacity: 1;
+}
+
+.config form ul {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+}
+
+.group > span {
+    display: block;
+    color: rgba(245, 0, 50, 1);
+    font-family: Quicksand, sans-serif;
+    font-size: 15px;
 }
 
 @media (max-width: 800px) {

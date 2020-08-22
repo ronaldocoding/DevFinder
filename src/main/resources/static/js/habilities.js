@@ -2,15 +2,23 @@ var habilities = [
 "Javascript", "React", "Node.js", "Java (Android)", "Java", "AWS Elastic Beanstalk", "AWS", "Totvs", "ExpressJS", "Bdd", "AdonisJS", "Delphi", "Spring Boot", "BigData", "DJango", "Data Mining", "C#", "Python", "EJB", "Haskell", "Backbone.js", "Programação orientada a Objeto", "Governança de TI", "Testes Funcionais", "Ajax", "C", "Scala", "PostgreSQL", "Design Responsivo", "Polymer", "Testes automatizados", "WebGL", "Media Services", "Bower", "Perl", "Ember.js", "Hibernate", "Fortran", "Dart", "Unity",
 ];
 
+var areas = [
+    'Front-end', 'Back-end', 'Full-stack', 'Data Science', 'Mobile'
+]
+
 habilities.sort()
 
 function multisearch(habilities) {
 
+    $('.multiselect').each(function(index){
+        if(!$(this).hasClass('area'))
+            $(this).addClass('habilities')
+    })
     habilities.forEach(function (item, id) {
-        $(".dropdown-menu").append(
-            '<div class="dropdown-item" id="drop' + id + '">' + item + '</div>'
+        $(".habilities .dropdown-menu").append(
+            '<div class="dropdown-item habilities" id="drop' + id + '">' + item + '</div>'
         )
-        $(".multiselect").prepend(
+        $(".multiselect.habilities").prepend(
             '<span id="span' + id + '" class="selected">' + item + '  <i class="fas fa-times"></i></span>'
         )
     })
@@ -28,9 +36,37 @@ function multisearch(habilities) {
         })
 
         if (none)
-            $('.dropdown-menu span').show()
+            $('.habilities .dropdown-menu span').show()
         else
-            $('.dropdown-menu span').hide()
+            $('.habilities .dropdown-menu span').hide()
+        
+    });
+    areas.forEach(function (item, id) {
+        const index = id + habilities.length
+        $(".area .dropdown-menu").append(
+            '<div class="dropdown-item area" id="drop' + index + '">' + item + '</div>'
+        )
+        $(".multiselect.area").prepend(
+            '<span id="span' + index + '" class="selected">' + item + '  <i class="fas fa-times"></i></span>'
+        )
+    })
+    $('.area .selected').hide()
+    $('.area .multisearch').on('input', function () {
+        var str = $(this).val().toLowerCase()
+        var none = true
+        $(".area .dropdown-item").each(function (index) {
+
+            if ($(this).text().toLowerCase().includes(str)) {
+                $(this).show()
+                none = false
+            } else
+                $(this).hide()
+        })
+
+        if (none)
+            $('.area .dropdown-menu span').show()
+        else
+            $('.area .dropdown-menu span').hide()
         
     });
 }
@@ -48,6 +84,7 @@ function removeHab (habId) {
         $("#drop" + str).removeClass("disabled")
         $('#'+habId).hide();
 }
+
 
 $(document).ready(function () {
     $(".multisearch").attr("readonly", false);

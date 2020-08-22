@@ -10,52 +10,13 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
 </head>
 
-<body>
+<body style="overflow-x: hidden">
+
     <div class="container-fluid">
-        <div class="modal fade bd-example-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content mx-auto border-0">
-                
-                    <div class="modal-body p-0 ">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-                        <div class="login">
-                            <form>
-                    <input placeholder="Email" required>
-                    <input placeholder="senha" type="password" required>
-                    <input type="submit">
-                </form>
-                            <div class="message">
-                                Não tem conta? <span>Se cadastre</span>
-                            </div>
-                            
-                        </div>
-                        <div class="sign-up">
-                            <a href="cadastroDev.html">
-                                <button>
-                                    Desenvolvedor
-                                </button>
-                            </a>
-                                
-                            <a href="cadastroEmp.html">
-                                <button>
-                                    Empresa
-                                </button>
-                            </a>
-                            <div class="message">
-                                Já é cadastrado? <span>Entrar</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                   
-                </div>
-            </div>
-        </div>
+
         <nav class="nav">
 
-            <img alt="Logo" src="/static/imgs/df-logo.svg" />
+            <img alt="Logo" src="/static/imgs/df-logo.svg">
             <div class="search">
                 <input placeholder="Pesquise..." />
                 <div class="item">
@@ -74,27 +35,211 @@
             <div class="sign-button" data-toggle="modal" data-target=".bd-example-modal">Icon</div>
 
         </nav>
-        <div class="container-fluid content">
+        <div class="container-fluid config mt-5">
+            <div class="row mt-5">
+                <div class="col-12 px-1">
+                    <div class="col-sm box white perfil" style="height: 100%">
+                        <form style="overflow: hidden">
+                            <h6>Fazer cadastro</h6>
+                            <div class="section">
+                                <div class="group">
+                                    <label>Nome do Desafio</label>
+                                    <input type="text" placeholder="Nome">
+                                </div>
+                                <div class="group">
+                                    <label>Descrição</label>
+                                    <textarea name="Text1" rows="2" placeholder="Descrição"></textarea>
+
+                                </div>
+
+                                <div class="group">
+                                    <label>Habilidades</label>
+
+                                    <div class="multiselect">
+
+                                        <div class="dropdown show">
+                                            <input class="multisearch my-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" input id="dropdownMenuLink" placeholder="Pesquisar">
 
 
+
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                <span style="display: none">Nenhum resultado encontrado.</span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="group">
+                                    <label>Data de término</label><br>
+                                    <input type="date" max="3000" min="1" style="width: 50%">
+                                    <input type="time" placeholder="Devs." style="width: 48.8%">
+                                </div>
+
+                            </div>
+                            <div class="section">
+                                <div class="group">
+                                    <label>Nome do Desafio</label>
+                                    <input type="text" placeholder="Nome">
+                                </div>
+                                <div class="group">
+                                    <label>Descrição</label>
+                                    <textarea name="Text1" rows="2" placeholder="Descrição"></textarea>
+
+                                </div>
+
+                                <div class="group">
+                                    <label>Habilidades</label>
+
+                                    <div class="multiselect">
+
+                                        <div class="dropdown show">
+                                            <input class="multisearch my-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" input id="dropdownMenuLink" placeholder="Pesquisar">
+
+
+
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                <span style="display: none">Nenhum resultado encontrado.</span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="group">
+                                    <label>Data de término</label><br>
+                                    <input type="date" max="3000" min="1" style="width: 50%">
+                                    <input type="time" placeholder="Devs." style="width: 48.8%">
+                                </div>
+
+                            </div>
+                            <div class="section">
+                                <div class="group">
+                                    <label>Nome do Desafio</label>
+                                    <input type="text" placeholder="Nome">
+                                </div>
+                                <div class="group">
+                                    <label>Descrição</label>
+                                    <textarea name="Text1" rows="2" placeholder="Descrição"></textarea>
+
+                                </div>
+
+                                <div class="group">
+                                    <label>Habilidades</label>
+
+                                    <div class="multiselect">
+
+                                        <div class="dropdown show">
+                                            <input class="multisearch my-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" input id="dropdownMenuLink" placeholder="Pesquisar">
+
+
+
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                <span style="display: none">Nenhum resultado encontrado.</span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="group">
+                                    <label>Data de término</label><br>
+                                    <input type="date" max="3000" min="1" style="width: 50%">
+                                    <input type="time" placeholder="Devs." style="width: 48.8%">
+                                </div>
+
+                            </div>
+                            <div class="section">
+                                <div class="group">
+                                    <label>Nome do Desafio</label>
+                                    <input type="text" placeholder="Nome">
+                                </div>
+                                <div class="group">
+                                    <label>Descrição</label>
+                                    <textarea name="Text1" rows="2" placeholder="Descrição"></textarea>
+
+                                </div>
+
+                                <div class="group">
+                                    <label>Habilidades</label>
+
+                                    <div class="multiselect">
+
+                                        <div class="dropdown show">
+                                            <input class="multisearch my-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" input id="dropdownMenuLink" placeholder="Pesquisar">
+
+
+
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                <span style="display: none">Nenhum resultado encontrado.</span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="group">
+                                    <label>Data de término</label><br>
+                                    <input type="date" max="3000" min="1" style="width: 50%">
+                                    <input type="time" placeholder="Devs." style="width: 48.8%">
+                                </div>
+
+                            </div>
+
+                            <div>
+                                <div class="group" style="display:flex; text-align: center; justify-content: center; margin-bottom: 5px">
+                                    <span class="index">Anterior</span>
+                                    <span class="index blue">Próximo</span>
+                                    <a href="desafiosInscritos.html"><button style="z-index: 3;" type="submit" class="blue">Cadastrar</button></a>
+                                </div>
+                            </div>
+
+
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
+        <div class="modal fade bd-example-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content mx-auto border-0">
 
+                    <div class="modal-body p-0 ">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <div class="login">
+                            <form>
+                                <input placeholder="Email" required>
+                                <input placeholder="senha" type="password" required>
+                                <input type="submit">
+                            </form>
+                            <div class="message">
+                                Não tem conta? <span>Se cadastre</span>
+                            </div>
+
+                        </div>
+                        <div class="sign-up">
+                            <a href="cadastroDev.html">
+                                <button>
+                                    Desenvolvedor
+                                </button>
+                            </a>
+
+                            <a href="cadastroEmp.html">
+                                <button>
+                                    Empresa
+                                </button>
+                            </a>
+                            <div class="message">
+                                Já é cadastrado? <span>Entrar</span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
     </div>
-    <script>
-        $(document).ready(function () {
-            $('.modal-body .message span').click(function(){
-                $('.modal-body').toggleClass('on')
-            })
-            
-            $('.sign button').click(function(){
-                $('.modal-body').addClass('on')
-            })
-            
-            $('.sign-button').click(function(){
-                $('.modal-body').removeClass('on')
-            })
-            
-        })
-    </script>
+    <script src="/static/js/habilities.js"></script>
+    <script src="/static/js/cadastro.js"></script>
+   
 
 </body>
