@@ -1,6 +1,7 @@
 package br.com.devfinder.repository;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -24,6 +25,12 @@ public interface DesafioRepository extends JpaRepository<Desafio, DesafioId>, De
 	
 	@Query(value = "SELECT * FROM DESAFIO D, DESENVOLVEDOR_DESAFIO DD WHERE DD.EMAIL_DESENVOLVEDOR = ?1 AND DD.ID_DESAFIO=D.ID", nativeQuery = true)
 	List<Desafio>findDesafioInscritos(String email);
+	
+	@Query(value = "select d.nome, count(*) as inscritos from desenvolvedor_desafio INNER JOIN desafio d on d.id=id_desafio where d.email_empresa=?1 group by id_desafio;", nativeQuery = true)
+	List<Map<String,Integer>> findInscricoes(String email);
+	
+	@Query(value = "select count(*) as total , from solucao where email_empresa_desafio=?1 group by SUBSTRING(data_envio, 4, 2) order by mes DESC limit 7;", nativeQuery=true)
+	List<Map<String,Integer>> findSubmissoes(String email);
 	
 	@Query(value = "SELECT * FROM DESAFIO WHERE ID = ?1", nativeQuery = true)
 	Desafio findById(int id);

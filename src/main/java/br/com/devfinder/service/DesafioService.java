@@ -2,6 +2,7 @@ package br.com.devfinder.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -47,6 +48,14 @@ public class DesafioService {
 	}
 	public ArrayList<Desafio> getDesafios(String[] texto) {
 		return (ArrayList<Desafio>) repository.findDesafio(texto);
+	}
+	
+	public ArrayList<Map<String, Integer>> getInscricoes(String email){
+		return (ArrayList<Map<String, Integer>>) repository.findInscricoes(email);
+	}
+
+	public ArrayList<Map<String, Integer>> getSubmissoes(String email){
+		return (ArrayList<Map<String, Integer>>) repository.findSubmissoes(email);
 	}
 	
 	public ArrayList<Desafio> getDesafiosInscritos(String email) {
