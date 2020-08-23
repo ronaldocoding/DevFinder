@@ -180,8 +180,29 @@
                     <div class="col-sm box white">
                         <h6>Conta</h6>
                         <div class="group" style="display: flex;justify-content: space-around">
-                        <label style="margin: auto 0">Excluir perfil</label>
-                        <button type="submit" style="margin:0;margin-left: 10px" class="red">Excluir</button>
+                            <label style="margin: auto 0">Excluir perfil</label>
+                            <button type="submit" style="margin:0;margin-left: 10px" class="red" data-toggle="modal" data-target="#exampleModalCenter">Excluir</button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalCenterTitle">Excluir perfil</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Tem certeza que deseja excluir seu perfil?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+                                            <button type="button" class="btn btn-primary">Sim</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
