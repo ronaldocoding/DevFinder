@@ -300,6 +300,7 @@ select option {
     display: block;
 }
 
+
 .config input[type=submit], .index{
 /*    display: block;*/
     border: none;
@@ -310,11 +311,19 @@ select option {
     display: none;
     align-self: center;
     justify-content: center;
+        color: #000 ;
+
     font-family: 'Quicksand', sans-serif;
     border-radius: 10px;
     outline: none;
-
     transition: transform .3s ease-in-out;
+}
+
+.group>span{
+    display: block;
+    color: rgba(245, 0, 50, 1);
+    font-family: Quicksand, sans-serif;
+    font-size: 15px;
 }
 
 .config button[type=submit]:hover {
@@ -344,12 +353,7 @@ select option {
     justify-content: center;
 }
 
-.group > span {
-    display: block;
-    color: rgba(245, 0, 50, 1);
-    font-family: Quicksand, sans-serif;
-    font-size: 15px;
-}
+
 
 @media (max-width: 800px) {
     .sign {

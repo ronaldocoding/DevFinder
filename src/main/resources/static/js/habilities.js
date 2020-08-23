@@ -80,7 +80,6 @@ function selectHab(habId) {
 function removeHab (habId) {
     console.log(habId)
         const str = habId.substring(4)
-
         $("#drop" + str).removeClass("disabled")
         $('#'+habId).hide();
 }
