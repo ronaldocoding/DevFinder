@@ -77,7 +77,6 @@ public class UsuarioController {
 		model.addAttribute("service", serviceDH);
 		model.addAttribute("serviceDev", serviceD);
 		model.addAttribute("serviceSub", serviceDD);
-		model.addAttribute("perfil", session.getAttribute("perfil"));
 		return "pesquisaResult.html";
 	}
 	

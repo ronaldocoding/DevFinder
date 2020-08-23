@@ -10,9 +10,9 @@
 		
 		<div th:insert="fragment.html :: loggedtopnav"></div>
 		<div th:insert="fragment.html :: sidebardev"></div>
-		<div class="container-fluid content">
-        	<div id="container"></div>    
-        </div>
+		
+       	<div id="container" class="container-fluid content"></div>    
+        
 	
 	</div>
 	
@@ -20,7 +20,7 @@
 			/*<![CDATA[*/
    		$('#search').keyup(function(){
            	search() 
-           	$('#result').html('Resultados para '+$('#search').val())
+           	$('#result').html('Resultados para "'+$('#search').val()+'"')
     		
         })
 

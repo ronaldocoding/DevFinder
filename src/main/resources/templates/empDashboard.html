@@ -4,22 +4,168 @@
 <meta charset="UTF-8">
 </head>
 <body>
-	<div  class="container-fluid">
-		
+	<div class="container-fluid">
+
 		<div th:insert="fragment.html :: loggedtopnav"></div>
 		<div th:insert="fragment.html :: sidebaremp"></div>
 		<div class="container-fluid content">
-        	Dashboard da empresa
-        </div>
-	
-	</div>
-	
-	
-	<script>
-	    $('#search').change(function(){
-	    	$('#regForm').submit()
-	    })
-	</script>
+			<div class="row my-3 ml-1">
 
+				<div class="col-lg-6 d-flex graficos px-1 justify-content-center">
+					<div class="col-sm-12 box white">
+						<canvas id="mais-inscritos" height="200"></canvas>
+					</div>
+				</div>
+				<div class="col-lg-6 d-flex pl-1 graficos justify-content-center">
+					<div class="col-sm-12 box white">
+						<canvas id="inscritos-submissoes" height="200"></canvas>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+
+	<script>
+		$('#search').change(function() {
+			$('#regForm').submit()
+		})
+	</script>
+	<script th:inline="javascript">
+        var perfil = [[${perfil}]]
+        
+        var ctxBar = document.getElementById('mais-inscritos').getContext('2d');
+        var ctxDoughnut = document.getElementById('inscritos-submissoes').getContext('2d');
+		var inscricoes = {}
+		var maximo = 0
+        /*Esse é o gráfico da quantidade de participações*/
+        $.ajax({
+    	    url:'getInscricoes/'+perfil.email,
+    	    type: "GET",
+    	    async:false,
+            contentType: "application/json",
+    	    success: function(response) {
+    	    	response.forEach(function(item){
+    	    		inscricoes[item.nome] = item.inscritos
+    	    		
+    	    		maximo = maximo > item.inscritos ? maximo:item.inscritos
+    	    	})
+    	    	
+    	    },
+    	    error: function(error){
+    	    	console.log(error)
+    	    }
+    	})
+
+		
+        var myChart = new Chart(ctxBar, {
+            type: 'horizontalBar',
+            data: {
+                labels: Object.keys(inscricoes),
+                label:'a',
+                datasets: [{
+                	label:'desafios',
+                    data: Object.values(inscricoes),
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                }]
+            },
+            options: {
+                scales: {
+                    xAxes: [{
+                        ticks: {
+                            min: 0,
+                            max:(maximo+10) - (maximo+10)%10 
+                        }
+                    }],
+                    yAxes: [{
+                        stacked: true
+                    }]
+                }
+            }
+        });
+
+		const meses = {
+			1:"Janeiro",
+			2:"Fevereiro",
+			3:"Março",
+			4:"Abril",
+			5:"Maio",
+			6:"Junho",
+			7:"Julho",
+			8:"Agosto",
+			9:"Setembro",
+			10:"Outubro",
+			11:"Novembro",
+			12:"Dezembro",
+		}
+		const dados = {}
+		const total = {}
+		maximo = 0
+		
+		/*Esse é o gráfico da quantidade de submissões*/
+        $.ajax({
+    	    url:'getSubmissoes/'+perfil.email,
+    	    type: "GET",
+    	    async:false,
+            contentType: "application/json",
+    	    success: function(response) {
+    	    	response.forEach(function(item){
+    	    		total[item.mes] =item.total
+    	    		maximo = maximo > item.total ? maximo:item.total
+    	    	})
+    	    	var date = new Date()
+    	    	var mes = date.getMonth()+1
+    	    	
+    	    	for(var i = 0; i<= 7; i++){
+    	    		
+    	    		dados[meses[mes]] = total[mes] ? total[mes]:0
+    	    		mes = mes == 1?12:mes-1
+    	    	}
+    	    	console.log(dados)
+    	    	//alert(maximo)
+    	    	
+    	    },
+    	    error: function(error){
+    	    	console.log(error)
+    	    }
+    	})
+
+
+		
+        var myDoughnutChart = new Chart(ctxDoughnut, {
+            type: 'line',
+            data: {
+                labels: Object.keys(dados).reverse(),
+                datasets: [{
+                    label: 'Submissões por mês',
+                    backgroundColor: 'red',
+                    borderColor: 'red',
+                    data: 
+                    	Object.values(dados).reverse(),
+                    
+                    fill: false,
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                        	suggestedMin: 0,
+                        	suggestedMax:(maximo+10) - (maximo+10)%10 
+                        }
+                    }]
+                }
+            }
+        });
+
+    </script>
 </body>
 </html>

@@ -43,6 +43,10 @@ public class DesafioService {
 	/**
 	 * Métodos GET
 	 */
+	public List<Desafio> getDesafios() {
+		return repository.findAll();
+	}
+	
 	public List<Desafio> getDesafios(String emailEmpresa) {
 		return repository.findAllByEmpresa(emailEmpresa);
 	}

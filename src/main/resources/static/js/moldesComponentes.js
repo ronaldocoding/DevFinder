@@ -1,18 +1,17 @@
 function criarEmpresaPesquisa(obj){
-	var foto = '<span><svg width="50" height="50"> <circle cx="25" cy="25" r="25"fill="blue" /></svg></span>'
-	
-	$('#ulEmpresas').append('<li><span>'+foto+'</span>'+
-	'<a href="empresaById/'+obj.email+'">'+
-	'<h5>'+obj.razaoSocial+'</h5></a></li>')	
+	$('#ulEmps').append('<li class="col-xs-6 col-sm-3 col-md-2 col-lg-1">'+
+		'<img src="/imageEmp/'+obj.email+'">'+
+		'<a href="empresaById/'+obj.email+'">'+
+		'<h6>'+obj.razaoSocial+'</h6></a></li>'
+)	
 }
 
 function criarDesenvolvedorPesquisa(obj){
-	var foto = '<span><svg width="50" height="50"> <circle cx="25" cy="25" r="25"fill="red" /></svg></span>'
-	console.log('objetos: ')
-	console.log(obj)
-	$('#ulDevs').append('<li><span>'+foto+'</span>'+
-	'<a href="desenvolvedorById/'+obj.email+'">'+
-	'<h5>'+obj.nome+'</h5></a></li>')	
+	$('#ulDevs').append('<li class="col-xs-6 col-sm-3 col-md-2 col-lg-1">'+
+		'<img src="/imageDev/'+obj.email+'">'+
+		'<a href="desenvolvedorById/'+obj.email+'">'+
+		'<h6>'+obj.nome+'</h6></a></li>'
+)	
 }
 
 function criarDesafioDesenvolvedor(index, nome, empresa, area, descricao, habilidades, dataTermino, horaTermino) {
