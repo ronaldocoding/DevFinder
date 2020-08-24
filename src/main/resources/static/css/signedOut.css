@@ -327,6 +327,17 @@ select option {
     transition: transform .3s ease-in-out;
 }
 
+.top-content div:first-of-type{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.top-content .index{
+    display: inline-block;
+}
+
 .group>span{
     display: block;
     color: rgba(245, 0, 50, 1);
@@ -334,7 +345,8 @@ select option {
     font-size: 15px;
 }
 
-.config button[type=submit]:hover {
+.config button[type=submit]:hover, .top-content .index.blue:hover{
+    text-decoration: none;
     transform: scale(1.1);
 }
 
@@ -366,7 +378,8 @@ select option {
     width: 100%;
     margin: 0;
     margin-top: 70px;
-
+    text-align: center;
+    padding: 40px;
 }
 
 
