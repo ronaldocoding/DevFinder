@@ -300,6 +300,14 @@ select option {
     display: block;
 }
 
+.content {
+    width: 100%;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    justify-items: center;
+}
+
 
 .config input[type=submit], .index{
 /*    display: block;*/
