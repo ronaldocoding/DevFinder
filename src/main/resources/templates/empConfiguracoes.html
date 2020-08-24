@@ -137,23 +137,21 @@
 				<div class="modal fade" id="excluir" tabindex="-1" role="dialog"
 					aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 					<div class="modal-dialog modal-dialog-centered" role="document">
-						<div class="modal-content border-0">
-							<div class="modal-body border-0">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalCenterTitle">Excluir
+									perfil</h5>
 								<button type="button" class="close" data-dismiss="modal"
 									aria-label="Close">
 									<span aria-hidden="true">&times;</span>
 								</button>
-								<h5>Confirmar exclusão</h5>
-								<div>Você tem certeza que deseja excluir sua conta? Essa
-									ação não poderá ser desfeita</div>
-									
+							</div>
+							<div class="modal-body">Tem certeza que deseja excluir seu
+								perfil?</div>
+							<div class="modal-footer">
 								<button type="button" class="btn btn-secondary"
-									data-dismiss="modal">Cancelar</button>
-									
-								<button onclick="excluir()" type="button" class="btn btn-danger">
-									Sim, quero excluir
-								</button>
-
+									data-dismiss="modal">Não</button>
+								<button onclick="excluir()" type="button" class="btn btn-primary">Sim</button>
 							</div>
 						</div>
 					</div>

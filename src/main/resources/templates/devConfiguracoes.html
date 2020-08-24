@@ -2,6 +2,7 @@
 <html lang="pt-br">
 
 <head th:insert="fragment.html :: links">
+
 <meta charset="UTF-8">
 </head>
 
@@ -75,7 +76,7 @@
 								<div class="multiselect">
 
 									<div class="dropdown show">
-										<input class="multisearch" data-toggle="dropdown"
+										<input class="multisearch my-2" data-toggle="dropdown"
 											aria-haspopup="true" aria-expanded="false" input
 											id="dropdownMenuLink" placeholder="Pesquisar">
 
@@ -88,7 +89,6 @@
 									</div>
 
 								</div>
-
 
 
 							</div>
@@ -160,30 +160,30 @@
 						<div class="group"
 							style="display: flex; justify-content: space-around">
 							<label style="margin: auto 0">Excluir perfil</label>
-							<button data-toggle="modal" data-target="#excluir" type="submit" style="margin: 0; margin-left: 10px"
-								class="red">Excluir</button>
+							<button data-toggle="modal" data-target="#excluir" type="submit"
+								style="margin: 0; margin-left: 10px" class="red">Excluir</button>
 						</div>
 					</div>
 				</div>
 				<div class="modal fade" id="excluir" tabindex="-1" role="dialog"
 					aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 					<div class="modal-dialog modal-dialog-centered" role="document">
-						<div class="modal-content border-0">
-							<div class="modal-body border-0">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalCenterTitle">Excluir
+									perfil</h5>
 								<button type="button" class="close" data-dismiss="modal"
 									aria-label="Close">
 									<span aria-hidden="true">&times;</span>
 								</button>
-								<h5>Confirmar exclusão</h5>
-								<div>Você tem certeza que deseja excluir sua conta? Essa
-									ação não poderá ser desfeita</div>
-
+							</div>
+							<div class="modal-body">Tem certeza que deseja excluir seu
+								perfil?</div>
+							<div class="modal-footer">
 								<button type="button" class="btn btn-secondary"
-									data-dismiss="modal">Cancelar</button>
-
-								<button onclick="excluir()" type="button" class="btn btn-danger">
-									Sim, quero excluir</button>
-
+									data-dismiss="modal">Não</button>
+								<button onclick="excluir()" type="button"
+									class="btn btn-primary">Sim</button>
 							</div>
 						</div>
 					</div>
@@ -195,8 +195,26 @@
 
 
 
-
+	<script th:src="@{/js/habilities.js}"></script>
 	<script th:inline="javascript">
+	
+		var areas = [[${areas}]]
+		var habilidades = [[${habilidades}]]
+		
+		/*habilidades.forEach(function(e){
+			var habId = habilities.indexOf(e.habilidade)
+			var str = e.habilidade
+			console.log(habId)
+			console.log(str)
+			//$('#habilidades').val($('#habilidades').val() + habilities[str] + " ")
+			$("#span" + habId).addClass("disabled")
+			$("#span" + habId).show()
+			$("#span" + habId + " i").css("opacity", "1")
+		})*/
+
+		
+		console.log(areas)
+		console.log(habilidades)
 		var senha = [[${perfil.senha}]]
 		
 		$('#changeSenha').submit(function(e){
@@ -225,7 +243,7 @@
 		
 	
 	</script>
-	<script th:src="@{/js/habilities.js}"></script>
+
 	<script th:inline="javascript">
     
         $(document).ready(function() {

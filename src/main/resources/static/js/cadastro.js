@@ -12,7 +12,33 @@ function resize() {
     })
 
 }
-
+function getEndereco() {
+	  // Se o campo CEP não estiver vazio
+	   
+	  $.getScript("http://cep.republicavirtual.com.br/web_cep.php?formato=javascript&cep="+$("#CEP").val(),
+	  function(){
+	    console.log(resultadoCEP["resultado"])
+	    if(  resultadoCEP["resultado"] == 1){
+	      /* troca o valor dos elementos */
+	      $("#bairro").val(unescape(resultadoCEP["bairro"]))
+	      $('#cidade').val(unescape(resultadoCEP["cidade"]));
+	      $('#estado').val(unescape(resultadoCEP["uf"]));
+	      $('#numero').focus();
+	      
+	      $("#rua").val(unescape(resultadoCEP["tipo_logradouro"])+" "+unescape(resultadoCEP["logradouro"]));
+	      //ret = true;
+	      return true;
+	    }else{
+	    //    ret = false;
+	        return false;
+	    }
+	  });
+	  //console.log('retornou: '+ret);
+	  //return ret;
+	}
+$('#CEP').on('change', function() {
+	  getEndereco($('#CEP').val());
+	});
 
 
 function validar() {

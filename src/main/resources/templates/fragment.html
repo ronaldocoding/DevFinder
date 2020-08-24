@@ -145,29 +145,42 @@
 			/*]]>*/
 		</script>
 
-<nav class="nav">
+	<nav class="top_navbar-side">
+			<div class="top_menu-side">
+				<div>
+					<a><img th:src="@{/imgs/logo.png}" class="logo"></a>
+				</div>
+				<ul>
 
-            <img alt="Logo" src="/static/imgs/df-logo.svg">
-            <div class="search">
-            	<form id="searchForm" th:action="@{/search}" method="post">
-                <input  name="search" id="search" placeholder="Pesquise..." />
-                </form>
-                <div class="item">
-                    <i style='font-size:15px; justify-content: flex-end' class='fas'>&#xf002;</i>
-                </div>
-            </div>
+					<li class="buscar">
+						<form id="searchForm" th:action="@{/search}" method="post">
+							<div class="buscar-caja">
+								<input type="text" name="search" id="search" class="buscar-txt"
+									placeholder="Buscar..." /> <a class="buscar-btn"><i
+									class="fas fa-search"></i></a>
 
-            <div class="sign">
-                <form>
-                    <input type="email" placeholder="Email">
-                    <input placeholder="senha" type="password">
-                    <input type="submit">
-                </form>
-                <button data-toggle="modal" data-target=".bd-example-modal">Cadastrar</button>
-            </div>
-            <div class="sign-button" data-toggle="modal" data-target=".bd-example-modal">Icon</div>
-
-        </nav>
+							</div>
+						</form>
+					</li>
+					<li><a href="#linkLogin" data-toggle="modal"
+						data-target="#modalExemplo" class="btn-azul">Entrar</a></li>
+					<li>
+						<div class="dropdown show">
+							<a class="dropdown-togggle btn-degrade azul"
+								id="dropdownMenuLink" data-toggle="dropdown"
+								aria-haspopup="true" aria-expanded="false">Cadastrar</a>
+							<div class="dropdown-menu p-2 text-center"
+								aria-labelledby="dropdownMenuLink">
+								<a th:attr="href='/formEmpresa'">
+									<h4>Empresa</h4>
+								</a>
+								<h4>Desenvolvedor</h4>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</nav>
         
 				<!--Modal de Login-->
 		<div class="modal fade" id="modalExemplo" role="dialog"

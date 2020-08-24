@@ -19,7 +19,7 @@ public class Desenvolvedor extends Usuario implements Serializable {
 	@Column(name = "NOME", length = 55, nullable = false)
 	private String nome;
 
-	@Column(name = "CPF", length = 11, nullable = false)
+	@Column(name = "CPF", length = 14, nullable = false)
 	private String cpf;
 
 	@Column(name = "DATA_NASCIMENTO", length = 11, nullable = false)

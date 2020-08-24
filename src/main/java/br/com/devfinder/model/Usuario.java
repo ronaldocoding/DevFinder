@@ -35,7 +35,7 @@ public abstract class Usuario implements Serializable {
 	@Column(name = "SITE", nullable = true)
 	protected String site;
 
-	@Column(name = "TELEFONE", length = 12, nullable = false)
+	@Column(name = "TELEFONE", length = 18, nullable = false)
 	protected String telefone;
 
 	@Column(name = "APRESENTACAO", nullable = false)

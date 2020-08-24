@@ -85,7 +85,7 @@ public class DesenvolvedorController {
 	}
 	@PostMapping("/addDev")
 	public String addDesenvolvedor(
-			@RequestParam("area") ArrayList<String> areas,
+			@RequestParam("area") String areaString,
 			Model model, @RequestParam("habilidade") String hab, 
 			@RequestParam("foto") MultipartFile foto,
 			@RequestParam("curriculo") MultipartFile curriculo,
@@ -146,6 +146,7 @@ public class DesenvolvedorController {
 		area.setEmailDesenvolvedor(dev.getEmail());
 		habilidade.setEmailDesenvolvedor(dev.getEmail());
 		String habilidades[] = hab.split(" ");
+		String areas[] = areaString.split(" ");
 		
 		//adiciona as areas de atuação
 		for(String a: areas) {
@@ -172,7 +173,10 @@ public class DesenvolvedorController {
 	
 	@RequestMapping(value = "/devConfiguracoes", method = RequestMethod.GET)
 	public String config(Model model, HttpSession session) {
-		model.addAttribute("perfil", session.getAttribute("perfil"));
+		Desenvolvedor dev = (Desenvolvedor) session.getAttribute("perfil");
+		model.addAttribute("perfil", dev);
+		model.addAttribute("areas", serviceA.getAreas(dev.getEmail()));
+		model.addAttribute("habilidades", serviceH.getHabilidades(dev.getEmail()));
 		return "devConfiguracoes";
 	}
 	
