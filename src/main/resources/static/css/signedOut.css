@@ -352,11 +352,16 @@ select option {
     align-self: center;
     justify-content: center;
         color: #000 ;
-
     font-family: 'Quicksand', sans-serif;
     border-radius: 10px;
     outline: none;
     transition: transform .3s ease-in-out;
+    z-index: 5;
+}
+
+.group .index {
+    z-index: 4;
+    color: #000;
 }
 
 .top-content div:first-of-type{
@@ -525,4 +530,5 @@ select option {
     cursor: pointer;
     color: #000;
 }
+
 

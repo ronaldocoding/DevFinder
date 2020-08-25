@@ -11,12 +11,12 @@ CORES
 
 .blue {
     background-color: #4058D7 !important;
-    color: #FFF !important; 
+    color: #FFF !important;
 }
 
 .red {
     background-color: red !important;
-    color: #FFF !important; 
+    color: #FFF !important;
 }
 
 body {
@@ -35,7 +35,7 @@ body {
     height: 100%;
 }
 
-input { 
+input {
     outline: none;
     border: none;
 }
@@ -43,6 +43,7 @@ input {
 textarea {
     width: 100%;
 }
+
 /*NAVBAR*/
 .nav {
     padding: 10px;
@@ -189,7 +190,8 @@ textarea {
     transition: padding .3s ease-in;
 }
 
-.filtro, li h6{
+.filtro,
+li h6 {
     font-family: 'Quicksand', sans-serif;
     font-weight: 800;
     padding-bottom: 15px;
@@ -218,9 +220,11 @@ textarea {
     border-radius: 10px;
     cursor: pointer;
 }
+
 .box .user {
     display: flex;
 }
+
 .box .icon-user {
     height: 40px;
     width: 40px;
@@ -282,17 +286,19 @@ textarea {
 
 .box .descricao div {
     font-weight: 400;
-    
-text-overflow:ellipsis "...";
+
+    text-overflow: ellipsis "...";
 
 
 }
-.box .github-link{
+
+.box .github-link {
     background-color: #F1F4FB;
     border-radius: 20px;
     padding: 5px 20px;
 }
-.box .descricao .link{
+
+.box .descricao .link {
     position: relative;
     z-index: 100;
     text-align: end;
@@ -305,7 +311,8 @@ text-overflow:ellipsis "...";
     color: #000;
 }
 
-.box .descricao span, .box .descricao-sub span {
+.box .descricao span,
+.box .descricao-sub span {
     opacity: 0.6;
     margin-right: 10px;
 }
@@ -326,16 +333,18 @@ text-overflow:ellipsis "...";
 
 .edit {
     justify-self: end;
-    text-align: end; 
+    text-align: end;
 }
 
 .editar i {
     cursor: pointer;
 }
+
 .edit a {
-     text-decoration: none;
+    text-decoration: none;
     color: #000;
 }
+
 @media (max-width: 768px) {
     .sidebar .item {
         padding-left: 18px;
@@ -361,10 +370,11 @@ text-overflow:ellipsis "...";
 
 .sub {
     width: 95%;
-    
+
 }
 
 .meus-desafios {}
+
 @media (max-width: 1200px) {
     .meus-desafios {
         flex-direction: column-reverse;
@@ -398,7 +408,7 @@ text-overflow:ellipsis "...";
     font-family: 'Nunito', sans-serif;
 }
 
-.config .group>i{
+.config .group > i {
     opacity: 0;
 }
 
@@ -406,12 +416,14 @@ text-overflow:ellipsis "...";
     font-weight: 600;
 }
 
-.config input, .config textarea {
+.config input,
+.config textarea {
     outline: none;
     font-weight: 500;
 }
 
-.config input:focus, .config textarea:focus {
+.config input:focus,
+.config textarea:focus {
     background-color: #F1F4FB;
     border-radius: 5px;
 }
@@ -425,7 +437,8 @@ text-overflow:ellipsis "...";
     background-color: none;
 }
 
-.config input::placeholder, .config textarea::placeholder {
+.config input::placeholder,
+.config textarea::placeholder {
     color: #000;
     opacity: 0.7;
     font-family: 'Nunito', sans-serif;
@@ -453,13 +466,13 @@ text-overflow:ellipsis "...";
     font-family: 'Nunito', sans-serif;
 }
 
-select { 
+select {
     border: none;
     background-color: #F1F4FB;
     outline: none;
 }
 
-select option{ 
+select option {
     border: none;
     background-color: #FFF;
     outline: none;
@@ -481,7 +494,7 @@ select option{
 }
 
 
-.multiselect .selected{
+.multiselect .selected {
     background-color: #4058D7;
     color: #FFF;
     display: inline-flex;
@@ -490,16 +503,17 @@ select option{
     border-radius: 15px;
 }
 
-.multiselect i{
-   margin: auto 0;
+.multiselect i {
+    margin: auto 0;
     margin-left: 5px;
 }
 
-.perfil{
+.perfil {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
+
 .dropdown-menu {
     width: 100%;
     margin-top: -1px;
@@ -507,7 +521,7 @@ select option{
     overflow-y: scroll;
 }
 
-.dropdown-menu span{
+.dropdown-menu span {
     text-align: center;
     opacity: 0.75;
     margin-top: 40px;
@@ -565,6 +579,7 @@ select option{
 }
 
 .box li img {
+    display: block;
     width: 40px;
     height: 40px;
     overflow: hidden;
@@ -572,44 +587,119 @@ select option{
     border-radius: 100%;
     margin: 0 auto;
 }
+
 .box ul li {
     text-align: center;
     padding: 10px;
     width: 120px;
-    height: 90px;
-    
+/*    height: 90px;*/
+
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
-li a, li a:hover {
+li a,
+li a:hover {
     outline: none;
     text-decoration: none;
-    
+
     color: #000;
-    
+
 }
-li h6{
+
+li h6 {
     padding-bottom: 0;
-    overflow:hidden;
-  text-overflow:ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
 /********************************FOOTER************************************88*/
 .footer img {
     height: 54px;
 }
-.footer h5{
+
+.footer h5 {
     font-family: Quicksand, sans-serif;
     font-weight: 800;
     color: #4058D7;
 }
 
-.footer a, .footer a:hover{
+.footer a,
+.footer a:hover {
     text-decoration: none;
     font-family: Nunito, sans-serif;
     font-weight: normal;
     cursor: pointer;
     color: #000;
+}
+
+
+/******************************MODAL****************************/
+
+.modal-title {
+    font-family: Quicksand, sans-serif;
+}
+
+.modal-body label {
+    font-family: Nunito, sans-serif;
+    font-weight: 600;
+}
+
+.modal-input {
+    background: none;
+    border: none;
+
+    background-color: #F1F4FB;
+    border-radius: 5px;
+}
+
+.modal-button {
+    display: block;
+    border: none;
+    background-color: #FFF;
+    padding: 5px 25px;
+    margin: 0 auto;
+    align-self: center;
+    justify-content: center;
+    font-family: 'Quicksand', sans-serif;
+    border-radius: 10px;
+    outline: none;
+    transition: transform .3s ease-in-out;
+}
+
+
+/******************************PERFIL**************************8*/
+
+.perfil-photo {
+    border-radius: 10px;
+    margin: 0 auto;
+    display: block;
+    height: 100px;
+    width: 100px;
+    overflow: hidden;
+}
+
+.perfil-photo img{
+    width: 100%;
+}
+
+.perfil-data {
+    font-family: Nunito, sans-serif ;
+    font-size: 13px;
+}
+
+.perfil-data span {
+    background-color: #4058D7;
+    padding: 5px 12px;
+    font-size: 12px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    color: #FFF;
+    display: inline-block;
+    border-radius: 13px;
+    cursor: pointer;
+    margin-bottom: 5px;
 }
