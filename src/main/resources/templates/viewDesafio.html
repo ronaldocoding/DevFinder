@@ -35,14 +35,13 @@
 									type="date"> <input th:field="${desafio.horarioFim}"
 									type="time">
 							</div>
-
-						<button type="button" class="red" data-toggle="modal" data-target="#excluirDesafio">
+						<div class="modal-footer">
+						<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#excluirDesafio">
                             Excluir desafio
                         </button>
-							<button type="button" class="btn btn-secondary"
-								data-dismiss="modal">Close</button>
-							<button type="submit" class="btn btn-primary">Save
-								changes</button>
+							
+							<button type="submit" class="btn btn-primary">Salvar</button>
+								</div>
 						</form>
 
                         <!-- Modal -->
@@ -50,7 +49,7 @@
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+                                        <h5 class="modal-title" id="exampleModalCenterTitle">Confirmar exclusão</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
@@ -61,7 +60,7 @@
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
                                         <form th:action="@{'/deleteDesafio/'+${desafio.id}}">
-                                        	<button type="submit" class="btn btn-primary">Sim</button>
+                                        	<button type="submit" class="btn btn-danger">Sim</button>
                                         </form>
                                     </div>
                                 </div>

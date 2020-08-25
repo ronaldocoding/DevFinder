@@ -55,10 +55,10 @@ function criarMeusDesafioDesenvolvedor(index, nome, empresa, area, descricao, ha
         habs = habs + ' <span>' + item + '</span>'
     })
     console.log(email)
-    var botoes = '<button type="button" class="modal-btn azul" data-toggle="modal"' +
+    var botoes = '<button type="button" class="modal-button blue" style="display:inline-block;margin-right:10px" data-toggle="modal"' +
     	'data-target="#submeter" data-id='+index + ' data-email="'+email+'">Submeter</button>'+
-    	'<button type="button" class="modal-btn vermelho" data-toggle="modal" data-target="#exclusaoInscricao"'+
-    	'data-id='+index+ ' data-email="' +email+'"    >Desinscrever</button>'
+    	'<button type="button" class="modal-button red" data-toggle="modal" data-target="#exclusaoInscricao"'+
+    	'data-id='+index+ ' data-email="' +email+'"   style="display:inline-block" >Cancelar</button>'
     console.log(botoes)
     $(".desafios").append('<div id="desafio' + index + '" class="box white"">' +
         '<div class="row">' +
@@ -83,7 +83,7 @@ function criarMeusDesafioDesenvolvedor(index, nome, empresa, area, descricao, ha
         '<div class="col-6 data">' +
         '<i class="far fa-clock"></i> ' + dataTermino + ' ' + horaTermino +
         '</div>' +
-        '<div class="col edit">'+botoes+'</div>' +
+        '<div class="col edit" style="display:inline-block">'+botoes+'</div>' +
         '</div></div>')
 }
 

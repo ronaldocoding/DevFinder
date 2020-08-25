@@ -1,5 +1,15 @@
 <html>
 <head th:insert="fragment.html :: links">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+   
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+    
+<link rel="stylesheet" type="text/css" th:href="@{css/signedIn.css}">
 <meta charset="utf-8">
 </head>
 
@@ -18,6 +28,68 @@
 		<div th:unless="${perfil}">
 			<div th:insert="fragment.html :: deftopnav"></div>
 		</div>
+		<div class="container-fluid content">
+
+			<div class="row my-3 ml-1">
+				<!--                perfil empresa-->
+				<!-- 
+				<div class="col-12 ">
+					<div class="col-sm-12 box white row">
+						<div class="col-sm-3 ">
+							<div class="perfil-photo blue"></div>
+							<div class="modal-title text-center">
+								<b>Razão social</b>
+							</div>
+						</div>
+						<div class="col-sm-9 row perfil-data">
+							<div class="col-12">
+								<i class="fas fa-map-marker-alt"></i> Estado, Cidade, Rua número
+							</div>
+							<div class="col-md-4">
+								<i class="fas fa-phone"></i> 92 99999-7777
+							</div>
+							<div class="col-md-8">
+								<i class="fas fa-at"></i> empresa@gmail.com
+							</div>
+							<div class="col-md-4">
+								<i class="fas fa-users"></i> 3 Desenvolvedores
+							</div>
+							<div class="col-md-4">Vagas físicas</div>
+						</div>
+					</div>
+				</div>
+				-->
+				<!--                perfil dev-->
+				<div class="col-12 ">
+					<div class="col-sm-12 box white row">
+						<div class="col-sm-3 ">
+							<div class="perfil-photo blue"></div>
+							<div class="modal-title text-center">
+								<b th:text="${dev.nome}">Nome do usuário</b>
+							</div>
+						</div>
+						<div class="col-sm-9 row perfil-data">
+							<div class="col-12">
+								<i class="fas fa-map-marker-alt"></i> 
+								<div style="display: inline-block" th:text="${dev.endereco.estado}+'-'+${dev.endereco.cidade}+', '+${dev.endereco.rua}+', '+'n. '+${dev.endereco.numero}"></div>
+							</div>
+							<div class="col-md-4">
+								<i class="fas fa-phone"></i> <div style="display: inline-block" th:text="${dev.telefone}"></div>
+							</div>
+							<div class="col-md-8">
+								<i class="fas fa-at"></i><div style="display: inline-block" th:text="${dev.nome}"></div>
+							</div>
+							<div class="col-md-4">
+								<i class="fas fa-code"></i> Back-end
+							</div>
+							<div class="col-md-12">
+								<span>Java</span> <span>React</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--  
 		<div class="container-fluid content">
 			<div class="col-sm-12 perfil-top p-4">
 				<div class="row m-4 align-items-end">
@@ -66,10 +138,10 @@
 			</div>
 		</div>
 	</div>
+	-->
+			<script th:src="@{/js/moldesComponentes.js}"></script>
 
-	<script th:src="@{/js/moldesComponentes.js}"></script>
-
-	<script th:inline="javascript">
+			<script th:inline="javascript">
 		var desafios = [[${desafios}]]; //Your Thymleaf variable
 		
 		console.log(desafios)
@@ -104,6 +176,6 @@
 		})
 	</script>
 
-	<script th:src="@{/js/filtroDesafio.js}"></script>
+			<script th:src="@{/js/filtroDesafio.js}"></script>
 </body>
 </html>

@@ -51,23 +51,23 @@
 						<input style="display: none" id="emailEmpresa" type="text"
 							name="emailEmpresa"> <input style="display: none" id="id"
 							type="text" name="id">
-						<div class="form-group">
+						<div class="group">
 							<label>Link da solução</label> <input type="text" name="link"
-								class="form-control" placeholder="Link">
+								placeholder="Link">
 						</div>
-						<div class="form-group">
+						<div class="group">
 							<label>Documentação</label> <input type="file"
-								name="documentacao" class="form-control">
+								name="documentacao">
 						</div>
-						<div class="form-group" style="width: 100%">
-							<label>Descrição</label>
-							<div></div>
-							<textarea name="descricao"
-								placeholder="Descreva um pouco sobre sua solução" style=""></textarea>
+						<div class="group">
+							<label>Descrição</label> <input type="text" name="descricao"
+								placeholder="Descrição" style="">
 						</div>
 						<div class="modal-footer">
-							<button type="button" class="btn-azul" data-dismiss="modal">Fechar</button>
-							<button type="submit" class="modal-btn azul">Enviar</button>
+							<button type="button" 
+								data-dismiss="modal"  class="modal-button red">Cancelar</button>
+							<button type="submit" class="modal-button blue">Enviar</button>
+
 						</div>
 					</form>
 				</div>
@@ -91,10 +91,10 @@
 				<div class="modal-body">Tem certeza que deseja cancelar suas
 					inscrição nesse desafio?</div>
 				<div class="modal-footer border-0">
-					<button type="button" class="btn-azul" data-dismiss="modal">
+					<button type="button" class="modal-button blue" data-dismiss="modal">
 						<a>Cancelar</a>
 					</button>
-					<button type="button" class="modal-btn vermelho">
+					<button type="button" class="modal-button red">
 						<a id="excluir">Desinscrever</a>
 					</button>
 

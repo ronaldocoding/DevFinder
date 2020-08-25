@@ -161,9 +161,11 @@ textarea {
     transition: padding .3s ease-in, width .3s ease-in-out;
 }
 
-.sidebar .item div {
+.sidebar .item a {
     transition: opacity .3s ease-in;
     line-height: 1.8;
+    text-decoration: none;
+    color: inherit;
 }
 
 .sidebar .item i {
@@ -527,7 +529,6 @@ select option{
     border-radius: 10px;
     outline: none;
     margin-top: 30px;
-    margin-bottom: -20px;
     transition: transform .3s ease-in-out;
 }
 
@@ -593,23 +594,73 @@ li a, li a:hover {
 li h6{
     padding-bottom: 0;
     overflow:hidden;
-  text-overflow:ellipsis;
+  	display: -webkit-box;
+  	line-clamp:2;
+  	box-orient:2;
+  	
 }
+/******************************MODAL****************************/
 
-/********************************FOOTER************************************88*/
-.footer img {
-    height: 54px;
-}
-.footer h5{
+.modal-title {
     font-family: Quicksand, sans-serif;
-    font-weight: 800;
-    color: #4058D7;
 }
 
-.footer a, .footer a:hover{
-    text-decoration: none;
+.modal-body label {
     font-family: Nunito, sans-serif;
-    font-weight: normal;
+    font-weight: 600;
+}
+
+.modal-input {
+    background: none;
+    border: none;
+
+    background-color: #F1F4FB;
+    border-radius: 5px;
+}
+
+.modal-button {
+    display: block;
+    border: none;
+    background-color: #FFF;
+    padding: 5px 25px;
+    margin: 0 auto;
+    align-self: center;
+    justify-content: center;
+    font-family: 'Quicksand', sans-serif;
+    border-radius: 10px;
+    outline: none;
+    transition: transform .3s ease-in-out;
+}
+
+
+/******************************PERFIL**************************8*/
+
+.perfil-photo {
+    border-radius: 10px;
+    margin: 0 auto;
+    display: block;
+    height: 100px;
+    width: 100px;
+    overflow: hidden;
+}
+
+.perfil-photo img{
+    width: 100%;
+}
+
+.perfil-data {
+    font-family: Nunito, sans-serif ;
+    font-size: 13px;
+}
+.perfil-data span {
+    background-color: #4058D7;
+    padding: 5px 12px;
+    font-size: 12px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    color: #FFF;
+    display: inline-block;
+    border-radius: 13px;
     cursor: pointer;
-    color: #000;
+    margin-bottom: 5px;
 }
