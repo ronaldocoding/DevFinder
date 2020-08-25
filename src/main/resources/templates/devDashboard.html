@@ -117,7 +117,10 @@
         
         var ctxBar = document.getElementById('mais-inscritos').getContext('2d');
         var ctxDoughnut = document.getElementById('inscritos-submissoes').getContext('2d');
-		var inscricoes = [0,0]
+        var ctxBar = document.getElementById('mais-inscritos').getContext('2d');
+        var ctxDoughnut = document.getElementById('inscritos-submissoes').getContext('2d');
+		
+        var inscricoes = [0,0]
 	
         $.ajax({
     	    url:'inscricoesByDesenvolvedor/'+perfil.email,
@@ -209,12 +212,6 @@
     	    		mes = mes == 1?12:mes-1
     	    	}
     	    	
-    	    	dados.forEach(function(item, index){
-    	    		if(index != 0)
-    	    			dados[item] = dados[item]
-    	    	})	
-    	    	console.log(dados)
-    	    	//alert(maximo)
     	    	
     	    },
     	    error: function(error){

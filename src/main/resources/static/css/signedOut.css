@@ -377,6 +377,10 @@ select option {
     font-size: 15px;
 }
 
+.group .index{
+	z-index: 4;
+	color: '#000'
+}
 .config button[type=submit]:hover, .top-content .index.blue:hover{
     text-decoration: none;
     transform: scale(1.1);

@@ -161,11 +161,9 @@ textarea {
     transition: padding .3s ease-in, width .3s ease-in-out;
 }
 
-.sidebar .item a {
+.sidebar .item div {
     transition: opacity .3s ease-in;
     line-height: 1.8;
-    text-decoration: none;
-    color: inherit;
 }
 
 .sidebar .item i {
@@ -529,6 +527,7 @@ select option{
     border-radius: 10px;
     outline: none;
     margin-top: 30px;
+    margin-bottom: -20px;
     transition: transform .3s ease-in-out;
 }
 
@@ -595,4 +594,22 @@ li h6{
     padding-bottom: 0;
     overflow:hidden;
   text-overflow:ellipsis;
+}
+
+/********************************FOOTER************************************88*/
+.footer img {
+    height: 54px;
+}
+.footer h5{
+    font-family: Quicksand, sans-serif;
+    font-weight: 800;
+    color: #4058D7;
+}
+
+.footer a, .footer a:hover{
+    text-decoration: none;
+    font-family: Nunito, sans-serif;
+    font-weight: normal;
+    cursor: pointer;
+    color: #000;
 }
