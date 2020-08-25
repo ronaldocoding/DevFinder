@@ -51,7 +51,28 @@
 <body>
 	<!-- DEFAULT TOP NAV -->
 	<div th:fragment="deftopnav">
+		<script th:inline="javascript">
+			const search = function(pesquisa) {
 
+				$.ajax({
+					url : 'searchResult',
+					type : "GET",
+					contentType : "application/json",
+					async : false,
+					data : {
+						'texto' : $('#search').val().trim().split(' ')
+					},
+					success : function(response) {
+						console.log('deu certo')
+						$('#container').html(response)
+					},
+					error : function(error) {
+						console.log(error)
+					}
+				})
+
+			}
+		</script>
 		<div class="modal fade bd-example-modal" tabindex="-1" role="dialog"
 			aria-labelledby="myLargeModalLabel" aria-hidden="true">
 			<div class="modal-dialog modal-dialog-centered">
@@ -103,7 +124,7 @@
 				<form id="searchForm" th:action="@{/search}" method="post">
 					<input id="search" name="search" placeholder="Pesquise..." />
 				</form>
-				
+
 				<div class="item">
 					<i style='font-size: 15px; justify-content: flex-end' class='fas'>&#xf002;</i>
 				</div>
@@ -127,32 +148,7 @@
 				<i class="fas fa-user-circle"></i>
 			</div>
 
-			<script>
-			
 
-				$(window).on("resize", logo);
-				$(window).on("load", logo);
-				const search = function(pesquisa) {
-
-					$.ajax({
-						url : 'searchResult',
-						type : "GET",
-						contentType : "application/json",
-						async : false,
-						data : {
-							'texto' : $('#search').val().trim().split(' ')
-						},
-						success : function(response) {
-							console.log('deu certo')
-							$('#container').html(response)
-						},
-						error : function(error) {
-							console.log(error)
-						}
-					})
-
-				}
-			</script>
 			<script th:inline="javascript">
 				/*<![CDATA[*/
 
@@ -194,20 +190,9 @@
 	<!-- LOGGED TOP NAV -->
 	<nav th:fragment="loggedtopnav" class="nav">
 		<script th:inline="javascript">
-			var logo = function() {
-				if ($(window).width() <= 710) {
-					$(".logsdo").addClass("small");
-					$(".buscar").hide();
-				} else {
-					$(".logo").removeClass("small");
-					$(".buscar").show();
-				}
-			};
-
-			$(window).on("resize", logo);
-			$(window).on("load", logo);
+		
 			const search = function(pesquisa) {
-
+				console.log()
 				$.ajax({
 					url : 'searchResult',
 					type : "GET",

@@ -161,9 +161,11 @@ textarea {
     transition: padding .3s ease-in, width .3s ease-in-out;
 }
 
-.sidebar .item div {
+.sidebar .item a {
     transition: opacity .3s ease-in;
     line-height: 1.8;
+    text-decoration: none;
+    color: inherit;
 }
 
 .sidebar .item i {
@@ -527,7 +529,6 @@ select option{
     border-radius: 10px;
     outline: none;
     margin-top: 30px;
-    margin-bottom: -20px;
     transition: transform .3s ease-in-out;
 }
 

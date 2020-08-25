@@ -59,8 +59,16 @@
 
 	<script th:src="@{/js/moldesComponentes.js}"></script>
 	<script th:inline="javascript">
-		var desafios = [[${desafios}]]; //Your Thymleaf variable
 		
+		var desafios = [[${desafios}]]; //Your Thymleaf variable
+		var desafiosSub = [[${desafiosSub}]];
+		console.log(desafios)
+		console.log(desafiosSub)
+		
+		var ids = []
+		desafiosSub.forEach(function(item, index){
+			ids.push(item.id)
+		})
 		
 		for(var i = 0; i < desafios.length; i++){
 			var emailEmpresa = desafios[i].emailEmpresa;
@@ -89,9 +97,18 @@
 	    	    }
 			})
 		}
+		console.log('ids: ')
+		console.log(ids)
 		desafios.forEach(function (item, index) {
-			criarDesafioDesenvolvedor(item.id, item.nome, item.empresa.nomeFantasia, 
-		    			item.areaDesenvolvimento, item.descricao, item.habilidades, item.dataFim, item.horarioFim)
+			if(ids.indexOf(item.id) == -1){
+				criarDesafioDesenvolvedor(item.id, item.nome, item.empresa.nomeFantasia, 
+		    			item.areaDesenvolvimento, item.descricao, item.habilidades, item.dataFim, item.horarioFim, item.emailEmpresa)
+			}
+			else{
+				criarDesafioParticipando(item.id, item.nome, item.empresa.nomeFantasia, 
+		    			item.areaDesenvolvimento, item.descricao, item.habilidades, item.dataFim, item.horarioFim, item.emailEmpresa)
+			}	
+		
 		})
 	</script>
 
@@ -110,6 +127,8 @@
     	    async:false,
             contentType: "application/json",
     	    success: function(response) {
+    	    	console.log('pqp')
+    	    	console.log(response)
     	    	response.forEach(function(item){
     	    		if(item.submetido)
     	    			inscricoes[0] = item.quantidade
@@ -117,6 +136,7 @@
     	    			inscricoes[1] = item.quantidade
         	    				
     	    	})
+    	    	console.log('desgraça')
     	    	console.log(inscricoes)
     	    	response.forEach(function(item){
     	    		inscricoes[item.nome] = item.inscritos

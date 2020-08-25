@@ -1,6 +1,7 @@
 var activeBox = 0;
 
 function resize() {
+	console.log('resize')
     $('.section').each(function (index) {
         if (index === activeBox) {
             console.log($(this).css('height') + ' box:' + index)

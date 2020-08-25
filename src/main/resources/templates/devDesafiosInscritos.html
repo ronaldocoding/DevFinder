@@ -131,7 +131,14 @@
 
 	<script th:inline="javascript">
 		var desafios = [[${desafios}]]; //Your Thymleaf variable
+		var desafiosSub = [[${desafiosSub}]];
+		console.log(desafios)
+		console.log(desafiosSub)
 		
+		var ids = []
+		desafiosSub.forEach(function(item, index){
+			ids.push(item.id)
+		})
 		
 		for(var i = 0; i < desafios.length; i++){
 			var emailEmpresa = desafios[i].emailEmpresa;
@@ -159,12 +166,16 @@
 	    	    	console.log(error)
 	    	    }
 			})
-				console.log(desafios[i])		
-   		        console.log('terminou o ajax')
 		}
 		desafios.forEach(function (item, index) {
-		    criarMeusDesafioDesenvolvedor(item.id, item.nome, item.empresa.nomeFantasia, 
+			if(ids.indexOf(item.id) != -1){
+				criarMeusDesafioDesenvolvedor(item.id, item.nome, item.empresa.nomeFantasia, 
 		    			item.areaDesenvolvimento, item.descricao, item.habilidades, item.dataFim, item.horarioFim, item.emailEmpresa)
+			}
+			else{
+				criarDesafioEnviado(item.id, item.nome, item.empresa.nomeFantasia, 
+		    			item.areaDesenvolvimento, item.descricao, item.habilidades, item.dataFim, item.horarioFim, item.emailEmpresa)
+			}
 		})
 	</script>
 

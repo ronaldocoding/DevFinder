@@ -23,7 +23,8 @@
 				</div>
 				<div class="row">
 					<div class="col-xl-8 mb-2 p-0 mx-auto">
-						<div class="col-12 filtro">Veja os desafios que estão em alta</div>
+						<div class="col-12 filtro">Veja os desafios que estão em
+							alta</div>
 						<div class="col-sm-12 filtro mt-2">
 
 							Estado <select class="white filtro-estado">
@@ -89,8 +90,8 @@
 			})
 		}
 		desafios.forEach(function (item, index) {
-		    criarDesafioView(item.id, item.nome, item.empresa.nomeFantasia, 
-		    			item.areaDesenvolvimento, item.descricao, item.habilidades, item.dataFim, item.horarioFim)
+		    criarDesafioEmpresa(item.id, item.nome, item.empresa.nomeFantasia, 
+		    			item.areaDesenvolvimento, item.descricao, item.habilidades, item.dataFim, item.horarioFim, item.emailEmpresa)
 		})
 	</script>
 

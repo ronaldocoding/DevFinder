@@ -59,6 +59,10 @@ public class DesafioService {
 		return (ArrayList<Desafio>) repository.findDesafio(texto);
 	}
 	
+	public ArrayList<Desafio> getDesafiosPendentes(String email) {
+		return (ArrayList<Desafio>) repository.findDesafioPendentes(email);
+	}
+	
 	public ArrayList<Map<String, Integer>> getInscricoes(String email){
 		return (ArrayList<Map<String, Integer>>) repository.findInscricoes(email);
 	}

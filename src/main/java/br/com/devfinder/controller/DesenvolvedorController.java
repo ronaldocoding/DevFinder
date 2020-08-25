@@ -167,8 +167,11 @@ public class DesenvolvedorController {
 	
 	@RequestMapping(value = "/devDashboard", method = RequestMethod.GET)
 	public String dashboard(Model model, HttpSession session) {
+		Desenvolvedor dev = (Desenvolvedor) session.getAttribute("perfil");
 		model.addAttribute("perfil", session.getAttribute("perfil"));
 		model.addAttribute("desafios", serviceD.getMaisInscritosDesafios());
+
+		model.addAttribute("desafiosSub",serviceD.getDesafiosInscritos(dev.getEmail()));
 		return "devDashboard";
 	}
 	
@@ -185,7 +188,7 @@ public class DesenvolvedorController {
 	public String devMeusDesafios(Model model, HttpSession session) {
 		Desenvolvedor dev = (Desenvolvedor) session.getAttribute("perfil");
 		model.addAttribute("desafios",serviceD.getDesafiosInscritos(dev.getEmail()));
-
+		model.addAttribute("desafiosSub",serviceD.getDesafiosPendentes(dev.getEmail()));
 		model.addAttribute("service",serviceDH);
 		model.addAttribute("perfil", session.getAttribute("perfil"));
 		model.addAttribute("solucao", new Solucao());

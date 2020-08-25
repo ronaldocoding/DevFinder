@@ -88,6 +88,7 @@ function selectHab(habId) {
 	$('#' + habId).addClass("disabled")
 	$("#span" + str).show()
 	$("#span" + str + " i").css("opacity", "1")
+	resize()
 }
 function removeHab(habId) {
 	const str = habId.substring(4)
@@ -109,6 +110,7 @@ function removeHab(habId) {
 	}
     $("#drop" + str).removeClass("disabled")
     $('#'+habId).hide();
+    resize()
 }
 
 $(document).ready(function() {

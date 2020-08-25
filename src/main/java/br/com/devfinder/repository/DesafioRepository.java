@@ -26,6 +26,9 @@ public interface DesafioRepository extends JpaRepository<Desafio, DesafioId>, De
 	@Query(value = "SELECT * FROM DESAFIO D, DESENVOLVEDOR_DESAFIO DD WHERE DD.EMAIL_DESENVOLVEDOR = ?1 AND DD.ID_DESAFIO=D.ID", nativeQuery = true)
 	List<Desafio>findDesafioInscritos(String email);
 	
+	@Query(value = "SELECT * FROM DESAFIO D, DESENVOLVEDOR_DESAFIO DD WHERE DD.EMAIL_DESENVOLVEDOR = ?1 AND DD.ID_DESAFIO=D.ID and dd.submetido=0", nativeQuery = true)
+	List<Desafio>findDesafioPendentes(String email);
+	
 	@Query(value = "select d.nome, count(*) as inscritos from desenvolvedor_desafio INNER JOIN desafio d on d.id=id_desafio where d.email_empresa=?1 group by id_desafio;", nativeQuery = true)
 	List<Map<String,Integer>> findInscricoes(String email);
 	

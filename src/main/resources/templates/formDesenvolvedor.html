@@ -164,7 +164,7 @@
 								</div>
 								<div class="group">
 									<label>Linkedin</label> <input th:field="*{dev.linkedIn}"
-										type="url" placeholder="CPF" style="width: 100%">
+										type="url" placeholder="Linkedin" style="width: 100%">
 								</div>
 								<div class="group">
 									<label>Github</label><br> <input th:field="*{dev.gitHub}"
@@ -203,6 +203,7 @@
 	<script th:src="@{js/cadastro.js}"></script>
 	<script th:src="@{js/habilities.js}"></script>
 	<script th:inline="javascript">
+	/*
 		$("#senha").keyup(function() {
 			var f = testaSenha();
 			var strong = '';
@@ -221,7 +222,7 @@
 			$('.passwordStrong').append('Senha ' + strong);
 
 		});
-
+	*/
 		$(document).ready(function() {
 			$('#cpf').mask('000.000.000-00', {
 				reverse : true
