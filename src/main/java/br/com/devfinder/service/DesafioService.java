@@ -50,6 +50,11 @@ public class DesafioService {
 	public List<Desafio> getDesafios(String emailEmpresa) {
 		return repository.findAllByEmpresa(emailEmpresa);
 	}
+	
+	public List<Desafio> getMaisInscritosDesafios() {
+		return repository.findMaisInscritos();
+	}
+	
 	public ArrayList<Desafio> getDesafios(String[] texto) {
 		return (ArrayList<Desafio>) repository.findDesafio(texto);
 	}

@@ -32,6 +32,9 @@ public interface DesafioRepository extends JpaRepository<Desafio, DesafioId>, De
 	@Query(value = "select count(*) as total, SUBSTRING(data_envio, 4, 2)*1 as mes from solucao where email_empresa_desafio=?1 group by SUBSTRING(data_envio, 4, 2) order by mes DESC limit 7;", nativeQuery=true)
 	List<Map<String,Integer>> findSubmissoes(String email);
 	
+	@Query(value = "select d.* from desafio d inner join desenvolvedor_desafio dd on dd.id_desafio=d.id group by d.id order by count(*) desc;", nativeQuery=true) 
+	List<Desafio> findMaisInscritos();
+	
 	@Query(value = "SELECT * FROM DESAFIO WHERE ID = ?1", nativeQuery = true)
 	Desafio findById(int id);
 	

@@ -39,6 +39,7 @@ public class DesafioRepositoryImpl implements DesafioRepositoryCustom{
             predicatesDesc.add(cb.like(descricaoPath, '%'+texto[i]+'%'));
             predicatesNome.add(cb.like(nomePath, '%'+texto[i]+'%'));
         }
+       
         query.select(user)
         .where(cb.or(cb.and(predicatesNome.toArray(new Predicate[predicatesNome.size()])), 
         		cb.or(predicatesDesc.toArray(new Predicate[predicatesDesc.size()]))));
@@ -46,6 +47,5 @@ public class DesafioRepositoryImpl implements DesafioRepositoryCustom{
         return entityManager.createQuery(query)
             .getResultList();       
 	}
-
 	
 }

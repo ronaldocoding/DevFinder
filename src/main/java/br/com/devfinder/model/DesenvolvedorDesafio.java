@@ -36,6 +36,9 @@ public class DesenvolvedorDesafio implements Serializable {
 	@Column(name = "HORA_INSCRICAO")
 	private String horarioInscricao;
 
+	@Column(name = "submetido")
+	private boolean submetido;
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "EMAIL_DESENVOLVEDOR", referencedColumnName = "EMAIL", nullable = false, insertable = false, updatable = false)
 	private Desenvolvedor desenvolvedor;
@@ -58,6 +61,7 @@ public class DesenvolvedorDesafio implements Serializable {
 		id.setIdDesafio(idDesafio);
 		this.dataInscricao = dateFormat.format(date);
 		this.horarioInscricao = timeFormat.format(date);
+		this.submetido = false;
 	}
 
 	public DesenvolvedorDesafioId getId() {

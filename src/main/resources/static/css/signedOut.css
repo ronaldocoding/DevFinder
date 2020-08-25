@@ -65,7 +65,7 @@ input, textarea {
     display: flex;
 }
 
-.search {
+.search, .input{
     display: flex;
     background-color: rgba(64, 88, 215, 0.1);
     border-radius: 10px;
@@ -122,6 +122,8 @@ input, textarea {
 
 .sign-button {
     display: none;
+    font-size: 30px; 
+    margin: auto 0;
 }
 
 .modal-body {
@@ -300,6 +302,14 @@ select option {
     display: block;
 }
 
+.content {
+    width: 100%;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    justify-items: center;
+}
+
 
 .config input[type=submit], .index{
 /*    display: block;*/
@@ -319,6 +329,17 @@ select option {
     transition: transform .3s ease-in-out;
 }
 
+.top-content div:first-of-type{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.top-content .index{
+    display: inline-block;
+}
+
 .group>span{
     display: block;
     color: rgba(245, 0, 50, 1);
@@ -326,7 +347,8 @@ select option {
     font-size: 15px;
 }
 
-.config button[type=submit]:hover {
+.config button[type=submit]:hover, .top-content .index.blue:hover{
+    text-decoration: none;
     transform: scale(1.1);
 }
 
@@ -353,7 +375,38 @@ select option {
     justify-content: center;
 }
 
+.top-content {
+    background-color: #FFF;
+    width: 100%;
+    margin: 0;
+    margin-top: 70px;
+    text-align: center;
+    padding: 40px;
+}
 
+.infos div{
+    display: block;
+    padding: 30px;
+    font-family: Quicksand, sans-serif;
+    font-size: 15px;
+}
+
+.infos > div::after {
+    display: inline-block;
+    height: 100%;
+    width: 10px;
+    background-color: #4058D7;
+}
+
+.infos div {
+    text-align: center;
+}
+.infos img {
+    height: 100px;
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+}
 
 @media (max-width: 800px) {
     .sign {
@@ -416,3 +469,20 @@ select option {
         display: none;
     }
 }
+
+
+/********************************FOOTER************************************88*/
+.footer h5{
+    font-family: Quicksand, sans-serif;
+    font-weight: 800;
+    color: #4058D7;
+}
+
+.footer a, .footer a:hover{
+    text-decoration: none;
+    font-family: Nunito, sans-serif;
+    font-weight: normal;
+    cursor: pointer;
+    color: #000;
+}
+

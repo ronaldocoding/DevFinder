@@ -21,6 +21,29 @@
 						<canvas id="inscritos-submissoes" height="200"></canvas>
 					</div>
 				</div>
+				<div class="row">
+					<div class="col-xl-8 mb-2 p-0 mx-auto">
+						<div class="col-12 filtro">Veja os desafios que estão em alta</div>
+						<div class="col-sm-12 filtro mt-2">
+
+							Estado <select class="white filtro-estado">
+								<option>Todos</option>
+								<option>Finalizados</option>
+								<option>Em andamento</option>
+							</select> Área <select class="white filtro-area">
+								<option>Todos</option>
+								<option>Front-end</option>
+								<option>Back-end</option>
+								<option>Full stack</option>
+								<option>Data science</option>
+							</select>
+
+
+						</div>
+						<span class="none-result">Nenhum resultado encontrado</span>
+						<div class="desafios row mt-2"></div>
+					</div>
+				</div>
 			</div>
 		</div>
 
@@ -32,6 +55,47 @@
 			$('#regForm').submit()
 		})
 	</script>
+
+	<script th:src="@{/js/moldesComponentes.js}"></script>
+	<script th:inline="javascript">
+		var desafios = [[${desafios}]]; //Your Thymleaf variable
+		
+		
+		for(var i = 0; i < desafios.length; i++){
+			var emailEmpresa = desafios[i].emailEmpresa;
+			var id = desafios[i].id
+			//console.log(desafios[i])
+			$.ajax({
+    	    	url:'desafioHabilidades/'+emailEmpresa+'/'+id,
+	    	    type: "GET",
+	    	    async: false,
+	            contentType: "application/json",
+	    	    data:{
+	    	    	
+	    	    },
+	    	    success: function(response) {
+	    	    	
+	    	    	var habilidades = []
+	    	    
+	    	    	for(var j = 0; j < response.length; j++){
+	    	    		habilidades.push(response[j].habilidade)
+	    	    	}
+	    	    	desafios[i].habilidades = habilidades
+	    	    	
+    	        },
+	    	    error: function(error){
+	    	    	console.log(error)
+	    	    }
+			})
+		}
+		desafios.forEach(function (item, index) {
+		    criarDesafioView(item.id, item.nome, item.empresa.nomeFantasia, 
+		    			item.areaDesenvolvimento, item.descricao, item.habilidades, item.dataFim, item.horarioFim)
+		})
+	</script>
+
+	<script th:src="@{/js/filtroDesafio.js}"></script>
+
 	<script th:inline="javascript">
         var perfil = [[${perfil}]]
         

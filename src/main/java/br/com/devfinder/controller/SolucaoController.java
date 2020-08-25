@@ -9,6 +9,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -97,6 +98,13 @@ public class SolucaoController {
 	public List<Solucao> findAllHabilidadesByDesenvolvedor(@PathVariable String emailDesenvolvedor) {
 		return service.getSolucoesByDesenvolvedor(emailDesenvolvedor);
 	}
+
+	@GetMapping("/historicoByDesenvolvedor/{emailDesenvolvedor}")
+	@ResponseBody
+	public List<Map<Integer, Integer>> findHistoricoByDev(@PathVariable String emailDesenvolvedor) {
+		return service.findHistorico(emailDesenvolvedor);
+	}
+
 
 	@GetMapping("/solucaoById/{emailEmpresa}/{emailDesenvolvedor}/{idDesafio}")
 	public Solucao findSolucaoById(@PathVariable String emailEmpresa, @PathVariable String emailDesenvolvedor,

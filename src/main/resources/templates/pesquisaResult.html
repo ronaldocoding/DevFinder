@@ -14,28 +14,6 @@
 
 		</div>
 	</div>
-	<div class="col-xl-8 mb-2 p-0 mx-auto row">
-		<div class="col-md-3 filtro mt-2">Desafios</div>
-
-		<div class="col-lg-7 filtro mt-2 ml-lg-auto">
-
-			Estado <select class="white filtro-estado">
-				<option>Todos</option>
-				<option>Finalizados</option>
-				<option>Em andamento</option>
-			</select> Área <select class="white filtro-area">
-				<option>Todos</option>
-				<option>Front-end</option>
-				<option>Back-end</option>
-				<option>Full stack</option>
-				<option>Data science</option>
-			</select>
-
-
-		</div>
-		<span class="none-result">Nenhum resultado encontrado</span>
-		<div id="desfios" class="desafios row"></div>
-	</div>
 </div>
 
 <!-- <div class="bg-degrade azul">
@@ -142,7 +120,6 @@
 	
 </div>
 -->
-<script th:src="@{/js/moldesComponentes.js}"></script>
 <script th:inline="javascript"> 
 	var devs = [[${devs}]]
 	var emps = [[${emps}]]
@@ -153,10 +130,12 @@
 	emps.forEach(function(el){
 		criarEmpresaPesquisa(el)
 	})
+	/*
 	for(var i = 0; i < desafios.length; i++){
 			var emailEmpresa = desafios[i].emailEmpresa;
 			var id = desafios[i].id
 			//console.log(desafios[i])
+			
 			$.ajax({
     	    	url:'/desafioHabilidades/'+emailEmpresa+'/'+id,
 	    	    type: "GET",
@@ -175,15 +154,16 @@
 	    	    	console.log(error)
 	    	    }
 			})	
+			
 		}
 		desafios.forEach(function (item, index) {
 			
 		    criarDesafioEmpresa(item.id, item.nome, item.empresa.nomeFantasia, 
 		    			item.areaDesenvolvimento, item.descricao, item.habilidades, item.dataFim, item.horarioFim)
 		})
+		*/
  
 </script>
-<script th:src="@{/js/filtroDesafio.js}"></script>
 <!-- 
 <script th:inline="javascript">
 	$('#linkLogin').html('Resultados para '+$('#search').val())

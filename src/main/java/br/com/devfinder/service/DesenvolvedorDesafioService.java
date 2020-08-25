@@ -1,6 +1,7 @@
 package br.com.devfinder.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -54,7 +55,16 @@ public class DesenvolvedorDesafioService {
 	 */
 	public String deleteInscricao(DesenvolvedorDesafioId id) {
 		repository.deleteById(id);
+		
 		return "desafioHabilidade deletada: " + id;
+	}
+	public void update(DesenvolvedorDesafioId id) {
+		repository.update(id.getEmailEmpresa(), id.getEmailDesenvolvedor(), id.getIdDesafio());
+		
+	}
+	
+	public List<Map<Integer, Integer>> getInscricoesGrafico(String email) {
+		return repository.findInscricoes(email);
 	}
 	
 	public void deleteInscricao(String emailDesenvolvedor) {

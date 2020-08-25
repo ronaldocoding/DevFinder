@@ -1,6 +1,7 @@
 package br.com.devfinder.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -55,6 +56,11 @@ public class DesenvolvedorDesafioController {
 		return service.getInscricaoById(id);
 	}
 
+	@GetMapping("/inscricoesByDesenvolvedor/{emailDev}")
+	@ResponseBody
+	public List<Map<Integer, Integer>> findInscricoesGrafico(@PathVariable String emailDev) {
+		return service.getInscricoesGrafico(emailDev);
+	}
 	@GetMapping("/deleteInscricao/{emailEmpresa}/{idDesafio}")
 	public String deleteInscricao(@PathVariable String emailEmpresa,@PathVariable int idDesafio, HttpSession session) {
 		Desenvolvedor dev = (Desenvolvedor) session.getAttribute("perfil");

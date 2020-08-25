@@ -1,12 +1,14 @@
 package br.com.devfinder.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.devfinder.model.Solucao;
 import br.com.devfinder.model.ids.SolucaoId;
+import br.com.devfinder.repository.DesenvolvedorDesafioRepository;
 import br.com.devfinder.repository.SolucaoRepository;
 
 /**
@@ -19,10 +21,14 @@ public class SolucaoService {
 	@Autowired
 	private SolucaoRepository repository;
 
+	@Autowired
+	private DesenvolvedorDesafioRepository repositoryDD;
+
 	/**
 	 * Métodos POST
 	 */
 	public Solucao saveSolucao(Solucao solucao) {
+		repositoryDD.update(solucao.getId().getEmailEmpresa(), solucao.getId().getEmailDesenvolvedor(), solucao.getId().getIdDesafio());
 		return repository.save(solucao);
 	}
 
@@ -58,5 +64,9 @@ public class SolucaoService {
 
 	public void deleteSolucaoByEmpresa(String emailEmpresa) {
 		repository.deleteAllByEmpresa(emailEmpresa);
+	}
+	
+	public List<Map<Integer, Integer>> findHistorico(String emailEmpresa) {
+		return repository.findHistorico(emailEmpresa);
 	}
 }

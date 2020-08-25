@@ -36,60 +36,61 @@
 <link rel="stylesheet" type="text/css" th:href="@{/css/signedOut.css}">
 </head>
 <body>
-
-	<div th:insert="fragment.html :: deftopnav"></div>
-	<div class="modal fade bd-example-modal" tabindex="-1" role="dialog"
-		aria-labelledby="myLargeModalLabel" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered">
-			<div class="modal-content mx-auto border-0">
-
-				<div class="modal-body p-0 ">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-					<div class="login">
-						<form>
-							<input placeholder="Email" required> <input
-								placeholder="senha" type="password" required> <input
-								type="submit">
-						</form>
-						<div class="message">
-							Não tem conta? <span>Se cadastre</span>
-						</div>
-
-					</div>
-					<div class="sign-up">
-						<a href="cadastroDev.html">
-							<button>Desenvolvedor</button>
-						</a> <a href="cadastroEmp.html">
-							<button>Empresa</button>
-						</a>
-						<div class="message">
-							Já é cadastrado? <span>Entrar</span>
-						</div>
+	 <div class="container-fluid m-0 px-0" style="width: 100%">
+		<div th:replace="fragment.html :: deftopnav"></div>
+		<div class="container-fluid content mt-5 mx-0 px-0">
+			<div class="top-content row">
+				<div class="col-md-7">
+					<div class="index" style="font-size: 30px">DevFinder é uma
+						plataforma para recrutamento de desenvolvedores por meio de
+						desafios</div>
+					<div>
+						<a href="./cadastroEmp.html" class="index blue mb-3">Sou
+							empresa</a> <a href="./cadastroDev.html" class="index blue">Sou
+							desenvolvedor</a>
 					</div>
 				</div>
-
+				<div class="col-md-5">
+					<img th:src="@{/imgs/undraw_code_typing_7jnv.svg}"
+						style="height: 180px">
+				</div>
+			</div>
+			<div class="row mx-2 infos">
+				<div class="col-md">
+					<img th:src="@{/imgs/undraw_Team_page_re_cffb.svg}"> Se
+					você é um empresário, cadastre-se e crie desafios para recrutar
+					desenvolvedores de acordo com sua necessidade!
+				</div>
+				<div class="col-md">
+					<img th:src="@{/imgs/undraw_Freelancer_re_irh4.svg}"> Se
+					você é um desenvolvedor, cadastre-se e participe de desafios para
+					ser notado pelas empresas!
+				</div>
+				<div class="col-md">
+					<img th:src="@{/imgs/undraw_code_review_l1q9.svg}"> Treine
+					suas habilidades! Descubra empresas e desenvolvedores!
+				</div>
 
 			</div>
+
 		</div>
+		<div th:insert="fragment.html :: footer"></div>
 	</div>
-    <script>
-        $(document).ready(function () {
-            $('.modal-body .message span').click(function(){
+
+	<script>
+		$(document).ready(function() {
+            $('.modal-body .message span').click(function() {
                 $('.modal-body').toggleClass('on')
             })
-            
-            $('.sign button').click(function(){
+
+            $('.sign button').click(function() {
                 $('.modal-body').addClass('on')
             })
-            
-            $('.sign-button').click(function(){
+
+            $('.sign-button').click(function() {
                 $('.modal-body').removeClass('on')
             })
-            
-        })
-    </script>
+		})
+	</script>
 </body>
 </html>

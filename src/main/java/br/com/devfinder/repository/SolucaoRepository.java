@@ -1,6 +1,7 @@
 package br.com.devfinder.repository;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -21,6 +22,9 @@ public interface SolucaoRepository extends JpaRepository<Solucao, SolucaoId> {
 	
 	@Query(value = "SELECT * FROM SOLUCAO WHERE EMAIL_DESENVOLVEDOR = ?1", nativeQuery = true)
 	List<Solucao> findAllByDesenvolvedor(String emailDesenvolvedor);
+	
+	@Query(value="select count(*) as total,SUBSTRING(data_envio, 4, 2)*1 as mes from solucao where email_desenvolvedor=?1 group by SUBSTRING(data_envio, 4, 2) order by mes*1 asc;", nativeQuery=true)
+	List<Map<Integer, Integer>> findHistorico(String emaildev);
 	
 	@Modifying
 	@Transactional

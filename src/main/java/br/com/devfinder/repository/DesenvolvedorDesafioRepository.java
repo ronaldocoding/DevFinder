@@ -1,6 +1,7 @@
 package br.com.devfinder.repository;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Ronaldo Costa
@@ -23,6 +24,9 @@ public interface DesenvolvedorDesafioRepository extends JpaRepository<Desenvolve
 	@Query(value = "SELECT * FROM DESENVOLVEDOR_DESAFIO WHERE EMAIL_DESENVOLVEDOR = ?1", nativeQuery = true)
 	List<DesenvolvedorDesafio> findAllByDesenvolvedor(String emaildev);
 	
+	@Query(value = "select count(*) as quantidade, submetido from desafio inner join desenvolvedor_desafio dd on dd.id_desafio=id and STR_TO_DATE(data_fim, '%Y-%m-%d') > curdate() and dd.email_desenvolvedor=?1 group by submetido;", nativeQuery=true)
+	List<Map<Integer, Integer>> findInscricoes(String emailDev);
+	
 	@Modifying
 	@Transactional
 	@Query(value = "DELETE FROM DESENVOLVEDOR_DESAFIO WHERE EMAIL_DESENVOLVEDOR = ?1", nativeQuery = true)
@@ -32,4 +36,11 @@ public interface DesenvolvedorDesafioRepository extends JpaRepository<Desenvolve
 	@Transactional
 	@Query(value = "DELETE FROM DESENVOLVEDOR_DESAFIO WHERE EMAIL_EMPRESA_DESAFIO = ?1", nativeQuery = true)
 	void deleteAllByEmpresa(String emailEmpresa);
+	
+	@Modifying
+	@Transactional
+	@Query(value = "update DESENVOLVEDOR_DESAFIO set submetido=1 WHERE EMAIL_EMPRESA_DESAFIO = ?1 and email_desenvolvedor=?2 and id_desafio=?3", nativeQuery = true)
+	void update(String emailEmpresa, String emaildev, int dev);
+	
+	
 }

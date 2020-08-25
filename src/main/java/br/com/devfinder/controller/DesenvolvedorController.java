@@ -168,6 +168,7 @@ public class DesenvolvedorController {
 	@RequestMapping(value = "/devDashboard", method = RequestMethod.GET)
 	public String dashboard(Model model, HttpSession session) {
 		model.addAttribute("perfil", session.getAttribute("perfil"));
+		model.addAttribute("desafios", serviceD.getMaisInscritosDesafios());
 		return "devDashboard";
 	}
 	

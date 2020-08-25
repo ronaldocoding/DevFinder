@@ -84,6 +84,7 @@ public class UsuarioController {
 	public String search(Model model, @RequestParam("search") String pesquisa, HttpSession session) {
 		
 		model.addAttribute("pesquisa", pesquisa);
+		model.addAttribute("desafios", serviceDe.getDesafios());
 		
 		if(session.getAttribute("perfil") == null)
 			return "pesquisa";
