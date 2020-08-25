@@ -1,0 +1,190 @@
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="../static/css/signedIn.css" />
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <nav class="nav">
+            <div class="search">
+                <input placeholder="Pesquise..." />
+                
+                <div class="item">
+                    <i style='font-size:15px; justify-content: flex-end' class='fas'>&#xf002;</i>
+                </div>
+            </div>
+
+            <div class="nav-right">
+                <div class="item">
+                    <i style='font-size:20px' class='far'>&#xf0f3;</i>
+                </div>
+                <div class="item hovered">
+                    <i style='font-size:20px' class='far'>&#xf007;</i>
+                </div>
+            </div>
+        </nav>
+        <div class="sidebar-column">
+            <ul class="sidebar">
+                <li class="icon">
+                    <img alt="Logo" src="../static/imgs/df-logo.svg" />
+                </li>
+                <li>
+                    <a href="#" class="item">
+                        <i class="fas fa-home"></i>
+                        <div>Início</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="" class="item active">
+                        <i class="fas fa-th-list"></i>
+                        <div>Meus desafios</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="configuracoesEmp.html" class="item">
+                        <i class="fas fa-cog"></i>
+                        <div>Configurações</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="homepage.html" class="item"> <i class="fas fa-sign-out-alt"></i>
+                        <div>Sair</div>
+                    </a>
+
+                </li>
+            </ul>
+        </div>
+        <div class="container-fluid content">
+           
+            <div class="row my-3 ml-1">
+<!--                perfil empresa-->
+                <div class="col-12 ">
+                    <div class="col-sm-12 box white row">
+                        <div class="col-sm-3 ">
+                            <div class="perfil-photo blue">
+                            </div>
+                            <div class="modal-title text-center"><b>Razão social</b></div>
+                        </div>
+                        <div class="col-sm-9 row perfil-data">
+                            <div class="col-12">
+                                <i class="fas fa-map-marker-alt"></i>
+                                Estado, Cidade, Rua número
+                            </div>
+                            <div class="col-md-4"><i class="fas fa-phone"></i>
+                                92 99999-7777</div>
+                            <div class="col-md-8"><i class="fas fa-at"></i>
+                                empresa@gmail.com</div>
+                            <div class="col-md-4"><i class="fas fa-users"></i>
+                                3 Desenvolvedores</div>
+                            <div class="col-md-4">Vagas físicas</div>
+                        </div>
+                    </div>
+                </div>
+                
+<!--                perfil dev-->
+                <div class="col-12 ">
+                    <div class="col-sm-12 box white row">
+                        <div class="col-sm-3 ">
+                            <div class="perfil-photo blue">
+                            </div>
+                            <div class="modal-title text-center"><b>Nome do usuário</b></div>
+                        </div>
+                        <div class="col-sm-9 row perfil-data">
+                            <div class="col-12">
+                                <i class="fas fa-map-marker-alt"></i>
+                                Estado, Cidade, Rua número
+                            </div>
+                            <div class="col-md-4"><i class="fas fa-phone"></i>
+                                92 99999-7777</div>
+                            <div class="col-md-8"><i class="fas fa-at"></i>
+                                empresa@gmail.com</div>
+                            <div class="col-md-4"><i class="fas fa-code"></i>
+                                Back-end</div>
+                            <div class="col-md-12"><span>Java</span> <span>React</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+             <div class="row my-3 ml-1">
+                <a class="col-12 text-center" href="novoDesafio.html">
+                 
+                    <i class="fas fa-plus-circle"></i> Criar novo desafio
+                </a>
+            </div>
+            <div class="row meus-desafios">
+                <div class="col-lg-8 mx-auto mb-2">
+                    <div class="col-sm-12 filtro">
+                        Estado
+                        <select class="white filtro-estado">
+                            <option>Todos</option>
+                            <option>Finalizados</option>
+                            <option>Em andamento</option>
+                        </select>
+                        Área
+                        <select class="white filtro-area">
+                            <option>Todos</option>
+                            <option>Front-end</option>
+                            <option>Back-end</option>
+                            <option>Full-stack</option>
+                            <option>Data science</option>
+                        </select>
+                    </div>
+                    <span class="none-result">Nenhum resultado encontrado</span>
+                    <div class="row desafios">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../static/js/filtroDesafioEmp.js"></script>
+    <script>
+        
+        var ctxBar = document.getElementById('mais-inscritos').getContext('2d');
+        var ctxDoughnut = document.getElementById('inscritos-submissoes').getContext('2d');
+
+        var myChart = new Chart(ctxBar, {
+            type: 'horizontalBar',
+            data: {
+                labels: ['App de fisica', 'App de táxi', 'Rede social', 'App de floricultura', ],
+                datasets: [{
+                    label: 'Desafios',
+                    data: [19, 12, 5, 3, 3, 2],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                }]
+            },
+        });
+
+        var myDoughnutChart = new Chart(ctxDoughnut, {
+            type: 'line',
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                datasets: [{
+                    label: 'Submissões por mês',
+                    backgroundColor: 'red',
+                    borderColor: 'red',
+                    data: [
+                        2, 3, 4, 3, 2, 1, 3
+                    ],
+                    fill: false,
+                }]
+            },
+        });
+
+    </script>
+
+
+
+</body>
