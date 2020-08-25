@@ -132,7 +132,7 @@ $(document).ready(function () {
     $('span').each(function () {
         if ($(this).text() === 'Anterior') {
             $(this).hide()
-            $('input.blue').hide()
+            $('.group input.blue').hide()
 
         }
     })
@@ -189,10 +189,10 @@ $(document).ready(function () {
                     if ($(this).text() === 'Próximo') {
                         if (active + aux === sections - 1) {
                             $(this).hide()
-                            $('input.blue').show()
+                            $('.group input.blue').show()
                         } else {
                             $(this).show()
-                            $('input.blue').hide()
+                            $('.group input.blue').hide()
                         }
                     }
 
@@ -211,7 +211,7 @@ $(document).ready(function () {
 
 
         })
-        $('input.blue').click(function () {
+        $('.group input.blue').click(function () {
             validar()
 
         })

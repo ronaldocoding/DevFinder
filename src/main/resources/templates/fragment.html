@@ -51,42 +51,47 @@
 <body>
 	<!-- DEFAULT TOP NAV -->
 	<div th:fragment="deftopnav">
-		
-		<div class="modal fade bd-example-modal" tabindex="-1" role="dialog"
-			aria-labelledby="myLargeModalLabel" aria-hidden="true">
-			<div class="modal-dialog modal-dialog-centered">
-				<div class="modal-content mx-auto border-0">
 
-					<div class="modal-body p-0 ">
-						<button type="button" class="close" data-dismiss="modal"
-							aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-						<div class="login">
-							<form>
-								<input placeholder="Email" required> <input
-									placeholder="senha" type="password" required> <input
-									type="submit">
-							</form>
-							<div class="message">
-								Não tem conta? <span>Se cadastre</span>
-							</div>
-						</div>
-						<div class="sign-up">
-							<a href="cadastroDev.html">
-								<button>Desenvolvedor</button>
-							</a> <a href="cadastroEmp.html">
-								<button>Empresa</button>
-							</a>
-							<div class="message">
-								Já é cadastrado? <span>Entrar</span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		 
+        <div class="modal fade bd-example-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content mx-auto border-0">
+
+                    <div class="modal-body p-0 ">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <div class="login">
+                            <img src="../static/imgs/undraw_Login_re_4vu2.svg">
+                            <form style="width: 55%">
+                                <input placeholder="Email" required class="input mt-2" style="width: 100%">
+                                <input placeholder="senha" type="password" required
+                                       class="input my-2" style="width: 100%">
+                                <input type="submit" class="index blue" style="display: inherit; margin: 0 auto;"  value="Entrar">
+                            </form>
+                            <div class="message">
+                                Não tem conta? <span>Se cadastre</span>
+                            </div>
+                        </div>
+                        <div class="sign-up text-center justify-content-center" >
+                            <img src="../static/imgs/undraw_sign_in_e6hj.svg">
+                            <a href="/formDev">
+                                <button class="index blue text-center mt-2" style="display: block; margin: 0 auto">
+                                    Sou desenvolvedor
+                                </button>
+                            </a>
+                            <a href="/formDev">
+                                <button class="index blue text-center my-2" style="display: block; margin: 0 auto">
+                                    Sou empresa
+                                </button>
+                            </a>
+                            <div class="message">
+                                Já é cadastrado? <span>Entrar</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 		<nav class="nav">
 
 			<img alt="Logo" th:src="@{/imgs/df-logo.svg}" />
@@ -98,11 +103,14 @@
 			</div>
 
 			<div class="sign">
-				<form id="regForm" method="post" th:action="@{/redirectLogin}" style="display: flex; margin: auto 0">
+				<form id="regForm" method="post" th:action="@{/redirectLogin}"
+					style="display: flex; margin: auto 0">
 					<input type="email" class="input mr-1" placeholder="E-mail"
-						style="margin: auto 0" name="emaillogin" id="emaillogin"> <input placeholder="Senha"
-						class="input mr-1" type="password" style="margin: auto 0"  name="senhalogin" id="senhalogin">
-					<input type="submit" class="index blue" style="display: inherit" id="login" onclick="valida()">
+						style="margin: auto 0" name="emaillogin" id="emaillogin">
+					<input placeholder="Senha" class="input mr-1" type="password"
+						style="margin: auto 0" name="senhalogin" id="senhalogin">
+					<input type="submit" class="index blue" style="display: inherit"
+						id="login">
 				</form>
 				<button data-toggle="modal" data-target=".bd-example-modal"
 					class="index ml-2" style="display: inherit">Cadastrar</button>
@@ -112,85 +120,80 @@
 				<i class="fas fa-user-circle"></i>
 			</div>
 
-		<script th:inline="javascript">
-			/*<![CDATA[*/
-			
-			    var flag = [[${flag}]]; //Your Thymleaf variable
-			    var valida = function(){
-		    		var email = document.getElementById('emaillogin').value
-		    		var senha = document.getElementById('senhalogin').value		    		
-		    		console.log(email)
-		    		console.log(senha)
-		    		$.ajax({
-			    	    url: "/login",
-			    	    type: "GET",
-			            contentType: "application/json",
-			    	    data:{
-			    	    	"email":email,
-			    	    	"senha":senha
-			    	    },
-			    	    success: function(response) {
-			    	       if(response){
-			    	    	   document.getElementById('regForm').submit();
-			    	       }
+			<script th:inline="javascript">
+				/*<![CDATA[*/
 
-			    	       else{
-			    	    	   alert('error')
-			    	       }
-		    	        },
-			    	    error: function(xhr) {
-		    	            //Do Something to handle error
-		    	            console.log('deu pau')
-		    	        }
-			    	})
-			    	return false
-		    	}
-			   
-			/*]]>*/
-		</script>
+				$('#regForm').submit(function(e) {
+					var email = document.getElementById('emaillogin').value
+					var senha = document.getElementById('senhalogin').value
+					$.ajax({
+						url : "/login",
+						type : "GET",
+						contentType : "application/json",
+						data : {
+							"email" : email,
+							"senha" : senha
+						},
+						success : function(response) {
+							if (response) {
+								document.getElementById('regForm').submit();
+							}
+
+							else {
+								alert('psr amigao')
+								e.preventDefault()
+							}
+						},
+						error : function(xhr) {
+							//Do Something to handle error
+							console.log('deu pau')
+						}
+					})
+					event.preventDefault()
+				})
+
+				/*]]>*/
+			</script>
 
 		</nav>
 
 	</div>
 	<!-- LOGGED TOP NAV -->
 	<nav th:fragment="loggedtopnav" class="nav">
-		<script th:inline="javascript"> 
-		var logo= function(){
-			if($( window ).width()<=710){
-				$(".logsdo").addClass("small");
-				$(".buscar").hide();
+		<script th:inline="javascript">
+			var logo = function() {
+				if ($(window).width() <= 710) {
+					$(".logsdo").addClass("small");
+					$(".buscar").hide();
+				} else {
+					$(".logo").removeClass("small");
+					$(".buscar").show();
+				}
+			};
+
+			$(window).on("resize", logo);
+			$(window).on("load", logo);
+			const search = function(pesquisa) {
+
+				$.ajax({
+					url : 'searchResult',
+					type : "GET",
+					contentType : "application/json",
+					async : false,
+					data : {
+						'texto' : $('#search').val().trim().split(' ')
+					},
+					success : function(response) {
+						console.log('deu certo')
+						$('#container').html(response)
+					},
+					error : function(error) {
+						console.log(error)
+					}
+				})
+
 			}
-			else{
-				$(".logo").removeClass("small");
-				$(".buscar").show();
-			}
-		};
-		
-		$(window).on("resize", logo);
-		$(window).on("load", logo);
-		const search = function(pesquisa){
-			
-			$.ajax({
-	    	    url:'searchResult',
-	    	    type: "GET",
-	            contentType: "application/json",
-	            async: false,
-	    	    data:{
-	    	    	'texto':$('#search').val().trim().split(' ')
-	    	    },
-	    	    success: function(response) {
-	    	    	console.log('deu certo')
-					$('#container').html(response)
-    	        },
-	    	    error: function(error){
-	    	    	console.log(error)
-	    	    }
-	    	})
-
-		}
-
-
-	</script>
+		</script>
 
 		<div class="search">
 			<form id="searchForm" th:action="@{/search}" method="post">
@@ -227,15 +230,15 @@
 				th:attr="href='/logout'">Sair</a></li>
 		</ul>
 		<script>
-            	const url = window.location.href
-            	
-            	if(url === 'http://localhost:8080/devDashboard')
-            		document.getElementById('inicio').className += ' active'
-            	if(url === 'http://localhost:8080/devMeusDesafios')
-            		document.getElementById('desafios').className += ' active'
-         		if(url === 'http://localhost:8080/devConfiguracoes')
-         			document.getElementById('config').className += ' active'
-            </script>
+			const url = window.location.href
+
+			if (url === 'http://localhost:8080/devDashboard')
+				document.getElementById('inicio').className += ' active'
+			if (url === 'http://localhost:8080/devMeusDesafios')
+				document.getElementById('desafios').className += ' active'
+			if (url === 'http://localhost:8080/devConfiguracoes')
+				document.getElementById('config').className += ' active'
+		</script>
 
 	</div>
 	<!-- EMPRESA SIDEBAR -->
@@ -253,15 +256,15 @@
 				th:attr="href='/logout'">Sair</a></li>
 		</ul>
 		<script>
-            	const url = window.location.href
-            	
-            	if(url === 'http://localhost:8080/empDashboard')
-            		document.getElementById('inicio').className += ' active'
-            	if(url === 'http://localhost:8080/empMeusDesafios')
-            		document.getElementById('desafios').className += ' active'
-         		if(url === 'http://localhost:8080/empConfiguracoes')
-         			document.getElementById('config').className += ' active'
-            </script>
+			const url = window.location.href
+
+			if (url === 'http://localhost:8080/empDashboard')
+				document.getElementById('inicio').className += ' active'
+			if (url === 'http://localhost:8080/empMeusDesafios')
+				document.getElementById('desafios').className += ' active'
+			if (url === 'http://localhost:8080/empConfiguracoes')
+				document.getElementById('config').className += ' active'
+		</script>
 
 	</div>
 	<!-- CORP SIDEBAR -->

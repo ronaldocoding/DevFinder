@@ -1,6 +1,6 @@
 ﻿<!doctype html>
 <head>
-<link rel="stylesheet" type="text/css" th:href="@{css/signedOut.css}">
+
 <meta charset="utf-8">
 
 <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
@@ -24,16 +24,17 @@
 	integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
 	crossorigin="anonymous"></script>
 <script type="text/javascript" th:src="@{js/jquery.mask.js}"></script>
+<link rel="stylesheet" type="text/css" th:href="@{css/signedOut.css}">
 
 </head>
 <body>
-	<div style="overflow-x: hidden; overflow-y: hidden;"
-		class="container-fluid">
-		<div th:insert="fragment.html :: deftopnav"></div>
-		<div class="container-fluid config mt-5">
+	<div class="container-fluid m-0 px-0" style="width: 100%"  >
+		<div th:replace="fragment.html :: deftopnav"></div>
+		<div class="container-fluid config mt-5" style="overflow: hidden">
 			<div class="row mt-5">
 				<div class="col-12 px-1">
 					<div class="col-sm box white perfil" style="height: 100%">
+
 						<form style="overflow: hidden" id="regFormCad"
 							th:action="@{/addEmpresa}" method="post"
 							enctype="multipart/form-data">
@@ -50,7 +51,7 @@
 										style="width: 100%">
 								</div>
 								<div class="group">
-									<label>CNPJ</label> <input type="text" placeholder="CNPJ" 
+									<label>CNPJ</label> <input type="text" placeholder="CNPJ"
 										th:field="*{empresa.cnpj}" style="width: 100%" id="CNPJ">
 								</div>
 
@@ -166,6 +167,7 @@
 				</div>
 			</div>
 		</div>
+		<div th:insert="fragment.html :: footer"></div>
 	</div>
 
 

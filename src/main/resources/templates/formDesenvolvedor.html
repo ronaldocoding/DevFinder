@@ -1,6 +1,6 @@
 ﻿<!doctype html>
 <head>
-<link rel="stylesheet" type="text/css" th:href="@{css/signedOut.css}">
+
 <meta charset="utf-8">
 
 <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
@@ -24,35 +24,36 @@
 	integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
 	crossorigin="anonymous"></script>
 <script type="text/javascript" th:src="@{js/jquery.mask.js}"></script>
+<link rel="stylesheet" type="text/css" th:href="@{css/signedOut.css}">
 
 </head>
 <body>
-	<div style="overflow-x: hidden; overflow-y: hidden;"
-		class="container-fluid">
-		<div th:insert="fragment.html :: deftopnav"></div>
-		<div class="container-fluid config mt-5">
+	<div class="container-fluid m-0 px-0" style="width: 100%"  >
+		<div th:replace="fragment.html :: deftopnav"></div>
+		<div class="container-fluid config mt-5" style="overflow: hidden">
 			<div class="row mt-5">
 				<div class="col-12 px-1">
 					<div class="col-sm box white perfil" style="height: 100%">
-						<form style="overflow: hidden" id="regFormCad" th:action="@{/addDev}"
-						 method="post" enctype="multipart/form-data">
+
+						<form id="regFormCad" th:action="@{/addDev}" method="post"
+							style="overflow: hidden" enctype="multipart/form-data">
 							<h6>Fazer cadastro</h6>
 							<div class="section">
 								<div class="group">
-									<label>Nome completo</label> 
-									<input type="text" th:field="*{dev.nome}"
-										placeholder="Nome completo" style="width: 100%">
+									<label>Nome completo</label> <input type="text"
+										th:field="*{dev.nome}" placeholder="Nome completo"
+										style="width: 100%">
 								</div>
 								<div class="group">
-									<label>CPF</label> 
-									<input type="text" placeholder="CPF" th:field="*{dev.cpf}" 
-									data-mask="(00) 00000-0000" style="width: 100%">
+									<label>CPF</label> <input type="text" placeholder="CPF"
+										th:field="*{dev.cpf}" data-mask="(00) 00000-0000"
+										style="width: 100%">
 								</div>
 
 								<div class="group">
-									<label>Data de nascimento</label><br> 
-									<input type="date" th:field="*{dev.dataNascimento}"
-										max="3000" min="1" style="width: 100%">
+									<label>Data de nascimento</label><br> <input type="date"
+										th:field="*{dev.dataNascimento}" max="3000" min="1"
+										style="width: 100%">
 								</div>
 
 							</div>
@@ -61,42 +62,48 @@
 									<label>Endereço</label>
 								</div>
 								<div class="group">
-									<input type="text" placeholder="CEP" style="width: 100%" th:field="*{endereco.cep}"
-									id="CEP">
+									<input type="text" placeholder="CEP" style="width: 100%"
+										th:field="*{endereco.cep}" id="CEP">
 								</div>
 								<div class="group">
-								
-									<input type="text" th:field="*{endereco.estado}" id="estado" placeholder="Estado"/>
-									<input type="text" th:field="*{endereco.cidade}" id="cidade" placeholder="Cidade"/>
-									<input type="text" th:field="*{endereco.bairro}" id="bairro" placeholder="Bairro"/>
-									<input type="text" th:field="*{endereco.rua}" id="rua" placeholder="Rua"/>
-									
+
+									<input type="text" th:field="*{endereco.estado}" id="estado"
+										placeholder="Estado" /> <input type="text"
+										th:field="*{endereco.cidade}" id="cidade" placeholder="Cidade" />
+									<input type="text" th:field="*{endereco.bairro}" id="bairro"
+										placeholder="Bairro" /> <input type="text"
+										th:field="*{endereco.rua}" id="rua" placeholder="Rua" />
+
 								</div>
 								<div class="group">
-									<input type="text" th:field="*{endereco.numero}" placeholder="Número" style="width: 100%">
+									<input type="text" th:field="*{endereco.numero}"
+										placeholder="Número" style="width: 100%">
 								</div>
 
 							</div>
 							<div class="section">
 								<div class="group">
-									<label>E-mail</label> <input  th:field="*{dev.email}" type="email" placeholder="E-mail"
-										style="width: 100%">
+									<label>E-mail</label> <input th:field="*{dev.email}"
+										type="email" placeholder="E-mail" style="width: 100%">
 								</div>
 								<div class="group">
-									<label>Telefone para contato</label> <input type="text" th:field="*{dev.telefone}"
-										placeholder="Telefone" style="width: 100%">
+									<label>Telefone para contato</label> <input type="text"
+										th:field="*{dev.telefone}" placeholder="Telefone"
+										style="width: 100%">
 								</div>
 								<div class="group">
 									<label>Site pessoal</label> <input th:field="*{dev.site}"
 										placeholder="Site pessoal" style="width: 100%">
 								</div>
 								<div class="group">
-									<label>Tempo de experiência</label> <input th:field="*{dev.tempoExperiencia}" type="number"
-										min='0' max='100' style="width: 100%">
+									<label>Tempo de experiência</label> <input
+										th:field="*{dev.tempoExperiencia}" type="number" min='0'
+										max='100' style="width: 100%">
 								</div>
 								<div class="group">
-									<label>Defina sua senha</label> <input type="password" th:field="*{dev.senha}"
-										placeholder="Digite sua senha" style="width: 100%">
+									<label>Defina sua senha</label> <input type="password"
+										th:field="*{dev.senha}" placeholder="Digite sua senha"
+										style="width: 100%">
 								</div>
 								<div class="group">
 									<input type="password" placeholder="Digite sua senha novamente"
@@ -107,14 +114,15 @@
 							</div>
 							<div class="section">
 								<div class="group">
-									<label>Áreas de atuação</label>
-									<input id="areas" name="area" value="">
+									<label>Áreas de atuação</label> <input id="areas" style="display:none" name="area"
+										value="">
 									<div class="multiselect area">
 
 										<div class="dropdown show">
-											<input autocomplete="off" class="multisearch my-2" data-toggle="dropdown"
-												aria-haspopup="true" aria-expanded="false" input
-												id="dropdownMenuLink" placeholder="Pesquisar">
+											<input autocomplete="off" class="multisearch my-2"
+												data-toggle="dropdown" aria-haspopup="true"
+												aria-expanded="false" input id="dropdownMenuLink"
+												placeholder="Pesquisar">
 
 
 
@@ -127,14 +135,15 @@
 									</div>
 								</div>
 								<div class="group">
-									<label>Habilidades</label>
-									<input id="habilidades" name="habilidade" value="">
+									<label>Habilidades</label> <input id="habilidades" style="display:none"
+										name="habilidade" value="">
 									<div class="multiselect">
 
 										<div class="dropdown show">
-											<input autocomplete="off" class="multisearch my-2" data-toggle="dropdown"
-												aria-haspopup="true" aria-expanded="false" input
-												id="dropdownMenuLink" placeholder="Pesquisar">
+											<input autocomplete="off" class="multisearch my-2"
+												data-toggle="dropdown" aria-haspopup="true"
+												aria-expanded="false" input id="dropdownMenuLink"
+												placeholder="Pesquisar">
 
 
 
@@ -150,20 +159,22 @@
 							</div>
 							<div class="section">
 								<div class="group">
-									<label>Currículo</label> <input id="curriculo" name="curriculo" type="file" style="width: 100%">
+									<label>Currículo</label> <input id="curriculo" name="curriculo"
+										type="file" style="width: 100%">
 								</div>
 								<div class="group">
-									<label>Linkedin</label> <input th:field="*{dev.linkedIn}" type="url" placeholder="CPF"
-										style="width: 100%">
+									<label>Linkedin</label> <input th:field="*{dev.linkedIn}"
+										type="url" placeholder="CPF" style="width: 100%">
 								</div>
 								<div class="group">
-									<label>Github</label><br> <input th:field="*{dev.gitHub}" type="url"
-										placeholder="Github" style="width: 100%">
+									<label>Github</label><br> <input th:field="*{dev.gitHub}"
+										type="url" placeholder="Github" style="width: 100%">
 								</div>
 								<div class="group">
 									<label>Apresentação</label>
 
-									<textarea th:field="*{dev.apresentacao}" rows="2" placeholder="Apresente-se aqui"></textarea>
+									<textarea th:field="*{dev.apresentacao}" rows="2"
+										placeholder="Apresente-se aqui"></textarea>
 								</div>
 								<div class="group">
 									<label>Foto de perfil</label> <input name="foto" type="file"
@@ -184,10 +195,11 @@
 				</div>
 			</div>
 		</div>
+		<div th:insert="fragment.html :: footer"></div>
 	</div>
 
 
-	
+
 	<script th:src="@{js/cadastro.js}"></script>
 	<script th:src="@{js/habilities.js}"></script>
 	<script th:inline="javascript">
