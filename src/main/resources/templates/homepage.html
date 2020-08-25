@@ -60,39 +60,82 @@
             </div>
 
             <div class="sign">
-                <form>
-                    <input type="email" placeholder="Email">
-                    <input placeholder="senha" type="password">
-                    <input type="submit">
+                <form style="display: flex; margin: auto 0">
+                    <input type="email" class="input mr-1" placeholder="E-mail" style="margin: auto 0">
+                    <input placeholder="Senha" class="input mr-1" type="password" style="margin: auto 0">
+                    <input type="submit" class="index blue" style="display: inherit">
                 </form>
-                <button data-toggle="modal" data-target=".bd-example-modal">Cadastrar</button>
+                <button data-toggle="modal" data-target=".bd-example-modal" class="index ml-2" style="display: inherit">Cadastrar</button>
             </div>
-            <div class="sign-button" data-toggle="modal" data-target=".bd-example-modal">Icon</div>
+            <div class="sign-button" data-toggle="modal" data-target=".bd-example-modal"><i class="fas fa-user-circle"></i></div>
 
         </nav>
         <div class="container-fluid content mt-5 mx-0 px-0">
             <div class="top-content row">
-                <div class="col-sm-7">
+                <div class="col-md-7">
                     <div class="index" style="font-size: 30px">DevFinder é uma plataforma para recrutamento de desenvolvedores por meio de desafios</div>
                     <div>
-                        <a href="./cadastroEmp.html" class="index blue">Sou empresa</a>
+                        <a href="./cadastroEmp.html" class="index blue mb-3">Sou empresa</a>
                         <a href="./cadastroDev.html" class="index blue">Sou desenvolvedor</a>
                     </div>
                 </div>
-                <div class="col-sm-5">
+                <div class="col-md-5">
                     <img src="../static/imgs/undraw_code_typing_7jnv.svg" style="height: 180px">
                 </div>
             </div>
-            <div class="row mx-2">
-                <div class="col-md">Se você é um empresário, cadastre-se e crie desafios para recrutar desenvolvedores de acordo com sua necessidade!</div>
-                <div class="col-md">Se você é um desenvolvedor, cadastre-se e participe de desafios para ser notado pelas empresas!</div>
-                <div class="col-md">Treine suas habilidades!
-Descubra empresas e desenvolvedores!</div>
+            <div class="row mx-2 infos">
+                <div class="col-md">
+                     <img src='../static/imgs/undraw_Team_page_re_cffb.svg'>
+                    Se você é um empresário, cadastre-se e crie desafios para recrutar desenvolvedores de acordo com sua necessidade!</div>
+                <div class="col-md">                   
+                    <img src='../static/imgs/undraw_Freelancer_re_irh4.svg'>
+                    Se você é um desenvolvedor, cadastre-se e participe de desafios para ser notado pelas empresas!</div>
+                <div class="col-md">
+                                        <img src='../static/imgs/undraw_code_review_l1q9.svg'>
+
+                    Treine suas habilidades!
+                    Descubra empresas e desenvolvedores!</div>
 
             </div>
 
         </div>
-
+        <footer class="footer row mx-0">
+            <div class="container-fluid py-5 mx-0">
+                <div class="row">
+                    <div class="col-12 divisor"></div>
+                    <div class="col-12 col-lg text-center">
+                        <img class="img-fluid noturno" src="../static/imgs/df-logo.svg">
+                     
+                    </div>
+                    <div class="col-6 col-md">
+                        <h5><i class="fas fa-users"></i> Desenvolvedores</h5>
+                        <ul class="list-unstyled text-small">
+                            <li><a href="https://github.com/Erigoddess">Erica
+                                    Medeiros</a></li>
+                            <li><a href="https://github.com/MarlonFL15">Marlon de
+                                    Faria</a></li>
+                            <li><a href="https://github.com/mnik3007">Monike Freitas</a>
+                            </li>
+                            <li><a href="https://github.com/Ronaldo64">Ronaldo Costa</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-6 col-md">
+                        <h5><i class="fas fa-map-marker-alt"></i> Endereço</h5>
+                        <ul class="list-unstyled text-small">
+                            <li><a href="https://goo.gl/maps/hEkmvv2gVBFypU7g6">Av.
+                                    Sete de Setembro, 1975, IFAM, Manaus, AM - Brasil</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-6 col-md">
+                        <h5><i class="fas fa-at"></i> Contato</h5>
+                        <ul class="list-unstyled text-small">
+                            <li><a href="#">devfinder@gmail.com</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
     </div>
     <script>
         $(document).ready(function() {

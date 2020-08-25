@@ -65,7 +65,7 @@ input, textarea {
     display: flex;
 }
 
-.search {
+.search, .input{
     display: flex;
     background-color: rgba(64, 88, 215, 0.1);
     border-radius: 10px;
@@ -122,6 +122,8 @@ input, textarea {
 
 .sign-button {
     display: none;
+    font-size: 30px; 
+    margin: auto 0;
 }
 
 .modal-body {
@@ -382,6 +384,29 @@ select option {
     padding: 40px;
 }
 
+.infos div{
+    display: block;
+    padding: 30px;
+    font-family: Quicksand, sans-serif;
+    font-size: 15px;
+}
+
+.infos > div::after {
+    display: inline-block;
+    height: 100%;
+    width: 10px;
+    background-color: #4058D7;
+}
+
+.infos div {
+    text-align: center;
+}
+.infos img {
+    height: 100px;
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+}
 
 @media (max-width: 800px) {
     .sign {
@@ -444,3 +469,20 @@ select option {
         display: none;
     }
 }
+
+
+/********************************FOOTER************************************88*/
+.footer h5{
+    font-family: Quicksand, sans-serif;
+    font-weight: 800;
+    color: #4058D7;
+}
+
+.footer a, .footer a:hover{
+    text-decoration: none;
+    font-family: Nunito, sans-serif;
+    font-weight: normal;
+    cursor: pointer;
+    color: #000;
+}
+

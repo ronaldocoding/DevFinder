@@ -595,3 +595,18 @@ li h6{
     overflow:hidden;
   text-overflow:ellipsis;
 }
+
+/********************************FOOTER************************************88*/
+.footer h5{
+    font-family: Quicksand, sans-serif;
+    font-weight: 800;
+    color: #4058D7;
+}
+
+.footer a, .footer a:hover{
+    text-decoration: none;
+    font-family: Nunito, sans-serif;
+    font-weight: normal;
+    cursor: pointer;
+    color: #000;
+}
