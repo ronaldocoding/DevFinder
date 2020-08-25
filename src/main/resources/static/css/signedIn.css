@@ -597,6 +597,9 @@ li h6{
 }
 
 /********************************FOOTER************************************88*/
+.footer img {
+    height: 54px;
+}
 .footer h5{
     font-family: Quicksand, sans-serif;
     font-weight: 800;

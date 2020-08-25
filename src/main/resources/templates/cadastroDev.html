@@ -14,25 +14,27 @@
 
     <div class="container-fluid">
 
+       <div class="container-fluid">
+
         <nav class="nav">
 
-            <img alt="Logo" src="/static/imgs/df-logo.svg">
+            <img alt="Logo" src="../static/imgs/df-logo.svg" />
             <div class="search">
-                <input placeholder="Pesquise..." >
+                <input placeholder="Pesquise..." />
                 <div class="item">
                     <i style='font-size:15px; justify-content: flex-end' class='fas'>&#xf002;</i>
                 </div>
             </div>
 
             <div class="sign">
-                <form>
-                    <input type="email" placeholder="Email">
-                    <input placeholder="senha" type="password">
-                    <input type="submit">
+                <form style="display: flex; margin: auto 0">
+                    <input type="email" class="input mr-1" placeholder="E-mail" style="margin: auto 0">
+                    <input placeholder="Senha" class="input mr-1" type="password" style="margin: auto 0">
+                    <input type="submit" class="index blue" style="display: inherit">
                 </form>
-                <button data-toggle="modal" data-target=".bd-example-modal">Cadastrar</button>
+                <button data-toggle="modal" data-target=".bd-example-modal" class="index ml-2" style="display: inherit">Cadastrar</button>
             </div>
-            <div class="sign-button" data-toggle="modal" data-target=".bd-example-modal">Icon</div>
+            <div class="sign-button" data-toggle="modal" data-target=".bd-example-modal"><i class="fas fa-user-circle"></i></div>
 
         </nav>
         <div class="container-fluid config mt-5">
@@ -183,6 +185,43 @@
                 </div>
             </div>
         </div>
+        <footer class="footer row mx-0">
+            <div class="container-fluid py-5 mx-0">
+                <div class="row">
+                    <div class="col-12 divisor"></div>
+                    <div class="col-12 col-lg text-center">
+                        <img class="img-fluid noturno" src="../static/imgs/df-logo.svg">
+                     
+                    </div>
+                    <div class="col-6 col-md">
+                        <h5><i class="fas fa-users"></i> Desenvolvedores</h5>
+                        <ul class="list-unstyled text-small">
+                            <li><a href="https://github.com/Erigoddess">Erica
+                                    Medeiros</a></li>
+                            <li><a href="https://github.com/MarlonFL15">Marlon de
+                                    Faria</a></li>
+                            <li><a href="https://github.com/mnik3007">Monike Freitas</a>
+                            </li>
+                            <li><a href="https://github.com/Ronaldo64">Ronaldo Costa</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-6 col-md">
+                        <h5><i class="fas fa-map-marker-alt"></i> Endereço</h5>
+                        <ul class="list-unstyled text-small">
+                            <li><a href="https://goo.gl/maps/hEkmvv2gVBFypU7g6">Av.
+                                    Sete de Setembro, 1975, IFAM, Manaus, AM - Brasil</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-6 col-md">
+                        <h5><i class="fas fa-at"></i> Contato</h5>
+                        <ul class="list-unstyled text-small">
+                            <li><a href="#">devfinder@gmail.com</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
         <div class="modal fade bd-example-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content mx-auto border-0">
@@ -192,26 +231,27 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                         <div class="login">
-                            <form>
-                                <input placeholder="Email" required>
-                                <input placeholder="senha" type="password" required>
-                                <input type="submit">
+                            <img src="../static/imgs/undraw_Login_re_4vu2.svg">
+                            <form style="width: 55%">
+                                <input placeholder="Email" required class="input mt-2" style="width: 100%">
+                                <input placeholder="senha" type="password" required
+                                       class="input my-2" style="width: 100%">
+                                <input type="submit" class="index blue" style="display: inherit; margin: 0 auto;"  value="Entrar">
                             </form>
                             <div class="message">
                                 Não tem conta? <span>Se cadastre</span>
                             </div>
-
                         </div>
-                        <div class="sign-up">
+                        <div class="sign-up text-center justify-content-center" >
+                            <img src="../static/imgs/undraw_sign_in_e6hj.svg">
                             <a href="cadastroDev.html">
-                                <button>
-                                    Desenvolvedor
+                                <button class="index blue text-center mt-2" style="display: block; margin: 0 auto">
+                                    Sou desenvolvedor
                                 </button>
                             </a>
-
                             <a href="cadastroEmp.html">
-                                <button>
-                                    Empresa
+                                <button class="index blue text-center my-2" style="display: block; margin: 0 auto">
+                                    Sou empresa
                                 </button>
                             </a>
                             <div class="message">
@@ -219,8 +259,6 @@
                             </div>
                         </div>
                     </div>
-
-
                 </div>
             </div>
         </div>

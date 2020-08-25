@@ -159,6 +159,10 @@ input, textarea {
     text-align: center;
 }
 
+.message {
+    font-family: Nunito, sans-serif;
+}
+
 .login form {
     margin: 0 auto;
 }
@@ -408,7 +412,14 @@ select option {
     margin: 0 auto;
 }
 
+.login img, .sign-up img {
+    height: 70px;
+}
+
 @media (max-width: 800px) {
+    .login img, .sign-up img  {
+        height: 200px;
+    }
     .sign {
         display: none;
     }
@@ -472,6 +483,9 @@ select option {
 
 
 /********************************FOOTER************************************88*/
+.footer img {
+    height: 54px;
+}
 .footer h5{
     font-family: Quicksand, sans-serif;
     font-weight: 800;
