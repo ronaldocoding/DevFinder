@@ -6,21 +6,50 @@
 
 <body>
 
-		<div  class="container-fluid">
-		
+	<div class="container-fluid">
+
 		<div th:insert="fragment.html :: loggedtopnav"></div>
 		<div th:insert="fragment.html :: sidebaremp"></div>
-		
-       	<div id="container" class="container-fluid content"></div>    
-        
-	
+
+				<div class="container-fluid content">
+			<div id="container"></div>
+			<div class="col-xl-8 mb-2 p-0 mx-auto row">
+				<div class="col-md-3 filtro mt-2">Desafios</div>
+
+				<div class="col-lg-7 filtro mt-2 ml-lg-auto">
+
+					Estado <select class="white filtro-estado">
+						<option>Todos</option>
+						<option>Finalizados</option>
+						<option>Em andamento</option>
+					</select> Área <select class="white filtro-area">
+						<option>Todos</option>
+						<option>Front-end</option>
+						<option>Back-end</option>
+						<option>Full stack</option>
+						<option>Data science</option>
+					</select>
+
+
+				</div>
+				<div id="desafios" class="desafios row"></div>
+
+			</div>
+
+		</div>
+
+
+
 	</div>
-	
+
 	<script th:inline="javascript">
 			/*<![CDATA[*/
+		const perfil = [[${perfil}]]
+			
    		$('#search').keyup(function(){
            	search() 
-           	$('#result').html('Resultados para "'+$('#search').val()+'"')
+           	filtroTexto($('#search').val())
+           	//$('#result').prepend('Resultados para "'+$('#search').val()+'"')
     		
         })
 
@@ -34,6 +63,43 @@
 		
 		/*]]>*/
 	</script>
+	<script th:src="@{/js/moldesComponentes.js}"></script>
+	<script th:inline="javascript">
+		const arraydesafios = [[${desafios}]]
+		console.log(arraydesafios)
+		for(var i = 0; i < arraydesafios.length; i++){
+			var emailEmpresa = arraydesafios[i].emailEmpresa;
+			var id = arraydesafios[i].id
+			//console.log(desafios[i])
+			
+			$.ajax({
+		    	url:'/desafioHabilidades/'+emailEmpresa+'/'+id,
+	    	    type: "GET",
+	    	    async: false,
+	            contentType: "application/json",
+	    	    success: function(response) {
+	    	    	var habilidades = []
+	    	    
+	    	    	for(var j = 0; j < response.length; j++){
+	    	    		habilidades.push(response[j].habilidade)
+	    	    	}
+	    	    	arraydesafios[i].habilidades = habilidades
+	    	    	
+		        },
+	    	    error: function(error){
+	    	    	console.log(error)
+	    	    }
+			})	
+			
+		}
+		arraydesafios.forEach(function (item, index) {
+			console.log('entrou')
+		    criarDesafioView(item.id, item.nome, item.empresa.nomeFantasia, 
+		    			item.areaDesenvolvimento, item.descricao, item.habilidades, item.dataFim, item.horarioFim, item.emailEmpresa)
+		})
+	
+	</script>
+	<script th:src="@{/js/filtroDesafio.js}"></script>
 
 </body>
 </html>
