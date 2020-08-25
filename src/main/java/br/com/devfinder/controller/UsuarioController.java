@@ -92,6 +92,8 @@ public class UsuarioController {
 			Usuario user = (Usuario) session.getAttribute("perfil");
 			model.addAttribute("perfil", session.getAttribute("perfil"));
 			if(serviceE.getEmpresaById(user.getEmail()) == null){
+
+				model.addAttribute("desafiosSub",serviceDe.getDesafiosInscritos(user.getEmail()));
 				return "devPesquisa";
 			}
 			else

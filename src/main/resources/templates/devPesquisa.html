@@ -35,20 +35,21 @@
 
 				</div>
 				<div id="desafios" class="desafios row"></div>
-				
+
 			</div>
 
 		</div>
 
 
 	</div>
-
+	
 	<script th:inline="javascript">
 			/*<![CDATA[*/
 		const perfil = [[${perfil}]]
 			
    		$('#search').keyup(function(){
            	search() 
+           	filtroTexto($('#search').val())
            	//$('#result').prepend('Resultados para "'+$('#search').val()+'"')
     		
         })
@@ -94,11 +95,17 @@
 	</script>
 	<script th:src="@{/js/moldesComponentes.js}"></script>
 	<script th:inline="javascript">
-		var desafios = [[${desafios}]]
+		const arraydesafios = [[${desafios}]]
+		var desafiosSub = [[${desafiosSub}]]
 		
-		for(var i = 0; i < desafios.length; i++){
-			var emailEmpresa = desafios[i].emailEmpresa;
-			var id = desafios[i].id
+		var ids = []
+		desafiosSub.forEach(function(item, index){
+			ids.push(item.id)
+		})
+		
+		for(var i = 0; i < arraydesafios.length; i++){
+			var emailEmpresa = arraydesafios[i].emailEmpresa;
+			var id = arraydesafios[i].id
 			//console.log(desafios[i])
 			
 			$.ajax({
@@ -112,7 +119,7 @@
 	    	    	for(var j = 0; j < response.length; j++){
 	    	    		habilidades.push(response[j].habilidade)
 	    	    	}
-	    	    	desafios[i].habilidades = habilidades
+	    	    	arraydesafios[i].habilidades = habilidades
 	    	    	
 		        },
 	    	    error: function(error){
@@ -121,13 +128,20 @@
 			})	
 			
 		}
-		desafios.forEach(function (item, index) {
-			console.log('ok, criou')
-			criarDesafioDesenvolvedor(item.id, item.nome, item.empresa.nomeFantasia, 
+		arraydesafios.forEach(function (item, index) {
+			if(ids.indexOf(item.id) == -1){
+				criarDesafioDesenvolvedor(item.id, item.nome, item.empresa.nomeFantasia, 
 		    			item.areaDesenvolvimento, item.descricao, item.habilidades, item.dataFim, item.horarioFim, item.emailEmpresa)
+			}
+			else{
+				criarDesafioParticipando(item.id, item.nome, item.empresa.nomeFantasia, 
+		    			item.areaDesenvolvimento, item.descricao, item.habilidades, item.dataFim, item.horarioFim, item.emailEmpresa)
+			}	
+		
 		})
 	
 	</script>
+	<script th:src="@{/js/filtroDesafio.js}"></script>
 
 </body>
 </html>
