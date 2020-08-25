@@ -1,94 +1,132 @@
-<html>
-<head>
-<meta charset="utf-8">
-<title>DevFinder</title>
-<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
-	integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
-	crossorigin="anonymous">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<script defer
-	src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
-	integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
-	crossorigin="anonymous"></script>
-<script defer
-	src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
-	integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
-	crossorigin="anonymous"></script>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<link
-	href="https://fonts.googleapis.com/css?family=Poppins&display=swap"
-	rel="stylesheet">
-<link rel="stylesheet" type="text/css" th:href="@{/css/template.css}">
+<!DOCTYPE html>
+<html lang="pt-br">
+<head th:insert="fragment.html :: links">
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" th:href="@{/css/signedOut.css}">
+<script th:src="@{/js/moldesComponentes.js}"></script>
 </head>
+
 <body>
-	<!--Modal de Login-->
-	<div th:insert="fragment.html :: deftopnav"></div>
 
-	<div id="container"></div>
+	<div class="container-fluid">
+
+		<div th:insert="fragment.html :: loggedtopnav"></div>
+
+		<div class="container-fluid content">
+			<div id="container"></div>
+			<div class="col-xl-8 mb-2 p-0 mx-auto row">
+				<div class="col-md-3 filtro mt-2">Desafios</div>
+
+				<div class="col-lg-7 filtro mt-2 ml-lg-auto">
+
+					Estado <select class="white filtro-estado">
+						<option>Todos</option>
+						<option>Finalizados</option>
+						<option>Em andamento</option>
+					</select> Área <select class="white filtro-area">
+						<option>Todos</option>
+						<option>Front-end</option>
+						<option>Back-end</option>
+						<option>Full stack</option>
+						<option>Data science</option>
+					</select>
 
 
-	<div th:insert="fragment.html :: footer"></div>
+				</div>
+				<div id="desafios" class="desafios row"></div>
+				
+			</div>
+
+		</div>
+
+
 	</div>
-
-
-
 
 	<script th:inline="javascript">
 			/*<![CDATA[*/
-                $('#search').keyup(function(){
-                	search()
-                	
-                })
+		const perfil = [[${perfil}]]
 			
-			    const search = function(pesquisa){
-					
-					$.ajax({
-			    	    url:'searchResult',
-			    	    type: "GET",
-			            contentType: "application/json",
-			    	    data:{
-			    	    	'texto':$('#search').val().trim().split(' ')
-			    	    },
-			    	    success: function(response) {
-							$('#container').html(response)
-		    	        },
-			    	    error: function(error){
-			    	    }
-			    	})
+   		$('#search').keyup(function(){
+           	search() 
+           	//$('#result').prepend('Resultados para "'+$('#search').val()+'"')
+    		
+        })
 
-
-
-				}
-
-			    window.onload = function() {
-			    	 var pesquisa = [[${pesquisa}]]; //Your Thymleaf variable
-			    	 $('#search').val(pesquisa)
-			    	 
-			    	search(pesquisa);
+   	    window.onload = function() {
+    		var pesquisa = [[${pesquisa}]]; //Your Thymleaf variable
+    		$('#search').val(pesquisa)
+    		
+    		search(pesquisa);
+    	};
+    	
+    	var participar = function(id, email){
+			//alert(id)
 			
-			   };
-			   
-			   $('#closeModal').on('click', function(){
-					document.getElementById('smallError').style.display='none';
-			   });
-			   			
-			/*]]>*/
-		</script>
+			$.ajax({
+	    	    url: "/addInscricao",
+	    	    type: "GET",
+	            contentType: "application/json",
+	    	    data:{
+	    	    	"id":id,
+	    	    	"email":email
+	    	    },
+	    	    success: function(response) {
+	    	    	console.log('deu certo esta merda')
+	    
+					//console.log(response)  
+					console.log('link'+id)
+					document.getElementById('link'+id).innerHTML = 'Inscrito'
+    	    	   //$('#link'+id).html('Inscrito')
+	    	       
+
+		        },
+	    	    error: function(xhr) {
+		            //Do Something to handle error
+		            console.log('deu pau')
+		        }
+	    	})
+
+		}
+
+		
+		/*]]>*/
+	</script>
+	<script th:src="@{/js/moldesComponentes.js}"></script>
+	<script th:inline="javascript">
+		var desafios = [[${desafios}]]
+		
+		for(var i = 0; i < desafios.length; i++){
+			var emailEmpresa = desafios[i].emailEmpresa;
+			var id = desafios[i].id
+			//console.log(desafios[i])
+			
+			$.ajax({
+		    	url:'/desafioHabilidades/'+emailEmpresa+'/'+id,
+	    	    type: "GET",
+	    	    async: false,
+	            contentType: "application/json",
+	    	    success: function(response) {
+	    	    	var habilidades = []
+	    	    
+	    	    	for(var j = 0; j < response.length; j++){
+	    	    		habilidades.push(response[j].habilidade)
+	    	    	}
+	    	    	desafios[i].habilidades = habilidades
+	    	    	
+		        },
+	    	    error: function(error){
+	    	    	console.log(error)
+	    	    }
+			})	
+			
+		}
+		desafios.forEach(function (item, index) {
+			console.log('ok, criou')
+			criarDesafioView(item.id, item.nome, item.empresa.nomeFantasia, 
+		    			item.areaDesenvolvimento, item.descricao, item.habilidades, item.dataFim, item.horarioFim, item.emailEmpresa)
+		})
+	
+	</script>
 
 </body>
 </html>

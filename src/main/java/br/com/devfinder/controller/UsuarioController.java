@@ -125,7 +125,8 @@ public class UsuarioController {
 	
 	@GetMapping("/logout")
 	public String logout(Model model, HttpSession session) {
-		session.removeAttribute("perfil");
+		//session.removeAttribute("perfil");
+		session.setAttribute("perfil", null);
 		return "redirect:/";
 	}
 	
