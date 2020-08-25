@@ -189,9 +189,35 @@ input, textarea {
     transition: height .3s ease-in-out;
 }
 
+.button-login {
+        display: block;
+    border: none;
+    text-align: center;
+    background-color: #FFF;
+    padding: 5px 25px;
+/*    margin: 0 auto;*/
+/*    display: none;*/
+    align-self: center;
+    justify-content: center;
+        color: #000 ;
+
+    font-family: 'Quicksand', sans-serif;
+    border-radius: 10px;
+    outline: none;
+    transition: transform .3s ease-in-out;
+}
+
 .config .box form {
     display:flex;
     height: 340px;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: height .3s ease-in-out;
+}
+
+.emp form {
+    display:flex;
+    height: 400px;
     flex-direction: column;
     justify-content: space-between;
     transition: height .3s ease-in-out;
